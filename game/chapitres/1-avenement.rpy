@@ -39,7 +39,7 @@ label visionChilderic:
 label avenement:
     scene bg priere
     with dissolve
-    play music roi_mort noloop
+    # play music roi_mort noloop
     # A FAIRE : trouver un fond pour le couronnement
     show screen valeurs_traits
     $ childeric = situation_.GetValCarac(pnj.Pnj.C_PERE)
