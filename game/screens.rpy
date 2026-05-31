@@ -96,6 +96,7 @@ style frame:
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
 screen say(who, what):
+    style_prefix "say"
 
     window:
         id "window"
@@ -159,15 +160,14 @@ style say_dialogue:
     xsize gui.dialogue_width
     ypos gui.dialogue_ypos
 
-    adjust_spacing False
 
 ## Écran de saisie #############################################################
 ##
 ## Cet écran est utilisé pour afficher renpy.input. Le paramètre prompt est
 ## utilisé pour passer le texte par défaut.
 ##
-## Cet écran doit créer une entrée affichable avec l'id "input" pour accepter
-## les différents paramètres.
+## This screen must create an input displayable with id "input" to accept the
+## various input parameters.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#input
 
@@ -177,7 +177,7 @@ screen input(prompt):
     window:
 
         vbox:
-            xanchor gui.dialogue_text_xalign
+            xalign gui.dialogue_text_xalign
             xpos gui.dialogue_xpos
             xsize gui.dialogue_width
             ypos gui.dialogue_ypos
@@ -212,13 +212,18 @@ screen choice(items):
             textbutton i.caption action i.action
 
 
+## When this is true, menu captions will be spoken by the narrator. When false,
+## menu captions will be displayed as empty buttons.
+define config.narrator_menu = True
+
+
 style choice_vbox is vbox
 style choice_button is button
 style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
+    ypos 270
     yanchor 0.5
 
     spacing gui.choice_spacing
@@ -227,7 +232,7 @@ style choice_button is default:
     properties gui.button_properties("choice_button")
 
 style choice_button_text is default:
-    properties gui.text_properties("choice_button")
+    properties gui.button_text_properties("choice_button")
 
 
 ## Écran des menus rapides #####################################################
@@ -244,7 +249,9 @@ screen quick_menu():
 
         hbox:
             style_prefix "quick"
-            style "quick_menu"
+
+            xalign 0.5
+            yalign 1.0
 
             textbutton _("Retour") action Rollback()
             textbutton _("Historique") action ShowMenu('history')
@@ -263,19 +270,14 @@ init python:
 
 default quick_menu = True
 
-style quick_menu is hbox
 style quick_button is default
 style quick_button_text is button_text
-
-style quick_menu:
-    xalign 0.5
-    yalign 1.0
 
 style quick_button:
     properties gui.button_properties("quick_button")
 
 style quick_button_text:
-    properties gui.text_properties("quick_button")
+    properties gui.button_text_properties("quick_button")
 
 
 ################################################################################
@@ -342,7 +344,7 @@ style navigation_button:
     properties gui.button_properties("navigation_button")
 
 style navigation_button_text:
-    properties gui.text_properties("navigation_button")
+    properties gui.button_text_properties("navigation_button")
 
 
 ## Écran du menu principal #####################################################
@@ -362,8 +364,8 @@ screen main_menu():
     frame:
         style "main_menu_frame"
 
-    ## L'instruction use inclut un autre écran à l'intérieur de celui-ci. Le
-    ## vrai contenu du menu principal se trouve dans l'écran "navigation".
+    ## The use statement includes another screen inside this one. The actual
+    ## contents of the main menu are in the navigation screen.
     use navigation
 
     if gui.show_name:
@@ -385,17 +387,17 @@ style main_menu_title is main_menu_text
 style main_menu_version is main_menu_text
 
 style main_menu_frame:
-    xsize 420
+    xsize 280
     yfill True
 
     background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
-    xoffset -30
-    xmaximum 1200
+    xoffset -20
+    xmaximum 800
     yalign 1.0
-    yoffset -30
+    yoffset -20
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
@@ -409,15 +411,14 @@ style main_menu_version:
 
 ## Écran du menu de jeu ########################################################
 ##
-## Ceci présente la structure commune de base d'un écran du menu de jeu. Il est
-## appelé en lui passant le titre de l'écran, et il affiche l'arrière-plan, le
-## titre et la navigation.
+## This lays out the basic common structure of a game menu screen. It's called
+## with the screen title, and displays the background, title, and navigation.
 ##
-## Le paramètre de défilement peut être None, ou "viewport" ou "vpgrid". Cet
-## écran est destiné à être utilisé avec un ou plusieurs enfants, qui sont
-## transclus (placés) à l'intérieur de l'écran.
+## The scroll parameter can be None, or one of "viewport" or "vpgrid". When
+## this screen is intended to be used with one or more children, which are
+## transcluded (placed) inside it.
 
-screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
+screen game_menu(title, scroll=None, yinitial=0.0):
 
     style_prefix "game_menu"
 
@@ -450,8 +451,6 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
                         side_yfill True
 
                         vbox:
-                            spacing spacing
-
                             transclude
 
                 elif scroll == "vpgrid":
@@ -466,8 +465,6 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
                         pagekeys True
 
                         side_yfill True
-
-                        spacing spacing
 
                         transclude
 
@@ -502,45 +499,45 @@ style return_button is navigation_button
 style return_button_text is navigation_button_text
 
 style game_menu_outer_frame:
-    bottom_padding 45
-    top_padding 180
+    bottom_padding 30
+    top_padding 120
 
     background "gui/overlay/game_menu.png"
 
 style game_menu_navigation_frame:
-    xsize 420
+    xsize 280
     yfill True
 
 style game_menu_content_frame:
-    left_margin 60
-    right_margin 30
-    top_margin 15
+    left_margin 40
+    right_margin 20
+    top_margin 10
 
 style game_menu_viewport:
-    xsize 1380
+    xsize 920
 
 style game_menu_vscrollbar:
     unscrollable gui.unscrollable
 
 style game_menu_side:
-    spacing 15
+    spacing 10
 
 style game_menu_label:
-    xpos 75
-    ysize 180
+    xpos 50
+    ysize 120
 
 style game_menu_label_text:
-    size 75
+    size gui.title_text_size
     color gui.accent_color
     yalign 0.5
 
 style return_button:
     xpos gui.navigation_xpos
     yalign 1.0
-    yoffset -45
+    yoffset -30
 
 
-## Écran « À propos... » #######################################################
+## Écran « À propos... » #######################################################
 ##
 ## Cet écran présente le générique, les crédits et les informations de copyright
 ## relatives au jeu et à Ren’Py.
@@ -657,42 +654,27 @@ screen file_slots(title):
                         key "save_delete" action FileDelete(slot)
 
             ## Boutons pour accéder aux autres pages.
-            vbox:
+            hbox:
                 style_prefix "page"
 
                 xalign 0.5
                 yalign 1.0
 
-                hbox:
-                    xalign 0.5
+                spacing gui.page_spacing
 
-                    spacing gui.page_spacing
+                textbutton _("<") action FilePagePrevious()
 
-                    textbutton _("<") action FilePagePrevious()
-                    key "save_page_prev" action FilePagePrevious()
+                if config.has_autosave:
+                    textbutton _("{#auto_page}A") action FilePage("auto")
 
-                    if config.has_autosave:
-                        textbutton _("{#auto_page}A") action FilePage("auto")
+                if config.has_quicksave:
+                    textbutton _("{#quick_page}Q") action FilePage("quick")
 
-                    if config.has_quicksave:
-                        textbutton _("{#quick_page}Q") action FilePage("quick")
+                ## range(1, 10) donne les nombres de 1 à 9.
+                for page in range(1, 10):
+                    textbutton "[page]" action FilePage(page)
 
-                    ## range(1, 10) donne les nombres de 1 à 9.
-                    for page in range(1, 10):
-                        textbutton "[page]" action FilePage(page)
-
-                    textbutton _(">") action FilePageNext()
-                    key "save_page_next" action FilePageNext()
-
-                if config.has_sync:
-                    if CurrentScreenName() == "save":
-                        textbutton _("Uploader Sync"):
-                            action UploadSync()
-                            xalign 0.5
-                    else:
-                        textbutton _("Télécharger Sync"):
-                            action DownloadSync()
-                            xalign 0.5
+                textbutton _(">") action FilePageNext()
 
 
 style page_label is gui_label
@@ -706,12 +688,11 @@ style slot_time_text is slot_button_text
 style slot_name_text is slot_button_text
 
 style page_label:
-    xpadding 75
-    ypadding 5
-    xalign 0.5
+    xpadding 50
+    ypadding 3
 
 style page_label_text:
-    textalign 0.5
+    text_align 0.5
     layout "subtitle"
     hover_color gui.hover_color
 
@@ -719,13 +700,13 @@ style page_button:
     properties gui.button_properties("page_button")
 
 style page_button_text:
-    properties gui.text_properties("page_button")
+    properties gui.button_text_properties("page_button")
 
 style slot_button:
     properties gui.button_properties("slot_button")
 
 style slot_button_text:
-    properties gui.text_properties("slot_button")
+    properties gui.button_text_properties("slot_button")
 
 
 ## Écran des préférences #######################################################
@@ -753,6 +734,13 @@ screen preferences():
                         label _("Affichage")
                         textbutton _("Fenêtre") action Preference("display", "window")
                         textbutton _("Plein écran") action Preference("display", "fullscreen")
+
+                vbox:
+                    style_prefix "radio"
+                    label _("Rembobinage côté")
+                    textbutton _("Désactivé") action Preference("rollback side", "disable")
+                    textbutton _("Gauche") action Preference("rollback side", "left")
+                    textbutton _("Droite") action Preference("rollback side", "right")
 
                 vbox:
                     style_prefix "check"
@@ -845,13 +833,13 @@ style mute_all_button_text is check_button_text
 
 style pref_label:
     top_margin gui.pref_spacing
-    bottom_margin 3
+    bottom_margin 2
 
 style pref_label_text:
     yalign 1.0
 
 style pref_vbox:
-    xsize 338
+    xsize 225
 
 style radio_vbox:
     spacing gui.pref_button_spacing
@@ -861,7 +849,7 @@ style radio_button:
     foreground "gui/button/radio_[prefix_]foreground.png"
 
 style radio_button_text:
-    properties gui.text_properties("radio_button")
+    properties gui.button_text_properties("radio_button")
 
 style check_vbox:
     spacing gui.pref_button_spacing
@@ -871,21 +859,21 @@ style check_button:
     foreground "gui/button/check_[prefix_]foreground.png"
 
 style check_button_text:
-    properties gui.text_properties("check_button")
+    properties gui.button_text_properties("check_button")
 
 style slider_slider:
-    xsize 525
+    xsize 350
 
 style slider_button:
     properties gui.button_properties("slider_button")
     yalign 0.5
-    left_margin 15
+    left_margin 10
 
 style slider_button_text:
-    properties gui.text_properties("slider_button")
+    properties gui.button_text_properties("slider_button")
 
 style slider_vbox:
-    xsize 675
+    xsize 450
 
 
 ## Écran de l'historique #######################################################
@@ -904,7 +892,7 @@ screen history():
     ## très large
     predict False
 
-    use game_menu(_("Historique"), scroll=("vpgrid" if gui.history_height else "viewport"), yinitial=1.0, spacing=gui.history_spacing):
+    use game_menu(_("Historique"), scroll=("vpgrid" if gui.history_height else "viewport"), yinitial=1.0):
 
         style_prefix "history"
 
@@ -940,13 +928,15 @@ screen history():
 ## Ceci détermine quels tags peuvent être affichés sur le screen de
 ## l'historique.
 
-define gui.history_allow_tags = { "alt", "noalt", "rt", "rb", "art" }
+define gui.history_allow_tags = { "alt", "noalt" }
 
 
 style history_window is empty
 
 style history_name is gui_label
 style history_name_text is gui_label_text
+style history_text is gui_text
+
 style history_text is gui_text
 
 style history_label is gui_label
@@ -964,7 +954,7 @@ style history_name:
 
 style history_name_text:
     min_width gui.history_name_width
-    textalign gui.history_name_xalign
+    text_align gui.history_name_xalign
 
 style history_text:
     xpos gui.history_text_xpos
@@ -972,7 +962,7 @@ style history_text:
     xanchor gui.history_text_xalign
     xsize gui.history_text_width
     min_width gui.history_text_width
-    textalign gui.history_text_xalign
+    text_align gui.history_text_xalign
     layout ("subtitle" if gui.history_text_xalign else "tex")
 
 style history_label:
@@ -999,7 +989,7 @@ screen help():
         style_prefix "help"
 
         vbox:
-            spacing 23
+            spacing 15
 
             hbox:
 
@@ -1041,7 +1031,7 @@ screen keyboard_help():
 
     hbox:
         label _("Tab")
-        text _("Active ou désactive les «sauts des dialogues».")
+        text _("Active ou désactives les «sauts des dialogues».")
 
     hbox:
         label _("Page Haut")
@@ -1063,10 +1053,6 @@ screen keyboard_help():
         label "V"
         text _("Active la {a=https://www.renpy.org/l/voicing}{size=24}vocalisation automatique{/size}{/a}.")
 
-    hbox:
-        label "Shift+A"
-        text _("Ouvre le menu d'accessibilité.")
-
 
 screen mouse_help():
 
@@ -1083,7 +1069,7 @@ screen mouse_help():
         text _("Ouvre le menu du jeu.")
 
     hbox:
-        label _("Molette vers le haut")
+        label _("Molette vers le haut\nClic sur le côté du Rollback")
         text _("Retourne au précédent dialogue.")
 
     hbox:
@@ -1105,12 +1091,13 @@ screen gamepad_help():
         label _("Bouton R1")
         text _("Avance jusqu'au prochain dialogue.")
 
+
     hbox:
         label _("Boutons directionnels, stick gauche")
         text _("Permet de se déplacer dans l’interface.")
 
     hbox:
-        label _("Start, Guide, B/Right Button")
+        label _("Start, Guide")
         text _("Ouvre le menu du jeu.")
 
     hbox:
@@ -1128,19 +1115,19 @@ style help_text is gui_text
 
 style help_button:
     properties gui.button_properties("help_button")
-    xmargin 12
+    xmargin 8
 
 style help_button_text:
-    properties gui.text_properties("help_button")
+    properties gui.button_text_properties("help_button")
 
 style help_label:
-    xsize 375
-    right_padding 30
+    xsize 250
+    right_padding 20
 
 style help_label_text:
     size gui.text_size
     xalign 1.0
-    textalign 1.0
+    text_align 1.0
 
 
 
@@ -1173,7 +1160,7 @@ screen confirm(message, yes_action, no_action):
         vbox:
             xalign .5
             yalign .5
-            spacing 45
+            spacing 30
 
             label _(message):
                 style "confirm_prompt"
@@ -1181,7 +1168,7 @@ screen confirm(message, yes_action, no_action):
 
             hbox:
                 xalign 0.5
-                spacing 150
+                spacing 100
 
                 textbutton _("Oui") action yes_action
                 textbutton _("Non") action no_action
@@ -1204,14 +1191,14 @@ style confirm_frame:
     yalign .5
 
 style confirm_prompt_text:
-    textalign 0.5
+    text_align 0.5
     layout "subtitle"
 
 style confirm_button:
     properties gui.button_properties("confirm_button")
 
 style confirm_button_text:
-    properties gui.text_properties("confirm_button")
+    properties gui.button_text_properties("confirm_button")
 
 
 ## Écran de l’indicateur d'avance rapide #######################################
@@ -1229,7 +1216,7 @@ screen skip_indicator():
     frame:
 
         hbox:
-            spacing 9
+            spacing 6
 
             text _("Avance rapide")
 
@@ -1340,7 +1327,8 @@ screen nvl(dialogue, items=None):
             use nvl_dialogue(dialogue)
 
         ## Si fourni, affiche le menu. Le menu peut s’afficher de manière
-        ## incorrecte si config.narrator_menu est initialisé à True.
+        ## incorrecte si config.narrator_menu est initialisé à True, comme c’est
+        ## le cas au-dessus.
         for i in items:
 
             textbutton i.caption:
@@ -1400,7 +1388,7 @@ style nvl_label:
     yanchor 0.0
     xsize gui.nvl_name_width
     min_width gui.nvl_name_width
-    textalign gui.nvl_name_xalign
+    text_align gui.nvl_name_xalign
 
 style nvl_dialogue:
     xpos gui.nvl_text_xpos
@@ -1408,7 +1396,7 @@ style nvl_dialogue:
     ypos gui.nvl_text_ypos
     xsize gui.nvl_text_width
     min_width gui.nvl_text_width
-    textalign gui.nvl_text_xalign
+    text_align gui.nvl_text_xalign
     layout ("subtitle" if gui.nvl_text_xalign else "tex")
 
 style nvl_thought:
@@ -1417,7 +1405,7 @@ style nvl_thought:
     ypos gui.nvl_thought_ypos
     xsize gui.nvl_thought_width
     min_width gui.nvl_thought_width
-    textalign gui.nvl_thought_xalign
+    text_align gui.nvl_thought_xalign
     layout ("subtitle" if gui.nvl_text_xalign else "tex")
 
 style nvl_button:
@@ -1426,100 +1414,7 @@ style nvl_button:
     xanchor gui.nvl_button_xalign
 
 style nvl_button_text:
-    properties gui.text_properties("nvl_button")
-
-
-## Screen des bulles ###########################################################
-##
-## Le screen des bulles est utilisé pour afficher des dialogues en utilisant des
-## bulles de dialogue. Ce screen prend les mêmes paramètres que le screen say,
-## doit prévoir un displayable avec l'id "what", et peut créer des displayables
-## avec les ids "namebox", "who", et "window".
-##
-## https://www.renpy.org/doc/html/bubble.html#bubble-screen
-
-screen bubble(who, what):
-    style_prefix "bubble"
-
-    window:
-        id "window"
-
-        if who is not None:
-
-            window:
-                id "namebox"
-                style "bubble_namebox"
-
-                text who:
-                    id "who"
-
-        text what:
-            id "what"
-
-        default ctc = None
-        showif ctc:
-            add ctc
-
-style bubble_window is empty
-style bubble_namebox is empty
-style bubble_who is default
-style bubble_what is default
-
-style bubble_window:
-    xpadding 30
-    top_padding 5
-    bottom_padding 5
-
-style bubble_namebox:
-    xalign 0.5
-
-style bubble_who:
-    xalign 0.5
-    textalign 0.5
-    color "#000"
-
-style bubble_what:
-    align (0.5, 0.5)
-    text_align 0.5
-    layout "subtitle"
-    color "#000"
-
-define bubble.frame = Frame("gui/bubble.png", 55, 55, 55, 95)
-define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 55, 55, 55, 55)
-
-define bubble.properties = {
-    "bottom_left" : {
-        "window_background" : Transform(bubble.frame, xzoom=1, yzoom=1),
-        "window_bottom_padding" : 27,
-    },
-
-    "bottom_right" : {
-        "window_background" : Transform(bubble.frame, xzoom=-1, yzoom=1),
-        "window_bottom_padding" : 27,
-    },
-
-    "top_left" : {
-        "window_background" : Transform(bubble.frame, xzoom=1, yzoom=-1),
-        "window_top_padding" : 27,
-    },
-
-    "top_right" : {
-        "window_background" : Transform(bubble.frame, xzoom=-1, yzoom=-1),
-        "window_top_padding" : 27,
-    },
-
-    "thought" : {
-        "window_background" : bubble.thoughtframe,
-    }
-}
-
-define bubble.expand_area = {
-    "bottom_left" : (0, 0, 0, 22),
-    "bottom_right" : (0, 0, 0, 22),
-    "top_left" : (0, 22, 0, 0),
-    "top_right" : (0, 22, 0, 0),
-    "thought" : (0, 0, 0, 0),
-}
+    properties gui.button_text_properties("nvl_button")
 
 
 
@@ -1529,7 +1424,7 @@ define bubble.expand_area = {
 
 style pref_vbox:
     variant "medium"
-    xsize 675
+    xsize 450
 
 ## Comme la souris peut ne pas être présente, nous remplaçons le menu rapide
 ## avec une version qui utilise des boutons plus gros et qui sont plus faciles à
@@ -1542,8 +1437,10 @@ screen quick_menu():
     if quick_menu:
 
         hbox:
-            style "quick_menu"
             style_prefix "quick"
+
+            xalign 0.5
+            yalign 1.0
 
             textbutton _("Retour") action Rollback()
             textbutton _("Avance rapide") action Skip() alternate Skip(fast=True, confirm=True)
@@ -1577,19 +1474,15 @@ style game_menu_outer_frame:
 
 style game_menu_navigation_frame:
     variant "small"
-    xsize 510
+    xsize 340
 
 style game_menu_content_frame:
     variant "small"
     top_margin 0
 
-style game_menu_viewport:
-    variant "small"
-    xsize 1305
-
 style pref_vbox:
     variant "small"
-    xsize 600
+    xsize 400
 
 style bar:
     variant "small"
@@ -1633,4 +1526,85 @@ style slider_vbox:
 
 style slider_slider:
     variant "small"
-    xsize 900
+    xsize 600
+
+transform fade_move_with_pars(delay, x, y, move_x, move_y):
+    pos (x, y)
+    alpha 1.0
+    parallel:
+        alpha 1.0
+        linear delay alpha 0.3
+    parallel:
+        pos (x, y)
+        linear delay pos (move_x, move_y)
+    pause delay
+
+screen fading_text(text, delay, x, y, move_x, move_y, *args, **kwargs):
+    add Text(text, *args, **kwargs) at fade_move_with_pars(delay, x, y, move_x, move_y)
+
+screen valeurs_traits():
+    tag interface_personnage
+    $ descriptionTrait = situation_.DescriptionTraits(traits_)
+    $ descriptionBlessures = situation_.DescriptionBlessuresEtMaladies(blessures_, maladies_)
+    $ affAge = situation_.AffichageAge()
+    $ affDate = situation_.AffichageDate()
+    $ strMetier = situation_.AffichageMetier()
+    $ strReligion = situation_.AffichageReligion()
+    $ strFideliteGaule = situation_.AffichageFideliteGaule()
+    # $ strQuartier = situation_.AffichageQuartier()
+    $ patronyme = situation_.AffichagePatronyme()
+    $ strRichesse = situation_.AffichageRichesse()
+    $ strUsurp = situation_.AffichageUsurpation()
+    $ strGloire = situation_.AffichageGloire()
+    $ strDiplomatie = situation_.AffichageDiplomatie()
+    $ strPossessions = situation_.AffichagePossessions()
+    $ adressePortrait = situation_.DeterminerPortrait()
+    $ strAffichagePortraitPere = situation_.AffichagePortraitPere()
+    $ strAffichagePere = situation_.AffichagePere()
+    $ strAffichagePortraitMere = situation_.AffichagePortraitMere()
+    $ strAffichageMere = situation_.AffichageMere()
+    $ strArmee = situation_.AffichageArmee()
+    $ tableauAffichageAmoureuses = situation_.AffichageAmoureuses()
+    frame:
+        xpos 5 ypos 5
+        vbox:
+            textbutton _("Description suivante"):
+                action Function(InterfaceSuivante)
+            if interfaceMode_ == 0: # résumé, portrait, nom, age, blessures...
+                add "[adressePortrait]"
+                # text _(u"[patronyme]")
+                text _(u"[affAge]")
+                text _(u"[descriptionBlessures]")
+                text _(u"[strGloire]")
+                text _(u"[strRichesse]")
+                text _(u"[strArmee]")
+                text _(u"[strDiplomatie]")
+                text _(u"[strUsurp]")
+                text _(u"[strReligion]")
+                text _(u"[strFideliteGaule]\n")
+                text _(u"[affDate]")
+            #elif interfaceMode_ == 1: # traits
+            #    text _(u"[descriptionTrait]")
+            #elif interfaceMode_ == 2: # royaume des francs
+            #    text _(u"[strArmee]")
+            #elif interfaceMode_ == 3: # économie et compétences professionnelles
+            #    text _(u"[strRichesse]")
+            #    text _(u"[strMetier]")
+            #elif interfaceMode_ == 4: # Possessions
+            #    text _(u"[strPossessions]")
+            elif interfaceMode_ == 1: # Famille
+                text _(" Père : ")
+                hbox:
+                    add "[strAffichagePortraitPere]" size(147, 164)
+                    text _(u"[strAffichagePere]") yalign 0.5
+                text _("\n Mère : ")
+                hbox:
+                    add "[strAffichagePortraitMere]" size(147, 164)
+                    text _(u"[strAffichageMere]") yalign 0.5
+            #elif interfaceMode_ == 6: # les amoureuses
+            #    for amoureuse in tableauAffichageAmoureuses:
+            #        hbox:
+            #            add "[amoureuse.adresseImgPortrait]" size(99, 110)
+            #            vbox yalign 0.5:
+            #                text _(u"{size=-4}{b}[amoureuse.nom_]{/b}{/size}")
+            #                text _(u"{size=-8}[amoureuse.description_]{/size}")

@@ -15,7 +15,7 @@
 ##
 ## La chaîne de caractère contenu dans _() est éligible à la traduction.
 
-define config.name = _("destinVauban")
+define config.name = _("destinRoiClovis")
 
 
 ## Détermine si le titre renseigné plus haut est affiché sur l'écran du menu
@@ -40,14 +40,13 @@ define gui.about = _p("""
 ## l’exécutable. Il ne doit contenir que des caractères ASCII et ne doit pas
 ## contenir d’espace, de virgules ou de points-virgules.
 
-define build.name = "destinVauban"
+define build.name = "destinRoiClovis"
 
 
 ## Sons et musiques ############################################################
 
-## Ces trois variables contrôlent, entre autres, quels mixeurs sont affichés
-## au joueur par défaut. Configurer l’un de ceux-ci à False (Faux) cachera le
-## mixeur concerné.
+## Ces trois variables contrôlent quels mixeurs sont affichés au joueur par
+## défaut. Configurer l’un de ceux-ci à False (Faux) cachera le mixeur concerné.
 
 define config.has_sound = True
 define config.has_music = True
@@ -60,13 +59,7 @@ define config.has_voice = True
 # define config.sample_sound = "sample-sound.ogg"
 # define config.sample_voice = "sample-voice.ogg"
 
-
-## Décommentez la ligne suivante pour configurer un fichier audio qui sera
-## diffusé quand le joueur sera sur le menu principal. Ce son se poursuivra dans
-## le jeu, jusqu’à ce qu'il soit stoppé ou qu’un autre fichier soit joué.
-
-# define config.main_menu_music = "main-menu-theme.ogg"
-
+define config.main_menu_music = "musique/menu.ogg"
 
 ## Transitions #################################################################
 ##
@@ -150,7 +143,7 @@ default preferences.afm_time = 15
 ## Cela ne devrait généralement pas changer. Si vous le faîtes, choisissez
 ## toujours une chaîne de caractères littéraux, pas une expression.
 
-define config.save_directory = "destinVauban-1780257596"
+define config.save_directory = "destinRoiClovis-1623262918"
 
 
 ## Icône #######################################################################
@@ -172,7 +165,7 @@ init python:
     ## répertoire relatif au répertoire de base. Il n’y a pas de / à la fin. Si
     ## plusieurs formats correspondent, le premier est utilisé.
     ##
-    ## Dans le format :
+    ## Dans le format:
     ##
     ## / est le séparateur de répertoire.
     ##
@@ -209,10 +202,9 @@ init python:
     build.documentation('*.txt')
 
 
-## Une clé de licence Google Play est requise pour permettre les achats depuis
-## l'application. Vous pourrez la trouver dans la console de développement
-## Google Play, sous "Monétiser" > "Configuration de la monétisation" >
-## "Licences".
+## Une clé de licence A Google Play est requise pour télécharger les fichiers et
+## permettre les achats dans l'application. Vous pourrez la trouver sur la page
+## « Services & APIs » de la console de développement Google Play.
 
 # define build.google_play_key = "..."
 
