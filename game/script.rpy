@@ -4,7 +4,7 @@ define gui.choice_button_text_insensitive_color = "#555"
 # Persos
 define narrator = Character(color="#fafad8", what_italic=True)
 define std = Character('Perso standard...', color="#B22222") # personnage standard remplacé selon les situations. (son nom est mis à jour)
-define cl = Character('Clovis', color="#80002a")
+define cl = Character('Vauban', color="#80002a")
 
 image clotilde = "perso/clotilde.png"
 define clot = Character('Clotilde', color="#800000")

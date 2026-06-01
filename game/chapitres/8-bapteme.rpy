@@ -10,13 +10,13 @@ init -5 python:
     from abs.univers import temps
     from abs.humanite import identite
     from chapitres.classes import germains
-    from chapitres.classes import clovis
+    from chapitres.classes import vauban
 
     auMoinsAnnee497 = condition.Condition(temps.Date.DATE_ANNEES, 497, condition.Condition.SUPERIEUR_EGAL)
     enDecembre = condition.Condition(temps.Date.MOIS_ACTUEL, 12, condition.Condition.EGAL)
-    foiSupCinq = condition.Condition(clovis.Clovis.C_CHRISTIANISME, 5, condition.Condition.SUPERIEUR) # considéré (pour l'instant) comme foi suffisante pour le baptème
+    foiSupCinq = condition.Condition(vauban.Vauban.C_CHRISTIANISME, 5, condition.Condition.SUPERIEUR) # considéré (pour l'instant) comme foi suffisante pour le baptème
 
-    # événements liés à la conversion de Clovis puis à son baptème
+    # événements liés à la conversion de Vauban puis à son baptème
     def AjouterEvtBapteme():
         global selecteur_
         bapteme = declencheur.Declencheur(proba.Proba(1.0, False), "bapteme") # événement obligatoire en décembre
@@ -40,7 +40,7 @@ label bapteme:
     cl "Je ne veux que te satisfaire, surtout en ce jour."
     albo "Je ne souhaite pas être mariée, même à un roi, comme Audoflède avec Théodoric. Me laisserais-tu devenir religieuse ?"
     cl "J'ai été très triste de laisser partir ma soeur ainsi seule à l'autre bout de l'Europe. Si je peux te garder près de moi et te faire plaisir par la même occasion j'en suis heureux. Tu ne te marieras que si tu le souhaites."
-    albo "Merci Clovis, je suis heureuse et prête, entrons dans l'église."
+    albo "Merci Vauban, je suis heureuse et prête, entrons dans l'église."
 
     "Les populations gallo-romaines accueillirent les Francs non plus comme des envahisseurs mais comme des libérateurs."
     "L'Église, qui était la plus haute autorité spirituelle, choisit ainsi le camp des Francs."
@@ -50,5 +50,5 @@ label bapteme:
     "Il va falloir toute votre autorité et votre ferveur pour les mener vers la véritable foi, pour leur bien comme pour le vôtre."
     $ SetValCarac(metier.Pretre.NOM, 0)
     $ SetValCarac(religion.Religion.C_RELIGION, religion.Christianisme.NOM)
-    $ AjouterACarac(clovis.Clovis.C_USURPATION, 2)
+    $ AjouterACarac(vauban.Vauban.C_USURPATION, 2)
     jump fin_cycle

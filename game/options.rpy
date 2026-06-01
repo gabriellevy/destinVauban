@@ -15,7 +15,7 @@
 ##
 ## La chaîne de caractère contenu dans _() est éligible à la traduction.
 
-define config.name = _("destinRoiClovis")
+define config.name = _("destinRoiVauban")
 
 
 ## Détermine si le titre renseigné plus haut est affiché sur l'écran du menu
@@ -40,7 +40,7 @@ define gui.about = _p("""
 ## l’exécutable. Il ne doit contenir que des caractères ASCII et ne doit pas
 ## contenir d’espace, de virgules ou de points-virgules.
 
-define build.name = "destinRoiClovis"
+define build.name = "destinRoiVauban"
 
 
 ## Sons et musiques ############################################################
@@ -143,7 +143,7 @@ default preferences.afm_time = 15
 ## Cela ne devrait généralement pas changer. Si vous le faîtes, choisissez
 ## toujours une chaîne de caractères littéraux, pas une expression.
 
-define config.save_directory = "destinRoiClovis-1623262918"
+define config.save_directory = "destinRoiVauban-1623262918"
 
 
 ## Icône #######################################################################

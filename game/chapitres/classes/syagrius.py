@@ -9,7 +9,7 @@ class Syagrius:
     VAINCU = u"Syagrius est vaincu" # en fuite chez Alaric
     GUERRE = u"En guerre avec Syagrius"
     MORT = u"Mort" # 1 == oui sinon non
-    CAPTURE = u"Capturé par Clovis" # 1 == oui sinon non
+    CAPTURE = u"Capturé par Vauban" # 1 == oui sinon non
 
     # événement liés
     C_PILLAGE = u"Pillage de Syagrius" # niveau de pillage, incrémental

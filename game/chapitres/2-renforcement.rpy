@@ -12,7 +12,7 @@ init -5 python:
     # from geographie import quartier
     from abs.humanite import identite
     from chapitres.classes import syagrius
-    from chapitres.classes import clovis
+    from chapitres.classes import vauban
 
     auMoinsAnnee485 = condition.Condition(temps.Date.DATE_ANNEES, 485, condition.Condition.SUPERIEUR_EGAL)
     auMoinsAnnee482 = condition.Condition(temps.Date.DATE_ANNEES, 482, condition.Condition.SUPERIEUR_EGAL)
@@ -82,7 +82,7 @@ label mort_euric:
 label miner_le_royaume:
     $ AfficherCarteActuelle()
     with dissolve
-    # si Clovis mais ne possède pas encore le royaume de Syagrius
+    # si Vauban mais ne possède pas encore le royaume de Syagrius
     $ nb_miner_le_royaume = situation_.GetValCaracInt("nb_miner_le_royaume")
     $ a_corrompu_senateurs = situation_.GetValCaracBool("a_corrompu_senateurs")
     $ a_contacte_eveque = situation_.GetValCaracBool("a_contacte_eveque")
@@ -109,12 +109,12 @@ label miner_le_royaume:
         "Convaincre votre parent, le prince franc Chararic, de vous rejoindre" if not a_convaincu_chararic:
             "Chararic accepte l'alliance mais laisse bien clair qu'il s'agit d'une alliance et pas d'une soumission : vous êtes son égal et ne serez jamais son supérieur."
             $ situation_.SetValCarac("a_convaincu_chararic", 1)
-            $ AjouterACarac(clovis.Clovis.C_MILITAIRE, 1)
+            $ AjouterACarac(vauban.Vauban.C_MILITAIRE, 1)
             jump fin_cycle
         "Chercher l'appui de Ragnacaire, le roi franc de Cambrai" if not a_convaincu_ragnacaire:
             "Ragnacaire accepte l'alliance mais laisse bien clair qu'il s'agit d'une alliance et pas d'une soumission : vous êtes son égal et ne serez jamais son supérieur."
             $ situation_.SetValCarac("a_convaincu_ragnacaire", 1)
-            $ AjouterACarac(clovis.Clovis.C_MILITAIRE, 1)
+            $ AjouterACarac(vauban.Vauban.C_MILITAIRE, 1)
             jump fin_cycle
         "Tenter de pactiser avec les sénateurs romains du territoire de Syagrius" if not a_corrompu_senateurs:
             "Les romains semblent avoir peur que vous détruisiez ce qui reste du système romain. Ils préfèrent encore Syagrius à vous et vous n'en tirez rien de bon."
@@ -124,14 +124,14 @@ label miner_le_royaume:
             "Les romains sont comme les autres. Pour un peu d'or et des promesses de pillage ils vous rejoignent."
             $ RetirerACarac(syagrius.Syagrius.C_MILITAIRE, 1)
             $ RetirerACarac(trait.Richesse.NOM, 2)
-            $ AjouterACarac(clovis.Clovis.C_MILITAIRE, 1)
+            $ AjouterACarac(vauban.Vauban.C_MILITAIRE, 1)
             jump fin_cycle
         "Tenter de gagner les faveurs des évèques" if not a_contacte_eveque:
             "À votre grande surprise les évèques vous préfèrent, vous le roi païen, aux autres barbares qui sont des chrétiens ariens hérétiques."
             "Sans doute pensent-ils pouvoir plus facilement vous convertir, vous et vos hommes. Il est vrai que vous les écoutez poliment et êtes souvent touché par leurs arguments religieux."
             "Quoiqu'il en soit, si vous envahissez le royaume ils pousseront le peuple à vous soutenir et à abandonner Syagrius."
             $ RetirerACarac(syagrius.Syagrius.C_STABILITE, 2)
-            $ AjouterACarac(clovis.Clovis.C_CHRISTIANISME, 1)
+            $ AjouterACarac(vauban.Vauban.C_CHRISTIANISME, 1)
             $ situation_.SetValCarac("a_contacte_eveque", 1)
             jump fin_cycle
         "Vous contenter d'attendre le moment opportun.":

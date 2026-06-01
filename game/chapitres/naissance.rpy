@@ -8,18 +8,18 @@ init -5 python:
     from abs import testDeCarac
     from abs import condition
     from abs.humanite import trait
-    from spe.humanite import pnj_roi_clovis
+    from spe.humanite import pnj_roi_vauban
     from abs.univers import temps
     # from geographie import quartier
     from abs.humanite import identite
-    from chapitres.classes import clovis
+    from chapitres.classes import vauban
     from abs.religions import religion
 
     def genererDateNaissance(situation, ageActuel=15):
         nbJoursDateNaissance = situation[temps.Date.DATE] - 365*ageActuel
         situation[temps.Date.DATE_NAISSANCE] = nbJoursDateNaissance
 
-    def genererClovis(situation, tousLesTraits):
+    def genererVauban(situation, tousLesTraits):
         """
         création d'un perso qui a de très fortes chances de devenir aventurier, conquistador,
         bandit peut-être
@@ -44,38 +44,38 @@ init -5 python:
         situation[metier.Chasseur.NOM] = trait.Trait.SEUIL_A
 
         # caracs spécifiques
-        situation[clovis.Clovis.C_CHRISTIANISME] = 0
-        situation[clovis.Clovis.C_USURPATION] = 0
-        situation[clovis.Clovis.C_MILITAIRE] = 0
-        situation[clovis.Clovis.C_DIPLOMATIE] = 0
+        situation[vauban.Vauban.C_CHRISTIANISME] = 0
+        situation[vauban.Vauban.C_USURPATION] = 0
+        situation[vauban.Vauban.C_MILITAIRE] = 0
+        situation[vauban.Vauban.C_DIPLOMATIE] = 0
         situation.SetValCarac(religion.Religion.C_RELIGION, religion.Paien.NOM)
-        situation.SetValCarac(clovis.Clovis.C_GLOIRE, 0)
+        situation.SetValCarac(vauban.Vauban.C_GLOIRE, 0)
 
         # famille
-        situation.SetValCarac(clovis.Clovis.C_ALBOFLEDE, 1)
+        situation.SetValCarac(vauban.Vauban.C_ALBOFLEDE, 1)
 
         # légalisme
-        situation.SetValCarac(clovis.Clovis.C_LOI_SALIQUE, 1)
+        situation.SetValCarac(vauban.Vauban.C_LOI_SALIQUE, 1)
 
         # quartierDeDepart = situation.collectionQuartiers.getQuartierAleatoire(True)
         # situation.SetCarac(quartier.Quartier.C_QUARTIER, quartierDeDepart.nom_)
-        situation[identite.Identite.C_NOM] = clovis.Clovis.C_NOM_CLOVIS
+        situation[identite.Identite.C_NOM] = vauban.Vauban.C_NOM_CLOVIS
 
-        situation[clovis.Clovis.CARTE_ACTUELLE] = "bg carte481"
+        situation[vauban.Vauban.CARTE_ACTUELLE] = "bg carte481"
         return
 
     def genererParents(situation):
-        pere = pnj_roi_clovis.GenererPNJPapaClovis(situation)
+        pere = pnj_roi_vauban.GenererPNJPapaVauban(situation)
         pere.ageJours = 43 * 12 *30 + 24
-        pere.prenom_ = clovis.Clovis.C_NOM_CHILDERIC
+        pere.prenom_ = vauban.Vauban.C_NOM_CHILDERIC
         pere.nom_ = ""
         pere.sexeMasculin_ = True
         pere.portraitStr_ = "images/portraits/childeric.jpg"
         situation.SetValCarac(pnj.Pnj.C_PERE, pere)
 
-        mere = pnj_roi_clovis.GenererPNJMamanClovis(situation)
+        mere = pnj_roi_vauban.GenererPNJMamanVauban(situation)
         mere.ageJours = 36 * 12 *30 + 297
-        mere.prenom_ = clovis.Clovis.C_NOM_BASINE
+        mere.prenom_ = vauban.Vauban.C_NOM_BASINE
         mere.nom_ = ""
         mere.sexeMasculin_ = False
         mere.portraitStr_ = "images/portraits/basine.jpg"
@@ -83,6 +83,6 @@ init -5 python:
 
 label naissance:
     $ genererDateNaissance(situation_, 13)
-    $ genererClovis(situation_, traits_)
+    $ genererVauban(situation_, traits_)
     $ genererParents(situation_)
     jump intro

@@ -30,7 +30,7 @@ init -5 python:
 
         # selon religion
         religionActuelle = situation_.GetValCarac(religion.Religion.C_RELIGION)
-        valChrist = situation_.GetValCarac(clovis.Clovis.C_CHRISTIANISME)
+        valChrist = situation_.GetValCarac(vauban.Vauban.C_CHRISTIANISME)
         if religionActuelle == religion.Christianisme.NOM:
             # evts
             evtsVides_.append("evtRien_saints")
@@ -53,18 +53,18 @@ init -5 python:
                 scenesParDefaut.append("bg crucifixion")
 
         # si gloire faible et pas marie
-        marieAClothilde = situation_.GetValCarac(clovis.Clovis.C_MARIE_CLOTHILDE)
+        marieAClothilde = situation_.GetValCarac(vauban.Vauban.C_MARIE_CLOTHILDE)
         if marieAClothilde != 1:
             evtRien_pasMarie = situation_.GetValCarac("evtRien_pasMarie")
             if evtRien_pasMarie != 1:
                 evtsVides_.append("evtRien_pasMarie")
 
         # alboflède
-        if situation_.GetValCaracInt(clovis.Clovis.C_ALBOFLEDE) == 1:
+        if situation_.GetValCaracInt(vauban.Vauban.C_ALBOFLEDE) == 1:
             evtsVides_.append("evtRien_alboflede")
 
         # loi salique promulguée
-        if situation_.GetValCaracInt(clovis.Clovis.C_LOI_SALIQUE) == 1:
+        if situation_.GetValCaracInt(vauban.Vauban.C_LOI_SALIQUE) == 1:
             evtsVides_.append("evtRien_loi_salique_1")
             evtsVides_.append("evtRien_loi_salique_2")
 

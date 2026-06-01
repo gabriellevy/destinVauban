@@ -18,11 +18,11 @@ init -5 python:
 
     def AjouterEvtAvenement():
         global selecteur_
-        avenement = dec_clo.DecClovisU(proba.Proba(0.6, False), "avenement", 481)
+        avenement = dec_clo.DecVaubanU(proba.Proba(0.6, False), "avenement", 481)
         avenement.AjouterCondition(estPasRoi)
         selecteur_.ajouterDeclencheur(avenement)
         # vision de Childéric
-        visionChilderic = dec_clo.DecClovisU(proba.Proba(0.4, False), "visionChilderic", 481)
+        visionChilderic = dec_clo.DecVaubanU(proba.Proba(0.4, False), "visionChilderic", 481)
         visionChilderic.AjouterCondition(estRoi)
         selecteur_.ajouterDeclencheur(visionChilderic)
 
@@ -53,7 +53,7 @@ label avenement:
     "Vous avez à peine 15 ans mais êtes déjà un adulte digne d'être roi. Vous portez fièrement vos cheveux longs, symbole de votre origine divine."
     "Vous recevez la lance sacrée de votre père, symbole de votre autorité et de votre force. Vous devenez ainsi une vivante figure de Wotan, père et roi des Dieux."
     "Puis vos guerriers vous hissent sur le grand pavois du chef."
-    # royaume de Clovis à son avènement
+    # royaume de Vauban à son avènement
     $ AfficherCarteActuelle()
     with dissolve
     "Votre prestige est grand car votre père a été un grand roi invaincu à la guerre et fidèle à l'empire romain. Mais vous n'êtes que le roi des francs saliens de Tournai."

@@ -3,9 +3,9 @@ from abs.univers import temps
 from abs.humanite.amour import relationAmoureuse
 from abs.humanite import identite
 from abs.humanite import pnj
-from spe.humanite import portrait_roi_clovis
+from spe.humanite import portrait_roi_vauban
 
-class PnjRoiClovis(pnj.Pnj):
+class PnjRoiVauban(pnj.Pnj):
 
     def __init__(self, sexeMasculin, situation):
         pnj.Pnj.__init__(self, sexeMasculin, situation)
@@ -34,7 +34,7 @@ class PnjRoiClovis(pnj.Pnj):
         """
         à appeler de temps en temps (changement de boulot, passage de dizaines en âge etc, je sais pas trop
         """
-        portr = portrait_roi_clovis.PortraitRoiClovis()
+        portr = portrait_roi_vauban.PortraitRoiVauban()
         ageNbAnnees = self.nbJours_/365
         metObj = None
         if self.metier_ != "":
@@ -47,13 +47,13 @@ class PnjRoiClovis(pnj.Pnj):
     def CreerPrenomNeutre(self, situation):
         self.prenom_ = "tmp prénom franc self.sexeMasculin_"
 
-def GenererPNJClovis(sexeMasculin, situation, ageJours):
+def GenererPNJVauban(sexeMasculin, situation, ageJours):
     """
     Génère un PNJ aléatoire avec un ensemble de caracs
     Il pourra ensuite être stocké dans la situation
     """
     ageAnnees = ageJours/360
-    pnj = PnjRoiClovis(sexeMasculin, situation)
+    pnj = PnjRoiVauban(sexeMasculin, situation)
     nomStr = pnj.CreerNomNeutre(sexeMasculin)
     if nomStr is not None:
         pnj.nom_ = nomStr
@@ -87,17 +87,17 @@ def GenererPNJClovis(sexeMasculin, situation, ageJours):
 
     return pnj
 
-def GenererPNJPapaClovis(situation):
+def GenererPNJPapaVauban(situation):
     nbJoursVecusPerso = temps.Date(situation.caracs_[temps.Date.DATE]).nbJours_ - temps.Date(situation.caracs_[temps.Date.DATE_NAISSANCE]).nbJours_
     ageJours = (30 + random.randint(0, 35)) * 12 *30 # âge 29 minimum (14 + 15 de l'âge du perso joué)
-    pnj = GenererPNJClovis(True, situation, ageJours)
+    pnj = GenererPNJVauban(True, situation, ageJours)
     pnj.metier_ = ""
     return pnj
 
-def GenererPNJMamanClovis(situation):
+def GenererPNJMamanVauban(situation):
     nbJoursVecusPerso = temps.Date(situation.caracs_[temps.Date.DATE]).nbJours_ - temps.Date(situation.caracs_[temps.Date.DATE_NAISSANCE]).nbJours_
     ageJours = (30 + random.randint(0, 25)) * 12 *30 # âge 29 minimum (14 + 15 de l'âge du perso joué)
-    pnj = GenererPNJClovis(False, situation, ageJours)
+    pnj = GenererPNJVauban(False, situation, ageJours)
     pnj.metier_ = ""
     return pnj
 
@@ -107,7 +107,7 @@ def GenererRelationAmoureuseDestin(situation):
     if ageAnnees < 15:
         ageAnnees = 15
     ageJours = ageAnnees * 12 *30
-    pnj = GenererPNJClovis(False, situation, ageJours)
+    pnj = GenererPNJVauban(False, situation, ageJours)
     # calculer les niveaux d'intérêt des persos l'un envers l'autre
     interetPnjEnversJoueur = relationAmoureuse.CalculerAmabiliteHommePremierContact(situation.GetDicoTraits())
     interetJoueurEnversPnj = relationAmoureuse.CalculerAmabiliteFemmePremierContact(pnj.traits_)

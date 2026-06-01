@@ -6,12 +6,12 @@ init -5 python:
     from abs import condition
     from abs.humanite import trait
     from abs.humanite import metier
-    from chapitres.classes import clovis
+    from chapitres.classes import vauban
 
-    # si l'usurpation est à plus de 0 il y a risque de soulèvement contre Clovis
-    ilYARisqueDUsurpation = condition.Condition(clovis.Clovis.C_USURPATION, 0, condition.Condition.SUPERIEUR)
-    usurpationPlusQue2 = condition.Condition(clovis.Clovis.C_USURPATION, 2, condition.Condition.SUPERIEUR)
-    usurpationPlusQue4 = condition.Condition(clovis.Clovis.C_USURPATION, 4, condition.Condition.SUPERIEUR)
+    # si l'usurpation est à plus de 0 il y a risque de soulèvement contre Vauban
+    ilYARisqueDUsurpation = condition.Condition(vauban.Vauban.C_USURPATION, 0, condition.Condition.SUPERIEUR)
+    usurpationPlusQue2 = condition.Condition(vauban.Vauban.C_USURPATION, 2, condition.Condition.SUPERIEUR)
+    usurpationPlusQue4 = condition.Condition(vauban.Vauban.C_USURPATION, 4, condition.Condition.SUPERIEUR)
     def AjouterEvtsUsurpation():
         global selecteur_
         usurpation = declencheur.Declencheur(proba.Proba(0.07, True), "usurpation")
@@ -29,7 +29,7 @@ label jalousieFrancs:
     with dissolve
     "Vos très bons rapports avec les gaulois exaspèrent les membres de l'aristocratie franque."
     "Ils vous accusent de favoriser des étrangers vaincus qui ne méritent que l'esclavage."
-    $ AjouterACarac(clovis.Clovis.C_USURPATION, 1)
+    $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
     jump fin_cycle
 
 label usurpation:
@@ -37,8 +37,8 @@ label usurpation:
     # des nobles tentent de prendre le pouvoir du roi
     $ nbUsurpationsReussies = situation_.GetValCaracInt("nbUsurpationsReussies")
     # plus la gloire est élevée plus il y a de chances de surmonter l'usurpation
-    $ risqueUsurpation = situation_.GetValCaracInt(clovis.Clovis.C_USURPATION) + 3
-    $ test = testDeCarac.TestDeCarac(clovis.Clovis.C_GLOIRE, risqueUsurpation, situation_)
+    $ risqueUsurpation = situation_.GetValCaracInt(vauban.Vauban.C_USURPATION) + 3
+    $ test = testDeCarac.TestDeCarac(vauban.Vauban.C_GLOIRE, risqueUsurpation, situation_)
     $ reussi = test.TesterDifficulte(situation_)
     menu:
         "TMP attention usurpation"
@@ -61,10 +61,10 @@ label usurpation:
             "Les assaillants se replient mais il est hors de question de laisser passer un tel acte, vous donnez immédiatement les ordres pour les éliminer ainsi que leur famille."
             "La répression dure deux jours et deux nuits durant lesquels les rebelles sont massacrés et les neutres ramenés à l'obéissance par la terreur."
             "La veille du troisième jour vous avez retrouvé votre autorité mais le prix a payé a été énorme."
-            $ RetirerACarac(clovis.Clovis.C_USURPATION, 2)
+            $ RetirerACarac(vauban.Vauban.C_USURPATION, 2)
             $ RetirerACarac(trait.Richesse.NOM, 2)
-            $ RetirerACarac(clovis.Clovis.C_MILITAIRE, 2)
-            $ RetirerACarac(clovis.Clovis.C_GLOIRE, 1)
+            $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 2)
+            $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
         elif nbUsurpationsReussies == 2:
             $ situation_.SetValCarac("nbUsurpationsReussies", 3)
             $ usurpateur = francs_.CreerPrenom(True)

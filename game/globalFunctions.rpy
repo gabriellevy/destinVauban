@@ -1,6 +1,6 @@
 init -2 python:
     from abs import carac
-    from spe import situation_clovis
+    from spe import situation_vauban
     from spe.cultures import francs
     from spe.cultures import gaulois
     from spe.cultures import romains
@@ -9,10 +9,10 @@ init -2 python:
     from abs.humanite import metier
     from abs.univers import temps
     from abs.humanite.sante import pbsante
-    from chapitres.classes import clovis
+    from chapitres.classes import vauban
     import random
 
-    situation_ = situation_clovis.SituationClovis() # dictionnaire contenant toutes les caracs courantes de la partie
+    situation_ = situation_vauban.SituationVauban() # dictionnaire contenant toutes les caracs courantes de la partie
     filtre_ = filtres_action.FiltreAction() # objet contenant les préférences du joueur pour les actions à afficher ou cacher en priorité
     traits_ = trait.CollectionTraits()
     situation_.collectionTraits = traits_
@@ -88,6 +88,6 @@ init -2 python:
 
     def AfficherCarteActuelle():
         global situation_
-        derniereCarte = situation_.GetValCarac(clovis.Clovis.CARTE_ACTUELLE)
+        derniereCarte = situation_.GetValCarac(vauban.Vauban.CARTE_ACTUELLE)
         renpy.scene()
         renpy.show(derniereCarte)

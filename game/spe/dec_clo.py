@@ -4,7 +4,7 @@ from abs import proba
 from abs import modifProba
 from abs import condition
 
-class DecClovis(declencheur.Declencheur):
+class DecVauban(declencheur.Declencheur):
 
     def __init__(self, aproba, labelGoTo, dateMin):
         """
@@ -17,7 +17,7 @@ class DecClovis(declencheur.Declencheur):
         conditionDate = condition.Condition(temps.Date.DATE_ANNEES, dateMin, condition.Condition.SUPERIEUR_EGAL)
         self.AjouterCondition(conditionDate)
 
-class DecClovisU(DecClovis):
+class DecVaubanU(DecVauban):
     """
     U signifie 'Unique' => l'événement auquel on applique ce déclencheur ne peut s'exécuter qu'une fois maximum
     """
@@ -26,7 +26,7 @@ class DecClovisU(DecClovis):
         """
         identique à la version historique amis ne se déclenche qu'une fois maximum quoiqu'il arrive
         """
-        DecClovis.__init__(self, aproba, labelGoTo, dateMin)
+        DecVauban.__init__(self, aproba, labelGoTo, dateMin)
 
     def executer(self):
         # cette exécution ne doit plus jamais arriver : on lui met une proba à 0 :

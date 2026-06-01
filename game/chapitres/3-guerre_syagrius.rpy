@@ -11,7 +11,7 @@ init -5 python:
     from abs.univers import temps
     from abs.humanite import identite
     from chapitres.classes import syagrius
-    from chapitres.classes import clovis
+    from chapitres.classes import vauban
 
     # conditions syagrius
     syagriusEnGuerre = condition.Condition(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.GUERRE, condition.Condition.EGAL)
@@ -21,7 +21,7 @@ init -5 python:
     syagriusPasConsolide = condition.Condition("syagrius_consolide", 1, condition.Condition.DIFFERENT)
     syagriusConsolide = condition.Condition("syagrius_consolide", 1, condition.Condition.EGAL) # ancien territoire de syagrius bien contrôlé
     # vase de soissons:
-    vaseSoissonsVengeance = condition.Condition(clovis.Clovis.C_VASE_SOISSONS, 1, condition.Condition.EGAL)
+    vaseSoissonsVengeance = condition.Condition(vauban.Vauban.C_VASE_SOISSONS, 1, condition.Condition.EGAL)
     def MiseEnPlaceGuerreSyagrius():
         global situation_
         situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.GUERRE)
@@ -33,21 +33,21 @@ init -5 python:
         combat_avant_garde.AjouterCondition(syagriusPasVaincu)
         selecteur_.ajouterDeclencheur(combat_avant_garde)
 
-        vase_de_soissons_le_retour = dec_clo.DecClovisU(proba.Proba(0.3, True), "vase_de_soissons_le_retour", 486)
+        vase_de_soissons_le_retour = dec_clo.DecVaubanU(proba.Proba(0.3, True), "vase_de_soissons_le_retour", 486)
         vase_de_soissons_le_retour.AjouterCondition(vaseSoissonsVengeance)
         selecteur_.ajouterDeclencheur(vase_de_soissons_le_retour)
 
-        consolidation_syagrius = dec_clo.DecClovis(proba.Proba(0.3, True), "consolidation_syagrius", 492)
+        consolidation_syagrius = dec_clo.DecVauban(proba.Proba(0.3, True), "consolidation_syagrius", 492)
         consolidation_syagrius.AjouterCondition(syagriusVaincu)
         consolidation_syagrius.AjouterCondition(syagriusPasConsolide)
         selecteur_.ajouterDeclencheur(consolidation_syagrius)
 
-        invasion_armorique = dec_clo.DecClovisU(proba.Proba(0.4, True), "invasion_armorique", 492)
+        invasion_armorique = dec_clo.DecVaubanU(proba.Proba(0.4, True), "invasion_armorique", 492)
         invasion_armorique.AjouterCondition(syagriusVaincu)
         invasion_armorique.AjouterCondition(syagriusConsolide)
         selecteur_.ajouterDeclencheur(invasion_armorique)
 
-        livraison_syagrius = dec_clo.DecClovisU(proba.Proba(0.4, True), "livraison_syagrius", 487)
+        livraison_syagrius = dec_clo.DecVaubanU(proba.Proba(0.4, True), "livraison_syagrius", 487)
         livraison_syagrius.AjouterCondition(syagriusVaincu)
         # livraison_syagrius.AjouterCondition() # négociations diplomatiques / accords matrimoniaux ?
         selecteur_.ajouterDeclencheur(livraison_syagrius)
@@ -68,13 +68,13 @@ label livraison_syagrius:
                 jump fin_cycle
             else:
                 "Malheureusement le bruit que Syagrius est vivant et entre vos mains se répand. Ses partisans grondent."
-                $ RetirerACarac(clovis.Clovis.C_FIDELITE_GAULE, 1)
+                $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
                 jump fin_cycle
         "Le faire exécuter publiquement":
             "Syagrius affronte la mort bravement face au bourreau qui le décapite devant la foule des parisiens."
             "Ses partisans sont indignés mais n'osent réagir devant votre puissance. Un problème résolu."
             $ situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.MORT)
-            $ RetirerACarac(clovis.Clovis.C_FIDELITE_GAULE, 1)
+            $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
             jump fin_cycle
     jump fin_cycle
 
@@ -82,7 +82,7 @@ label invasion_armorique:
     "Une fois la côte ouest atteinte et la Manche sécurisée vous vous heurtez aux romains armoricains."
     "Ils semblent bien mieux organisés et surtout bien plus déterminés que les troupes de Syagrius."
     "Maintenant que vous avez atteint vos objectifs de contrôler l'accès à la mer et à la Loire vous vous demandez si il est utile d'entamer une autre campagne."
-    $ testCombat = testDeCarac.TestDeCarac([clovis.Clovis.C_MILITAIRE, metier.Stratege.NOM], 6, situation_)
+    $ testCombat = testDeCarac.TestDeCarac([vauban.Vauban.C_MILITAIRE, metier.Stratege.NOM], 6, situation_)
     menu:
         "Qu'allez vous faire aux armoricains ?"
         "Attaquer [testCombat.affichage_]":
@@ -91,7 +91,7 @@ label invasion_armorique:
             if reussi:
                 "Vous envahissez le territoire et écrasez les poches de résistance sur votre chemin."
                 $ AjouterACarac(trait.Richesse.NOM, 1)
-                $ AjouterACarac(clovis.Clovis.C_GLOIRE, 1)
+                $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
                 "Mais vous ne pouvez pas occuper ce pays hostile indéfiniment et devez retourner à otre capitale."
                 "Autant les terres de Syagrius vous restent soumises, autant les armoricains se révoltent instantanément dès que votre armée a quitté leur pays."
                 "Vous réalisez alors que leur armée était loin d'être détruite et vous devez renoncer à l'occupation de ces terres pour l'instant."
@@ -99,8 +99,8 @@ label invasion_armorique:
             else:
                 "Cette guerre n'est qu'une quite d'escarmouches interminables et démoralisante ou après chaque bataille perdue ou gagnée les armoricains retournent à l'abrid de leurs impénétrables forêts."
                 "Vous êtes forcé d'abandonner la conquête pour cette année pour ménager vos hommes."
-                $ RetirerACarac(clovis.Clovis.C_MILITAIRE, 1)
-                $ RetirerACarac(clovis.Clovis.C_GLOIRE, 1)
+                $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
+                $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
                 jump fin_cycle
         "Renoncer":
             jump fin_cycle
@@ -109,24 +109,24 @@ label invasion_armorique:
 
 label consolidation_syagrius:
     "Votre royaume est pacifié. Il est temps de le consolider en soumettant les territoires de l'ouest livrés à eux-mêmes depuis la défaite de Syagrius."
-    $ testCombat = testDeCarac.TestDeCarac(clovis.Clovis.C_MILITAIRE, 2, situation_)
+    $ testCombat = testDeCarac.TestDeCarac(vauban.Vauban.C_MILITAIRE, 2, situation_)
     menu:
         "L'opposition est faible ce devrait être facile. [testCombat.affichage_]":
             $ reussi = testCombat.TesterDifficulte(situation_)
             if reussi:
                 "Vous écrasez facilement les dernières poches de résistance. Votre royaume s'atend maintenant jusqu'à la Loire, jusqu'aux wisigoths."
                 $ situation_.SetValCarac("syagrius_consolide", 1)
-                $ situation_.SetValCarac(clovis.Clovis.CARTE_ACTUELLE, "bg carte493")
+                $ situation_.SetValCarac(vauban.Vauban.CARTE_ACTUELLE, "bg carte493")
                 $ AfficherCarteActuelle()
                 $ AjouterACarac(trait.Richesse.NOM, 1)
-                $ AjouterACarac(clovis.Clovis.C_GLOIRE, 1)
+                $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
                 jump invasion_armorique
             else:
                 $ AfficherCarteActuelle()
                 "Cette expédition aurait du être une promenade de santé mais des romains déterminés parviennent, à force de harcèlement, à vous obliger à vous replier."
                 "Le pillage de quelques villes est une consolation mais cela reste un échec qui entame votre prestige."
                 $ AjouterACarac(trait.Richesse.NOM, 1)
-                $ RetirerACarac(clovis.Clovis.C_GLOIRE, 1)
+                $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
                 jump fin_cycle
     jump fin_cycle
 
@@ -138,8 +138,8 @@ label invasion_syagrius:
         "Si vous suivez la coutume franque de le défier sur le champs de bataille de son choix.":
             "Syagrius accepte le défi et choisit un champs près de sa capitale Soissons."
             "Vos hommes sont pressés d'en venir aux mains et sont heureux que vous ayez respecté les lois de Wotan. Thor et les walkyrie vous soutiendront."
-            $ AjouterACarac(clovis.Clovis.C_GLOIRE, 1)
-            $ RetirerACarac(clovis.Clovis.C_USURPATION, 1)
+            $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+            $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
         "Si vous vous dirigez vers sa capitale Soissons pour l'écraser le plus tôt possible.":
             "Syagrius semble vouloir éviter un siège et vient à votre rencontre. Heureusement pour vous car la prise de ville n'est pas la spécialité de vos guerrier."
         "Si vous avancez lentement et prenez le temps de piller le pays.":
@@ -147,7 +147,7 @@ label invasion_syagrius:
             "Syagrius quitte Soissons pour venir vous arrêter. Heureusement pour vous car la prise de ville n'est pas la spécialité de vos guerrier."
             $ AjouterACarac(trait.Richesse.NOM, 1)
             $ AjouterACarac(syagrius.Syagrius.C_PILLAGE, 2)
-            $ RetirerACarac(clovis.Clovis.C_USURPATION, 1)
+            $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
     $ situation_.AvanceDeXMois(2)
     jump bataille_soisson
 
@@ -163,7 +163,7 @@ label bataille_soisson:
             jump bataille_soisson_combat
         "En soutien au second rang.":
             "Vous faites avancer votre armée en bon ordre. Les soldats sont motivés par votre présence et veulent se faire remarquer par leur bravoure."
-            $ testCombat = testDeCarac.TestDeCarac([clovis.Clovis.C_MILITAIRE, metier.Stratege.NOM], puissanceArmeeSyagrius, situation_)
+            $ testCombat = testDeCarac.TestDeCarac([vauban.Vauban.C_MILITAIRE, metier.Stratege.NOM], puissanceArmeeSyagrius, situation_)
             menu:
                 "Les romains se préparent au choc. [testCombat.affichage_]":
                     $ reussi = testCombat.TesterDifficulte(situation_)
@@ -177,9 +177,9 @@ label bataille_soisson:
         "En retrait pour avoir une vue d'ensemble et rester en sécurité.":
             "De puis une petite colline vous donnez vos ordres pour faire avancer votre infanterie."
             "Vos soldats obéissent restent confiants et disciplinés mais il est clair qu'ils apprécient peu que le descendant des dieux que vous êtes reste à l'arrière."
-            $ AjouterACarac(clovis.Clovis.C_USURPATION, 1)
-            $ RetirerACarac(clovis.Clovis.C_GLOIRE, 1)
-            $ testCombat = testDeCarac.TestDeCarac([clovis.Clovis.C_MILITAIRE, metier.Stratege.NOM], puissanceArmeeSyagrius, situation_)
+            $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
+            $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+            $ testCombat = testDeCarac.TestDeCarac([vauban.Vauban.C_MILITAIRE, metier.Stratege.NOM], puissanceArmeeSyagrius, situation_)
             menu:
                 "Les romains se préparent au choc. [testCombat.affichage_]":
                     $ reussi = testCombat.TesterDifficulte(situation_)
@@ -188,7 +188,7 @@ label bataille_soisson:
                         jump bataille_soisson_2
                     else:
                         "Les pertes sont lourdes mais vos soldats sont meilleurs et plus motivés. Ils prennent l'avantage."
-                        $ RetirerACarac(clovis.Clovis.C_MILITAIRE, 1)
+                        $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
                         jump bataille_soisson_2
 
     label bataille_soisson_combat:
@@ -204,14 +204,14 @@ label bataille_soisson:
                     jump mort
                 else:
                     "Vous avez repéré un officier empêtré par un javelot dans son bouclier. Vous écartez le bouclier d'un coup de pied dans le javelot et poignardez facilement son corps découvert avec votre scramasax."
-                    $ AjouterACarac(clovis.Clovis.C_GLOIRE, 1)
+                    $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
                     $ testCombat = testDeCarac.TestDeCarac(metier.Guerrier.NOM, 7, situation_)
                     menu:
                         "Enhardi vous vous jetez en avant en chantant à la gloire de Wotan.[testCombat.affichage_]":
                             $ reussi = testCombat.TesterDifficulte(situation_)
                             if reussi:
                                 "Vous empoignez votre francisque et faites un grand massacre des romains terrifiés et désordonnés."
-                                $ AjouterACarac(clovis.Clovis.C_GLOIRE, 1)
+                                $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
                                 jump bataille_soisson_2
                             else:
                                 "Vous avez été repéré et une volée de javelot s'abat sur vous. Votre bouclier tient le choc mais les pointent le traversent et s'arrêtent à un doigt de votre visage."
@@ -228,9 +228,9 @@ label bataille_soisson_2:
     if a_convaincu_chararic:
         "Voyant que l'armée ennemie faiblit vous constatez que votre parent Chararic, qui devait vous soutenir avec sa cavalerie, n'intervient pas."
         "Impossible de s'occuper de lui pour l'instant, mais il ne perd rien pour attendre."
-        $ RetirerACarac(clovis.Clovis.C_MILITAIRE, 1)
+        $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
 
-    $ testCombat = testDeCarac.TestDeCarac([clovis.Clovis.C_MILITAIRE, metier.Stratege.NOM], puissanceArmeeSyagrius, situation_)
+    $ testCombat = testDeCarac.TestDeCarac([vauban.Vauban.C_MILITAIRE, metier.Stratege.NOM], puissanceArmeeSyagrius, situation_)
     menu:
         "Les romains sont prêts à céder."
         "C'est le moment de faire donner les réserves de cavalerie.[testCombat.affichage_]":
@@ -239,12 +239,12 @@ label bataille_soisson_2:
                 "Les romains n'avaient plus besoin que de ce choc pour fuir en désordre. Votre cavalerie en massacre un grand nombre durant leur fuite."
             else:
                 "Les romains s'obstinent à résister et il faut des heures pour que finalement, brisés de fatigue ils succombent."
-                $ RetirerACarac(clovis.Clovis.C_MILITAIRE, 1)
+                $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
     "Pas trace de Syagrius quand vous pénétrez en arme dans sa capitale Soissons sans que personne n'essaye de vous résister. Soit il est mort, soit il a fui. C'est de toute façon une victoire écrasante dont il ne se remettra pas."
-    $ AjouterACarac(clovis.Clovis.C_GLOIRE, 1)
+    $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
     # fin de la guerre (en théorie)
     $ situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.VAINCU)
-    $ situation_.SetValCarac(clovis.Clovis.CARTE_ACTUELLE, "bg carte486")
+    $ situation_.SetValCarac(vauban.Vauban.CARTE_ACTUELLE, "bg carte486")
     $ AfficherCarteActuelle()
     "Vous vous emparez d'une grande partie de son territoire et en particulier de Reims, Soissons et Paris."
     jump vase_de_soissons
@@ -257,7 +257,7 @@ label vase_de_soissons:
     menu:
         "Que faites vous ?"
         "Refuser et renvoyer l'évèque":
-            $ RetirerACarac(clovis.Clovis.C_CHRISTIANISME, 1)
+            $ RetirerACarac(vauban.Vauban.C_CHRISTIANISME, 1)
         "Accepter mais seulement si le sort vous accorde le vase.":
             $ unACinq = random.randint(1,5)
             if unACinq == 1:
@@ -265,7 +265,7 @@ label vase_de_soissons:
                 jump fin_cycle
             else:
                 "Le tirage au sort ne vous donne pas le vase sacré. Les prêtres repartent les mains vides."
-                $ RetirerACarac(clovis.Clovis.C_CHRISTIANISME, 1)
+                $ RetirerACarac(vauban.Vauban.C_CHRISTIANISME, 1)
                 jump fin_cycle
         "Demander à vos soldats de vous laisser ce vase hors part.":
             "Arrivant à Soissons où toute la masse du butin avait été placée au milieu, vous dites : "
@@ -279,28 +279,28 @@ label vase_de_soissons:
                 "C'est ce que dit la loi mais un tel affront vous rend furieux."
                 "le faire exécuter":
                     "Vos hommes vous obéissent et le misérable est décapité sous vos yeux. Vous voyez bien néanmoins que c'est par peur qu'on vous obéit et que votre mépris des coutumes rend furieux plus d'un franc."
-                    $ AjouterACarac(clovis.Clovis.C_USURPATION, 3)
+                    $ AjouterACarac(vauban.Vauban.C_USURPATION, 3)
                 "L'attaquer immédiatement [testCombat.affichage_]":
                     $ reussi = testCombat.TesterDifficulte(situation_)
                     if reussi:
                         "Le combat ne dure qu'un instant. Vous fendez le crâne du misérable à coup de hache et il s'effondre au milieu du butin et de vos hommes ébahis."
-                        $ AjouterACarac(clovis.Clovis.C_GLOIRE, 1)
+                        $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
                         "Vous voyez bien néanmoins que c'est par peur qu'on vous obéit et que votre mépris des coutumes rend furieux plus d'un homme."
-                        $ AjouterACarac(clovis.Clovis.C_USURPATION, 2)
+                        $ AjouterACarac(vauban.Vauban.C_USURPATION, 2)
                     else:
                         "Malgré sa surprise le soldat réagit à la vitesse de l'éclair et sous les yeux de vos hommes ébahis il vous poignarde en plein coeur avec sa scramasaxe."
                         "Mourir de la main de ses propres hommes pour une bête histoire de partage du butin. Quelle fin misérable pour celui qui aurait pu être un grand roi."
                         jump mort
                 "Accepter de suivre la coutume":
-                    $ situation_.SetValCarac(clovis.Clovis.C_VASE_SOISSONS, 1)
+                    $ situation_.SetValCarac(vauban.Vauban.C_VASE_SOISSONS, 1)
                     "Vous parvenez à contenir votre ressentiment avec une douce patience."
                     "Au moins, le vase qui est en métal n'a pas été brisé et le tirage au sort vous le donne. Ce qui vous permet de le rendre aux envoyés de l'évèque."
 
     "En prenant en compte les propriétés que vous avez saisies votre part de butin est colossale. Vous n'avez jamais été aussi riche."
     $ AjouterACarac(trait.Richesse.NOM, 6)
     "Vos hommes se sont aussi considérablement enrichis et vous sont plus fidèles que jamais."
-    $ RetirerACarac(clovis.Clovis.C_USURPATION, 2)
-    $ situation_.SetValCarac(clovis.Clovis.CARTE_ACTUELLE, "bg carte481")
+    $ RetirerACarac(vauban.Vauban.C_USURPATION, 2)
+    $ situation_.SetValCarac(vauban.Vauban.CARTE_ACTUELLE, "bg carte481")
     $ AfficherCarteActuelle()
     "Votre royaume est agrandi sans compter que sans Syagrius les terres vers l'ouest seront sans doute très peu défendues."
     jump fin_cycle
@@ -309,7 +309,7 @@ label vase_de_soissons_le_retour:
     "Vous allez bientôt partir en expédition militaire pour éliminer des rebelles et vous passez en revue vos guerriers sur le champs de Mars."
     "Ils sont responsables de l'achat et de l'entretien de leur équipement et savent qu'en temps de guerre vous avez droit de vie et de mort sur eux, aussi sont-ils d'une discipline à tout épreuve."
     "Lors de l'inspection de la phalange vous reconnaissez le guerrier qui vous avait insulté lors du partage du butin de Soissons."
-    $ situation_.SetValCarac(clovis.Clovis.C_VASE_SOISSONS, 0)
+    $ situation_.SetValCarac(vauban.Vauban.C_VASE_SOISSONS, 0)
     menu:
         "Vous préférez oublier et ne laissez rien paraître.":
             jump fin_cycle
@@ -324,13 +324,13 @@ label vase_de_soissons_le_retour:
                     "levant les mains vous lui envoyez votre propre hache dans la tête."
                     cl "C'est ainsi que tu as fait à Soissons avec le vase."
                     "Quand il fut mort vous ordonnâtes aux autres de se retirer. Ainsi vous leur inspirâtes une grande crainte."
-                    $ RetirerACarac(clovis.Clovis.C_USURPATION, 2)
+                    $ RetirerACarac(vauban.Vauban.C_USURPATION, 2)
 
     jump fin_cycle
 
 label combat_avant_garde:
     $ puissanceArmeeSyagrius = situation_.GetValCaracInt(syagrius.Syagrius.C_MILITAIRE)
-    $ testCombat = testDeCarac.TestDeCarac([clovis.Clovis.C_MILITAIRE], puissanceArmeeSyagrius, situation_)
+    $ testCombat = testDeCarac.TestDeCarac([vauban.Vauban.C_MILITAIRE], puissanceArmeeSyagrius, situation_)
     menu:
         "Votre avant-garde se heurte à une petite armée romaine."
         "vos ordres sont d'éviter le combat":
@@ -344,5 +344,5 @@ label combat_avant_garde:
                 $ AjouterACarac(syagrius.Syagrius.C_PILLAGE, 1)
             else:
                 "Vos cavaliers sont incapables de briser la cohorte romaine et s'enfuient. C'est une défaite cuisante. Sans importance stratégique mais humiliante."
-                $ RetirerACarac(clovis.Clovis.C_GLOIRE, 1)
+                $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
             jump fin_cycle

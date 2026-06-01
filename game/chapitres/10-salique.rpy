@@ -10,11 +10,11 @@ init -5 python:
     from abs.univers import temps
     from abs.humanite import identite
     from chapitres.classes import germains
-    from chapitres.classes import clovis
+    from chapitres.classes import vauban
 
     def AjouterEvtsSalique():
         global selecteur_
-        promulgation_salique = dec_clo.DecClovisU(proba.Proba(0.3, True), "promulgation_salique", 511)
+        promulgation_salique = dec_clo.DecVaubanU(proba.Proba(0.3, True), "promulgation_salique", 511)
         selecteur_.ajouterDeclencheur(promulgation_salique)
 
 label promulgation_salique:

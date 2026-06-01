@@ -11,7 +11,7 @@ init -5 python:
     from abs.univers import temps
     from abs.humanite import identite
     from chapitres.classes import syagrius
-    from chapitres.classes import clovis
+    from chapitres.classes import vauban
 
 # événements liés aux wisigoths, surtout invasion de 507
 label reconnaissance_par_empereur:

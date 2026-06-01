@@ -11,10 +11,10 @@ init -5 python:
     def AjouterEvtsHistoire():
         global selecteur_
         # Odoacre
-        histoireTheodoricOdoacre = dec_clo.DecClovisU(proba.Proba(0.03, True), "histoireTheodoricOdoacre", 493)
+        histoireTheodoricOdoacre = dec_clo.DecVaubanU(proba.Proba(0.03, True), "histoireTheodoricOdoacre", 493)
         selecteur_.ajouterDeclencheur(histoireTheodoricOdoacre)
         # Concile d'Orléans
-        concileOrleans = dec_clo.DecClovisU(proba.Proba(0.03, True), "concileOrleans", 511)
+        concileOrleans = dec_clo.DecVaubanU(proba.Proba(0.03, True), "concileOrleans", 511)
         selecteur_.ajouterDeclencheur(concileOrleans)
 
 label concileOrleans:

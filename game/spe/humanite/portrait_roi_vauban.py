@@ -1,9 +1,9 @@
 import random
 from abs.humanite import metier
 from abs.humanite import portrait
-from chapitres.classes import clovis
+from chapitres.classes import vauban
 
-class PortraitRoiClovis(portrait.Portrait):
+class PortraitRoiVauban(portrait.Portrait):
 
     def DeterminerPortraitPersoPrincipal(self, situation, masculin):
         """
@@ -12,7 +12,7 @@ class PortraitRoiClovis(portrait.Portrait):
         ageAnnees = situation.AgeEnAnnees()
         traitsPerso = situation.GetDicoTraits()
 
-        return self.DeterminerPortraits(situation, ageAnnees, "Clovis", traitsPerso, masculin)
+        return self.DeterminerPortraits(situation, ageAnnees, "Vauban", traitsPerso, masculin)
 
     def DeterminerPortraits(self, situation, ageAnnees, nom, valeursTraits, masculin):
         """
@@ -22,18 +22,18 @@ class PortraitRoiClovis(portrait.Portrait):
         portraits = []
         portraitCourant = situation.GetValCarac(portrait.Portrait.C_PORTRAIT)
 
-        if nom == clovis.Clovis.C_NOM_CLOVIS:
+        if nom == vauban.Vauban.C_NOM_CLOVIS:
             if ageAnnees >= 30 and ageAnnees <= 40:
-                portraits.append("images/portraits/clovis30_40.png")
+                portraits.append("images/portraits/vauban30_40.png")
             if ageAnnees >= 16 and ageAnnees <= 30:
-                portraits.append("images/portraits/clovis15_30.png")
+                portraits.append("images/portraits/vauban15_30.png")
             elif ageAnnees > 40:
-                portraits.append("images/portraits/clovis40+.png")
+                portraits.append("images/portraits/vauban40+.png")
             else:
-                portraits.append("images/portraits/clovis_15.jpg")
-        if nom == clovis.Clovis.C_NOM_BASINE:
+                portraits.append("images/portraits/vauban_15.jpg")
+        if nom == vauban.Vauban.C_NOM_BASINE:
             portraits.append("images/portraits/basine.jpg")
-        if nom == clovis.Clovis.C_NOM_CHILDERIC:
+        if nom == vauban.Vauban.C_NOM_CHILDERIC:
             portraits.append("images/portraits/childeric.jpg")
 
         if len(portraits) == 0:
