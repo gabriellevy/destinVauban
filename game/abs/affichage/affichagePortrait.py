@@ -40,6 +40,4 @@ class AffichagePortrait:
             if pnj.metier_ != "":
                 self.description_ = u"{}\n{}".format(self.description_, pnj.metier_)
 
-
-
         self.adresseImgPortrait = pnj.portraitStr_

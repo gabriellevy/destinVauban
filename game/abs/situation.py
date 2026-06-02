@@ -10,6 +10,7 @@ from abs.affichage import affichagePortrait
 from abs.humanite.amour import relationAmoureuse
 from abs.humanite import metier
 import random
+from math import floor
 import logging
 
 class Situation:
@@ -280,7 +281,7 @@ class Situation:
     def AffichageAge(self):
         nbJoursVecus = temps.Date(self.caracs_[temps.Date.DATE]).nbJours_ - temps.Date(self.caracs_[temps.Date.DATE_NAISSANCE]).nbJours_
         if isinstance(nbJoursVecus, int):
-            nbAnnees = nbJoursVecus/365
+            nbAnnees = floor(nbJoursVecus/365)
             return "{} ans".format(nbAnnees)
             # nbJoursPasses = nbJoursVecus%365
             # nbMois = nbJoursPasses/30
