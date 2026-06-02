@@ -34,14 +34,14 @@ label ragnacaire:
             $ reussi = testCombat.TesterDifficulte(situation_)
             if reussi:
                 "Vous écrasez la faible armée de Ragnacaire et l'exécutez promptement de vos propres mains, ainsi que son frère. Devant votre valeur, ses hommes survivants se rallient à vous sans discuter."
-                $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+                $ AjouterACarac(trait.Gloire.NOM, 1)
                 $ AjouterACarac(vauban.Vauban.C_MILITAIRE, 1)
                 jump fin_cycle
             else:
                 "Quoiqu'inférieures en nombre les troupes de Ragnacaire vous infligent une grave défaite. Cet échec humiliant affaiblit grandement votre crédibilité."
                 $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
                 $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
-                $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+                $ RetirerACarac(trait.Gloire.NOM, 1)
                 jump fin_cycle
             jump fin_cycle
         "Provoquer la trahison de ses hommes par ruse [testRuse.affichage_]":
@@ -87,13 +87,13 @@ label guerre_thuringie491:
         $ reussi = testCombat.TesterDifficulte(situation_)
         if reussi:
             "Vous écrasez la faible armée de Chararic et parvenez à le capturer."
-            $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+            $ AjouterACarac(trait.Gloire.NOM, 1)
             jump guerre_thuringie491_sort_chararic
         else:
             "Quoiqu'inférieures en nombre les troupes de Chararic vous infligent une grave défaite. Cet échec humiliant affaiblit grandement votre crédibilité."
             $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
             $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
-            $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+            $ RetirerACarac(trait.Gloire.NOM, 1)
             $ situation_.AvanceDeXMois(1)
             jump guerre_thuringie491_decision
 

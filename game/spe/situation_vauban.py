@@ -90,21 +90,9 @@ class SituationVauban(situation.Situation):
         return self.caracs_[religion.Religion.C_RELIGION]
 
     def AffichageGloire(self):
-        val = self.GetValCarac(vauban.Vauban.C_GLOIRE)
         if self.debug_:
             return u"Gloire : {}".format(val)
-        elif val <= trait.Trait.CARAC_TRES_FAIBLE:
-            return u"Inconnu"
-        elif val <= trait.Trait.CARAC_FAIBLE:
-            return u"Peu connu"
-        elif val <= trait.Trait.CARAC_NORMAL:
-            return u"Connu"
-        elif val <= trait.Trait.CARAC_ELEVE:
-            return u"Très connu"
-        elif val <= trait.Trait.CARAC_EXCEPTIONNEL:
-            return u"Très célèbre" 
-        else:
-            return u"Légende vivante" 
+        return self.collectionTraits[trait.Gloire.NOM].GetDescription(self)
 
     def AffichageUsurpation(self):
         val = self.GetValCarac(vauban.Vauban.C_USURPATION)

@@ -49,7 +49,7 @@ init -5 python:
         situation[vauban.Vauban.C_MILITAIRE] = 0
         situation[vauban.Vauban.C_DIPLOMATIE] = 0
         situation.SetValCarac(religion.Religion.C_RELIGION, religion.Paien.NOM)
-        situation.SetValCarac(vauban.Vauban.C_GLOIRE, 0)
+        situation.SetValCarac(trait.Gloire.NOM, 0)
 
         # famille
         situation.SetValCarac(vauban.Vauban.C_ALBOFLEDE, 1)

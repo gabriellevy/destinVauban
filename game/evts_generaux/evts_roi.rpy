@@ -98,14 +98,14 @@ label revolte_impots:
                 "Après quelques exécutions et granges brûlées les gaulois sont vite calmés."
             else:
                 "Les rebelles sont étonnament coriaces. Non seulement ils ne payent pas mais ils humilient vos soldats durant quelques escarmouches sanglantes."
-                $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+                $ RetirerACarac(trait.Gloire.NOM, 1)
         "Négocier avec les notables pour calmer les tensions [testPolitique.affichage_]":
             $ reussi = testPolitique.TesterDifficulte(situation_)
             if reussi:
                 "Après quelques dures négociations la révolte se calme pacifiquement."
             else:
                 "Les rebelles pendent un de vos négociateurs et trainent votre nom dans la boue."
-                $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+                $ RetirerACarac(trait.Gloire.NOM, 1)
     jump fin_cycle
 
 label corruption:

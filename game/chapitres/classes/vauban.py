@@ -1,7 +1,6 @@
 class Vauban:
     # caracs personnelles spécifiques de Vauban
     C_CHRISTIANISME = u"Foi chrétienne" # (de Vauban)
-    C_GLOIRE = u"Gloire" # plus elle est élevée moins il y a de chances d'usurpation. 5 = digne de Clotilde (pour l'instant)
     C_DIPLOMATIE = u"Diplomatie" # statut et fiabilité de Vauban vis à vis des autres germains et de l'empire d'Orient
 
     # et de son royaume mises en place en début de partie

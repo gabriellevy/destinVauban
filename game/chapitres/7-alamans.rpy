@@ -52,18 +52,18 @@ label invasion_wisigoths1:
                     "Vous n'avez cependant pas les moyens de les assiéger car la maladie décime votre armée mal approvisionnée."
                     "Vous devez rentrer à Paris mais votre force a gandement impressionné les wisigoths et les galloromains qui répandent les rumeurs de vos exploits."
                     $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
-                    $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+                    $ AjouterACarac(trait.Gloire.NOM, 1)
                     jump fin_cycle
                 else:
                     "La cavalerie lourde des Wisigoths fracasse vos lignes sous les sabots de ses destriers. Vous êtes obligé d'abandonner le terrain avec de lourdes pertes."
                     $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 2)
-                    $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+                    $ RetirerACarac(trait.Gloire.NOM, 1)
                     jump fin_cycle
             "Si vous vous repliez.":
                 "Alaric ne vous force pas à combattre. Il préfère vous harceler en douceur sans prendre de risque."
                 "Vous parvenez à rentrer à Paris sain et sauf mais avec une armée épuisée et sans grand honneur."
                 $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
-                $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+                $ RetirerACarac(trait.Gloire.NOM, 1)
                 jump fin_cycle
     jump fin_cycle
 
@@ -144,7 +144,7 @@ label bataille_tolbiac:
         "[nomChefAlaman], le chef des alamans, se battait bravement à découvert sur son cheval blanc. Il semblait invincible, possédé par la puissance de Wotan en personne."
         "Soudain, il fut frappé d'une hache de lancer en pleine poitrine et tomba de cheval. Pour tous les alamans comme pour les francs, cela signifiait qu'il avait perdu la faveur de Wotan."
         "Ils commencèrent à s'apeurer, perdirent leur avantage, puis se débandèrent. Finalement pour arrêter le massacre, ils firent leur soumission et jetèrent leurs armes."
-        $ AjouterACarac(vauban.Vauban.C_GLOIRE, 2)
+        $ AjouterACarac(trait.Gloire.NOM, 2)
         menu:
             "Victoire ! Ils sont à votre merci !"
             "Si vous les exterminez":

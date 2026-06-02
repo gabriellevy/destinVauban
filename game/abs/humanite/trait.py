@@ -13,6 +13,7 @@ class Trait:
     - les vices et vertus qui vont de -3 à 3
     """
 
+    # A FAIRE : supprimer les 4 seuils suivants
     SEUIL_A = 1 # valeur à partir de laquelle (et au dessus) on est considéré comme ayant le trait
     SEUIL_A_EXTREME = 11 # valeur à partir de laquelle (et au dessus) on est considéré comme ayant le trait à un niveau héroïque
     SEUIL_A_PAS = -3 # valeur à partir de laquelle (et en dessous) on est considéré comme ayant le trait en négatif
@@ -1036,6 +1037,37 @@ class Richesse(TraitGraduel):
             return u""
             # return u"Classe moyenne {}".format(val)
 
+class Gloire(TraitGraduel):
+
+    NOM = u"Gloire"
+
+    def __init__(self):
+        self.eTrait_ = Gloire.NOM
+
+    def PeutEtrePrisALaNaissance(self):
+        return True
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val <= Trait.CARAC_TRES_FAIBLE:
+            return u"Inconnu"
+        elif val <= Trait.CARAC_FAIBLE:
+            return u"Peu connu"
+        elif val <= Trait.CARAC_NORMAL:
+            return u"Connu"
+        elif val <= Trait.CARAC_ELEVE:
+            return u"Très connu"
+        elif val <= Trait.CARAC_EXCEPTIONNEL:
+            return u"Très célèbre" 
+        else:
+            return u"Légende vivante" 
+
 class Liberte(TraitGraduel):
 
     NOM = u"Soif de liberté"
@@ -1075,6 +1107,8 @@ class CollectionTraits:
         self.SetTrait(Ruse.NOM, ruse)
         liberte = Liberte()
         self.SetTrait(Liberte.NOM, liberte)
+        gloire = Gloire()
+        self.SetTrait(Gloire.NOM, gloire)
         assurance = Assurance()
         self.SetTrait(Assurance.NOM, assurance)
         richesse = Richesse()

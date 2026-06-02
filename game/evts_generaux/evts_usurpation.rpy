@@ -38,7 +38,7 @@ label usurpation:
     $ nbUsurpationsReussies = situation_.GetValCaracInt("nbUsurpationsReussies")
     # plus la gloire est élevée plus il y a de chances de surmonter l'usurpation
     $ risqueUsurpation = situation_.GetValCaracInt(vauban.Vauban.C_USURPATION) + 3
-    $ test = testDeCarac.TestDeCarac(vauban.Vauban.C_GLOIRE, risqueUsurpation, situation_)
+    $ test = testDeCarac.TestDeCarac(trait.Gloire.NOM, risqueUsurpation, situation_)
     $ reussi = test.TesterDifficulte(situation_)
     menu:
         "TMP attention usurpation"
@@ -64,7 +64,7 @@ label usurpation:
             $ RetirerACarac(vauban.Vauban.C_USURPATION, 2)
             $ RetirerACarac(trait.Richesse.NOM, 2)
             $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 2)
-            $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+            $ RetirerACarac(trait.Gloire.NOM, 1)
         elif nbUsurpationsReussies == 2:
             $ situation_.SetValCarac("nbUsurpationsReussies", 3)
             $ usurpateur = francs_.CreerPrenom(True)

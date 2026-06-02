@@ -25,7 +25,7 @@ label citharede:
     scene bg citharede
     "Théodoric vous a envoyé comme présent un joueur de citharède, un instrument à corde très rare en Gaule."
     "Voilà qui égayera vos repas et réceptions, et augmentera le prestige de votre cour."
-    $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+    $ AjouterACarac(trait.Gloire.NOM, 1)
     jump fin_cycle
 
 label mariage_aldoflede:

@@ -59,7 +59,7 @@ label diviniteTutelaire:
 label prieresPaiennesChretiennes:
     # victoire et prières des païens et des chrétiens
     "Aujourd'hui vous avez remporté une grande victoire aux côté de votre père Chilpéric."
-    $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+    $ AjouterACarac(trait.Gloire.NOM, 1)
     "Avec vos leudes, vos suivants, vous glorifiez Wotan dieu des batailles et priez pour que les Walkyries mènent vos guerriers tombés au combat jusqu'au Valhalla."
     "Vous remarquez alors un groupe de gaulois qui a combattu à vos côtés et qui semble prier à genoux à la manières des catholiques."
     menu:

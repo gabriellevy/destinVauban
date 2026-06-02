@@ -21,7 +21,7 @@ init -5 python:
     marie_a_clotilde = condition.Condition(vauban.Vauban.C_MARIE_CLOTHILDE, 1, condition.Condition.EGAL)
     pas_marie_a_clotilde = condition.Condition(vauban.Vauban.C_MARIE_CLOTHILDE, 1, condition.Condition.DIFFERENT)
 
-    gloireAuMoins5 = condition.Condition(vauban.Vauban.C_GLOIRE, 5, condition.Condition.SUPERIEUR_EGAL)
+    gloireAuMoins5 = condition.Condition(trait.Gloire.NOM, 5, condition.Condition.SUPERIEUR_EGAL)
 
     # enfants :
     a0enfants = condition.Condition(vauban.Vauban.C_NB_ENFANTS, 0, condition.Condition.EGAL)

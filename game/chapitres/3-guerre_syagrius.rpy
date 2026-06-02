@@ -91,7 +91,7 @@ label invasion_armorique:
             if reussi:
                 "Vous envahissez le territoire et écrasez les poches de résistance sur votre chemin."
                 $ AjouterACarac(trait.Richesse.NOM, 1)
-                $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+                $ AjouterACarac(trait.Gloire.NOM, 1)
                 "Mais vous ne pouvez pas occuper ce pays hostile indéfiniment et devez retourner à otre capitale."
                 "Autant les terres de Syagrius vous restent soumises, autant les armoricains se révoltent instantanément dès que votre armée a quitté leur pays."
                 "Vous réalisez alors que leur armée était loin d'être détruite et vous devez renoncer à l'occupation de ces terres pour l'instant."
@@ -100,7 +100,7 @@ label invasion_armorique:
                 "Cette guerre n'est qu'une quite d'escarmouches interminables et démoralisante ou après chaque bataille perdue ou gagnée les armoricains retournent à l'abrid de leurs impénétrables forêts."
                 "Vous êtes forcé d'abandonner la conquête pour cette année pour ménager vos hommes."
                 $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
-                $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+                $ RetirerACarac(trait.Gloire.NOM, 1)
                 jump fin_cycle
         "Renoncer":
             jump fin_cycle
@@ -119,14 +119,14 @@ label consolidation_syagrius:
                 $ situation_.SetValCarac(vauban.Vauban.CARTE_ACTUELLE, "bg carte493")
                 $ AfficherCarteActuelle()
                 $ AjouterACarac(trait.Richesse.NOM, 1)
-                $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+                $ AjouterACarac(trait.Gloire.NOM, 1)
                 jump invasion_armorique
             else:
                 $ AfficherCarteActuelle()
                 "Cette expédition aurait du être une promenade de santé mais des romains déterminés parviennent, à force de harcèlement, à vous obliger à vous replier."
                 "Le pillage de quelques villes est une consolation mais cela reste un échec qui entame votre prestige."
                 $ AjouterACarac(trait.Richesse.NOM, 1)
-                $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+                $ RetirerACarac(trait.Gloire.NOM, 1)
                 jump fin_cycle
     jump fin_cycle
 
@@ -138,7 +138,7 @@ label invasion_syagrius:
         "Si vous suivez la coutume franque de le défier sur le champs de bataille de son choix.":
             "Syagrius accepte le défi et choisit un champs près de sa capitale Soissons."
             "Vos hommes sont pressés d'en venir aux mains et sont heureux que vous ayez respecté les lois de Wotan. Thor et les walkyrie vous soutiendront."
-            $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+            $ AjouterACarac(trait.Gloire.NOM, 1)
             $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
         "Si vous vous dirigez vers sa capitale Soissons pour l'écraser le plus tôt possible.":
             "Syagrius semble vouloir éviter un siège et vient à votre rencontre. Heureusement pour vous car la prise de ville n'est pas la spécialité de vos guerrier."
@@ -178,7 +178,7 @@ label bataille_soisson:
             "De puis une petite colline vous donnez vos ordres pour faire avancer votre infanterie."
             "Vos soldats obéissent restent confiants et disciplinés mais il est clair qu'ils apprécient peu que le descendant des dieux que vous êtes reste à l'arrière."
             $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
-            $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+            $ RetirerACarac(trait.Gloire.NOM, 1)
             $ testCombat = testDeCarac.TestDeCarac([vauban.Vauban.C_MILITAIRE, metier.Stratege.NOM], puissanceArmeeSyagrius, situation_)
             menu:
                 "Les romains se préparent au choc. [testCombat.affichage_]":
@@ -204,14 +204,14 @@ label bataille_soisson:
                     jump mort
                 else:
                     "Vous avez repéré un officier empêtré par un javelot dans son bouclier. Vous écartez le bouclier d'un coup de pied dans le javelot et poignardez facilement son corps découvert avec votre scramasax."
-                    $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+                    $ AjouterACarac(trait.Gloire.NOM, 1)
                     $ testCombat = testDeCarac.TestDeCarac(metier.Guerrier.NOM, 7, situation_)
                     menu:
                         "Enhardi vous vous jetez en avant en chantant à la gloire de Wotan.[testCombat.affichage_]":
                             $ reussi = testCombat.TesterDifficulte(situation_)
                             if reussi:
                                 "Vous empoignez votre francisque et faites un grand massacre des romains terrifiés et désordonnés."
-                                $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+                                $ AjouterACarac(trait.Gloire.NOM, 1)
                                 jump bataille_soisson_2
                             else:
                                 "Vous avez été repéré et une volée de javelot s'abat sur vous. Votre bouclier tient le choc mais les pointent le traversent et s'arrêtent à un doigt de votre visage."
@@ -241,7 +241,7 @@ label bataille_soisson_2:
                 "Les romains s'obstinent à résister et il faut des heures pour que finalement, brisés de fatigue ils succombent."
                 $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
     "Pas trace de Syagrius quand vous pénétrez en arme dans sa capitale Soissons sans que personne n'essaye de vous résister. Soit il est mort, soit il a fui. C'est de toute façon une victoire écrasante dont il ne se remettra pas."
-    $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+    $ AjouterACarac(trait.Gloire.NOM, 1)
     # fin de la guerre (en théorie)
     $ situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.VAINCU)
     $ situation_.SetValCarac(vauban.Vauban.CARTE_ACTUELLE, "bg carte486")
@@ -284,7 +284,7 @@ label vase_de_soissons:
                     $ reussi = testCombat.TesterDifficulte(situation_)
                     if reussi:
                         "Le combat ne dure qu'un instant. Vous fendez le crâne du misérable à coup de hache et il s'effondre au milieu du butin et de vos hommes ébahis."
-                        $ AjouterACarac(vauban.Vauban.C_GLOIRE, 1)
+                        $ AjouterACarac(trait.Gloire.NOM, 1)
                         "Vous voyez bien néanmoins que c'est par peur qu'on vous obéit et que votre mépris des coutumes rend furieux plus d'un homme."
                         $ AjouterACarac(vauban.Vauban.C_USURPATION, 2)
                     else:
@@ -344,5 +344,5 @@ label combat_avant_garde:
                 $ AjouterACarac(syagrius.Syagrius.C_PILLAGE, 1)
             else:
                 "Vos cavaliers sont incapables de briser la cohorte romaine et s'enfuient. C'est une défaite cuisante. Sans importance stratégique mais humiliante."
-                $ RetirerACarac(vauban.Vauban.C_GLOIRE, 1)
+                $ RetirerACarac(trait.Gloire.NOM, 1)
             jump fin_cycle
