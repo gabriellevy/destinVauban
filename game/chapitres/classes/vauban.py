@@ -41,9 +41,6 @@ class Vauban:
     CARTE_ACTUELLE = u"Carte actuelle" # adresse de l'image de la carte représentant le royaume actuelle de Vauban (mise à jour selon les conquêtes)
 
     # traits utilisés (dans abs.humanite.trait):
-    # Richesse
-    # Ruse
+    # ?????
     # métiers utilisés (dans abs.humanite.metier):
-    # Guerrier
-    # Stratege
-    # Pretre
+    # ?????

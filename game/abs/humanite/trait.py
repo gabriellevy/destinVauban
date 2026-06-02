@@ -1,5 +1,8 @@
 import random
 
+"""
+A FAIRE : convertir tout ça en caractéristiques brigandyne/warhammer
+"""
 class Trait:
     """
     ce qui a rapport aux traits descriptif d'un personnage

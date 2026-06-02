@@ -27,7 +27,6 @@ init -5 python:
         # A FAIRE : mort de Alboflède peut après le baptème et qu'elle soit devenue religieuse.
 
 label bapteme:
-    scene bg bapteme
     with dissolve
     play music turexgloriae noloop
     "Ainsi, à Reims dans la nuit de Noël 497, Saint-Rémi vous baptisa avec 3 000 de ses soldats."
