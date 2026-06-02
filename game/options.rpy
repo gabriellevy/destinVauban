@@ -15,7 +15,7 @@
 ##
 ## La chaîne de caractère contenu dans _() est éligible à la traduction.
 
-define config.name = _("destinRoiVauban")
+define config.name = _("Destin Vauban")
 
 
 ## Détermine si le titre renseigné plus haut est affiché sur l'écran du menu
@@ -40,7 +40,7 @@ define gui.about = _p("""
 ## l’exécutable. Il ne doit contenir que des caractères ASCII et ne doit pas
 ## contenir d’espace, de virgules ou de points-virgules.
 
-define build.name = "destinRoiVauban"
+define build.name = "Destin Vauban"
 
 
 ## Sons et musiques ############################################################

@@ -31,7 +31,7 @@ init -2 python:
     gaulois_ = gaulois.Gaulois()
     romains_ = romains.Romains()
 
-    debug_ = True
+    debug_ = False
     situation_.debug_ = debug_
 
     # text fade system
