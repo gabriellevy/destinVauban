@@ -102,6 +102,7 @@ class TraitTernaire(Trait):
         else:
             return Trait.SEUIL_A
 
+# Trit graduel == compétence qui va de 1 à 100
 class TraitGraduel(Trait):
 
     NOM = u"TraitGraduel"
@@ -122,31 +123,6 @@ class TraitGraduel(Trait):
             return Trait.SEUIL_A
         else:
             return Trait.SEUIL_A_EXTREME # douteux que ce soit une bonne idée comme valeur de départ
-
-class Celebrite(TraitGraduel):
-
-    NOM = u"Célébrité"
-
-    def __init__(self):
-        self.eTrait_ = Celebrite.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Glorieux"
-            return u"Célèbre"
-        else:
-            return "Inconnu"
-
-    def PeutEtrePrisALaNaissance(self):
-        return False
 
 class Cupidite(TraitTernaire):
 
@@ -1173,8 +1149,6 @@ class CollectionTraits:
         self.SetTrait(Rancune.NOM, rancune)
         serenite = Serenite()
         self.SetTrait(Serenite.NOM, serenite)
-        celebrite = Celebrite()
-        self.SetTrait(Celebrite.NOM, celebrite)
 
     def getTraitAleatoire(self):
         return random.choice(list(self.lTraits_.values()))

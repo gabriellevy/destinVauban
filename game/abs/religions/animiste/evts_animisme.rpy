@@ -157,7 +157,6 @@ init -5 python:
         valsAnimalTotem["Tortue"] = valsAnimalTotem["Tortue"] + situation_.GetValCaracInt(trait.Serenite.NOM)
         valsAnimalTotem["vautour"] = valsAnimalTotem["vautour"] + situation_.GetValCaracInt(trait.Serenite.NOM)
         valsAnimalTotem["colibri"] = valsAnimalTotem["colibri"] - situation_.GetValCaracInt(trait.Serenite.NOM)
-        # Celebrite
 
         # déterminer animal final :
         valMax = -9999

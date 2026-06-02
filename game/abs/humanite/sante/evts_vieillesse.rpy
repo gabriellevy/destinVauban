@@ -120,11 +120,11 @@ label effetVieillir:
             $ nbEffets = nbEffets - 1
             jump effetVieillir
         elif effetVieillesse< 105:
-            $ valCelebrite = situation_.GetValCaracInt(trait.Celebrite.NOM)
+            $ valCelebrite = situation_.GetValCaracInt(trait.Gloire.NOM)
             if valCelebrite <= 0:
                 jump effetVieillir
             "Le temps passe, vous êtes de moins en moins connu."
-            $ RetirerACarac(trait.Celebrite.NOM, 1)
+            $ RetirerACarac(trait.Gloire.NOM, 1)
             $ nbEffets = nbEffets - 1
             jump effetVieillir
         else:

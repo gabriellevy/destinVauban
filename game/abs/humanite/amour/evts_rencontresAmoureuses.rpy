@@ -22,8 +22,8 @@ init -5 python:
     estPeuSexuel = condition.Condition(trait.Sexualite.NOM, trait.Trait.SEUIL_A_PAS, condition.Condition.INFERIEUR_EGAL)
     estAbstinentSexuel = condition.Condition(trait.Sexualite.NOM, trait.Trait.SEUIL_A_PAS_EXTREME, condition.Condition.INFERIEUR_EGAL)
 
-    estCelebre = condition.Condition(trait.Celebrite.NOM, trait.Trait.SEUIL_A, condition.Condition.SUPERIEUR_EGAL)
-    estGlorieux = condition.Condition(trait.Celebrite.NOM, trait.Trait.SEUIL_A_EXTREME, condition.Condition.SUPERIEUR_EGAL)
+    estCelebre = condition.Condition(trait.Gloire.NOM, trait.Trait.SEUIL_A, condition.Condition.SUPERIEUR_EGAL)
+    estGlorieux = condition.Condition(trait.Gloire.NOM, trait.Trait.SEUIL_A_EXTREME, condition.Condition.SUPERIEUR_EGAL)
 
     estBeau = condition.Condition(trait.Beaute.NOM, trait.Trait.SEUIL_A, condition.Condition.SUPERIEUR_EGAL)
     estApollon = condition.Condition(trait.Beaute.NOM, trait.Trait.SEUIL_A_EXTREME, condition.Condition.SUPERIEUR_EGAL)

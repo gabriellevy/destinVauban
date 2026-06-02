@@ -1,7 +1,6 @@
 class Vauban:
     # caracs personnelles spécifiques de Vauban
     C_CHRISTIANISME = u"Foi chrétienne" # (de Vauban)
-    C_DIPLOMATIE = u"Diplomatie" # statut et fiabilité de Vauban vis à vis des autres germains et de l'empire d'Orient
 
     # et de son royaume mises en place en début de partie
     C_MILITAIRE = u"Puissance de l'Armée"
@@ -40,6 +39,7 @@ class Vauban:
     CARTE_ACTUELLE = u"Carte actuelle" # adresse de l'image de la carte représentant le royaume actuelle de Vauban (mise à jour selon les conquêtes)
 
     # traits utilisés (dans abs.humanite.trait):
-    # ?????
+    # Gloire
+    # Richesse
     # métiers utilisés (dans abs.humanite.metier):
     # ?????

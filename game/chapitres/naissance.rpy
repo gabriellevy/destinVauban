@@ -47,7 +47,6 @@ init -5 python:
         situation[vauban.Vauban.C_CHRISTIANISME] = 0
         situation[vauban.Vauban.C_USURPATION] = 0
         situation[vauban.Vauban.C_MILITAIRE] = 0
-        situation[vauban.Vauban.C_DIPLOMATIE] = 0
         situation.SetValCarac(religion.Religion.C_RELIGION, religion.Paien.NOM)
         situation.SetValCarac(trait.Gloire.NOM, 0)
 

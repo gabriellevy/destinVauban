@@ -52,7 +52,6 @@ init -1 python:
     AjouterEvtBapteme()
     AjouterEvtsPaganisme()
     AjouterEvtThuringie()
-    AjouterEvtsDiplomatie()
     AjouterEvtsChristianisme()
     AjouterEvtsSalique()
     AjouterEvtsHistoire()
