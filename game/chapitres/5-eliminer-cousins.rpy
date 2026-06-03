@@ -155,7 +155,6 @@ label guerre_thuringie491:
                 "Vous éliminez ses enfants et tous ses neveux dont plusieurs jeunes enfants. Même les féroces francs trouvent que vous êtes allés loin et votre cruauté est connue dans toute la Gaulle."
                 "Il n'empêche que moins il y aura de nobles, surtout dans les familles rivales, plus votre trône sera assuré."
                 $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
-                $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
             "Non cela va trop loin.":
                 jump fin_cycle
         jump fin_cycle

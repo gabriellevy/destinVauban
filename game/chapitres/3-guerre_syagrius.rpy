@@ -68,13 +68,11 @@ label livraison_syagrius:
                 jump fin_cycle
             else:
                 "Malheureusement le bruit que Syagrius est vivant et entre vos mains se répand. Ses partisans grondent."
-                $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
                 jump fin_cycle
         "Le faire exécuter publiquement":
             "Syagrius affronte la mort bravement face au bourreau qui le décapite devant la foule des parisiens."
             "Ses partisans sont indignés mais n'osent réagir devant votre puissance. Un problème résolu."
             $ situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.MORT)
-            $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
             jump fin_cycle
     jump fin_cycle
 

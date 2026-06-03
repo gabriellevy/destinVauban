@@ -69,7 +69,6 @@ label prieresPaiennesChretiennes:
             $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
             $ RetirerACarac(vauban.Vauban.C_CHRISTIANISME, 1)
             "Quand il en a vent votre père critique votre attitude : vous aurez besoin de l'appui des gaulois pour régner. Les insulter quand ils sont en plus de votre côté est une imprudence."
-            $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
             jump fin_cycle
         "Vous vous intéressez à leurs prières.":
             "Vos guerriers apprécient peu votre attitude. Après tout pourquoi un descendant des dieux tels que vous s'intéresse-t'il à un dieu tout juste bon à se faire maltraiter."

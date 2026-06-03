@@ -9,29 +9,25 @@ init -5 python:
     from abs.humanite import metier
     from chapitres.classes import vauban
 
-    fideliteGauleMoinsQue0 = condition.Condition(vauban.Vauban.C_FIDELITE_GAULE, 0, condition.Condition.INFERIEUR)
-    fideliteGauleMoinsQue2 = condition.Condition(vauban.Vauban.C_FIDELITE_GAULE, 2, condition.Condition.INFERIEUR)
-    fideliteGaulePlusQue0 = condition.Condition(vauban.Vauban.C_FIDELITE_GAULE, 0, condition.Condition.SUPERIEUR)
-    fideliteGaulePlusQue2 = condition.Condition(vauban.Vauban.C_FIDELITE_GAULE, 2, condition.Condition.SUPERIEUR)
-    fideliteGaulePlusQue3 = condition.Condition(vauban.Vauban.C_FIDELITE_GAULE, 3, condition.Condition.SUPERIEUR)
+    # fideliteGauleMoinsQue0 = condition.Condition(vauban.Vauban.C_FIDELITE_GAULE, 0, condition.Condition.INFERIEUR)
     richessePlusQue0 = condition.Condition(trait.Richesse.NOM, 0, condition.Condition.SUPERIEUR)
     armeeMoinsQue2 = condition.Condition(vauban.Vauban.C_MILITAIRE, 2, condition.Condition.INFERIEUR)
     armeeMoinsQue5 = condition.Condition(vauban.Vauban.C_MILITAIRE, 2, condition.Condition.INFERIEUR)
 
     def AjouterEvtsRoi():
         global selecteur_
-        # remplacement de comte
-        comtCritique = declencheur.Declencheur(proba.Proba(0.03, True), "comtCritique")
-        comtCritique.AjouterCondition(estRoi)
-        selecteur_.ajouterDeclencheur(comtCritique)
-        # nommage de comte
-        nommageComte = declencheur.Declencheur(proba.Proba(0.02, True), "nommageComte")
-        nommageComte.AjouterCondition(estRoi)
-        selecteur_.ajouterDeclencheur(nommageComte)
-        # gestion du pillage
-        gestionPillage = declencheur.Declencheur(proba.Proba(0.02, True), "gestionPillage")
-        gestionPillage.AjouterCondition(estRoi)
-        selecteur_.ajouterDeclencheur(gestionPillage)
+        # remplacement de subordonné ? A FAIRE ?
+        # comtCritique = declencheur.Declencheur(proba.Proba(0.03, True), "comtCritique")
+        # comtCritique.AjouterCondition(estRoi)
+        # selecteur_.ajouterDeclencheur(comtCritique)
+        # nommage de subordonné ? A FAIRE
+        # nommageComte = declencheur.Declencheur(proba.Proba(0.02, True), "nommageComte")
+        # nommageComte.AjouterCondition(estRoi)
+        # selecteur_.ajouterDeclencheur(nommageComte)
+        # gestion du pillage A FAIRE ?
+        # gestionPillage = declencheur.Declencheur(proba.Proba(0.02, True), "gestionPillage")
+        # gestionPillage.AjouterCondition(estRoi)
+        # selecteur_.ajouterDeclencheur(gestionPillage)
         # antrustions
         probaAntrustion = proba.Proba(0.03, True)
         modifProbaAntrustion = modifProba.ModifProba(0.08, usurpationPlusQue4)
@@ -49,39 +45,40 @@ init -5 python:
         recrutement.AjouterCondition(armeeMoinsQue5)
         recrutement.AjouterCondition(estRoi)
         selecteur_.ajouterDeclencheur(recrutement)
-        # impôts
-        impots = declencheur.Declencheur(proba.Proba(0.05, True), "impots")
-        impots.AjouterCondition(estRoi)
-        selecteur_.ajouterDeclencheur(impots)
+        # impôts A FAIRE ?
+        # impots = declencheur.Declencheur(proba.Proba(0.05, True), "impots")
+        # impots.AjouterCondition(estRoi)
+        # selecteur_.ajouterDeclencheur(impots)
         # corruption
-        corruption = declencheur.Declencheur(proba.Proba(0.05, True), "corruption")
-        corruption.AjouterCondition(estRoi)
-        selecteur_.ajouterDeclencheur(corruption)
-        # revolte_impots
-        revolte_impots = declencheur.Declencheur(proba.Proba(0.04, True), "revolte_impots")
-        revolte_impots.AjouterCondition(estRoi)
-        revolte_impots.AjouterCondition(fideliteGauleMoinsQue0)
-        selecteur_.ajouterDeclencheur(revolte_impots)
-        # rentree_dimpots
-        rentree_dimpots = declencheur.Declencheur(proba.Proba(0.04, True), "rentree_dimpots")
-        rentree_dimpots.AjouterCondition(estRoi)
-        rentree_dimpots.AjouterCondition(fideliteGaulePlusQue0)
-        selecteur_.ajouterDeclencheur(rentree_dimpots)
+        # corruption = declencheur.Declencheur(proba.Proba(0.05, True), "corruption")
+        # corruption.AjouterCondition(estRoi)
+        # selecteur_.ajouterDeclencheur(corruption)
+        # revolte_impots A FAIRE ?
+        # revolte_impots = declencheur.Declencheur(proba.Proba(0.04, True), "revolte_impots")
+        # revolte_impots.AjouterCondition(estRoi)
+        # revolte_impots.AjouterCondition(fideliteGauleMoinsQue0)
+        # selecteur_.ajouterDeclencheur(revolte_impots)
+        # rentree_dimpots A FAIRE ?
+        # rentree_dimpots = declencheur.Declencheur(proba.Proba(0.04, True), "rentree_dimpots")
+        # rentree_dimpots.AjouterCondition(estRoi)
+        # rentree_dimpots.AjouterCondition(fideliteGaulePlusQue0)
+        # selecteur_.ajouterDeclencheur(rentree_dimpots)
 
-label rentree_dimpots:
-    "Les impôts rentrent bien."
-    menu:
-        "Qu'allez-vous faire de cette rentrée d'argent."
-        "Investir dans l'armée":
-            $ AjouterACarac(vauban.Vauban.C_MILITAIRE, 1)
-        "Garder cela dans vos coffres":
-            $ AjouterACarac(trait.Richesse.NOM, 1)
-        "Corrompre des nobles francs turbulents":
-            $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
-        "Organiser des jeux de cirque":
-            $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
-    jump fin_cycle
+# label rentree_dimpots:
+    # "Les impôts rentrent bien."
+    # menu:
+        # "Qu'allez-vous faire de cette rentrée d'argent."
+        # "Investir dans l'armée":
+            # $ AjouterACarac(vauban.Vauban.C_MILITAIRE, 1)
+        # "Garder cela dans vos coffres":
+            # $ AjouterACarac(trait.Richesse.NOM, 1)
+        # "Corrompre des nobles francs turbulents":
+            # $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
+        # "Organiser des jeux de cirque":
+            # $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    # jump fin_cycle
 
+'''
 label revolte_impots:
     "En conquérant l'empire romain vous avez bien sûr repris leur intéressant système d'impôts directs et indirects qui alimente vos caisses régulièrement."
     "Mais cette année les gaulois se rebellent et refusent de payer."
@@ -91,7 +88,6 @@ label revolte_impots:
         "Comment gérez-vous cette révolte ?"
         "Leur accorder une dispense exceptionnelle.":
             $ RetirerACarac(trait.Richesse.NOM, 1)
-            $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
         "Envoyer l'armée les réprimer [testCombat.affichage_]":
             $ reussi = testCombat.TesterDifficulte(situation_)
             if reussi:
@@ -107,21 +103,22 @@ label revolte_impots:
                 "Les rebelles pendent un de vos négociateurs et trainent votre nom dans la boue."
                 $ RetirerACarac(trait.Gloire.NOM, 1)
     jump fin_cycle
+'''
 
-label corruption:
-    scene bg cours_merovingienne
-    with dissolve
-    $ testImpots = testDeCarac.TestDeCarac([metier.Politique.NOM, vauban.Vauban.C_FIDELITE_GAULE], 5, situation_)
-    menu:
-        " "
-        "Administrer les Gaules [testImpots.affichage_]":
-            $ reussi = testImpots.TesterDifficulte(situation_)
-            if reussi:
-                "Votre administration est fiable et la corruption très faible."
-            else:
-                "Vos fonctionnaires vous volent vous en êtes sûr. Il va falloir sévir."
-                $ RetirerACarac(trait.Richesse.NOM, 1)
-    jump fin_cycle
+# label corruption:
+    # scene bg cours_merovingienne
+    # with dissolve
+    # $ testImpots = testDeCarac.TestDeCarac([metier.Politique.NOM, vauban.Vauban.C_FIDELITE_GAULE], 5, situation_)
+    # menu:
+    #     " "
+    #     "Administrer les Gaules [testImpots.affichage_]":
+    #         $ reussi = testImpots.TesterDifficulte(situation_)
+    #         if reussi:
+    #             "Votre administration est fiable et la corruption très faible."
+    #         else:
+    #             "Vos fonctionnaires vous volent vous en êtes sûr. Il va falloir sévir."
+    #             $ RetirerACarac(trait.Richesse.NOM, 1)
+    # jump fin_cycle
 
 label recrutement:
     scene bg cours_merovingienne
@@ -136,29 +133,28 @@ label recrutement:
 
     jump fin_cycle
 
-label impots:
-    scene bg cours_merovingienne
-    with dissolve
-    $ testImpots = testDeCarac.TestDeCarac([metier.Politique.NOM, vauban.Vauban.C_FIDELITE_GAULE], 5, situation_)
-    menu:
-        "Allez vous réussir à pousser les gaulois à vous payer des impôts ?"
-        "[testImpots.affichage_]":
-            $ reussi = testImpots.TesterDifficulte(situation_)
-            if reussi:
-                "Grâce à vos efforts en leur faveur les galloromains vous sont favorables et suivent vos lois. Les impôts rentrent."
-                $ AjouterACarac(trait.Richesse.NOM, 1)
-            else:
-                "Les gaulois sont sournois et désobéissants. Malgré vos efforts les rendements des impôts sont médiocres."
-                menu:
-                    "Voulez vous autoriser vos soldats à piller quelques villes pour leur apprendre à obéir ?"
-                    "Oui":
-                        "Les pillages vous rapportent et défoulent vos soldats mais les gaulois vous détestent encore plus."
-                        $ AjouterACarac(trait.Richesse.NOM, 1)
-                        $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
-                        $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
-                    "Non":
-                        pass
-    jump fin_cycle
+# label impots:
+    # scene bg cours_merovingienne
+    # with dissolve
+    # $ testImpots = testDeCarac.TestDeCarac([metier.Politique.NOM, vauban.Vauban.C_FIDELITE_GAULE], 5, situation_)
+    # menu:
+    #     "Allez vous réussir à pousser les gaulois à vous payer des impôts ?"
+    #     "[testImpots.affichage_]":
+    #         $ reussi = testImpots.TesterDifficulte(situation_)
+    #         if reussi:
+    #             "Grâce à vos efforts en leur faveur les galloromains vous sont favorables et suivent vos lois. Les impôts rentrent."
+    #             $ AjouterACarac(trait.Richesse.NOM, 1)
+    #         else:
+    #             "Les gaulois sont sournois et désobéissants. Malgré vos efforts les rendements des impôts sont médiocres."
+    #             menu:
+    #                 "Voulez vous autoriser vos soldats à piller quelques villes pour leur apprendre à obéir ?"
+    #                 "Oui":
+    #                     "Les pillages vous rapportent et défoulent vos soldats mais les gaulois vous détestent encore plus."
+    #                     $ AjouterACarac(trait.Richesse.NOM, 1)
+    #                     $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
+    #                 "Non":
+    #                     pass
+    # jump fin_cycle
 
 label antrustions:
     scene bg cours_merovingienne
@@ -175,87 +171,87 @@ label antrustions:
             jump fin_cycle
     jump fin_cycle
 
-label gestionPillage:
-    scene bg cours_merovingienne
-    with dissolve
-    $ nomSenateur = gaulois_.CreerPrenom(True)
-    "Le sénateur gallo-romain [nomSenateur] vient à vous se plaindre humblement des pillages causés par vos guerriers et vous demande d'y mettre un terme."
-    menu:
-        "Interdire le pillage sous peine de mort":
-            "Les guerriers prennent très mal cet affront à la coutume. Ils doivent acheter et entretenir leur propre matériel. À quoi bon si ils ne peuvent pas se payer sur les vaincus ?"
-            $ AjouterACarac(vauban.Vauban.C_USURPATION, 3)
-            $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
-            jump fin_cycle
-        "Réprimander les soldats":
-            "Les guerriers prennent mal la réprimande. Ils doivent acheter et entretenir leur propre matériel. À quoi bon si ils ne peuvent pas se payer sur les vaincus ?"
-            $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
-            $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
-            jump fin_cycle
-        "Le renvoyer sèchement. Vae Victis !":
-            $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
-            jump fin_cycle
-        "L'exécuter pour son insolence":
-            $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
-            jump fin_cycle
+# label gestionPillage:
+    # scene bg cours_merovingienne
+    # with dissolve
+    # $ nomSenateur = gaulois_.CreerPrenom(True)
+    # "Le sénateur gallo-romain [nomSenateur] vient à vous se plaindre humblement des pillages causés par vos guerriers et vous demande d'y mettre un terme."
+    # menu:
+    #     "Interdire le pillage sous peine de mort":
+    #         "Les guerriers prennent très mal cet affront à la coutume. Ils doivent acheter et entretenir leur propre matériel. À quoi bon si ils ne peuvent pas se payer sur les vaincus ?"
+    #         $ AjouterACarac(vauban.Vauban.C_USURPATION, 3)
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
+    #         jump fin_cycle
+    #     "Réprimander les soldats":
+    #         "Les guerriers prennent mal la réprimande. Ils doivent acheter et entretenir leur propre matériel. À quoi bon si ils ne peuvent pas se payer sur les vaincus ?"
+    #         $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         jump fin_cycle
+    #     "Le renvoyer sèchement. Vae Victis !":
+    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         jump fin_cycle
+    #     "L'exécuter pour son insolence":
+    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
+    #         jump fin_cycle
 
-    jump fin_cycle
+    # jump fin_cycle
 
-label comtCritique:
-    scene bg cours_merovingienne
-    with dissolve
-    $ nomComte = gaulois_.CreerPrenom(True)
-    "Le comte [nomComte] à votre service se comporte paraît-til comme un brigand. Il vole et frappe ses sujets et les plaintes s'accumulent."
-    "Il est par contre d'une fidélité à toute épreuve envers vous et fait rentrer les impôts très efficacement."
-    menu:
-        "Le réprimander publiquement":
-            "Les galloromains apprécident de voir que leurs demandes sont entendues. Le comte [nomComte] n'ose plus les pressurer autant qu'avant."
-            $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
-            $ RetirerACarac(trait.Richesse.NOM, 1)
-            jump fin_cycle
+# label comtCritique:
+    # scene bg cours_merovingienne
+    # with dissolve
+    # $ nomComte = gaulois_.CreerPrenom(True)
+    # "Le comte [nomComte] à votre service se comporte paraît-til comme un brigand. Il vole et frappe ses sujets et les plaintes s'accumulent."
+    # "Il est par contre d'une fidélité à toute épreuve envers vous et fait rentrer les impôts très efficacement."
+    # menu:
+    #     "Le réprimander publiquement":
+    #         "Les galloromains apprécident de voir que leurs demandes sont entendues. Le comte [nomComte] n'ose plus les pressurer autant qu'avant."
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         $ RetirerACarac(trait.Richesse.NOM, 1)
+    #         jump fin_cycle
 
-        "Le faire exécuter":
-            "Le peuple est satisfait de voir son tourmenteur mort, mais les autres comtes sont terrifiés de voir que la fidélité envers vous ne leur garantit pas votre clémence."
-            $ RetirerACarac(trait.Richesse.NOM, 1)
-            $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
-            $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
-            jump fin_cycle
+    #     "Le faire exécuter":
+    #         "Le peuple est satisfait de voir son tourmenteur mort, mais les autres comtes sont terrifiés de voir que la fidélité envers vous ne leur garantit pas votre clémence."
+    #         $ RetirerACarac(trait.Richesse.NOM, 1)
+    #         $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
+    #         jump fin_cycle
 
-        "le laisser agir à sa guise tant que les impôts entrent":
-            "Le peuple est écrasé mais l'argent coule à flot."
-            $ AjouterACarac(trait.Richesse.NOM, 1)
-            $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
-            jump fin_cycle
+    #     "le laisser agir à sa guise tant que les impôts entrent":
+    #         "Le peuple est écrasé mais l'argent coule à flot."
+    #         $ AjouterACarac(trait.Richesse.NOM, 1)
+    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
+    #         jump fin_cycle
 
-        "le remplacer discrètement":
-            "Les galloromains apprécident de voir que leurs demandes sont entendues."
-            $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
-            $ RetirerACarac(trait.Richesse.NOM, 1)
-            jump nommageComte
-    jump fin_cycle
+    #     "le remplacer discrètement":
+    #         "Les galloromains apprécident de voir que leurs demandes sont entendues."
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         $ RetirerACarac(trait.Richesse.NOM, 1)
+    #         jump nommageComte
+    # jump fin_cycle
 
 
-label nommageComte:
-    scene bg cours_merovingienne
-    with dissolve
-    $ nomComte1 = francs_.CreerPrenom(True)
-    $ nomComte2 = gaulois_.CreerPrenom(True)
-    $ nomComte3 = gaulois_.CreerPrenom(True)
-    $ nomComte4 = francs_.CreerPrenom(True)
-    "Le comte est un fonctionnaire de haut rang responsable entre autres de la collecte des impôts."
-    menu:
-        "[nomComte1], un franc juste et intransigeant":
-            $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
-            jump fin_cycle
-        "[nomComte2], un gaulois aimé du peuple":
-            $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
-            jump fin_cycle
-        "[nomComte3], un affranchi malin et dévoué qui saura faire rentrer les impôts":
-            "[nomComte3] est en effet doué et efficace mais il se fait vite détester par tout le royaume."
-            $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
-            $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
-            $ AjouterACarac(trait.Richesse.NOM, 1)
-            jump fin_cycle
-        "[nomComte4], un ancien officier, spécialiste du recrutement":
-            $ AjouterACarac(vauban.Vauban.C_MILITAIRE, 1)
-            jump fin_cycle
-    jump fin_cycle
+# label nommageComte:
+    # scene bg cours_merovingienne
+    # with dissolve
+    # $ nomComte1 = francs_.CreerPrenom(True)
+    # $ nomComte2 = gaulois_.CreerPrenom(True)
+    # $ nomComte3 = gaulois_.CreerPrenom(True)
+    # $ nomComte4 = francs_.CreerPrenom(True)
+    # "Le comte est un fonctionnaire de haut rang responsable entre autres de la collecte des impôts."
+    # menu:
+    #     "[nomComte1], un franc juste et intransigeant":
+    #         $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
+    #         jump fin_cycle
+    #     "[nomComte2], un gaulois aimé du peuple":
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         jump fin_cycle
+    #     "[nomComte3], un affranchi malin et dévoué qui saura faire rentrer les impôts":
+    #         "[nomComte3] est en effet doué et efficace mais il se fait vite détester par tout le royaume."
+    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
+    #         $ AjouterACarac(trait.Richesse.NOM, 1)
+    #         jump fin_cycle
+    #     "[nomComte4], un ancien officier, spécialiste du recrutement":
+    #         $ AjouterACarac(vauban.Vauban.C_MILITAIRE, 1)
+    #         jump fin_cycle
+    # jump fin_cycle

@@ -35,7 +35,6 @@ label remi:
             $ AjouterACarac(vauban.Vauban.C_USURPATION, 2)
             "Rémi fait néanmoins un excellent conseiller. La gestion s'améliore et la fidélité de la Gaulle aussi."
             $ AjouterACarac(trait.Richesse.NOM, 1)
-            $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
         "Le renvoyer dans son diocèse":
             "Rémi est dévôt mais raisonnable, il n'insiste pas malgré sa déception et part sur le champs."
             $ RetirerACarac(vauban.Vauban.C_CHRISTIANISME, 1)

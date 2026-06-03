@@ -11,7 +11,7 @@ class Vauban:
     C_USURPATION = u"Risque d'ursupation"
     # $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
     # $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
-    C_FIDELITE_GAULE = u"Fidélité des galloromains" # plus c'est élevé plus les galloromains sont fidèles à Vauban
+    # C_FIDELITE_GAULE = u"Fidélité des galloromains" # plus c'est élevé plus les galloromains sont fidèles à Vauban
 
     # événements spéciaux
     C_VASE_SOISSONS = u"Vase de soissons" # 1 si l'histoire réelle est bien suivie

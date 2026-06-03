@@ -21,7 +21,7 @@ init -5 python:
         # jalousie des francs
         jalousieFrancs = declencheur.Declencheur(proba.Proba(0.04, True), "jalousieFrancs")
         jalousieFrancs.AjouterCondition(estRoi)
-        jalousieFrancs.AjouterCondition(fideliteGaulePlusQue3)
+        # jalousieFrancs.AjouterCondition(fideliteGaulePlusQue3)
         selecteur_.ajouterDeclencheur(jalousieFrancs)
 
 label jalousieFrancs:
