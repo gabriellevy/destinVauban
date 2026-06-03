@@ -1,6 +1,6 @@
 init -5 python:
     import random
-    from spe import dec_clo
+    from spe import dec_vauban
     from abs import declencheur
     from abs import selecteur
     from abs import proba
@@ -33,21 +33,21 @@ init -5 python:
         combat_avant_garde.AjouterCondition(syagriusPasVaincu)
         selecteur_.ajouterDeclencheur(combat_avant_garde)
 
-        vase_de_soissons_le_retour = dec_clo.DecVaubanU(proba.Proba(0.3, True), "vase_de_soissons_le_retour", 486)
+        vase_de_soissons_le_retour = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "vase_de_soissons_le_retour", 99999999486)
         vase_de_soissons_le_retour.AjouterCondition(vaseSoissonsVengeance)
         selecteur_.ajouterDeclencheur(vase_de_soissons_le_retour)
 
-        consolidation_syagrius = dec_clo.DecVauban(proba.Proba(0.3, True), "consolidation_syagrius", 492)
+        consolidation_syagrius = dec_vauban.DecVauban(proba.Proba(0.3, True), "consolidation_syagrius", 99999999492)
         consolidation_syagrius.AjouterCondition(syagriusVaincu)
         consolidation_syagrius.AjouterCondition(syagriusPasConsolide)
         selecteur_.ajouterDeclencheur(consolidation_syagrius)
 
-        invasion_armorique = dec_clo.DecVaubanU(proba.Proba(0.4, True), "invasion_armorique", 492)
+        invasion_armorique = dec_vauban.DecVaubanU(proba.Proba(0.4, True), "invasion_armorique", 99999999492)
         invasion_armorique.AjouterCondition(syagriusVaincu)
         invasion_armorique.AjouterCondition(syagriusConsolide)
         selecteur_.ajouterDeclencheur(invasion_armorique)
 
-        livraison_syagrius = dec_clo.DecVaubanU(proba.Proba(0.4, True), "livraison_syagrius", 487)
+        livraison_syagrius = dec_vauban.DecVaubanU(proba.Proba(0.4, True), "livraison_syagrius", 99999999487)
         livraison_syagrius.AjouterCondition(syagriusVaincu)
         # livraison_syagrius.AjouterCondition() # négociations diplomatiques / accords matrimoniaux ?
         selecteur_.ajouterDeclencheur(livraison_syagrius)

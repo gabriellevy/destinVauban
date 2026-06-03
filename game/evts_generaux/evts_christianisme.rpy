@@ -7,17 +7,17 @@ init -5 python:
     from abs import condition
     from abs.humanite import trait
     from abs.humanite import metier
-    from spe import dec_clo
+    from spe import dec_vauban
 
     def AjouterEvtsChristianisme():
         global selecteur_
         # rencontre de Vaast
-        vaast = dec_clo.DecVaubanU(proba.Proba(0.3, True), "vaast", 495)
+        vaast = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "vaast", 99999999495)
         vaast.AjouterCondition(estPaien)
         vaast.AjouterCondition(alamansVaincus)
         selecteur_.ajouterDeclencheur(vaast)
         # rencontre de Saint Rémi
-        remi = dec_clo.DecVaubanU(proba.Proba(0.3, True), "remi", 496)
+        remi = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "remi", 99999999496)
         remi.AjouterCondition(estPaien)
         selecteur_.ajouterDeclencheur(remi)
 

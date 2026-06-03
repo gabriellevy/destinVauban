@@ -1,6 +1,6 @@
 init -5 python:
     import random
-    from spe import dec_clo
+    from spe import dec_vauban
     from abs import declencheur
     from abs import selecteur
     from abs import proba

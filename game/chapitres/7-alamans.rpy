@@ -1,6 +1,6 @@
 init -5 python:
     import random
-    from spe import dec_clo
+    from spe import dec_vauban
     from abs import selecteur
     from abs import proba
     from abs import condition
@@ -15,11 +15,11 @@ init -5 python:
     alamansVaincus = condition.Condition(germains.Alamans.C_VAINCU, 1, condition.Condition.EGAL)
     def AjouterEvtGuerreAlamans():
         global selecteur_
-        invasion_alamans = dec_clo.DecVaubanU(proba.Proba(0.4, True), "bataille_tolbiac", 495)
+        invasion_alamans = dec_vauban.DecVaubanU(proba.Proba(0.4, True), "bataille_tolbiac", 99999999495)
         selecteur_.ajouterDeclencheur(invasion_alamans)
 
         # 1ère invasion des wisigoths
-        invasion_wisigoths1 = dec_clo.DecVaubanU(proba.Proba(0.4, True), "invasion_wisigoths1", 496)
+        invasion_wisigoths1 = dec_vauban.DecVaubanU(proba.Proba(0.4, True), "invasion_wisigoths1", 99999999496)
         invasion_wisigoths1.AjouterCondition(alamansVaincus)
         selecteur_.ajouterDeclencheur(invasion_wisigoths1)
 

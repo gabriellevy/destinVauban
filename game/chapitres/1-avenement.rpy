@@ -11,18 +11,18 @@ init -5 python:
     from abs.univers import temps
     # from geographie import quartier
     from abs.humanite import identite
-    from spe import dec_clo
+    from spe import dec_vauban
 
     estPasRoi = condition.Condition(metier.Metier.C_METIER, metier.Roi.NOM, condition.Condition.DIFFERENT)
     estRoi = condition.Condition(metier.Metier.C_METIER, metier.Roi.NOM, condition.Condition.EGAL)
 
     def AjouterEvtAvenement():
         global selecteur_
-        avenement = dec_clo.DecVaubanU(proba.Proba(0.6, False), "avenement", 481)
+        avenement = dec_vauban.DecVaubanU(proba.Proba(0.6, False), "avenement", 99999999481)
         avenement.AjouterCondition(estPasRoi)
         selecteur_.ajouterDeclencheur(avenement)
         # vision de Childéric
-        visionChilderic = dec_clo.DecVaubanU(proba.Proba(0.4, False), "visionChilderic", 481)
+        visionChilderic = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "visionChilderic", 99999999481)
         visionChilderic.AjouterCondition(estRoi)
         selecteur_.ajouterDeclencheur(visionChilderic)
 

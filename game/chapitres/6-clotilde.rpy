@@ -33,15 +33,15 @@ init -5 python:
     def AjouterEvtsClothilde():
         global selecteur_
         # premiers echos sur Clothilde
-        infos_sur_clotilde = dec_clo.DecVaubanU(proba.Proba(0.7, True), "infos_sur_clotilde", 490)
+        infos_sur_clotilde = dec_vauban.DecVaubanU(proba.Proba(0.7, True), "infos_sur_clotilde", 99999999490)
         selecteur_.ajouterDeclencheur(infos_sur_clotilde)
         # décision du mariage
-        decision_mariage = dec_clo.DecVaubanU(proba.Proba(0.7, True), "decision_mariage", 492)
+        decision_mariage = dec_vauban.DecVaubanU(proba.Proba(0.7, True), "decision_mariage", 99999999492)
         decision_mariage.AjouterCondition(gloireAuMoins5)
         decision_mariage.AjouterCondition(infos_sur_clotildeFaite)
         selecteur_.ajouterDeclencheur(decision_mariage)
         # mariage
-        mariage = dec_clo.DecVaubanU(proba.Proba(0.7, True), "mariage", 492)
+        mariage = dec_vauban.DecVaubanU(proba.Proba(0.7, True), "mariage", 99999999492)
         mariage.AjouterCondition(fiance_a_clotilde)
         mariage.AjouterCondition(pas_marie_a_clotilde)
         selecteur_.ajouterDeclencheur(mariage)
@@ -51,27 +51,27 @@ init -5 python:
         soutienDeClotilde.AjouterCondition(estPasChretien)
         selecteur_.ajouterDeclencheur(soutienDeClotilde)
         # 1er enfant
-        enfant1 = dec_clo.DecVaubanU(proba.Proba(0.3, True), "enfant1", 493)
+        enfant1 = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "enfant1", 99999999493)
         enfant1.AjouterCondition(marie_a_clotilde)
         enfant1.AjouterCondition(a0enfants)
         selecteur_.ajouterDeclencheur(enfant1)
         # 2ème enfant
-        enfant2 = dec_clo.DecVaubanU(proba.Proba(0.3, True), "enfant2", 495)
+        enfant2 = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "enfant2", 99999999495)
         enfant2.AjouterCondition(marie_a_clotilde)
         enfant2.AjouterCondition(a1enfants)
         selecteur_.ajouterDeclencheur(enfant2)
         # 3ème enfant
-        enfant3 = dec_clo.DecVaubanU(proba.Proba(0.3, True), "enfant3", 497)
+        enfant3 = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "enfant3", 99999999497)
         enfant3.AjouterCondition(marie_a_clotilde)
         enfant3.AjouterCondition(a2enfants)
         selecteur_.ajouterDeclencheur(enfant3)
         # 4ème enfant
-        enfant4 = dec_clo.DecVaubanU(proba.Proba(0.3, True), "enfant4", 498)
+        enfant4 = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "enfant4", 99999999498)
         enfant4.AjouterCondition(marie_a_clotilde)
         enfant4.AjouterCondition(a3enfants)
         selecteur_.ajouterDeclencheur(enfant4)
         # 5ème enfant
-        enfant5 = dec_clo.DecVaubanU(proba.Proba(0.3, True), "enfant5", 500)
+        enfant5 = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "enfant5", 99999999500)
         enfant5.AjouterCondition(marie_a_clotilde)
         enfant5.AjouterCondition(a4enfants)
         selecteur_.ajouterDeclencheur(enfant5)

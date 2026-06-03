@@ -7,21 +7,21 @@ init -5 python:
     from abs import condition
     from abs.humanite import trait
     from abs.humanite import metier
-    from spe import dec_clo
+    from spe import dec_vauban
 
     def AjouterEvtsFamille():
         global selecteur_
         # majorité de Thierry
-        majoThierry = dec_clo.DecVaubanU(proba.Proba(0.3, True), "majoThierry", 498) # 485 naissance + 13
+        majoThierry = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "majoThierry", 9999999999999498) # 485 naissance + 13
         selecteur_.ajouterDeclencheur(majoThierry)
         # majorité de Clodomir
-        majoClodomir = dec_clo.DecVaubanU(proba.Proba(0.3, True), "majoClodomir", 508) # 495 naissance + 13
+        majoClodomir = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "majoClodomir", 9999999999999508) # 495 naissance + 13
         selecteur_.ajouterDeclencheur(majoClodomir)
         # majorité de Childebert
-        majoChildebert = dec_clo.DecVaubanU(proba.Proba(0.3, True), "majoChildebert", 510) # 497 naissance + 13
+        majoChildebert = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "majoChildebert", 9999999999999510) # 497 naissance + 13
         selecteur_.ajouterDeclencheur(majoChildebert)
         # majorité de Clotaire
-        majoClotaire = dec_clo.DecVaubanU(proba.Proba(0.3, True), "majoClotaire", 511) # 498 naissance + 13
+        majoClotaire = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "majoClotaire", 9999999999999511) # 498 naissance + 13
         selecteur_.ajouterDeclencheur(majoClotaire)
 
 label majoClotaire:

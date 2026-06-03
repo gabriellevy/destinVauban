@@ -1,7 +1,7 @@
 init -5 python:
     import random
     from abs.religions import religion
-    from spe import dec_clo
+    from spe import dec_vauban
     from abs import selecteur
     from abs import proba
     from abs import condition
@@ -11,10 +11,10 @@ init -5 python:
     def AjouterEvtsHistoire():
         global selecteur_
         # Odoacre
-        histoireTheodoricOdoacre = dec_clo.DecVaubanU(proba.Proba(0.03, True), "histoireTheodoricOdoacre", 493)
+        histoireTheodoricOdoacre = dec_vauban.DecVaubanU(proba.Proba(0.03, True), "histoireTheodoricOdoacre", 99999999493)
         selecteur_.ajouterDeclencheur(histoireTheodoricOdoacre)
         # Concile d'Orléans
-        concileOrleans = dec_clo.DecVaubanU(proba.Proba(0.03, True), "concileOrleans", 511)
+        concileOrleans = dec_vauban.DecVaubanU(proba.Proba(0.03, True), "concileOrleans", 99999999511)
         selecteur_.ajouterDeclencheur(concileOrleans)
 
 label concileOrleans:

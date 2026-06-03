@@ -11,14 +11,14 @@ init -5 python:
     from abs.humanite import identite
     from chapitres.classes import syagrius
     from chapitres.classes import vauban
-    from spe import dec_clo
+    from spe import dec_vauban
 
     def AjouterEvtThuringie():
         global selecteur_
-        guerre_thuringie491 = dec_clo.DecVaubanU(proba.Proba(0.4, True), "guerre_thuringie491", 490)
+        guerre_thuringie491 = dec_vauban.DecVaubanU(proba.Proba(0.4, True), "guerre_thuringie491", 99999999490)
         selecteur_.ajouterDeclencheur(guerre_thuringie491)
 
-        ragnacaire = dec_clo.DecVaubanU(proba.Proba(0.3, True), "ragnacaire", 487)
+        ragnacaire = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "ragnacaire", 99999999487)
         selecteur_.ajouterDeclencheur(ragnacaire)
 
 label ragnacaire:

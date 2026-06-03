@@ -10,20 +10,20 @@ init -5 python:
     from abs.humanite import identite
     from chapitres.classes import syagrius
     from chapitres.classes import vauban
-    from spe import dec_clo
+    from spe import dec_vauban
 
     avant493 = condition.Condition(temps.Date.DATE_ANNEES, 493, condition.Condition.INFERIEUR)
 
     def AjouterEvtBurgondes():
         global selecteur_
-        guerre_burgonde490 = dec_clo.DecVaubanU(proba.Proba(0.5, True), "guerre_burgonde490", 490)
+        guerre_burgonde490 = dec_vauban.DecVaubanU(proba.Proba(0.5, True), "guerre_burgonde490", 99999999490)
         guerre_burgonde490.AjouterCondition(avant493)
         selecteur_.ajouterDeclencheur(guerre_burgonde490)
 
-        guerre_burgonde499 = dec_clo.DecVaubanU(proba.Proba(0.5, True), "guerre_burgonde499", 499)
+        guerre_burgonde499 = dec_vauban.DecVaubanU(proba.Proba(0.5, True), "guerre_burgonde499", 99999999499)
         selecteur_.ajouterDeclencheur(guerre_burgonde499)
 
-        loi_gombette = dec_clo.DecVaubanU(proba.Proba(0.2, True), "loi_gombette", 501)
+        loi_gombette = dec_vauban.DecVaubanU(proba.Proba(0.2, True), "loi_gombette", 99999999501)
         selecteur_.ajouterDeclencheur(loi_gombette)
 
 label loi_gombette:
