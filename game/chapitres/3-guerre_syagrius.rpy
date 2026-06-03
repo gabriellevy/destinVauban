@@ -150,7 +150,7 @@ label invasion_syagrius:
     jump bataille_soisson
 
 label bataille_soisson:
-    scene bg francs
+    scene bg morvan
     with dissolve
     $ puissanceArmeeSyagrius = situation_.GetValCaracInt(syagrius.Syagrius.C_MILITAIRE)
     "{b}Bataille de Soissons.{/b}"
@@ -219,7 +219,7 @@ label bataille_soisson:
     jump bataille_soisson_2
 
 label bataille_soisson_2:
-    scene bg francs
+    scene bg morvan
     with dissolve
     $ puissanceArmeeSyagrius = situation_.GetValCaracInt(syagrius.Syagrius.C_MILITAIRE)
     $ a_convaincu_chararic = situation_.GetValCaracBool("a_convaincu_chararic")

@@ -1,7 +1,5 @@
-
-
 label intro:
-    scene bg francs
+    scene bg morvan
     with dissolve
     show screen valeurs_traits
     "Nous sommes en 1620. Vous êtes Vauban, fils du glorieux roi des francs Chilpéric."

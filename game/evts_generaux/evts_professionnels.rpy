@@ -112,7 +112,7 @@ label entrainementPolitique:
 
 label entrainementGuerrier:
     # s'entraîne au combat
-    scene bg francs
+    scene bg morvan
     with dissolve
     $ niveauExpertise = situation_.GetValCaracInt("entrainementGuerrierNiv")
     if niveauExpertise == 0:
