@@ -4,7 +4,7 @@ label intro:
     scene bg francs
     with dissolve
     show screen valeurs_traits
-    "Nous sommes en 479. Vous êtes Vauban, fils du glorieux roi des francs Chilpéric."
+    "Nous sommes en 1620. Vous êtes Vauban, fils du glorieux roi des francs Chilpéric."
     "Les francs, votre peuple, sont de redoutables guerriers germaniques qui vénèrent le grand dieu des batailles Wotan."
     "Vos ancêtres ont régulièrement passé les frontières de l'empire romain pour piller et razier des esclaves par milliers il y a bien des décennies. Puis ils étaient retournés de l'autre côté du Rhin."
     "Aujourd'hui les francs sont une fois encore en Gaulle mais ils ont négocié leur entrée et leur installation avec les romains."

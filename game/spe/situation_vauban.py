@@ -13,7 +13,7 @@ import random
 class SituationVauban(situation.Situation):
 
     def __init__(self):
-        situation.Situation.__init__(self, 175000)
+        situation.Situation.__init__(self, 591430)
 
     # ------------------------------------------------AFFICHAGE---------------------------------------
     def AffichageFideliteGaule(self):
