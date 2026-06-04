@@ -22,7 +22,7 @@ class PortraitRoiVauban(portrait.Portrait):
         portraits = []
         portraitCourant = situation.GetValCarac(portrait.Portrait.C_PORTRAIT)
 
-        if nom == vauban.Vauban.C_NOM_CLOVIS:
+        if nom == vauban.Vauban.C_NOM_VAUBAN:
             if ageAnnees >= 30 and ageAnnees <= 60:
                 portraits.append("images/portraits/vauban30_60.png")
             if ageAnnees >= 16 and ageAnnees <= 30:

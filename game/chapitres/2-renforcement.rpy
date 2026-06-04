@@ -79,6 +79,8 @@ label mort_euric:
     $ situation_.SetValCarac("euricMort", 1)
     jump choixAttaqueDuRoyaume
 
+'''
+exemple d'événement répétitif complexe à garder cmme exemple en attendant d'en avoir fait un dans ce projet
 label miner_le_royaume:
     $ AfficherCarteActuelle()
     with dissolve
@@ -131,9 +133,9 @@ label miner_le_royaume:
             "Sans doute pensent-ils pouvoir plus facilement vous convertir, vous et vos hommes. Il est vrai que vous les écoutez poliment et êtes souvent touché par leurs arguments religieux."
             "Quoiqu'il en soit, si vous envahissez le royaume ils pousseront le peuple à vous soutenir et à abandonner Syagrius."
             $ RetirerACarac(syagrius.Syagrius.C_STABILITE, 2)
-            $ AjouterACarac(vauban.Vauban.C_CHRISTIANISME, 1)
             $ situation_.SetValCarac("a_contacte_eveque", 1)
             jump fin_cycle
         "Vous contenter d'attendre le moment opportun.":
             jump fin_cycle
     jump fin_cycle
+'''

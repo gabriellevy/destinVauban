@@ -24,6 +24,7 @@ init -5 python:
         création d'un perso qui a de très fortes chances de devenir aventurier, conquistador,
         bandit peut-être
         """
+        # A FAIRE : changer tout ça, ce n'est ni sa personnalité ni ses caracs
         situation[trait.Violence.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Opportunisme.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Assurance.NOM] = trait.Trait.SEUIL_A_EXTREME
@@ -42,11 +43,12 @@ init -5 python:
         situation[metier.Politique.NOM] = trait.Trait.SEUIL_A
         situation[metier.Guerrier.NOM] = trait.Trait.SEUIL_A
         situation[metier.Chasseur.NOM] = trait.Trait.SEUIL_A
+        situation[metier.Stratege.NOM] = trait.Trait.SEUIL_A
 
         # caracs spécifiques
         situation[vauban.Vauban.C_CHRISTIANISME] = 0
         situation[vauban.Vauban.C_USURPATION] = 0
-        situation[vauban.Vauban.C_MILITAIRE] = 0
+        situation[vauban.Vauban.C_MILITAIRE] = 0 # pas d'armée par défaut
         situation.SetValCarac(religion.Religion.C_RELIGION, religion.Paien.NOM)
         situation.SetValCarac(trait.Gloire.NOM, 0)
 
@@ -58,7 +60,7 @@ init -5 python:
 
         # quartierDeDepart = situation.collectionQuartiers.getQuartierAleatoire(True)
         # situation.SetCarac(quartier.Quartier.C_QUARTIER, quartierDeDepart.nom_)
-        situation[identite.Identite.C_NOM] = vauban.Vauban.C_NOM_CLOVIS
+        situation[identite.Identite.C_NOM] = vauban.Vauban.C_NOM_VAUBAN
 
         situation[vauban.Vauban.CARTE_ACTUELLE] = "bg carte481"
         return

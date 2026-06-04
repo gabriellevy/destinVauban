@@ -1,9 +1,15 @@
 class Vauban:
     # caracs personnelles spécifiques de Vauban
+    # traits utilisés (dans abs.humanite.trait):
+    # Gloire
+    # Richesse
+    # métiers utilisés (dans abs.humanite.metier):
+    # ?????
     C_CHRISTIANISME = u"Foi chrétienne" # (de Vauban)
 
-    # et de son royaume mises en place en début de partie
+    # de son armée quand il est en campagne
     C_MILITAIRE = u"Puissance de l'Armée"
+
     # C_USURPATION plus c'est élevé plus Vauban risque d'être chassé du pouvoir => cf evts_usurpation.rpy
     # 0 ou moins = aucun danger
     # 1 à 2 tensions
@@ -18,7 +24,7 @@ class Vauban:
     C_LOI_SALIQUE = u"Loi salique" # 1 si la loi salique a été promulguée
 
     # personnages
-    C_NOM_CLOVIS = u"Vauban"
+    C_NOM_VAUBAN = u"Vauban"
     C_NOM_BASINE = u"Basine de Thuringe"
     C_NOM_CHILDERIC = u"Childéric"
 
@@ -37,9 +43,3 @@ class Vauban:
 
     # MONDE
     CARTE_ACTUELLE = u"Carte actuelle" # adresse de l'image de la carte représentant le royaume actuelle de Vauban (mise à jour selon les conquêtes)
-
-    # traits utilisés (dans abs.humanite.trait):
-    # Gloire
-    # Richesse
-    # métiers utilisés (dans abs.humanite.metier):
-    # ?????
