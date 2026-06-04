@@ -11,31 +11,12 @@ init -5 python:
 
     def AjouterEvtsFamille():
         global selecteur_
-        # majorité de Thierry
-        majoThierry = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "majoThierry", 9999999999999498) # 485 naissance + 13
-        selecteur_.ajouterDeclencheur(majoThierry)
-        # majorité de Clodomir
-        majoClodomir = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "majoClodomir", 9999999999999508) # 495 naissance + 13
-        selecteur_.ajouterDeclencheur(majoClodomir)
-        # majorité de Childebert
-        majoChildebert = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "majoChildebert", 9999999999999510) # 497 naissance + 13
-        selecteur_.ajouterDeclencheur(majoChildebert)
-        # majorité de Clotaire
-        majoClotaire = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "majoClotaire", 9999999999999511) # 498 naissance + 13
-        selecteur_.ajouterDeclencheur(majoClotaire)
+        # naissance de Charlotte
+        dateNbJours = 5*30 + 1661 * 365 + 1 # juin 1661
+        naissanceCharlotte = dec_vauban.DecVaubanU(proba.Proba(10, True), "naissanceCharlotte", dateNbJours)
+        selecteur_.ajouterDeclencheur(naissanceCharlotte)
 
-label majoClotaire:
-    "Votre fils Clotaire a 13 ans. Ce n'est plus un enfant, vous lui remettez ses armes avec fierté. Bientôt il sera un grand meneur d'hommes."
-    jump fin_cycle
-
-label majoChildebert:
-    "Votre fils Childebert a 13 ans. Ce n'est plus un enfant, vous lui remettez ses armes avec fierté. Bientôt il sera un grand meneur d'hommes."
-    jump fin_cycle
-
-label majoThierry:
-    "Votre fils Thierry a 13 ans. Ce n'est plus un enfant, vous lui remettez ses armes avec fierté. Bientôt il sera un grand meneur d'hommes."
-    jump fin_cycle
-
-label majoClodomir:
-    "Votre fils Clodomir a 13 ans. Ce n'est plus un enfant, vous lui remettez ses armes avec fierté. Bientôt il sera un grand meneur d'hommes."
+label naissanceCharlotte:
+    scene bg naissance
+    "[situation_.AffichageDate()] : Votre fille Charlotte vient de naître."
     jump fin_cycle

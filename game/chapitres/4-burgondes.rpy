@@ -34,7 +34,7 @@ label loi_gombette:
     jump fin_cycle
 
 label guerre_burgonde499:
-    play music guerre1 noloop
+    # play music guerre1 noloop
     $ AfficherCarteActuelle()
     show gondebaud at right
     with dissolve
@@ -48,7 +48,7 @@ label guerre_burgonde499:
     jump fin_cycle
 
 label guerre_burgonde490:
-    play music guerre1 noloop
+    # play music guerre1 noloop
     $ AfficherCarteActuelle()
     show gondebaud at right
     with dissolve

@@ -13,7 +13,8 @@ import random
 class SituationVauban(situation.Situation):
 
     def __init__(self):
-        situation.Situation.__init__(self, 591430)
+        dateNbJours = 4*30 + 1646 * 365 + 1 # 1er mai 1633 + 13
+        situation.Situation.__init__(self, dateNbJours)
 
     # ------------------------------------------------AFFICHAGE---------------------------------------
     def AffichageArmee(self):

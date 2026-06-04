@@ -22,7 +22,7 @@ init -5 python:
         selecteur_.ajouterDeclencheur(ragnacaire)
 
 label ragnacaire:
-    play music guerre1 noloop
+    # play music guerre1 noloop
     $ puissanceArmeeRagnacaire = 4
     "Ragnacaire est un roi faible car ses débauches, qui vont jusqu'à l'inceste, le font détester même par ses propres hommes."
     $ testCombat = testDeCarac.TestDeCarac([vauban.Vauban.C_MILITAIRE, metier.Stratege.NOM], puissanceArmeeRagnacaire, situation_)
@@ -66,7 +66,7 @@ label ragnacaire:
     jump fin_cycle
 
 label guerre_thuringie491:
-    play music guerre1 noloop
+    # play music guerre1 noloop
     $ situation_.SetValCarac(vauban.Vauban.C_STATUT_CHARARIC, vauban.Vauban.CHARARIC_ROI)
     $ puissanceArmeeChararic = 4
     "La Thuringie est une nuisance certes faible mais dangereuse car sur vos arrières."

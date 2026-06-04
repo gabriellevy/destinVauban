@@ -6,6 +6,7 @@ from abs import condition
 
 class DecVauban(declencheur.Declencheur):
 
+    # dateMin en jours
     def __init__(self, aproba, labelGoTo, dateMin):
         """
         cette version du délencheur inclut 1 paramètre utile en mode "historique" :
@@ -14,7 +15,7 @@ class DecVauban(declencheur.Declencheur):
         declencheur.Declencheur.__init__(self, aproba, labelGoTo)
         self.selecteur_ = None # référence vers le sélecteur qui contient ce déclencheur
 
-        conditionDate = condition.Condition(temps.Date.DATE_ANNEES, dateMin, condition.Condition.SUPERIEUR_EGAL)
+        conditionDate = condition.Condition(temps.Date.DATE, dateMin, condition.Condition.SUPERIEUR_EGAL)
         self.AjouterCondition(conditionDate)
 
 class DecVaubanU(DecVauban):
@@ -24,7 +25,7 @@ class DecVaubanU(DecVauban):
 
     def __init__(self, aproba, labelGoTo, dateMin):
         """
-        identique à la version historique amis ne se déclenche qu'une fois maximum quoiqu'il arrive
+        identique à la version historique mais ne se déclenche qu'une fois maximum quoiqu'il arrive
         """
         DecVauban.__init__(self, aproba, labelGoTo, dateMin)
 

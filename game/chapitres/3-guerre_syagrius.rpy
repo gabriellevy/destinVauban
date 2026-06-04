@@ -129,7 +129,7 @@ label consolidation_syagrius:
     jump fin_cycle
 
 label invasion_syagrius:
-    play music guerre1 noloop
+    # play music guerre1 noloop
     $ MiseEnPlaceGuerreSyagrius()
     "Votre armée est maintenant bien avancée en territoire ennemi et vous savez que Syagrius a fini de lever la sienne."
     menu:
