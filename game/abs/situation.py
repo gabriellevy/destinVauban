@@ -328,6 +328,9 @@ class Situation:
     #     if ( quartier.Quartier.C_QUARTIER not in self.caracs_):
     #         return u"Pas d'habitation !!"
     #     return self.caracs_[quartier.Quartier.C_QUARTIER]
+    
+    def AffichageMaitrise(self, nomMaitrise):
+        return self.collectionTraits[nomMaitrise].GetDescription(self)
 
     def AffichageReligion(self):
         if ( religion.Religion.C_RELIGION not in self.caracs_):

@@ -37,30 +37,11 @@ class SituationVauban(situation.Situation):
         if self.debug_:
             return u"{} ({})".format(str, val)
         return str
-
-    def AffichageReligion(self):
-        if self.GetValCarac(religion.Religion.C_RELIGION) == religion.Paien.NOM:
-            valPretre = self.GetValCaracInt(metier.Pretre.NOM)
-            strPretre = u""
-            if valPretre > 0:
-                strPretre = u" - Prêtre roi"
-            str =  u"Païen{}".format(strPretre)
-            if self.debug_:
-                str = u"{} ({})".format(str, self.caracs_[vauban.Vauban.C_CHRISTIANISME])
-            return str
-        if self.caracs_[religion.Religion.C_RELIGION] == religion.Christianisme.NOM:
-            if self.debug_:
-                return u"{} ({})".format(self.caracs_[religion.Religion.C_RELIGION], self.caracs_[vauban.Vauban.C_CHRISTIANISME])
-
-        return self.caracs_[religion.Religion.C_RELIGION]
-
+    
     def AffichageGloire(self):
         if self.debug_:
             return u"Gloire : {}".format(val)
         return self.collectionTraits[trait.Gloire.NOM].GetDescription(self)
-    
-    def AffichageMaitrise(self, nomMaitrise):
-        return self.collectionTraits[nomMaitrise].GetDescription(self)
 
     def AffichageUsurpation(self):
         val = self.GetValCarac(vauban.Vauban.C_USURPATION)
