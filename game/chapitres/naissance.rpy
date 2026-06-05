@@ -37,6 +37,9 @@ init -5 python:
         situation[trait.Franchise.NOM] = trait.Trait.SEUIL_A_PAS
         situation[trait.Altruisme.NOM] = trait.Trait.SEUIL_A_PAS
 
+        # tmp : 
+        situation[trait.Equitation.NOM] = trait.TraitMaitrise.MAITRISE_EXPERT
+
         situation[metier.Metier.C_METIER] = u"Prince de sang"
 
         # compétences professionnelles
@@ -65,25 +68,7 @@ init -5 python:
         situation[vauban.Vauban.CARTE_ACTUELLE] = "bg carte481"
         return
 
-    def genererParents(situation):
-        pere = pnj_roi_vauban.GenererPNJPapaVauban(situation)
-        pere.ageJours = 43 * 12 *30 + 24
-        pere.prenom_ = vauban.Vauban.C_NOM_CHILDERIC
-        pere.nom_ = ""
-        pere.sexeMasculin_ = True
-        pere.portraitStr_ = "images/portraits/childeric.jpg"
-        situation.SetValCarac(pnj.Pnj.C_PERE, pere)
-
-        mere = pnj_roi_vauban.GenererPNJMamanVauban(situation)
-        mere.ageJours = 36 * 12 *30 + 297
-        mere.prenom_ = vauban.Vauban.C_NOM_BASINE
-        mere.nom_ = ""
-        mere.sexeMasculin_ = False
-        mere.portraitStr_ = "images/portraits/basine.jpg"
-        situation.SetValCarac(pnj.Pnj.C_MERE, mere)
-
 label naissance:
     $ genererDateNaissance(situation_, 13)
     $ genererVauban(situation_, traits_)
-    $ genererParents(situation_)
     jump intro

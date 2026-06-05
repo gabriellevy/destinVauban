@@ -42,8 +42,6 @@ label avenement:
     # play music roi_mort noloop
     # A FAIRE : trouver un fond pour le couronnement
     show screen valeurs_traits
-    $ childeric = situation_.GetValCarac(pnj.Pnj.C_PERE)
-    $ childeric.Tuer()
     # enterrement de Childéric
     "Votre glorieux père Childéric vient de mourir."
     "Son enterrement est celui du grand roi guerrier invaincu qu'il est. Il porte son manteau pourpre de général romain tenu par une fibule d'or, au doigt son anneau qui lui servait à sceller les actes et porte l'inscription : Childéricus rex."

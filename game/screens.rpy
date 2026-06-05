@@ -1557,12 +1557,12 @@ screen valeurs_traits():
     $ strGloire = situation_.AffichageGloire()
     $ strPossessions = situation_.AffichagePossessions()
     $ adressePortrait = situation_.DeterminerPortrait()
-    $ strAffichagePortraitPere = situation_.AffichagePortraitPere()
-    $ strAffichagePere = situation_.AffichagePere()
-    $ strAffichagePortraitMere = situation_.AffichagePortraitMere()
-    $ strAffichageMere = situation_.AffichageMere()
     $ strArmee = situation_.AffichageArmee()
     $ tableauAffichageAmoureuses = situation_.AffichageAmoureuses()
+
+    # détail maîtrises
+    $ strEquitation = situation_.AffichageMaitrise(trait.Equitation.NOM)
+
     frame:
         xpos 5 ypos 5
         vbox:
@@ -1588,15 +1588,8 @@ screen valeurs_traits():
             #    text _(u"[strMetier]")
             #elif interfaceMode_ == 4: # Possessions
             #    text _(u"[strPossessions]")
-            elif interfaceMode_ == 1: # Famille
-                text _(" Père : ")
-                hbox:
-                    add "[strAffichagePortraitPere]" size(147, 164)
-                    text _(u"[strAffichagePere]") yalign 0.5
-                text _("\n Mère : ")
-                hbox:
-                    add "[strAffichagePortraitMere]" size(147, 164)
-                    text _(u"[strAffichageMere]") yalign 0.5
+            elif interfaceMode_ == 1: # Détail des  caracs (=environ debug)
+                text _(u" [strEquitation]")
             #elif interfaceMode_ == 6: # les amoureuses
             #    for amoureuse in tableauAffichageAmoureuses:
             #        hbox:

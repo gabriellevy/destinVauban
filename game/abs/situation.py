@@ -295,22 +295,6 @@ class Situation:
             return nbAnnees
         return 0
 
-    def AffichagePortraitPere(self):
-        # père
-        str = u""
-        pere = self.GetValCarac(pnj.Pnj.C_PERE)
-        if isinstance(pere, pnj.Pnj) :
-            return pere.portraitStr_
-        return ""
-
-    def AffichagePortraitMere(self):
-        # mère
-        str = u""
-        mere = self.GetValCarac(pnj.Pnj.C_MERE)
-        if isinstance(mere, pnj.Pnj) :
-            return mere.portraitStr_
-        return ""
-
     def AffichageAmoureuses(self):
         """
         génère un tableau qui contient les éléments affichables du pnj
@@ -324,22 +308,6 @@ class Situation:
                         affichage = affichagePortrait.AffichagePortrait(amoureuse)
                         affichageAmoureuses.append(affichage)
         return affichageAmoureuses
-
-    def AffichagePere(self):
-        # père
-        str = u""
-        pere = self.GetValCarac(pnj.Pnj.C_PERE)
-        if isinstance(pere, pnj.Pnj) :
-            str = u"{}".format(pere)
-        return str
-
-    def AffichageMere(self):
-        # mère
-        str = u""
-        mere = self.GetValCarac(pnj.Pnj.C_MERE)
-        if isinstance(mere, pnj.Pnj) :
-            str = u"{}".format(mere)
-        return str
 
     def AffichageRichesse(self):
         if ( trait.Richesse.NOM not in self.caracs_):

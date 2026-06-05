@@ -58,6 +58,9 @@ class SituationVauban(situation.Situation):
         if self.debug_:
             return u"Gloire : {}".format(val)
         return self.collectionTraits[trait.Gloire.NOM].GetDescription(self)
+    
+    def AffichageMaitrise(self, nomMaitrise):
+        return self.collectionTraits[nomMaitrise].GetDescription(self)
 
     def AffichageUsurpation(self):
         val = self.GetValCarac(vauban.Vauban.C_USURPATION)
@@ -103,40 +106,6 @@ class SituationVauban(situation.Situation):
         portraitStr = portr.DeterminerPortraitPersoPrincipal(self, True)
         self.SetCarac(portrait.Portrait.C_PORTRAIT, portraitStr)
         return self.GetValCarac(portrait.Portrait.C_PORTRAIT)
-
-    # ------------------------------------------------- PNJ ---------------------------------------------------
-
-    def AffichagePortraitPere(self):
-        # père
-        str = u""
-        pere = self.GetValCarac(pnj.Pnj.C_PERE)
-        if isinstance(pere, pnj_roi_vauban.PnjRoiVauban) :
-            return pere.portraitStr_
-        return ""
-
-    def AffichagePortraitMere(self):
-        # mère
-        str = u""
-        mere = self.GetValCarac(pnj.Pnj.C_MERE)
-        if isinstance(mere, pnj_roi_vauban.PnjRoiVauban) :
-            return mere.portraitStr_
-        return ""
-
-    def AffichagePere(self):
-        # père
-        str = u""
-        pere = self.GetValCarac(pnj.Pnj.C_PERE)
-        if isinstance(pere, pnj_roi_vauban.PnjRoiVauban) :
-            str = u"{}".format(pere)
-        return str
-
-    def AffichageMere(self):
-        # mère
-        str = u""
-        mere = self.GetValCarac(pnj.Pnj.C_MERE)
-        if isinstance(mere, pnj_roi_vauban.PnjRoiVauban) :
-            str = u"{}".format(mere)
-        return str
 
     # -------------------------------------------------- temps -------------------------------------------------
 

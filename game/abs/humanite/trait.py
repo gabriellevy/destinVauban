@@ -102,7 +102,7 @@ class TraitTernaire(Trait):
         else:
             return Trait.SEUIL_A
 
-# Trit graduel == compétence qui va de 1 à 100
+# Trait graduel == compétence qui va de 1 à 100
 class TraitGraduel(Trait):
 
     NOM = u"TraitGraduel"
@@ -123,6 +123,51 @@ class TraitGraduel(Trait):
             return Trait.SEUIL_A
         else:
             return Trait.SEUIL_A_EXTREME # douteux que ce soit une bonne idée comme valeur de départ
+
+# Trait représentant la maîtrise d'un domaine particulier de 0 (normal, ne connaît pas, à 3, maîtrise suprême)
+class TraitMaitrise(Trait):
+    # seuils de maîtrises
+    MAITRISE_A_PAS = 0
+    MAITRISE_A = 1 # se débrouille
+    MAITRISE_EXPERT = 2 # professionnel exceptionnel
+    MAITRISE_LEGENDAIRE = 3 # Maître légendaire, sait tout sur tout
+
+    NOM = u"TraitMaitrise"
+
+    def GetDescription(self, situation):
+        """
+        Mot décrivant le personnage dans ce trait particulier
+        """
+        return u"Description TraitMaitrise" # ATTENTION ACCENTS : mettre 'u' devant les string à accents pour utiliser le mode unicode
+
+    def GetValeurALaNaissance(self):
+        return 0
+
+class Equitation(TraitMaitrise):
+
+    NOM = u"Équitation"
+
+    def __init__(self):
+        self.eTrait_ = Equitation.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Maîtrise : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == TraitMaitrise.MAITRISE_A_PAS:
+            return u"Ne sait pas monter à cheval"
+        elif val == TraitMaitrise.MAITRISE_A:
+            return u"Cavalier correct"
+        elif val == TraitMaitrise.MAITRISE_EXPERT:
+            return u"Bon cavalier"
+        elif val == TraitMaitrise.MAITRISE_LEGENDAIRE:
+            return u"Cavalier exceptionnel"
+        else:
+            return u""
 
 class Cupidite(TraitTernaire):
 
@@ -1149,6 +1194,8 @@ class CollectionTraits:
         self.SetTrait(Rancune.NOM, rancune)
         serenite = Serenite()
         self.SetTrait(Serenite.NOM, serenite)
+        equitation = Equitation()
+        self.SetTrait(Equitation.NOM, equitation)
 
     def getTraitAleatoire(self):
         return random.choice(list(self.lTraits_.values()))
