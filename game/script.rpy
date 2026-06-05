@@ -39,6 +39,9 @@ init -1 python:
     from chapitres.classes import syagrius
     import random
 
+    # chapitres
+    AjouterEvtJeunesse()
+    # autres
     AjouterEvtsProfessionnels()
     AjouterEvtsRoi()
     AjouterEvtsUsurpation()

@@ -1579,17 +1579,15 @@ screen valeurs_traits():
                 text _(u"[strUsurp]")
                 text _(u"[strReligion]")
                 text _(u"[affDate]")
+            elif interfaceMode_ == 1: # Affichage des maîtrises
+                text _(u" [strEquitation]")
             #elif interfaceMode_ == 1: # traits
             #    text _(u"[descriptionTrait]")
-            #elif interfaceMode_ == 2: # royaume des francs
-            #    text _(u"[strArmee]")
             #elif interfaceMode_ == 3: # économie et compétences professionnelles
             #    text _(u"[strRichesse]")
             #    text _(u"[strMetier]")
             #elif interfaceMode_ == 4: # Possessions
             #    text _(u"[strPossessions]")
-            elif interfaceMode_ == 1: # Détail des  caracs (=environ debug)
-                text _(u" [strEquitation]")
             #elif interfaceMode_ == 6: # les amoureuses
             #    for amoureuse in tableauAffichageAmoureuses:
             #        hbox:

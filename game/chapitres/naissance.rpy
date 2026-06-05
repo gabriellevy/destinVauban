@@ -38,7 +38,7 @@ init -5 python:
         situation[trait.Altruisme.NOM] = trait.Trait.SEUIL_A_PAS
 
         # tmp : 
-        situation[trait.Equitation.NOM] = trait.TraitMaitrise.MAITRISE_EXPERT
+        # situation[trait.Equitation.NOM] = trait.TraitMaitrise.MAITRISE_EXPERT
 
         situation[metier.Metier.C_METIER] = u"Prince de sang"
 
