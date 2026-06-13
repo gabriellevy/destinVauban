@@ -245,8 +245,10 @@ label bataille_soisson_2:
     $ situation_.SetValCarac(vauban.Vauban.CARTE_ACTUELLE, "bg carte486")
     $ AfficherCarteActuelle()
     "Vous vous emparez d'une grande partie de son territoire et en particulier de Reims, Soissons et Paris."
-    jump vase_de_soissons
+    jump fin_cycle # vase_de_soissons
 
+'''
+A FAIRE : gardercet evt comme modèle d'evt complexe tant que nécessaire :
 label vase_de_soissons:
     "La ville de Soissons est pillée de fond en comble et vous en tirez, vous et vos hommes, de grandes richesses. En particulier du palais de Syagrius et des églises."
     "Une délégation de prêtres catholiques menés par un évèque vient cependant vous demander humblement de leur restituer un grand et magnifique vase sacré."
@@ -302,6 +304,7 @@ label vase_de_soissons:
     $ AfficherCarteActuelle()
     "Votre royaume est agrandi sans compter que sans Syagrius les terres vers l'ouest seront sans doute très peu défendues."
     jump fin_cycle
+'''
 
 label vase_de_soissons_le_retour:
     "Vous allez bientôt partir en expédition militaire pour éliminer des rebelles et vous passez en revue vos guerriers sur le champs de Mars."
