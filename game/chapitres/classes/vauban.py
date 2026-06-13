@@ -18,10 +18,11 @@ class Vauban:
     C_USURPATION = u"Risque d'ursupation"
     # $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
     # $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
-    # C_FIDELITE_GAULE = u"Fidélité des galloromains" # plus c'est élevé plus les galloromains sont fidèles à Vauban
+    # plus c'est élevé plus ss serfs sont fidèles à Vauban 
+    # A FAIRE : voire si ça vaut le coup de gérer ça sachant que sa femme gère son domaine
+    C_FIDELITE_SERFS = u"Fidélité des serfs" 
 
     # événements spéciaux
-    C_VASE_SOISSONS = u"Vase de soissons" # 1 si l'histoire réelle est bien suivie
     C_LOI_SALIQUE = u"Loi salique" # 1 si la loi salique a été promulguée
 
     # personnages

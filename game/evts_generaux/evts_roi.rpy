@@ -9,7 +9,7 @@ init -5 python:
     from abs.humanite import metier
     from chapitres.classes import vauban
 
-    # fideliteGauleMoinsQue0 = condition.Condition(vauban.Vauban.C_FIDELITE_GAULE, 0, condition.Condition.INFERIEUR)
+    # fideliteGauleMoinsQue0 = condition.Condition(vauban.Vauban.C_FIDELITE_SERFS, 0, condition.Condition.INFERIEUR)
     richessePlusQue0 = condition.Condition(trait.Richesse.NOM, 0, condition.Condition.SUPERIEUR)
     armeeMoinsQue2 = condition.Condition(vauban.Vauban.C_MILITAIRE, 2, condition.Condition.INFERIEUR)
     armeeMoinsQue5 = condition.Condition(vauban.Vauban.C_MILITAIRE, 2, condition.Condition.INFERIEUR)
@@ -73,7 +73,7 @@ init -5 python:
         # "Corrompre des nobles francs turbulents":
             # $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
         # "Organiser des jeux de cirque":
-            # $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+            # $ AjouterACarac(vauban.Vauban.C_FIDELITE_SERFS, 1)
     # jump fin_cycle
 
 '''
@@ -106,7 +106,7 @@ label revolte_impots:
 # label corruption:
     # scene bg cours_merovingienne
     # with dissolve
-    # $ testImpots = testDeCarac.TestDeCarac([metier.Politique.NOM, vauban.Vauban.C_FIDELITE_GAULE], 5, situation_)
+    # $ testImpots = testDeCarac.TestDeCarac([metier.Politique.NOM, vauban.Vauban.C_FIDELITE_SERFS], 5, situation_)
     # menu:
     #     " "
     #     "Administrer les Gaules [testImpots.affichage_]":
@@ -134,7 +134,7 @@ label recrutement:
 # label impots:
     # scene bg cours_merovingienne
     # with dissolve
-    # $ testImpots = testDeCarac.TestDeCarac([metier.Politique.NOM, vauban.Vauban.C_FIDELITE_GAULE], 5, situation_)
+    # $ testImpots = testDeCarac.TestDeCarac([metier.Politique.NOM, vauban.Vauban.C_FIDELITE_SERFS], 5, situation_)
     # menu:
     #     "Allez vous réussir à pousser les gaulois à vous payer des impôts ?"
     #     "[testImpots.affichage_]":
@@ -178,18 +178,18 @@ label antrustions:
     #     "Interdire le pillage sous peine de mort":
     #         "Les guerriers prennent très mal cet affront à la coutume. Ils doivent acheter et entretenir leur propre matériel. À quoi bon si ils ne peuvent pas se payer sur les vaincus ?"
     #         $ AjouterACarac(vauban.Vauban.C_USURPATION, 3)
-    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_SERFS, 2)
     #         jump fin_cycle
     #     "Réprimander les soldats":
     #         "Les guerriers prennent mal la réprimande. Ils doivent acheter et entretenir leur propre matériel. À quoi bon si ils ne peuvent pas se payer sur les vaincus ?"
     #         $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
-    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_SERFS, 1)
     #         jump fin_cycle
     #     "Le renvoyer sèchement. Vae Victis !":
-    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_SERFS, 1)
     #         jump fin_cycle
     #     "L'exécuter pour son insolence":
-    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
+    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_SERFS, 2)
     #         jump fin_cycle
 
     # jump fin_cycle
@@ -203,7 +203,7 @@ label antrustions:
     # menu:
     #     "Le réprimander publiquement":
     #         "Les galloromains apprécident de voir que leurs demandes sont entendues. Le comte [nomComte] n'ose plus les pressurer autant qu'avant."
-    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_SERFS, 1)
     #         $ RetirerACarac(trait.Richesse.NOM, 1)
     #         jump fin_cycle
 
@@ -211,18 +211,18 @@ label antrustions:
     #         "Le peuple est satisfait de voir son tourmenteur mort, mais les autres comtes sont terrifiés de voir que la fidélité envers vous ne leur garantit pas votre clémence."
     #         $ RetirerACarac(trait.Richesse.NOM, 1)
     #         $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
-    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_SERFS, 2)
     #         jump fin_cycle
 
     #     "le laisser agir à sa guise tant que les impôts entrent":
     #         "Le peuple est écrasé mais l'argent coule à flot."
     #         $ AjouterACarac(trait.Richesse.NOM, 1)
-    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 2)
+    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_SERFS, 2)
     #         jump fin_cycle
 
     #     "le remplacer discrètement":
     #         "Les galloromains apprécident de voir que leurs demandes sont entendues."
-    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_SERFS, 1)
     #         $ RetirerACarac(trait.Richesse.NOM, 1)
     #         jump nommageComte
     # jump fin_cycle
@@ -241,11 +241,11 @@ label antrustions:
     #         $ RetirerACarac(vauban.Vauban.C_USURPATION, 1)
     #         jump fin_cycle
     #     "[nomComte2], un gaulois aimé du peuple":
-    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         $ AjouterACarac(vauban.Vauban.C_FIDELITE_SERFS, 1)
     #         jump fin_cycle
     #     "[nomComte3], un affranchi malin et dévoué qui saura faire rentrer les impôts":
     #         "[nomComte3] est en effet doué et efficace mais il se fait vite détester par tout le royaume."
-    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_GAULE, 1)
+    #         $ RetirerACarac(vauban.Vauban.C_FIDELITE_SERFS, 1)
     #         $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
     #         $ AjouterACarac(trait.Richesse.NOM, 1)
     #         jump fin_cycle

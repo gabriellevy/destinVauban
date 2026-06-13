@@ -79,7 +79,7 @@ label mort_euric:
     jump choixAttaqueDuRoyaume
 
 '''
-exemple d'événement répétitif complexe à garder cmme exemple en attendant d'en avoir fait un dans ce projet
+exemple d'événement répétitif complexe à garder comme exemple en attendant d'en avoir fait un dans ce projet
 label miner_le_royaume:
     $ AfficherCarteActuelle()
     with dissolve

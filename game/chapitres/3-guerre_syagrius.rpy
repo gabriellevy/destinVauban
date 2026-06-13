@@ -20,8 +20,6 @@ init -5 python:
     syagriusPasCapture = condition.Condition(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.CAPTURE, condition.Condition.DIFFERENT)
     syagriusPasConsolide = condition.Condition("syagrius_consolide", 1, condition.Condition.DIFFERENT)
     syagriusConsolide = condition.Condition("syagrius_consolide", 1, condition.Condition.EGAL) # ancien territoire de syagrius bien contrôlé
-    # vase de soissons:
-    vaseSoissonsVengeance = condition.Condition(vauban.Vauban.C_VASE_SOISSONS, 1, condition.Condition.EGAL)
     def MiseEnPlaceGuerreSyagrius():
         global situation_
         situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.GUERRE)
@@ -32,10 +30,6 @@ init -5 python:
         combat_avant_garde.AjouterCondition(syagriusEnGuerre)
         combat_avant_garde.AjouterCondition(syagriusPasVaincu)
         selecteur_.ajouterDeclencheur(combat_avant_garde)
-
-        vase_de_soissons_le_retour = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "vase_de_soissons_le_retour", 99999999486)
-        vase_de_soissons_le_retour.AjouterCondition(vaseSoissonsVengeance)
-        selecteur_.ajouterDeclencheur(vase_de_soissons_le_retour)
 
         consolidation_syagrius = dec_vauban.DecVauban(proba.Proba(0.3, True), "consolidation_syagrius", 99999999492)
         consolidation_syagrius.AjouterCondition(syagriusVaincu)
@@ -305,45 +299,3 @@ label vase_de_soissons:
     "Votre royaume est agrandi sans compter que sans Syagrius les terres vers l'ouest seront sans doute très peu défendues."
     jump fin_cycle
 '''
-
-label vase_de_soissons_le_retour:
-    "Vous allez bientôt partir en expédition militaire pour éliminer des rebelles et vous passez en revue vos guerriers sur le champs de Mars."
-    "Ils sont responsables de l'achat et de l'entretien de leur équipement et savent qu'en temps de guerre vous avez droit de vie et de mort sur eux, aussi sont-ils d'une discipline à tout épreuve."
-    "Lors de l'inspection de la phalange vous reconnaissez le guerrier qui vous avait insulté lors du partage du butin de Soissons."
-    $ situation_.SetValCarac(vauban.Vauban.C_VASE_SOISSONS, 0)
-    menu:
-        "Vous préférez oublier et ne laissez rien paraître.":
-            jump fin_cycle
-        "Vous en profitez pour vous venger.":
-            "Vous vous adressez à lui :"
-            cl "Personne n'a apporté des armes aussi mal tenues que les tiennes, car ni ta lance, ni ton épée, ni ta hache ne sont en bon état."
-            "Et, saississant la hache de l'homme vous la jetez à terre. Mais alors que celui ci s'était un peu incliné pour la ramasser,"
-            menu:
-                "vous l'humiliez publiquement":
-                    "Vous le bousculez et le jetez au sol. L'homme est furieux mais se soumet en silence."
-                "Vous le tuez":
-                    "levant les mains vous lui envoyez votre propre hache dans la tête."
-                    cl "C'est ainsi que tu as fait à Soissons avec le vase."
-                    "Quand il fut mort vous ordonnâtes aux autres de se retirer. Ainsi vous leur inspirâtes une grande crainte."
-                    $ RetirerACarac(vauban.Vauban.C_USURPATION, 2)
-
-    jump fin_cycle
-
-label combat_avant_garde:
-    $ puissanceArmeeSyagrius = situation_.GetValCaracInt(syagrius.Syagrius.C_MILITAIRE)
-    $ testCombat = testDeCarac.TestDeCarac([vauban.Vauban.C_MILITAIRE], puissanceArmeeSyagrius, situation_)
-    menu:
-        "Votre avant-garde se heurte à une petite armée romaine."
-        "vos ordres sont d'éviter le combat":
-            "Vos cavaliers parviennent facilement à échapper aux romains lourds et malabiles."
-            jump fin_cycle
-        "Au combat ! [testCombat.affichage_]":
-            $ reussi = testCombat.TesterDifficulte(situation_)
-            if reussi:
-                "Vos hommes écrasent facilement ces mauvais militaires et pillent la région."
-                $ RetirerACarac(syagrius.Syagrius.C_STABILITE, 1)
-                $ AjouterACarac(syagrius.Syagrius.C_PILLAGE, 1)
-            else:
-                "Vos cavaliers sont incapables de briser la cohorte romaine et s'enfuient. C'est une défaite cuisante. Sans importance stratégique mais humiliante."
-                $ RetirerACarac(trait.Gloire.NOM, 1)
-            jump fin_cycle
