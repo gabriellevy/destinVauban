@@ -58,9 +58,6 @@ init -5 python:
         # famille
         situation.SetValCarac(vauban.Vauban.C_ALBOFLEDE, 1)
 
-        # légalisme
-        situation.SetValCarac(vauban.Vauban.C_LOI_SALIQUE, 1)
-
         # quartierDeDepart = situation.collectionQuartiers.getQuartierAleatoire(True)
         # situation.SetCarac(quartier.Quartier.C_QUARTIER, quartierDeDepart.nom_)
         situation[identite.Identite.C_NOM] = vauban.Vauban.C_NOM_VAUBAN

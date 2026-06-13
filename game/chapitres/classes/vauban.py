@@ -23,7 +23,6 @@ class Vauban:
     C_FIDELITE_SERFS = u"Fidélité des serfs" 
 
     # événements spéciaux
-    C_LOI_SALIQUE = u"Loi salique" # 1 si la loi salique a été promulguée
 
     # personnages
     C_NOM_VAUBAN = u"Vauban"

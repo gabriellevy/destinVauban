@@ -59,11 +59,6 @@ init -5 python:
         if situation_.GetValCaracInt(vauban.Vauban.C_ALBOFLEDE) == 1:
             evtsVides_.append("evtRien_alboflede")
 
-        # loi salique promulguée
-        if situation_.GetValCaracInt(vauban.Vauban.C_LOI_SALIQUE) == 1:
-            evtsVides_.append("evtRien_loi_salique_1")
-            evtsVides_.append("evtRien_loi_salique_2")
-
         # saison
         saison = situation.GetDateDuJour().GetSaison()
         if saison == temps.Date.PRINTEMPS:
@@ -103,22 +98,6 @@ init -5 python:
 
 label evtRien_ChristianismeMerovingien_1:
     "Les conciles désapprouvent que les fidèles chantent des chansons d'amour dans les églises. Ils imposent le chant des psaumes."
-    jump fin_cycle
-
-label evtRien_loi_salique_1:
-    $ femme = francs_.CreerPrenom(False)
-    $ homme = francs_.CreerPrenom(True)
-    "[femme] a été reconnue coupable de l'empoisonnement de [homme] par potion magique. Elle voulait apparemment le rendre stérile par vengeance."
-    "Il est en piteux état mais se remet, espérons qu'il pourra encore procréer. La coupable doit lui payer l'énorme somme de 200 sous stipulée dans la loi salique."
-    "Autrement il aura légalement le droit de se venger. Comme elle n'a pas les moyens de payer il inévitable que [homme] ou un membre de son clan se venge tôt ou tard."
-    jump fin_cycle
-
-label evtRien_loi_salique_2:
-    $ perso1 = francs_.CreerPrenom(True)
-    $ perso2 = francs_.CreerPrenom(True)
-    "[perso1] a coupé la main de [perso2] dans une rixe d'ivrognes. [perso2] est grandement diminué et sa famille a le droit d'invoquer la faide (vendetta) pour se venger."
-    "La loi salique stipule tout de même que [perso1] doit payer 100 sous de dédomagement et que si [perso2] accepte la faide est annulée."
-    "Comme [perso2] est diminué et n'a qu'une famille faible et peu nombreuse il préfère accepter le dédomagement."
     jump fin_cycle
 
 label evtRien_paien_Christianisme_1:
