@@ -16,27 +16,26 @@ init -5 python:
 
     def AjouterEvtsProfessionnels():
         global selecteur_
-        # entrainement guerrier
+        # entrainement guerrier A FAIRE : convertir au mode Vauban
         entrainementGuerrier = declencheur.Declencheur(proba.Proba(0.1, True), "entrainementGuerrier")
         entrainementGuerrier.AjouterCondition(estPasGuerrierNivExtreme)
         selecteur_.ajouterDeclencheur(entrainementGuerrier)
-        # entrainement politique
+        # entrainement politique A FAIRE : convertir au mode Vauban
         entrainementPolitique = declencheur.Declencheur(proba.Proba(0.06, True), "entrainementPolitique")
         entrainementPolitique.AjouterCondition(estPasPolitiqueNivExtreme)
         selecteur_.ajouterDeclencheur(entrainementPolitique)
-        # entrainement chasse
+        # entrainement chasse A FAIRE : convertir au mode Vauban
         entrainementChasse = declencheur.Declencheur(proba.Proba(0.04, True), "entrainementChasse")
         entrainementChasse.AjouterCondition(estPasGrandChasseur)
         selecteur_.ajouterDeclencheur(entrainementChasse)
-        # entrainement prêtre
+        # entrainement prêtre A FAIRE : convertir au mode Vauban
         entrainementPretre = declencheur.Declencheur(proba.Proba(0.04, True), "entrainementPretre")
         entrainementPretre.AjouterCondition(estPasGrandPretre)
         entrainementPretre.AjouterCondition(estPasChretien)
         selecteur_.ajouterDeclencheur(entrainementPretre)
-        # entrainement stratège/général
+        # entrainement stratège/général A FAIRE : convertir au mode Vauban
         entrainementStratege = declencheur.Declencheur(proba.Proba(0.1, True), "entrainementStratege")
         entrainementStratege.AjouterCondition(estPasStrategeNivExtreme)
-        entrainementStratege.AjouterCondition(estPasRoi) # c'est Childéric qui fait la leçon
         selecteur_.ajouterDeclencheur(entrainementStratege)
 
 label entrainementPretre:

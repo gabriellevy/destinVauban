@@ -42,6 +42,8 @@ init -5 python:
 
         situation[metier.Metier.C_METIER] = u"Prince de sang"
 
+        situation[vauban.Vauban.CHAPITRE] = 0
+
         # compétences professionnelles
         situation[metier.Politique.NOM] = trait.Trait.SEUIL_A
         situation[metier.Guerrier.NOM] = trait.Trait.SEUIL_A

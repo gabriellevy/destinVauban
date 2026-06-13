@@ -33,7 +33,6 @@ init -5 python:
         modifProbaAntrustion = modifProba.ModifProba(0.08, usurpationPlusQue4)
         probaAntrustion.ajouterModifProba(modifProbaAntrustion)
         antrustions = declencheur.Declencheur(probaAntrustion, "antrustions")
-        antrustions.AjouterCondition(estRoi)
         antrustions.AjouterCondition(usurpationPlusQue2)
         selecteur_.ajouterDeclencheur(antrustions)
         # recrutement
@@ -43,7 +42,6 @@ init -5 python:
         recrutement = declencheur.Declencheur(probarecrutement, "recrutement")
         recrutement.AjouterCondition(richessePlusQue0)
         recrutement.AjouterCondition(armeeMoinsQue5)
-        recrutement.AjouterCondition(estRoi)
         selecteur_.ajouterDeclencheur(recrutement)
         # impôts A FAIRE ?
         # impots = declencheur.Declencheur(proba.Proba(0.05, True), "impots")

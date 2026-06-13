@@ -12,15 +12,16 @@ init -5 python:
     ilYARisqueDUsurpation = condition.Condition(vauban.Vauban.C_USURPATION, 0, condition.Condition.SUPERIEUR)
     usurpationPlusQue2 = condition.Condition(vauban.Vauban.C_USURPATION, 2, condition.Condition.SUPERIEUR)
     usurpationPlusQue4 = condition.Condition(vauban.Vauban.C_USURPATION, 4, condition.Condition.SUPERIEUR)
+    # A FAIRE quand dirige des hommes ??
     def AjouterEvtsUsurpation():
         global selecteur_
         usurpation = declencheur.Declencheur(proba.Proba(0.07, True), "usurpation")
         usurpation.AjouterCondition(ilYARisqueDUsurpation)
-        usurpation.AjouterCondition(estRoi)
+        # usurpation.AjouterCondition(estRoi)
         selecteur_.ajouterDeclencheur(usurpation)
         # jalousie des francs
         jalousieFrancs = declencheur.Declencheur(proba.Proba(0.04, True), "jalousieFrancs")
-        jalousieFrancs.AjouterCondition(estRoi)
+        # jalousieFrancs.AjouterCondition(estRoi)
         # jalousieFrancs.AjouterCondition(fideliteGaulePlusQue3)
         selecteur_.ajouterDeclencheur(jalousieFrancs)
 

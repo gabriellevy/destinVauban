@@ -39,7 +39,6 @@ init -5 python:
         probaminer_le_royaume.ajouterModifProbaViaVals(-0.1, stabiliteSyagriusFaible)
         probaminer_le_royaume.ajouterModifProbaViaVals(-0.1, armeeSyagriusFaible)
         miner_le_royaume = declencheur.Declencheur(probaminer_le_royaume, "miner_le_royaume")
-        miner_le_royaume.AjouterCondition(estRoi)
         miner_le_royaume.AjouterCondition(syagriusPasEnGuerre)
         miner_le_royaume.AjouterCondition(syagriusPasVaincu)
         selecteur_.ajouterDeclencheur(miner_le_royaume)

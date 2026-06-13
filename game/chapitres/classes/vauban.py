@@ -1,4 +1,6 @@
 class Vauban:
+    CHAPITRE = u"Chapitre actuel"
+
     # caracs personnelles spécifiques de Vauban
     # traits utilisés (dans abs.humanite.trait):
     # Gloire

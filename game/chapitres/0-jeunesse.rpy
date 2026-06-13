@@ -1,4 +1,3 @@
-
 init -5 python:
     import random
     from abs import declencheur
@@ -17,7 +16,7 @@ init -5 python:
 
     def AjouterEvtJeunesse():
         global selecteur_
-        apprentissageEquitation = declencheur.Declencheur(proba.Proba(0.4, False), "apprentissageEquitation")
+        apprentissageEquitation = declencheur.Declencheur(proba.Proba(0.4), "apprentissageEquitation")
         apprentissageEquitation.AjouterCondition(equitation0)
         selecteur_.ajouterDeclencheur(apprentissageEquitation)
 
@@ -66,9 +65,7 @@ label intro:
     "Nous sommes en 1620. Vous êtes le jeune Sébastien Le Prestre."
     "Vous êtes de la petite noblesse des confins bourguignons et nivernais."
     "La région froide et assez montagneuse où vous êtes né s'appelle le Morvan, et c'est un rude pays."
-    #TMP / 
-    #jump fin_cycle
-    jump apprentissageEquitation
+    jump fin_cycle
 
 label apprentissageEquitation:
     scene bg morvan
