@@ -6,8 +6,7 @@ class Vauban:
     # Gloire
     # Richesse
     # métiers utilisés (dans abs.humanite.metier):
-    # ?????
-    C_CHRISTIANISME = u"Foi chrétienne" # (de Vauban)
+    # ????? A FAIRE : supprimer le concept de métier ? il a peu d'intérêt dans le nouveau système...
 
     # de son armée quand il est en campagne
     C_MILITAIRE = u"Puissance de l'Armée"

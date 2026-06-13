@@ -40,21 +40,11 @@ init -5 python:
         decision_mariage.AjouterCondition(gloireAuMoins5)
         decision_mariage.AjouterCondition(infos_sur_clotildeFaite)
         selecteur_.ajouterDeclencheur(decision_mariage)
-        # mariage
-        mariage = dec_vauban.DecVaubanU(proba.Proba(0.7, True), "mariage", 99999999492)
-        mariage.AjouterCondition(fiance_a_clotilde)
-        mariage.AjouterCondition(pas_marie_a_clotilde)
-        selecteur_.ajouterDeclencheur(mariage)
         # soutien de Clotilde
         soutienDeClotilde = declencheur.Declencheur(proba.Proba(0.1, True), "soutienDeClotilde")
         soutienDeClotilde.AjouterCondition(marie_a_clotilde)
         soutienDeClotilde.AjouterCondition(estPasChretien)
         selecteur_.ajouterDeclencheur(soutienDeClotilde)
-        # 1er enfant
-        enfant1 = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "enfant1", 99999999493)
-        enfant1.AjouterCondition(marie_a_clotilde)
-        enfant1.AjouterCondition(a0enfants)
-        selecteur_.ajouterDeclencheur(enfant1)
         # 2ème enfant
         enfant2 = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "enfant2", 99999999495)
         enfant2.AjouterCondition(marie_a_clotilde)
@@ -75,21 +65,6 @@ init -5 python:
         enfant5.AjouterCondition(marie_a_clotilde)
         enfant5.AjouterCondition(a4enfants)
         selecteur_.ajouterDeclencheur(enfant5)
-
-label enfant1:
-    show clotilde at right
-    with moveinright
-    "Joie ! Votre premier fils est né. Vous le nommez Ingomer, mer faisant référence à votre glorieux grand père Mérovée."
-    "Très peu de temps après, Clothilde organise son baptème à la foi catholique sans vous consulter."
-    "Elle décore somptueusement l'église de voilage et de tentures et fait tremper l'enfant dans l'eau selon sa coutume."
-    "Vous acceptez que la mère décide de ces choses. Surtout qu'elle avait peur que le petit erre éternellement dans les limbes si il n'était pas baptisé."
-    "Mais malheureusement le petit meurt peu après dans les vêtements blancs, ceux mêmes dans lesquels il avait été régénéré."
-    "Votre tristesse est grande mais plus grande encore est votre amertume."
-    cl "Si l'enfant avait été voué à mes dieux, il aurait vécu de toute façon ; mais maintenant il n'a pas pu vivre du tout, baptisé au nom de votre Dieu."
-    clot "Je rends grâce à Dieu tout puissant, créateur de toutes choses, qui ne m'a pas jugée complètement indigne puisqu'il a daigné accueillir dans son royaume celui qui a été conçu dans mon sein."
-    clot "Mon coeur n'est pas frappé de douleur pour cette cause, parce que je sais qu'il a été rappelé de ce monde alors qu'il était dans des vêtements blancs pour être nourri sous le regarde de Dieu."
-    $ RetirerACarac(vauban.Vauban.C_CHRISTIANISME, 1)
-    jump fin_cycle
 
 label enfant2:
     "Enfin ! Votre deuxième fils, Clodomir, est né."
@@ -114,43 +89,14 @@ label enfant5:
     "Votre fille Clothilde est née."
     jump fin_cycle
 
+'''
+démo tmp : arrivée d'image
 label soutienDeClotilde:
     show clotilde at right
     with moveinright
     "Par sa douceur, sa bonté et sa patience Clotilde adoucit vos dures journées de roi."
-    "Ses prières vous sont aussi d'un grand soulagement et plus le temps passe plus vous priez avec elle."
-    $ AjouterACarac(vauban.Vauban.C_CHRISTIANISME, 1)
     jump fin_cycle
-
-label mariage:
-    # scene bg tolbiac
-    # play music guerre2 noloop
-    $ situation_.SetValCarac(vauban.Vauban.C_MARIE_CLOTHILDE, 1)
-    "Gondebaud a tenu parole. Clotilde vous est envoyée sous bonne garde dans un char à boeufs avec robe et trousseau."
-    show clotilde at right
-    with dissolve
-    "Vous n'avez pas été trompé. Clotilde est aussi douce que belle et reste humble et plaisante malgré la situation difficile."
-    "Elle pourrait être brisée ou aigrie d'être donnée en mariage à un inconnu par son oncle Gondebaud qui a tué ses parents mais elle fait bonne figure."
-    "Comme le mariage est sensé avoir lieu bientôt elle se décide dès le lendemain de son arrivée à sortir de sa réserve pour vous demander la seule chose qui semble réellement l'inquiéter."
-    clot "Grand roi Vauban je suis très honorée de bientôt devenir votre épouse et je promets d'ors et déjà de vous aimer et honorer fidèlement."
-    clot "Néanmoins je dois confesser qu'une inquiétude me ronge. Je suis catholique et suis très peinée à l'idée d'être marié sans qu'un prêtre du Dieu unique officie."
-    clot "Accepteriez vous que nous nous marions selon les rites du catholicisme ?"
-    clot "Ou, sinon, puis-je espérer que les piliers les plus importants du mariage seront respectés ? Je veux parler de la monogamie et de l'indissolubilité."
-    menu:
-        "Hors de question. Vous serez mariés sous le patronage de Freya déesse de la fertilité.":
-            clot "Soit je vous obéirai et trouverai le réconfort dans la prière."
-            $ RetirerACarac(vauban.Vauban.C_CHRISTIANISME, 1)
-            jump mariage_paien
-        "Promettre la monogamie et l'indissolubilité":
-            clot "Merci grand roi de prendre mes sentiments en compte. Ces douces promesses fait déjà de notre mariage une cérémonie que Dieu approuvera."
-            jump mariage_paien
-        "Accepter de vous marier selon les rites catholiques":
-            clot "C'est trop d'honneur grand roi vous faites de moi la plus heureus des femmes."
-            "Bien que satisfaire Clotilde vous réchauffe le coeur, dès que la rumeur de ce mariage catholique se répand, la colère gronde parmi votre peuple."
-            $ AjouterACarac(vauban.Vauban.C_CHRISTIANISME, 3)
-            $ AjouterACarac(vauban.Vauban.C_USURPATION, 2)
-            jump mariage_catholique
-    jump fin_cycle
+'''
 
 label mariage_paien:
     "PAS FAIT : mariage païen avec Clotilde"

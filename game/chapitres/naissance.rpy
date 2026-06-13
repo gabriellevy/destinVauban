@@ -42,8 +42,6 @@ init -5 python:
 
         situation[metier.Metier.C_METIER] = u"Prince de sang"
 
-        situation[vauban.Vauban.CHAPITRE] = 0
-
         # compétences professionnelles
         situation[metier.Politique.NOM] = trait.Trait.SEUIL_A
         situation[metier.Guerrier.NOM] = trait.Trait.SEUIL_A
@@ -51,7 +49,7 @@ init -5 python:
         situation[metier.Stratege.NOM] = trait.Trait.SEUIL_A
 
         # caracs spécifiques
-        situation[vauban.Vauban.C_CHRISTIANISME] = 0
+        situation[vauban.Vauban.CHAPITRE] = 0
         situation[vauban.Vauban.C_USURPATION] = 0
         situation[vauban.Vauban.C_MILITAIRE] = 0 # pas d'armée par défaut
         situation.SetValCarac(religion.Religion.C_RELIGION, religion.Paien.NOM)

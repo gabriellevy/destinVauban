@@ -30,7 +30,6 @@ init -5 python:
 
         # selon religion
         religionActuelle = situation_.GetValCarac(religion.Religion.C_RELIGION)
-        valChrist = situation_.GetValCarac(vauban.Vauban.C_CHRISTIANISME)
         if religionActuelle == religion.Christianisme.NOM:
             # evts
             evtsVides_.append("evtRien_saints")
@@ -48,9 +47,6 @@ init -5 python:
             evtsVides_.append("evtRien_paien6")
             scenesParDefaut.append("bg chevauchee_paienne")
             musiquesAEnquiller.append("musique/Quite An Adventure.ogg")
-            if valChrist >= 8:
-                evtsVides_.append("evtRien_paien_Christianisme_1")
-                scenesParDefaut.append("bg crucifixion")
 
         # si gloire faible et pas marie
         marieAClothilde = situation_.GetValCarac(vauban.Vauban.C_MARIE_CLOTHILDE)

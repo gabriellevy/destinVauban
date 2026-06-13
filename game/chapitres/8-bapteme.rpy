@@ -14,7 +14,6 @@ init -5 python:
 
     auMoinsAnnee497 = condition.Condition(temps.Date.DATE_ANNEES, 497, condition.Condition.SUPERIEUR_EGAL)
     enDecembre = condition.Condition(temps.Date.MOIS_ACTUEL, 12, condition.Condition.EGAL)
-    foiSupCinq = condition.Condition(vauban.Vauban.C_CHRISTIANISME, 5, condition.Condition.SUPERIEUR) # considéré (pour l'instant) comme foi suffisante pour le baptème
 
     # événements liés à la conversion de Vauban puis à son baptème
     def AjouterEvtBapteme():
@@ -22,7 +21,6 @@ init -5 python:
         bapteme = declencheur.Declencheur(proba.Proba(1.0, False), "bapteme") # événement obligatoire en décembre
         bapteme.AjouterCondition(auMoinsAnnee497)
         bapteme.AjouterCondition(enDecembre)
-        bapteme.AjouterCondition(foiSupCinq)
         selecteur_.ajouterDeclencheur(bapteme)
         # A FAIRE : mort de Alboflède peut après le baptème et qu'elle soit devenue religieuse.
 

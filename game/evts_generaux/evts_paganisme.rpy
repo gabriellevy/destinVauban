@@ -94,7 +94,6 @@ label noyagePourAdultere:
         if religionActuelle == religion.Christianisme.NOM:
             "Cette exécution païenne heurte durement vos sentiments catholiques."
             "Certes vous devez respecter les croyances et coutumes de votre peuple mais même l'âme des pécheurs mérite un peu plus de dignité."
-            $ RetirerACarac(vauban.Vauban.C_CHRISTIANISME, 2)
             jump fin_cycle
         else:
             "Grâce à l'art du prêtre et au recueillement de l'assemblée cette dure coutume vous en apprend beaucoup sur la religion."
