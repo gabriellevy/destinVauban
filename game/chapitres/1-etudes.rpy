@@ -28,7 +28,7 @@ label debut_des_etudes:
     with dissolve
     show screen valeurs_traits
     "Vous commencez vos études."
-    $ situation[vauban.Vauban.CHAPITRE] = 1
+    $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 1)
 
     # avènement
     "Vous avez à peine 15 ans mais êtes déjà un adulte digne d'être roi. Vous portez fièrement vos cheveux longs, symbole de votre origine divine."

@@ -22,8 +22,8 @@ class SituationVauban(situation.Situation):
         # armée de vauban
         str = u""
         val = self.GetValCaracInt(vauban.Vauban.C_MILITAIRE)
-        if val < 0:
-            str = u"Armée insignifiante"
+        if val <= 0:
+            str = u"" # pas d'armée
         elif val <= 2:
             str = u"Armée faible"
         elif val <= 4:
