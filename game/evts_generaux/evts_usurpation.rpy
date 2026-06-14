@@ -34,7 +34,6 @@ label jalousieFrancs:
     jump fin_cycle
 
 label usurpation:
-    play music danger noloop
     # des nobles tentent de prendre le pouvoir du roi
     $ nbUsurpationsReussies = situation_.GetValCaracInt("nbUsurpationsReussies")
     # plus la gloire est élevée plus il y a de chances de surmonter l'usurpation

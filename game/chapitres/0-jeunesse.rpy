@@ -44,8 +44,11 @@ label apprentissageEnfance:
         "Que préférez vous faire pour vous amuser ?"
         "Dessiner":
             $ AjouterACarac(trait.Habilete.NOM, 1)
-        "Aller jouer dehors":
+        "Escalader les arbres":
             $ AjouterACarac(trait.Mouvement.NOM, 1)
+        "Jouer à cache cache":
+            $ AjouterACarac(trait.Perception.NOM, 1)
+            $ AjouterACarac(trait.Discretion.NOM, 1)
     jump fin_cycle
 
 label apprentissageEquitation:

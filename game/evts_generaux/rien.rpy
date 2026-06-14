@@ -11,7 +11,7 @@ init -5 python:
 
     def AjouterEvtsRien():
         global selecteur_, situation_
-        selecteurDEvenementVide = declencheur.Declencheur(1.0, "selecteurDEvenementVide")
+        selecteurDEvenementVide = declencheur.Declencheur(0.05, "selecteurDEvenementVide")
         selecteur_.ajouterDeclencheur(selecteurDEvenementVide)
 
     def LancerEvtVide(situation):

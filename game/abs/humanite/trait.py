@@ -1042,7 +1042,7 @@ class Mouvement(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val <= Trait.CARAC_NORMAL:
+        if val < Trait.CARAC_NORMAL:
             if val <= Trait.CARAC_FAIBLE:
                 return u"Lent et pataud"
             return u"Pataud"
@@ -1068,7 +1068,7 @@ class Habilete(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val <= Trait.CARAC_NORMAL:
+        if val < Trait.CARAC_NORMAL:
             if val <= Trait.CARAC_FAIBLE:
                 return u"Très maladroit"
             return u"Maladroit"
@@ -1076,6 +1076,58 @@ class Habilete(TraitGraduel):
             if val >= Trait.CARAC_EXCEPTIONNEL:
                 return u"Très habile"
             return u"Habile"
+        else:
+            return ""
+        
+class Perception(TraitGraduel):
+
+    NOM = u"Perception"
+
+    def __init__(self):
+        self.eTrait_ = Perception.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_NORMAL:
+            if val <= Trait.CARAC_FAIBLE:
+                return u"Myope"
+            return u"Peu attentif"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Très perceptif"
+            return u"perceptif"
+        else:
+            return ""
+        
+class Discretion(TraitGraduel):
+
+    NOM = u"Discrétion"
+
+    def __init__(self):
+        self.eTrait_ = Discretion.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_NORMAL:
+            if val <= Trait.CARAC_FAIBLE:
+                return u"Très facile à repérer"
+            return u"Facile à repérer"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Quasi invisible"
+            return u"Discret"
         else:
             return ""
 
@@ -1094,8 +1146,8 @@ class Charme(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
+        if val < Trait.SEUIL_A_PAS:
+            if val < Trait.SEUIL_A_PAS_EXTREME:
                 return u"Très Déplaisant"
             return u"Déplaisant"
         elif val >= Trait.CARAC_ELEVE:
@@ -1263,6 +1315,10 @@ class CollectionTraits:
         self.SetTrait(Eloquence.NOM, eloquence)
         intelligence = Intelligence()
         self.SetTrait(Intelligence.NOM, intelligence)
+        perception = Perception()
+        self.SetTrait(Perception.NOM, perception)
+        discretion = Discretion()
+        self.SetTrait(Discretion.NOM, discretion)
 
         # A FAIRE : voir ce que je garde ci après
         ruse = Ruse()

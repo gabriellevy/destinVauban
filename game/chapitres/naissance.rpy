@@ -26,6 +26,11 @@ init -5 python:
         # ------------ compétences de base brigandyne/Wh
         situation[trait.Mouvement.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Habilete.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Habilete.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Eloquence.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Intelligence.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Perception.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Discretion.NOM] = trait.Trait.CARAC_FAIBLE
 
         # A FAIRE : changer tout ça, ce n'est ni sa personnalité ni ses caracs
         situation[trait.Violence.NOM] = trait.Trait.SEUIL_A_EXTREME

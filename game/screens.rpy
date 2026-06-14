@@ -1560,12 +1560,6 @@ screen valeurs_traits():
     $ strArmee = situation_.AffichageArmee()
     $ tableauAffichageAmoureuses = situation_.AffichageAmoureuses()
 
-    # détail maîtrises et caracs
-    $ strEquitation = situation_.AffichageTrait(trait.Equitation.NOM)
-    $ strMathematiques = situation_.AffichageTrait(trait.Mathematiques.NOM)
-    $ strMouvement = situation_.AffichageTrait(trait.Mouvement.NOM)
-    $ strHabilete = situation_.AffichageTrait(trait.Habilete.NOM)
-
     frame:
         xpos 5 ypos 5
         vbox:
