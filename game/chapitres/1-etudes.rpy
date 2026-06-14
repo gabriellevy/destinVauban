@@ -46,6 +46,8 @@ label apprentissageMathematiques:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
     with dissolve
     "Vos études vous donnent une assez bonne teinture de mathématiques."
+    show screen valeurs_traits
+    "Vos études vous donnent de solides bases en mathématiques."
     $ AjouterACarac(trait.Mathematiques.NOM, 1)
     jump fin_cycle
 
