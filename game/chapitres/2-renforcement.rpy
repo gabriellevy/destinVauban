@@ -38,10 +38,10 @@ init -5 python:
         probaminer_le_royaume = proba.Proba(0.2, True)
         probaminer_le_royaume.ajouterModifProbaViaVals(-0.1, stabiliteSyagriusFaible)
         probaminer_le_royaume.ajouterModifProbaViaVals(-0.1, armeeSyagriusFaible)
-        miner_le_royaume = declencheur.Declencheur(probaminer_le_royaume, "miner_le_royaume")
-        miner_le_royaume.AjouterCondition(syagriusPasEnGuerre)
-        miner_le_royaume.AjouterCondition(syagriusPasVaincu)
-        selecteur_.ajouterDeclencheur(miner_le_royaume)
+        # miner_le_royaume = declencheur.Declencheur(probaminer_le_royaume, "miner_le_royaume")
+        # miner_le_royaume.AjouterCondition(syagriusPasEnGuerre)
+        # miner_le_royaume.AjouterCondition(syagriusPasVaincu)
+        # selecteur_.ajouterDeclencheur(miner_le_royaume)
 
         mort_euric = declencheur.Declencheur(proba.Proba(0.5, False), "mort_euric")
         mort_euric.AjouterCondition(auMoinsAnnee485)
@@ -80,6 +80,7 @@ label mort_euric:
 
 '''
 exemple d'événement répétitif complexe à garder comme exemple en attendant d'en avoir fait un dans ce projet
+A FAIRE : nettoyer ça une fois qu'un événement équivalent (avec modification de proba) aura été ajouté dans Vauban
 label miner_le_royaume:
     $ AfficherCarteActuelle()
     with dissolve

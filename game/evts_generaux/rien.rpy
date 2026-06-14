@@ -8,8 +8,6 @@ init -5 python:
     from abs import condition
     from abs.humanite import trait
     from abs.univers import temps
-    # from religions import religion
-    # from geographie import quartier
 
     def AjouterEvtsRien():
         global selecteur_, situation_
@@ -28,25 +26,10 @@ init -5 python:
         scenesParDefaut = []
         musiquesAEnquiller = []
 
-        # selon religion
-        religionActuelle = situation_.GetValCarac(religion.Religion.C_RELIGION)
-        if religionActuelle == religion.Christianisme.NOM:
-            # evts
-            evtsVides_.append("evtRien_saints")
-            evtsVides_.append("evtRien_ChristianismeMerovingien_1")
-            # images
-            scenesParDefaut.append("bg crucifixion")
-            # musiques
-            musiquesAEnquiller.append("musique/journeytoabsolution.ogg")
-        if religionActuelle == religion.Paien.NOM:
-            evtsVides_.append("evtRien_paien1")
-            evtsVides_.append("evtRien_paien2")
-            evtsVides_.append("evtRien_paien3")
-            evtsVides_.append("evtRien_paien4")
-            evtsVides_.append("evtRien_paien5")
-            evtsVides_.append("evtRien_paien6")
-            scenesParDefaut.append("bg chevauchee_paienne")
-            musiquesAEnquiller.append("musique/Quite An Adventure.ogg")
+        # religion
+        evtsVides_.append("evtRien_saints")
+        scenesParDefaut.append("bg crucifixion")
+        musiquesAEnquiller.append("musique/journeytoabsolution.ogg")
 
         # si gloire faible et pas marie
         marieAClothilde = situation_.GetValCarac(vauban.Vauban.C_MARIE_CLOTHILDE)
@@ -115,45 +98,6 @@ label evtRien_alamans:
     $ AfficherCarteActuelle()
     "Vous recevez régulièrement des rapports et des plaintes pour les exactions des alamans à l'est."
     "Les burgondes et les francs de l'Est les contiennent pour l'instant mais tôt ou tard il faudra les calmer."
-    jump fin_cycle
-
-label evtRien_paien1:
-    scene bg chevauchee_paienne
-    with dissolve
-    "Parfois vous vous demandez pourquoi l'empire romain qui battit autrefois les francs et même tous les peuples germains, subit maintenant tant de défaites."
-    "Certains disent que depuis que les romains sont devenus chrétiens et ont supprimé les autels de la déesse de la victoire au sénat, leurs dieux les ont abandonnés."
-    "Mais si cela est vrai, pourquoi les goths, qui ont abandonné Wotan et sont devenus chrétiens ariens, sont pourtant aujourd'hui les plus puissants de vos rivaux ?"
-    jump fin_cycle
-
-label evtRien_paien2:
-    scene bg chevauchee_paienne
-    with dissolve
-    "Chez les francs le roi reste seul sur son cheval blanc en première ligne au milieu de ses hommes à pied. Ainsi il inspire ses guerriers et prouve en s'exposant que Wotan le protège des traits ennemis."
-    jump fin_cycle
-
-label evtRien_paien3:
-    scene bg chevauchee_paienne
-    with dissolve
-    "Les chrétiens désapprouvent fermement l'incinération des défunts que vos francs pratiquent régulièrement. Vous ne comprenez guère leurs arguments."
-    jump fin_cycle
-
-label evtRien_paien4:
-    scene bg chevauchee_paienne
-    with dissolve
-    "Vous avez eu récemment une suite de coups du sort préocuppants. Ils pourrait s'agir de malédictions lancées par un de vos ennemis."
-    "Vous faites fabriquer des objets marqués de runes par vos forgerons et vos magiciens."
-    jump fin_cycle
-
-label evtRien_paien5:
-    scene bg chevauchee_paienne
-    with dissolve
-    "Les devins annoncent que cette année la fortune vous souriera."
-    jump fin_cycle
-
-label evtRien_paien6:
-    scene bg chevauchee_paienne
-    with dissolve
-    "C'est jeudi. Les dieux exigent que ce soit un jour férié."
     jump fin_cycle
 
 label evtRien1_automne:

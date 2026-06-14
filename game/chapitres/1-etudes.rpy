@@ -18,7 +18,7 @@ init -5 python:
 
     def AjouterEvtEtudes():
         global selecteur_
-        dateNbJours = 1643 * 365 + 1
+        dateNbJours = 1646 * 365 + 1 # 13 ans
         debut_des_etudes = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_des_etudes", dateNbJours)
         debut_des_etudes.AjouterCondition(estPasEtudiant)
         selecteur_.ajouterDeclencheur(debut_des_etudes)
@@ -27,7 +27,8 @@ label debut_des_etudes:
     scene bg priere
     with dissolve
     show screen valeurs_traits
-    "Vous commencez vos études."
+    "En tant qu'enfant de la noblesse il est indispensable que vous fassiez des études secondaires."
+    "Vous les commencez au collège de Semur parmi d'autres fils de nobles et officiers. Plus aussi quelques fils de marchands, laboureurs et artisans aisés. "
     $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 1)
 
     # avènement

@@ -30,7 +30,7 @@ label intro:
     "Nous sommes en 1620. Vous êtes le jeune Sébastien Le Prestre."
     "Vous êtes de la petite noblesse des confins bourguignons et nivernais."
     "La région froide et assez montagneuse où vous êtes né s'appelle le Morvan, et c'est un rude pays."
-    "Vous avez 10 ans, vous avez appris à lire, écrire et compter."
+    "Vous avez 11 ans, vous avez appris à lire, écrire et compter."
     "Vous êtes aussi instruit en religion car vous avez lu des {i}Vies de Saint{/i} et des {i}Maximes chrétiennes{/i}."
     jump apprentissageEquitation # tmp
     jump fin_cycle

@@ -46,6 +46,5 @@ label bapteme:
     "Et tout ça pour devenir le vénérateur d'un crucifixé, c'est à dire d'un dieu faible et méprisable."
     "Il va falloir toute votre autorité et votre ferveur pour les mener vers la véritable foi, pour leur bien comme pour le vôtre."
     $ SetValCarac(metier.Pretre.NOM, 0)
-    $ SetValCarac(religion.Religion.C_RELIGION, religion.Christianisme.NOM)
     $ AjouterACarac(vauban.Vauban.C_USURPATION, 2)
     jump fin_cycle

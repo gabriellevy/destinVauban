@@ -48,7 +48,7 @@ init -1 python:
     AjouterEvtsUsurpation()
     AjouterEvtEtudes()
     AjouterEvtsRien()
-    AjouterEvtRenforcement481_485()
+    # AjouterEvtRenforcement481_485()
     AjouterEvtGuerreSyagrius()
     AjouterEvtBurgondes()
     AjouterEvtsClothilde()
@@ -84,7 +84,7 @@ label debut_cycle:
     $ renpy.jump(prochainEvt)
 
 label fin_cycle:
-    # "Fin d'un cycle."
+    # Fin d'un cycle. remet tout à zéro avant d'en recommencer un
     # jump loi_gombette # tmp test
     
     # remise à None de toutes les variables globals de tests
@@ -105,9 +105,10 @@ label fin_cycle:
 
 label mort:
     menu:
-        "Fin de vie."
+        "Vous êtes mort."
         "ok":
             pass
+        # A FAIRE : comment quitter le jeu ??
     return
 
 label labelGoTo_pasFait:

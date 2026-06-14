@@ -71,33 +71,14 @@ label noyagePourAdultere:
                     menu:
                         "Si vous ordonnez l'interruption de l'exécution et une peine plus légère":
                             jump noyagePourAdultere_stop
-                        "Si vous laissez l'exécution se poursuivre":
-                            jump noyagePourAdultere_execution
                 "Si vous ordonnez l'interruption de l'exécution et une peine plus légère":
                     jump noyagePourAdultere_stop
-                "Si vous laissez l'exécution se poursuivre":
-                    jump noyagePourAdultere_execution
-        "Si vous laissez l'exécution se poursuivre":
-            jump noyagePourAdultere_execution
 
     label noyagePourAdultere_stop:
         "Le juge est outré par votre intervention mais est bien obligé de se soumettre à l'autorité du prince prêtre."
         "La condamnée est relâchée et vous remercie en pleurant de bonheur. Le mari lui-même est soulagé et vous remercie."
         "Le regard des guerriers francs est par contre sans ambiguïté : ils méprisent l'homme trompé et prennent votre générosité pour de la faiblesse."
         $ AjouterACarac(vauban.Vauban.C_USURPATION, 1)
-        jump fin_cycle
-
-    label noyagePourAdultere_execution:
-        "Le bourreau attache une pierre autour du cou de la condamnée et la pousse dans le marais."
-        "Elle se débat quelques secondes puis sombre en se lamentant. L'assemblée jette alors diverses pierres et fagots là où elle est sombée pour que son corps reste sous l'eau par laquelle elle sombrera jusqu'aux enfers où est sa place."
-        $ religionActuelle = situation_.GetValCarac(religion.Religion.C_RELIGION)
-        if religionActuelle == religion.Christianisme.NOM:
-            "Cette exécution païenne heurte durement vos sentiments catholiques."
-            "Certes vous devez respecter les croyances et coutumes de votre peuple mais même l'âme des pécheurs mérite un peu plus de dignité."
-            jump fin_cycle
-        else:
-            "Grâce à l'art du prêtre et au recueillement de l'assemblée cette dure coutume vous en apprend beaucoup sur la religion."
-            $ AjouterACarac(metier.Pretre.NOM, 1)
         jump fin_cycle
 
     jump fin_cycle
