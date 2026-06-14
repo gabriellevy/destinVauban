@@ -55,7 +55,6 @@ init -1 python:
     AjouterEvtBapteme()
     AjouterEvtsPaganisme()
     AjouterEvtThuringie()
-    AjouterEvtsChristianisme()
     AjouterEvtsSalique()
     AjouterEvtsHistoire()
     AjouterEvtsFamille()
@@ -65,6 +64,16 @@ init -1 python:
 # Le jeu commence ici
 label start:
     scene bg priere
+    # remise à None de toutes les variables globals de tests
+    $ _test_carac = None
+    $ _test_difficulte = None
+    $ _test_texte_menu = None
+    $ _test_texte_reussi = None
+    $ _test_texte_echoue = None
+    $ _test_action_reussi = None
+    $ _test_action_echoue = None
+    $ _test_label_reussi = None
+    $ _test_label_echoue = None
     # play music musique_menu
     queue music [ printemps, hiver, ete ] # pseudo liste de lecture temporaire
     jump naissance
@@ -77,6 +86,17 @@ label debut_cycle:
 label fin_cycle:
     # "Fin d'un cycle."
     # jump loi_gombette # tmp test
+    
+    # remise à None de toutes les variables globals de tests
+    $ _test_carac = None
+    $ _test_difficulte = None
+    $ _test_texte_menu = None
+    $ _test_texte_reussi = None
+    $ _test_texte_echoue = None
+    $ _test_action_reussi = None
+    $ _test_action_echoue = None
+    $ _test_label_reussi = None
+    $ _test_label_echoue = None
 
     $ situation_.TourSuivant()
 
