@@ -58,6 +58,11 @@ label apprentissageGeneral:
             $ AjouterACarac(trait.Eloquence.NOM, 1)
         "la logique et les raisonnements abstraits":
             $ AjouterACarac(trait.Intelligence.NOM, 1)
+        "l'espagnol":
+            $ AjouterACarac(trait.Espagnol.NOM, 1)
+        "la maîtrise des armes":
+            $ AjouterACarac(trait.ArmesCorpsACorps.NOM, 1)
+            $ AjouterACarac(trait.Tir.NOM, 1)
         
     jump fin_cycle
 

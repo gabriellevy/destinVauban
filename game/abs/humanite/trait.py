@@ -272,6 +272,28 @@ class Poliorcetique(TraitMaitrise):
             return u"Maître de l'Poliorcétique"
         else:
             return u""
+
+class Espagnol(TraitMaitrise):
+
+    NOM = u"Espagnol"
+
+    def __init__(self):
+        self.eTrait_ = Espagnol.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Maîtrise : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == TraitMaitrise.MAITRISE_A_PAS:
+            return u""
+        elif val >= TraitMaitrise.MAITRISE_A:
+            return u"Parle Espagnol"
+        else:
+            return u""
         
 class Cupidite(TraitTernaire):
 
@@ -603,6 +625,58 @@ class Intelligence(TraitGraduel):
         else:
             return ""
 
+class ArmesCorpsACorps(TraitGraduel):
+
+    NOM = u"Armes de Corps à Corps"
+
+    def __init__(self):
+        self.eTrait_ = ArmesCorpsACorps.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Très mauvais combattant"
+            return u"mauvais combattant"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Maître d'armes"
+            return u"Combattant exceptionnel"
+        else:
+            return ""
+        
+class Tir(TraitGraduel):
+
+    NOM = u"Tir"
+
+    def __init__(self):
+        self.eTrait_ = Tir.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Très mauvais tireur"
+            return u"mauvais tireur"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Tireur d'élite"
+            return u"Excellent tireur"
+        else:
+            return ""
+        
 class Eloquence(TraitGraduel):
 
     NOM = u"Éloquence"
@@ -1345,6 +1419,10 @@ class CollectionTraits:
         self.SetTrait(Perception.NOM, perception)
         discretion = Discretion()
         self.SetTrait(Discretion.NOM, discretion)
+        armesCorpsACorps = ArmesCorpsACorps()
+        self.SetTrait(ArmesCorpsACorps.NOM, armesCorpsACorps)
+        tir = Tir()
+        self.SetTrait(Tir.NOM, tir)
 
         # A FAIRE : voir ce que je garde ci après
         ruse = Ruse()
@@ -1425,6 +1503,8 @@ class CollectionTraits:
         self.SetTrait(Hydraulique.NOM, hydraulique)
         poliorcetique = Poliorcetique()
         self.SetTrait(Poliorcetique.NOM, poliorcetique)
+        espagnol = Espagnol()
+        self.SetTrait(Espagnol.NOM, espagnol)
 
     def getTraitAleatoire(self):
         return random.choice(list(self.lTraits_.values()))

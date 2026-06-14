@@ -31,6 +31,8 @@ init -5 python:
         situation[trait.Intelligence.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Perception.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Discretion.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.ArmesCorpsACorps.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Tir.NOM] = trait.Trait.CARAC_FAIBLE
 
         # A FAIRE : changer tout ça, ce n'est ni sa personnalité ni ses caracs
         situation[trait.Violence.NOM] = trait.Trait.SEUIL_A_EXTREME
