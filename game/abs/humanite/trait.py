@@ -221,6 +221,32 @@ class Fortification(TraitMaitrise):
         else:
             return u""
 
+class Hydraulique(TraitMaitrise):
+
+    NOM = u"Hydraulique"
+
+    def __init__(self):
+        self.eTrait_ = Hydraulique.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Maîtrise : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == TraitMaitrise.MAITRISE_A_PAS:
+            return u""
+        elif val == TraitMaitrise.MAITRISE_A:
+            return u"Notions en Hydraulique"
+        elif val == TraitMaitrise.MAITRISE_EXPERT:
+            return u"Expert en Hydraulique"
+        elif val == TraitMaitrise.MAITRISE_LEGENDAIRE:
+            return u"Maître de l'Hydraulique"
+        else:
+            return u""
+
 class Cupidite(TraitTernaire):
 
     NOM = u"Cupidité"
@@ -1285,6 +1311,8 @@ class CollectionTraits:
         self.SetTrait(Mathematiques.NOM, mathematiques)
         fortification = Fortification()
         self.SetTrait(Fortification.NOM, fortification)
+        hydraulique = Hydraulique()
+        self.SetTrait(Hydraulique.NOM, hydraulique)
 
     def getTraitAleatoire(self):
         return random.choice(list(self.lTraits_.values()))

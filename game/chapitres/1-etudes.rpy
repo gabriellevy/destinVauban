@@ -16,6 +16,7 @@ init -5 python:
     estEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.EGAL)
     mathematiques0 = condition.Condition(trait.Mathematiques.NOM, 0, condition.Condition.EGAL)
     fortification0 = condition.Condition(trait.Fortification.NOM, 0, condition.Condition.EGAL)
+    hydraulique0 = condition.Condition(trait.Hydraulique.NOM, 0, condition.Condition.EGAL)
 
     def AjouterEvtEtudes():
         global selecteur_
@@ -34,6 +35,11 @@ init -5 python:
         apprentissageFortification.AjouterCondition(estEtudiant)
         apprentissageFortification.AjouterCondition(fortification0)
         selecteur_.ajouterDeclencheur(apprentissageFortification)
+        
+        apprentissageHydraulique = declencheur.Declencheur(proba.Proba(0.1), "apprentissageHydraulique")
+        apprentissageHydraulique.AjouterCondition(estEtudiant)
+        apprentissageHydraulique.AjouterCondition(hydraulique0)
+        selecteur_.ajouterDeclencheur(apprentissageHydraulique)
 
 label apprentissageFortification:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
@@ -46,8 +52,6 @@ label apprentissageMathematiques:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
     with dissolve
     "Vos études vous donnent une assez bonne teinture de mathématiques."
-    show screen valeurs_traits
-    "Vos études vous donnent de solides bases en mathématiques."
     $ AjouterACarac(trait.Mathematiques.NOM, 1)
     jump fin_cycle
 
@@ -57,4 +61,11 @@ label debut_des_etudes:
     "En tant qu'enfant de la noblesse il est indispensable que vous fassiez des études secondaires."
     "Vous les commencez au collège de Semur parmi d'autres fils de nobles et officiers. Plus aussi quelques fils de marchands, laboureurs et artisans aisés. "
     $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 1)
+    jump fin_cycle
+
+label apprentissageHydraulique:
+    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
+    with dissolve
+    "Vos études vous donnent une assez bonne teinture d'hydraulique."
+    $ AjouterACarac(trait.Hydraulique.NOM, 1)
     jump fin_cycle
