@@ -22,7 +22,7 @@ init -5 python:
 
 # label pour inifier les tests de carac
 # Utilisation : il faut setter toutes les variables suivantes avec d'appeelr le label : 
-# $ _test_carac = trait.Habilete.NOM
+# $ _test_carac = trait.Mouvement.NOM
 # $ _test_difficulte = 3
 # $ _test_texte_menu = "Comme tout gentilhomme qui se respecte vous prenez très tôt beaucoup de leçons d'équitation."
 # $ _test_texte_reussi = "Vous progressez vite."
@@ -65,13 +65,14 @@ label intro:
     "Nous sommes en 1620. Vous êtes le jeune Sébastien Le Prestre."
     "Vous êtes de la petite noblesse des confins bourguignons et nivernais."
     "La région froide et assez montagneuse où vous êtes né s'appelle le Morvan, et c'est un rude pays."
+    jump apprentissageEquitation # tmp
     jump fin_cycle
 
 label apprentissageEquitation:
     scene bg morvan
     "[situation_.AffichageDate()]"
     # test d'adresse pour réussir l'apprentissage
-    $ _test_carac = trait.Habilete.NOM
+    $ _test_carac = trait.Mouvement.NOM
     $ _test_difficulte = 40
     $ _test_texte_menu = "Comme tout gentilhomme qui se respecte vous prenez très tôt beaucoup de leçons d'équitation."
     $ _test_texte_reussi = "Vous progressez vite."

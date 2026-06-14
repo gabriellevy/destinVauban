@@ -100,8 +100,8 @@ label effetVieillir:
             $ nbEffets = nbEffets - 1
             jump effetVieillir
         elif effetVieillesse< 65:
-            "Vos mains sont moins sûres qu'autrefois."
-            $ RetirerACarac(trait.Habilete.NOM, 1)
+            "Vous êtes beaucoup moins agile qu'autrefois."
+            $ RetirerACarac(trait.Mouvement.NOM, 5)
             $ nbEffets = nbEffets - 1
             jump effetVieillir
         elif effetVieillesse< 75:

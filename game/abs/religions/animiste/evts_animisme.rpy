@@ -63,9 +63,9 @@ init -5 python:
         # Observation
         valsAnimalTotem["aigle"] = valsAnimalTotem["aigle"] + situation_.GetValCaracInt(trait.Observation.NOM)
         valsAnimalTotem["vautour"] = valsAnimalTotem["vautour"] + situation_.GetValCaracInt(trait.Observation.NOM)
-        # Habilete
-        valsAnimalTotem["Araignée"] = valsAnimalTotem["Araignée"] + situation_.GetValCaracInt(trait.Habilete.NOM)
-        valsAnimalTotem["chat"] = valsAnimalTotem["chat"] + situation_.GetValCaracInt(trait.Habilete.NOM)
+        # Mouvement
+        valsAnimalTotem["Araignée"] = valsAnimalTotem["Araignée"] + situation_.GetValCaracInt(trait.Mouvement.NOM)
+        valsAnimalTotem["chat"] = valsAnimalTotem["chat"] + situation_.GetValCaracInt(trait.Mouvement.NOM)
         # Beaute
         valsAnimalTotem["cerf"] = valsAnimalTotem["cerf"] + situation_.GetValCaracInt(trait.Beaute.NOM)
         valsAnimalTotem["cheval"] = valsAnimalTotem["cheval"] + situation_.GetValCaracInt(trait.Beaute.NOM)

@@ -21,7 +21,7 @@ class Trait:
 
     # seuils de caracs
     CARAC_TRES_FAIBLE = 15
-    CARAC_FAIBLE = 25
+    CARAC_FAIBLE = 25 # personne normale quand très jeune
     CARAC_NORMAL = 35
     CARAC_ELEVE = 50
     CARAC_EXCEPTIONNEL = 70
@@ -923,12 +923,12 @@ class Beaute(TraitGraduel):
         else:
             return ""
 
-class Habilete(TraitGraduel):
+class Mouvement(TraitGraduel):
 
-    NOM = u"Habileté"
+    NOM = u"Agileté, course"
 
     def __init__(self):
-        self.eTrait_ = Habilete.NOM
+        self.eTrait_ = Mouvement.NOM
 
     def GetDescription(self, situation):
         val = situation[self.eTrait_]
@@ -940,12 +940,12 @@ class Habilete(TraitGraduel):
 
         if val <= Trait.SEUIL_A_PAS:
             if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Très Maladroit"
-            return u"Maladroit"
+                return u"Lent et pataud"
+            return u"Pataud"
         elif val >= Trait.SEUIL_A:
             if val >= Trait.SEUIL_A_EXTREME:
-                return u"Très Habile"
-            return u"Habile"
+                return u"Très agile et rapide"
+            return u"Agile et rapide"
         else:
             return ""
 
@@ -1124,6 +1124,11 @@ class CollectionTraits:
 
     def __init__(self):
         self.lTraits_ = dict()
+        # ---------------- compétences de bases brigandyne/warhammmer
+        mouvement = Mouvement()
+        self.SetTrait(Mouvement.NOM, mouvement)
+
+        # A FAIRE : voir ce que je garde ci après
         ruse = Ruse()
         self.SetTrait(Ruse.NOM, ruse)
         liberte = Liberte()
@@ -1142,8 +1147,6 @@ class CollectionTraits:
         self.SetTrait(Charme.NOM, charme)
         observation = Observation()
         self.SetTrait(Observation.NOM, observation)
-        habilete = Habilete()
-        self.SetTrait(Habilete.NOM, habilete)
         beaute = Beaute()
         self.SetTrait(Beaute.NOM, beaute)
         taille = Taille()

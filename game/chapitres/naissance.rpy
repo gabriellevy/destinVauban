@@ -21,9 +21,11 @@ init -5 python:
 
     def genererVauban(situation, tousLesTraits):
         """
-        création d'un perso qui a de très fortes chances de devenir aventurier, conquistador,
-        bandit peut-être
+        caracs de base de Vauban quand il est tout jeune
         """
+        # ------------ compétences de base brigandyne/Wh
+        situation[trait.Mouvement.NOM] = trait.Trait.CARAC_FAIBLE
+
         # A FAIRE : changer tout ça, ce n'est ni sa personnalité ni ses caracs
         situation[trait.Violence.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Opportunisme.NOM] = trait.Trait.SEUIL_A_EXTREME
