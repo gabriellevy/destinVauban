@@ -247,6 +247,32 @@ class Hydraulique(TraitMaitrise):
         else:
             return u""
 
+class Poliorcetique(TraitMaitrise):
+
+    NOM = u"Poliorcétique"
+
+    def __init__(self):
+        self.eTrait_ = Poliorcetique.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Maîtrise : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == TraitMaitrise.MAITRISE_A_PAS:
+            return u""
+        elif val == TraitMaitrise.MAITRISE_A:
+            return u"Notions en Poliorcétique"
+        elif val == TraitMaitrise.MAITRISE_EXPERT:
+            return u"Expert en Poliorcétique"
+        elif val == TraitMaitrise.MAITRISE_LEGENDAIRE:
+            return u"Maître de l'Poliorcétique"
+        else:
+            return u""
+        
 class Cupidite(TraitTernaire):
 
     NOM = u"Cupidité"
@@ -566,8 +592,8 @@ class Intelligence(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val < Trait.CARAC_NORMAL:
-            if val <= Trait.CARAC_FAIBLE:
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
                 return u"Stupide"
             return u"Bête"
         elif val >= Trait.CARAC_ELEVE:
@@ -592,8 +618,8 @@ class Eloquence(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val < Trait.CARAC_NORMAL:
-            if val <= Trait.CARAC_FAIBLE:
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
                 return u"Incohérent"
             return u"Balbutiant"
         elif val >= Trait.CARAC_ELEVE:
@@ -1042,8 +1068,8 @@ class Mouvement(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val < Trait.CARAC_NORMAL:
-            if val <= Trait.CARAC_FAIBLE:
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
                 return u"Lent et pataud"
             return u"Pataud"
         elif val >= Trait.CARAC_ELEVE:
@@ -1068,8 +1094,8 @@ class Habilete(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val < Trait.CARAC_NORMAL:
-            if val <= Trait.CARAC_FAIBLE:
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
                 return u"Très maladroit"
             return u"Maladroit"
         elif val >= Trait.CARAC_ELEVE:
@@ -1094,8 +1120,8 @@ class Perception(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val < Trait.CARAC_NORMAL:
-            if val <= Trait.CARAC_FAIBLE:
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
                 return u"Myope"
             return u"Peu attentif"
         elif val >= Trait.CARAC_ELEVE:
@@ -1120,8 +1146,8 @@ class Discretion(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val < Trait.CARAC_NORMAL:
-            if val <= Trait.CARAC_FAIBLE:
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
                 return u"Très facile à repérer"
             return u"Facile à repérer"
         elif val >= Trait.CARAC_ELEVE:
@@ -1397,6 +1423,8 @@ class CollectionTraits:
         self.SetTrait(Fortification.NOM, fortification)
         hydraulique = Hydraulique()
         self.SetTrait(Hydraulique.NOM, hydraulique)
+        poliorcetique = Poliorcetique()
+        self.SetTrait(Poliorcetique.NOM, poliorcetique)
 
     def getTraitAleatoire(self):
         return random.choice(list(self.lTraits_.values()))

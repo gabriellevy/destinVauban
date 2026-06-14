@@ -17,6 +17,7 @@ init -5 python:
     mathematiques0 = condition.Condition(trait.Mathematiques.NOM, 0, condition.Condition.EGAL)
     fortification0 = condition.Condition(trait.Fortification.NOM, 0, condition.Condition.EGAL)
     hydraulique0 = condition.Condition(trait.Hydraulique.NOM, 0, condition.Condition.EGAL)
+    poliorcetique0 = condition.Condition(trait.Poliorcetique.NOM, 0, condition.Condition.EGAL)
 
     def AjouterEvtEtudes():
         global selecteur_
@@ -41,6 +42,11 @@ init -5 python:
         apprentissageHydraulique.AjouterCondition(hydraulique0)
         selecteur_.ajouterDeclencheur(apprentissageHydraulique)
         
+        apprentissagePoliorcetique = declencheur.Declencheur(proba.Proba(0.1), "apprentissagePoliorcetique")
+        apprentissagePoliorcetique.AjouterCondition(estEtudiant)
+        apprentissagePoliorcetique.AjouterCondition(poliorcetique0)
+        selecteur_.ajouterDeclencheur(apprentissagePoliorcetique)
+        
         apprentissageGeneral = declencheur.Declencheur(proba.Proba(0.1), "apprentissageGeneral")
         apprentissageGeneral.AjouterCondition(estEtudiant)
         selecteur_.ajouterDeclencheur(apprentissageGeneral)
@@ -53,6 +59,13 @@ label apprentissageGeneral:
         "la logique et les raisonnements abstraits":
             $ AjouterACarac(trait.Intelligence.NOM, 1)
         
+    jump fin_cycle
+
+label apprentissagePoliorcetique:
+    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
+    with dissolve
+    "Vos études vous donnent une assez bonne teinture de poliorcétique."
+    $ AjouterACarac(trait.Poliorcetique.NOM, 1)
     jump fin_cycle
 
 label apprentissageFortification:
