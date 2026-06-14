@@ -1549,6 +1549,7 @@ screen valeurs_traits():
     $ descriptionBlessures = situation_.DescriptionBlessuresEtMaladies(blessures_, maladies_)
     $ affAge = situation_.AffichageAge()
     $ affDate = situation_.AffichageDate()
+    $ affDestin = situation_.AffichageTrait(trait.Destin.NOM)
     $ strMetier = situation_.AffichageMetier()
     # $ strQuartier = situation_.AffichageQuartier()
     $ patronyme = situation_.AffichagePatronyme()
@@ -1575,6 +1576,7 @@ screen valeurs_traits():
                 text _(u"[strArmee]")
                 text _(u"[strUsurp]")
                 text _(u"[affDate]")
+                text _(u"[affDestin]")
             elif interfaceMode_ == 1: # Affichage des maîtrises
                 text _(u" [descriptionMaitrises]")
             elif interfaceMode_ == 2: # caracs

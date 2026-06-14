@@ -124,6 +124,26 @@ class TraitGraduel(Trait):
         else:
             return Trait.SEUIL_A_EXTREME # douteux que ce soit une bonne idée comme valeur de départ
 
+class Destin(Trait):
+
+    NOM = u"Destin"
+
+    def __init__(self):
+        self.eTrait_ = Destin.NOM
+
+    def GetDescription(self, situation):
+        """
+        Mot décrivant le personnage dans ce trait particulier
+        """
+        val = situation[self.eTrait_]
+        if val == "":
+            val = self.GetValeurALaNaissance()
+            situation[self.eTrait_] = val
+        return u"Destin : {}".format(val)
+
+    def GetValeurALaNaissance(self):
+        return 5
+
 # Trait représentant la maîtrise d'un domaine particulier de 0 (normal, ne connaît pas, à 3, maîtrise suprême)
 class TraitMaitrise(Trait):
     # seuils de maîtrises
@@ -1491,6 +1511,9 @@ class CollectionTraits:
         self.SetTrait(Rancune.NOM, rancune)
         serenite = Serenite()
         self.SetTrait(Serenite.NOM, serenite)
+
+        destin = Destin()
+        self.SetTrait(Destin.NOM, destin)
 
         # --------------- Maîtrise
         equitation = Equitation()
