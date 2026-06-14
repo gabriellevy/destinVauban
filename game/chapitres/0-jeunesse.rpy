@@ -72,7 +72,7 @@ label apprentissageEquitation:
     "[situation_.AffichageDate()]"
     # test d'adresse pour réussir l'apprentissage
     $ _test_carac = trait.Habilete.NOM
-    $ _test_difficulte = 3
+    $ _test_difficulte = 40
     $ _test_texte_menu = "Comme tout gentilhomme qui se respecte vous prenez très tôt beaucoup de leçons d'équitation."
     $ _test_texte_reussi = "Vous progressez vite."
     $ _test_texte_echoue = "Ce n'est pas votre fort."
