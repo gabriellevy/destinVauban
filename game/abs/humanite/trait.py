@@ -566,14 +566,40 @@ class Intelligence(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val <= Trait.CARAC_NORMAL:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
+        if val < Trait.CARAC_NORMAL:
+            if val <= Trait.CARAC_FAIBLE:
                 return u"Stupide"
             return u"Bête"
         elif val >= Trait.CARAC_ELEVE:
             if val >= Trait.CARAC_EXCEPTIONNEL:
-                return u"Génial"
-            return u"Malin"
+                return u"Surdoué"
+            return u"Intelligent"
+        else:
+            return ""
+
+class Eloquence(TraitGraduel):
+
+    NOM = u"Éloquence"
+
+    def __init__(self):
+        self.eTrait_ = Eloquence.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_NORMAL:
+            if val <= Trait.CARAC_FAIBLE:
+                return u"Incohérent"
+            return u"Balbutiant"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Très éloquent"
+            return u"Éloquent"
         else:
             return ""
 
@@ -1233,6 +1259,10 @@ class CollectionTraits:
         self.SetTrait(Mouvement.NOM, mouvement)
         habilete = Habilete()
         self.SetTrait(Habilete.NOM, habilete)
+        eloquence = Eloquence()
+        self.SetTrait(Eloquence.NOM, eloquence)
+        intelligence = Intelligence()
+        self.SetTrait(Intelligence.NOM, intelligence)
 
         # A FAIRE : voir ce que je garde ci après
         ruse = Ruse()
@@ -1285,8 +1315,6 @@ class CollectionTraits:
         self.SetTrait(Pragmatisme.NOM, prag)
         intel = Intellectualisme()
         self.SetTrait(Intellectualisme.NOM, intel)
-        intelligence = Intelligence()
-        self.SetTrait(Intelligence.NOM, intelligence)
         sensi = Sensibilite()
         self.SetTrait(Sensibilite.NOM, sensi)
         ascetisme = Ascetisme()

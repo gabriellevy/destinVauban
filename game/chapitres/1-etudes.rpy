@@ -40,6 +40,20 @@ init -5 python:
         apprentissageHydraulique.AjouterCondition(estEtudiant)
         apprentissageHydraulique.AjouterCondition(hydraulique0)
         selecteur_.ajouterDeclencheur(apprentissageHydraulique)
+        
+        apprentissageGeneral = declencheur.Declencheur(proba.Proba(0.1), "apprentissageGeneral")
+        apprentissageGeneral.AjouterCondition(estEtudiant)
+        selecteur_.ajouterDeclencheur(apprentissageGeneral)
+
+label apprentissageGeneral:
+    menu:
+        "Vous étudiez..."
+        "la rhétorique":
+            $ AjouterACarac(trait.Eloquence.NOM, 1)
+        "la logique et les raisonnements abstraits":
+            $ AjouterACarac(trait.Intelligence.NOM, 1)
+        
+    jump fin_cycle
 
 label apprentissageFortification:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
