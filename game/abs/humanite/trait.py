@@ -169,6 +169,58 @@ class Equitation(TraitMaitrise):
         else:
             return u""
 
+class Fortification(TraitMaitrise):
+
+    NOM = u"Fortification"
+
+    def __init__(self):
+        self.eTrait_ = Fortification.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Maîtrise : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == TraitMaitrise.MAITRISE_A_PAS:
+            return u""
+        elif val == TraitMaitrise.MAITRISE_A:
+            return u"Notions en Fortification"
+        elif val == TraitMaitrise.MAITRISE_EXPERT:
+            return u"Expert en Fortification"
+        elif val == TraitMaitrise.MAITRISE_LEGENDAIRE:
+            return u"Maître des fortification"
+        else:
+            return u""
+           
+class Mathematiques(TraitMaitrise):
+
+    NOM = u"Mathématiques"
+
+    def __init__(self):
+        self.eTrait_ = Mathematiques.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Maîtrise : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == TraitMaitrise.MAITRISE_A_PAS:
+            return u""
+        elif val == TraitMaitrise.MAITRISE_A:
+            return u"Débutant en mathématiques"
+        elif val == TraitMaitrise.MAITRISE_EXPERT:
+            return u"Mathématicien"
+        elif val == TraitMaitrise.MAITRISE_LEGENDAIRE:
+            return u"Expert mathématicien"
+        else:
+            return u""
+
 class Cupidite(TraitTernaire):
 
     NOM = u"Cupidité"
@@ -1229,6 +1281,10 @@ class CollectionTraits:
         # --------------- Maîtrise
         equitation = Equitation()
         self.SetTrait(Equitation.NOM, equitation)
+        mathematiques = Mathematiques()
+        self.SetTrait(Mathematiques.NOM, mathematiques)
+        fortification = Fortification()
+        self.SetTrait(Fortification.NOM, fortification)
 
     def getTraitAleatoire(self):
         return random.choice(list(self.lTraits_.values()))

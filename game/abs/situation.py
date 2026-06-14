@@ -205,11 +205,28 @@ class Situation:
             # la richesse (et de préférence les autres traits qui ne font pas partie de la personnalité du personnage) devraient être affichés différemment
             if traitK != trait.Richesse.NOM:
                 traitObj = traits[traitK]
+                if isinstance(traitObj, trait.TraitGraduel):
+                    descr = u"{}".format(traitObj.GetDescription(self))
+                    if descr != "":
+                        if str != "":
+                            str = u"{}\n".format(str)
+                        # str = u"{}{} ({})".format(str, descr, traitObj.eTrait_) # activer pour plus de détails sur els traits
+                        str = u"{}{}".format(str, descr)
+        return str
+    
+    def DescriptionMaitrises(self, traits):
+        """
+        Description des maîtrises
+        """
+        str = u""
+        for traitObj in traits.lTraits_.values():
+            # seulement les maîtrises : 
+            if isinstance(traitObj, trait.TraitMaitrise):
                 descr = u"{}".format(traitObj.GetDescription(self))
                 if descr != "":
                     if str != "":
                         str = u"{}\n".format(str)
-                    # str = u"{}{} ({})".format(str, descr, traitObj.eTrait_) # activer pour plus de détails sur els traits
+                    # str = u"{}{} ({})".format(str, descr, traitObj.eTrait_) # activer pour plus de détails sur les traits
                     str = u"{}{}".format(str, descr)
         return str
 
