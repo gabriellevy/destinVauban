@@ -25,6 +25,7 @@ init -5 python:
         """
         # ------------ compétences de base brigandyne/Wh
         situation[trait.Mouvement.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Habilete.NOM] = trait.Trait.CARAC_FAIBLE
 
         # A FAIRE : changer tout ça, ce n'est ni sa personnalité ni ses caracs
         situation[trait.Violence.NOM] = trait.Trait.SEUIL_A_EXTREME
@@ -41,6 +42,7 @@ init -5 python:
 
         # tmp : 
         # situation[trait.Equitation.NOM] = trait.TraitMaitrise.MAITRISE_EXPERT
+        # situation[trait.Mathematiques.NOM] = 0
 
         situation[metier.Metier.C_METIER] = u"Prince de sang"
 

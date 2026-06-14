@@ -20,7 +20,7 @@ init -5 python:
         apprentissageEquitation = declencheur.Declencheur(proba.Proba(0.4), "apprentissageEquitation")
         apprentissageEquitation.AjouterCondition(equitation0)
         selecteur_.ajouterDeclencheur(apprentissageEquitation)
-        apprentissageEnfance = declencheur.Declencheur(proba.Proba(1), "apprentissageEnfance")
+        apprentissageEnfance = declencheur.Declencheur(proba.Proba(0.05), "apprentissageEnfance")
         apprentissageEnfance.AjouterCondition(chapitre0)
         selecteur_.ajouterDeclencheur(apprentissageEnfance)
 
@@ -35,7 +35,8 @@ label intro:
     "La région froide et assez montagneuse où vous êtes né s'appelle le Morvan, et c'est un rude pays."
     "Vous avez 11 ans, vous avez appris à lire, écrire et compter."
     "Vous êtes aussi instruit en religion car vous avez lu des {i}Vies de Saint{/i} et des {i}Maximes chrétiennes{/i}."
-    jump fin_cycle
+    #jump fin_cycle
+    jump apprentissageMathematiques
 
 label apprentissageEnfance:
     scene bg morvan

@@ -14,6 +14,7 @@ init -5 python:
 
     estPasEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.DIFFERENT)
     estEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.EGAL)
+    mathematiques0 = condition.Condition(trait.Mathematiques.NOM, 0, condition.Condition.EGAL)
 
     def AjouterEvtEtudes():
         global selecteur_
@@ -21,6 +22,20 @@ init -5 python:
         debut_des_etudes = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_des_etudes", dateNbJours)
         debut_des_etudes.AjouterCondition(estPasEtudiant)
         selecteur_.ajouterDeclencheur(debut_des_etudes)
+
+        # apprentissage des maîtrises
+        apprentissageMathematiques = declencheur.Declencheur(proba.Proba(0.1), "apprentissageMathematiques")
+        apprentissageMathematiques.AjouterCondition(estEtudiant)
+        apprentissageMathematiques.AjouterCondition(mathematiques0)
+        selecteur_.ajouterDeclencheur(apprentissageMathematiques)
+
+label apprentissageMathematiques:
+    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
+    with dissolve
+    show screen valeurs_traits
+    "Vos études vous donnent de solides bases en mathématiques."
+    $ AjouterACarac(trait.Mathematiques.NOM, 1)
+    jump fin_cycle
 
 label debut_des_etudes:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème

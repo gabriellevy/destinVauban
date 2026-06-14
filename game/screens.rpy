@@ -1545,6 +1545,7 @@ screen fading_text(text, delay, x, y, move_x, move_y, *args, **kwargs):
 screen valeurs_traits():
     tag interface_personnage
     $ descriptionTrait = situation_.DescriptionTraits(traits_)
+    $ descriptionMaitrises = situation_.DescriptionMaitrises(traits_)
     $ descriptionBlessures = situation_.DescriptionBlessuresEtMaladies(blessures_, maladies_)
     $ affAge = situation_.AffichageAge()
     $ affDate = situation_.AffichageDate()
@@ -1561,6 +1562,7 @@ screen valeurs_traits():
 
     # détail maîtrises et caracs
     $ strEquitation = situation_.AffichageTrait(trait.Equitation.NOM)
+    $ strMathematiques = situation_.AffichageTrait(trait.Mathematiques.NOM)
     $ strMouvement = situation_.AffichageTrait(trait.Mouvement.NOM)
     $ strHabilete = situation_.AffichageTrait(trait.Habilete.NOM)
 
@@ -1580,11 +1582,9 @@ screen valeurs_traits():
                 text _(u"[strUsurp]")
                 text _(u"[affDate]")
             elif interfaceMode_ == 1: # Affichage des maîtrises
-                text _(u" [strEquitation]")
-                text _(u" [strMouvement]")
-                text _(u" [strHabilete]")
-            #elif interfaceMode_ == 1: # traits
-            #    text _(u"[descriptionTrait]")
+                text _(u" [descriptionMaitrises]")
+            elif interfaceMode_ == 2: # caracs
+                text _(u"[descriptionTrait]")
             #elif interfaceMode_ == 3: # économie et compétences professionnelles
             #    text _(u"[strRichesse]")
             #    text _(u"[strMetier]")

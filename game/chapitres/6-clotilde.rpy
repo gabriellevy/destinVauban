@@ -43,7 +43,6 @@ init -5 python:
         # soutien de Clotilde
         soutienDeClotilde = declencheur.Declencheur(proba.Proba(0.1, True), "soutienDeClotilde")
         soutienDeClotilde.AjouterCondition(marie_a_clotilde)
-        soutienDeClotilde.AjouterCondition(estPasChretien)
         selecteur_.ajouterDeclencheur(soutienDeClotilde)
         # 2ème enfant
         enfant2 = dec_vauban.DecVaubanU(proba.Proba(0.3, True), "enfant2", 99999999495)

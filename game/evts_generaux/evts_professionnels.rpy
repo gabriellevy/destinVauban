@@ -31,7 +31,6 @@ init -5 python:
         # entrainement prêtre A FAIRE : convertir au mode Vauban
         entrainementPretre = declencheur.Declencheur(proba.Proba(0.04, True), "entrainementPretre")
         entrainementPretre.AjouterCondition(estPasGrandPretre)
-        entrainementPretre.AjouterCondition(estPasChretien)
         selecteur_.ajouterDeclencheur(entrainementPretre)
         # entrainement stratège/général A FAIRE : convertir au mode Vauban
         entrainementStratege = declencheur.Declencheur(proba.Proba(0.1, True), "entrainementStratege")
