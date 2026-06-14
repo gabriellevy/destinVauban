@@ -68,6 +68,6 @@ init -5 python:
         return
 
 label naissance:
-    $ genererDateNaissance(situation_, 13)
+    $ genererDateNaissance(situation_, 10)
     $ genererVauban(situation_, traits_)
     jump intro
