@@ -168,7 +168,6 @@ class Equitation(TraitMaitrise):
             return u"Cavalier exceptionnel"
         else:
             return u""
-        
 
 class Mathematiques(TraitMaitrise):
 
@@ -219,32 +218,6 @@ class Fortification(TraitMaitrise):
             return u"Expert en Fortification"
         elif val == TraitMaitrise.MAITRISE_LEGENDAIRE:
             return u"Maître des fortification"
-        else:
-            return u""
-           
-class Mathematiques(TraitMaitrise):
-
-    NOM = u"Mathématiques"
-
-    def __init__(self):
-        self.eTrait_ = Mathematiques.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Maîtrise : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val == TraitMaitrise.MAITRISE_A_PAS:
-            return u""
-        elif val == TraitMaitrise.MAITRISE_A:
-            return u"Débutant en mathématiques"
-        elif val == TraitMaitrise.MAITRISE_EXPERT:
-            return u"Mathématicien"
-        elif val == TraitMaitrise.MAITRISE_LEGENDAIRE:
-            return u"Expert mathématicien"
         else:
             return u""
 

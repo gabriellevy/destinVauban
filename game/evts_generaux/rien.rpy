@@ -31,12 +31,11 @@ init -5 python:
         scenesParDefaut.append("bg crucifixion")
         musiquesAEnquiller.append("musique/journeytoabsolution.ogg")
 
-        # si gloire faible et pas marie
-        marieAClothilde = situation_.GetValCarac(vauban.Vauban.C_MARIE_CLOTHILDE)
-        if marieAClothilde != 1:
-            evtRien_pasMarie = situation_.GetValCarac("evtRien_pasMarie")
-            if evtRien_pasMarie != 1:
-                evtsVides_.append("evtRien_pasMarie")
+        # étudiant
+        if estEtudiant:
+            evtsVides_.append("evtRien_etudiant1")
+            evtsVides_.append("evtRien_etudiant2")
+            evtsVides_.append("evtRien_etudiant3")
 
         # alboflède
         if situation_.GetValCaracInt(vauban.Vauban.C_ALBOFLEDE) == 1:
@@ -249,11 +248,14 @@ label evtRien20:
     "La consignation de vos actes royaux et les formulaires de toute sortes nécessitent de fortes importations de papyrus d'Orient."
     jump fin_cycle
 
-label evtRien_pasMarie:
-    with Dissolve(.5)
-    # si pas marié à Clothilde
-    $ situation_.SetValCarac("evtRien_pasMarie", 1)
-    "C'est par la gloire militaire qu'un chef franc devient digne de faire un mariage prestigieux."
-    "C'est parce que votre père Childéric était un grand guerrier que votre mère Basine a préféré abandonner son époux médiocre pour rejoindre votre père et vous donner naissance."
-    "Seule la victoire à la guerre vous rendra digne d'eux."
+label evtRien_etudiant1:
+    "Pendant vos études vous logez chez le prieur Pierre de Fontaines."
+    jump fin_cycle
+
+label evtRien_etudiant2:
+    "Depuis que vous étudiez dans la petite de Semur vous adorez vous y promener, surtout pour voir et revoir ses puissantes fortifications médiévales dominant l'Arançon."
+    jump fin_cycle
+
+label evtRien_etudiant3:
+    "Le paysage ici est bien différent de chez vous. Plus de montagne, seulement des colines et de vastes plaines pleines de champs de céréales."
     jump fin_cycle
