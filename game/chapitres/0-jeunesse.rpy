@@ -8,20 +8,23 @@ init -5 python:
     from abs.humanite import pnj
     from abs.humanite import metier
     from abs.univers import temps
-    # from geographie import quartier
     from abs.humanite import identite
     from spe import dec_vauban
+    from chapitres.classes import vauban
 
     equitation0 = condition.Condition(trait.Equitation.NOM, trait.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
+    chapitre0 = condition.Condition(vauban.Vauban.CHAPITRE, 0, condition.Condition.INFERIEUR_EGAL)
 
     def AjouterEvtJeunesse():
         global selecteur_
         apprentissageEquitation = declencheur.Declencheur(proba.Proba(0.4), "apprentissageEquitation")
         apprentissageEquitation.AjouterCondition(equitation0)
         selecteur_.ajouterDeclencheur(apprentissageEquitation)
+        apprentissageEnfance = declencheur.Declencheur(proba.Proba(1), "apprentissageEnfance")
+        apprentissageEnfance.AjouterCondition(chapitre0)
+        selecteur_.ajouterDeclencheur(apprentissageEnfance)
 
 # lieu, époque, enfance au pays
-# A FAIRE série d'évts de jeunesse semi aléatoires
 label intro:
     scene bg morvan
     with dissolve
@@ -32,7 +35,16 @@ label intro:
     "La région froide et assez montagneuse où vous êtes né s'appelle le Morvan, et c'est un rude pays."
     "Vous avez 11 ans, vous avez appris à lire, écrire et compter."
     "Vous êtes aussi instruit en religion car vous avez lu des {i}Vies de Saint{/i} et des {i}Maximes chrétiennes{/i}."
-    jump apprentissageEquitation # tmp
+    jump fin_cycle
+
+label apprentissageEnfance:
+    scene bg morvan
+    menu choix_apprentissage:
+        "Que préférez vous faire pour vous amuser ?"
+        "Dessiner":
+            $ AjouterACarac(trait.Habilete.NOM, 1)
+        "Aller jouer dehors":
+            $ AjouterACarac(trait.Mouvement.NOM, 1)
     jump fin_cycle
 
 label apprentissageEquitation:

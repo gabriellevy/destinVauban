@@ -324,7 +324,7 @@ class Situation:
             strPossession = u"Aucune possession"
         return strPossession
     
-    def AffichageMaitrise(self, nomMaitrise):
+    def AffichageTrait(self, nomMaitrise):
         return self.collectionTraits[nomMaitrise].GetDescription(self)
 
     def AffichageReligion(self):

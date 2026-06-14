@@ -488,12 +488,12 @@ class Intelligence(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val <= Trait.SEUIL_A_PAS:
+        if val <= Trait.CARAC_NORMAL:
             if val <= Trait.SEUIL_A_PAS_EXTREME:
                 return u"Stupide"
             return u"Bête"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
                 return u"Génial"
             return u"Malin"
         else:
@@ -938,14 +938,40 @@ class Mouvement(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
+        if val <= Trait.CARAC_NORMAL:
+            if val <= Trait.CARAC_FAIBLE:
                 return u"Lent et pataud"
             return u"Pataud"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
                 return u"Très agile et rapide"
             return u"Agile et rapide"
+        else:
+            return ""
+        
+class Habilete(TraitGraduel):
+
+    NOM = u"Habileté"
+
+    def __init__(self):
+        self.eTrait_ = Habilete.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val <= Trait.CARAC_NORMAL:
+            if val <= Trait.CARAC_FAIBLE:
+                return u"Très maladroit"
+            return u"Maladroit"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Très habile"
+            return u"Habile"
         else:
             return ""
 
@@ -968,8 +994,8 @@ class Charme(TraitGraduel):
             if val <= Trait.SEUIL_A_PAS_EXTREME:
                 return u"Très Déplaisant"
             return u"Déplaisant"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
                 return u"Très Charmant"
             return u"Charmant"
         else:
@@ -1127,6 +1153,8 @@ class CollectionTraits:
         # ---------------- compétences de bases brigandyne/warhammmer
         mouvement = Mouvement()
         self.SetTrait(Mouvement.NOM, mouvement)
+        habilete = Habilete()
+        self.SetTrait(Habilete.NOM, habilete)
 
         # A FAIRE : voir ce que je garde ci après
         ruse = Ruse()
@@ -1197,6 +1225,8 @@ class CollectionTraits:
         self.SetTrait(Rancune.NOM, rancune)
         serenite = Serenite()
         self.SetTrait(Serenite.NOM, serenite)
+
+        # --------------- Maîtrise
         equitation = Equitation()
         self.SetTrait(Equitation.NOM, equitation)
 

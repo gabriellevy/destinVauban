@@ -1559,8 +1559,10 @@ screen valeurs_traits():
     $ strArmee = situation_.AffichageArmee()
     $ tableauAffichageAmoureuses = situation_.AffichageAmoureuses()
 
-    # détail maîtrises
-    $ strEquitation = situation_.AffichageMaitrise(trait.Equitation.NOM)
+    # détail maîtrises et caracs
+    $ strEquitation = situation_.AffichageTrait(trait.Equitation.NOM)
+    $ strMouvement = situation_.AffichageTrait(trait.Mouvement.NOM)
+    $ strHabilete = situation_.AffichageTrait(trait.Habilete.NOM)
 
     frame:
         xpos 5 ypos 5
@@ -1579,6 +1581,8 @@ screen valeurs_traits():
                 text _(u"[affDate]")
             elif interfaceMode_ == 1: # Affichage des maîtrises
                 text _(u" [strEquitation]")
+                text _(u" [strMouvement]")
+                text _(u" [strHabilete]")
             #elif interfaceMode_ == 1: # traits
             #    text _(u"[descriptionTrait]")
             #elif interfaceMode_ == 3: # économie et compétences professionnelles
