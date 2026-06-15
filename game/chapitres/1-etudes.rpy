@@ -70,21 +70,28 @@ label apprentissagePoliorcetique:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
     with dissolve
     "Vos études vous donnent une assez bonne teinture de poliorcétique."
-    $ AjouterACarac(trait.Poliorcetique.NOM, 1)
+    $ SetValMaitrise(trait.Poliorcetique.NOM, trait.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label apprentissageFortification:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
     with dissolve
     "Vos études vous donnent une assez bonne teinture de fortifications."
-    $ AjouterACarac(trait.Fortification.NOM, 1)
+    $ SetValMaitrise(trait.Fortification.NOM, trait.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label apprentissageMathematiques:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
     with dissolve
     "Vos études vous donnent une assez bonne teinture de mathématiques."
-    $ AjouterACarac(trait.Mathematiques.NOM, 1)
+    $ SetValMaitrise(trait.Mathematiques.NOM, trait.TraitMaitrise.MAITRISE_A)
+    jump fin_cycle
+
+label apprentissageHydraulique:
+    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
+    with dissolve
+    "Vos études vous donnent une assez bonne teinture d'hydraulique."
+    $ SetValMaitrise(trait.Hydraulique.NOM, trait.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label debut_des_etudes:
@@ -93,11 +100,4 @@ label debut_des_etudes:
     "En tant qu'enfant de la noblesse il est indispensable que vous fassiez des études secondaires."
     "Vous les commencez au collège de Semur parmi d'autres fils de nobles et officiers. Plus aussi quelques fils de marchands, laboureurs et artisans aisés. "
     $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 1)
-    jump fin_cycle
-
-label apprentissageHydraulique:
-    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
-    with dissolve
-    "Vos études vous donnent une assez bonne teinture d'hydraulique."
-    $ AjouterACarac(trait.Hydraulique.NOM, 1)
     jump fin_cycle
