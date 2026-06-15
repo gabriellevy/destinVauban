@@ -80,6 +80,6 @@ label apprentissageEquitation:
     $ _test_texte_menu = "Comme tout gentilhomme qui se respecte vous prenez très tôt beaucoup de leçons d'équitation."
     $ _test_texte_reussi = "Vous progressez vite."
     $ _test_texte_echoue = "Ce n'est pas votre fort."
-    $ _test_action_reussi = lambda: SetValCaracInt(trait.Equitation.NOM, trait.TraitMaitrise.MAITRISE_A)
+    $ _test_action_reussi = lambda: SetValMaitrise(trait.Equitation.NOM, trait.TraitMaitrise.MAITRISE_A)
     call _test_de_carac
     jump fin_cycle

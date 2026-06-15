@@ -18,6 +18,24 @@ init -2 python:
     x_fin = 650
     y_fin = 10
 
+    # affiche la description de la maîtrise concernée au lieu de juste un chiffre
+    def SetValMaitrise(nomMaitrise, num):
+        global situation_
+        valCourant = situation_.GetValCaracInt(nomMaitrise)
+        if num > valCourant:
+            situation_.AjouterACarac(nomMaitrise, num - valCourant)
+            textChangtCarac = u"{}".format(situation_.collectionTraits[nomMaitrise].GetDescription(situation_))
+            renpy.show_screen("fading_text", textChangtCarac, time_, x_debut, y_debut, x_fin, y_fin, color="#4f4", size=24, alpha=1.0)
+            renpy.pause(time_)
+            renpy.hide_screen("fading_text")
+        elif num < valCourant:
+            situation_.AjouterACarac(nomMaitrise, num - valCourant)
+            textChangtCarac = u"{}".format(situation_.collectionTraits[nomMaitrise].GetDescription(situation_))
+            renpy.show_screen("fading_text", textChangtCarac, time_, x_debut, y_debut, x_fin, y_fin, color="#e11", size=24, alpha=1.0)
+            renpy.pause(time_)
+            renpy.hide_screen("fading_text")
+            situation_.RetirerACarac(nomMaitrise, num)
+
     def SetValCarac(caracId, num):
         global situation_
         valCourant = situation_.GetValCaracInt(caracId)
