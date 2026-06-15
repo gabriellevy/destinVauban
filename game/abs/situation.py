@@ -376,6 +376,8 @@ class Situation:
         self.caracs_[temps.Date.DATE] = nouvelleDateEnJours
         self.caracs_[temps.Date.DATE_ANNEES] = self.GetDate(nouvelleDateEnJours).GetNbAnnees()
         self.caracs_[temps.Date.MOIS_ACTUEL] = self.GetDate(nouvelleDateEnJours).GetNumMois()
+        self.caracs_[temps.Date.MOIS_ACTUEL] = self.GetDate(nouvelleDateEnJours).GetNumMois()
+        self.caracs_[temps.Date.SAISON] = self.GetDate(nouvelleDateEnJours).GetSaison()
         if self.GetValCarac(temps.Date.AGE_ANNEES) != "":
             self.caracs_[temps.Date.AGE_ANNEES] = self.AgeEnAnnees()
 

@@ -619,32 +619,6 @@ class Sincerite(TraitGraduel):
         else:
             return ""
 
-class Intelligence(TraitGraduel):
-
-    NOM = u"Intelligence"
-
-    def __init__(self):
-        self.eTrait_ = Intelligence.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val < Trait.CARAC_FAIBLE:
-            if val <= Trait.CARAC_TRES_FAIBLE:
-                return u"Stupide"
-            return u"Bête"
-        elif val >= Trait.CARAC_ELEVE:
-            if val >= Trait.CARAC_EXCEPTIONNEL:
-                return u"Surdoué"
-            return u"Intelligent"
-        else:
-            return ""
-
 class ArmesCorpsACorps(TraitGraduel):
 
     NOM = u"Armes de Corps à Corps"
@@ -720,6 +694,58 @@ class Eloquence(TraitGraduel):
             if val >= Trait.CARAC_EXCEPTIONNEL:
                 return u"Très éloquent"
             return u"Éloquent"
+        else:
+            return ""
+
+class Intelligence(TraitGraduel):
+
+    NOM = u"Intelligence"
+
+    def __init__(self):
+        self.eTrait_ = Intelligence.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Stupide"
+            return u"Bête"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Surdoué"
+            return u"Intelligent"
+        else:
+            return ""
+
+class Volonte(TraitGraduel):
+
+    NOM = u"Volonté"
+
+    def __init__(self):
+        self.eTrait_ = Volonte.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Poltron"
+            return u"Lâche"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Courageux"
+            return u"Imperurbable"
         else:
             return ""
 
@@ -1146,13 +1172,13 @@ class Beaute(TraitGraduel):
             return u"Beau"
         else:
             return ""
+        
+class Animaux(TraitGraduel):
 
-class Mouvement(TraitGraduel):
-
-    NOM = u"Agileté, course"
+    NOM = u"Soin des animaux"
 
     def __init__(self):
-        self.eTrait_ = Mouvement.NOM
+        self.eTrait_ = Animaux.NOM
 
     def GetDescription(self, situation):
         val = situation[self.eTrait_]
@@ -1164,12 +1190,64 @@ class Mouvement(TraitGraduel):
 
         if val < Trait.CARAC_FAIBLE:
             if val <= Trait.CARAC_TRES_FAIBLE:
-                return u"Lent et pataud"
-            return u"Pataud"
+                return u"Détesté par les animaux"
+            return u"Fait fuir les animaux"
         elif val >= Trait.CARAC_ELEVE:
             if val >= Trait.CARAC_EXCEPTIONNEL:
-                return u"Très agile et rapide"
-            return u"Agile et rapide"
+                return u"Parle à l'oreille des Animaux"
+            return u"Doué avec les animaux"
+        else:
+            return ""
+        
+class Discretion(TraitGraduel):
+
+    NOM = u"Discrétion"
+
+    def __init__(self):
+        self.eTrait_ = Discretion.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Très facile à repérer"
+            return u"Facile à repérer"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Quasi invisible"
+            return u"Discret"
+        else:
+            return ""
+        
+class Endurance(TraitGraduel):
+
+    NOM = u"Endurance"
+
+    def __init__(self):
+        self.eTrait_ = Endurance.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Débile"
+            return u"Malingre"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Très résistant"
+            return u"Endurant"
         else:
             return ""
         
@@ -1224,13 +1302,13 @@ class Perception(TraitGraduel):
             return u"perceptif"
         else:
             return ""
-        
-class Discretion(TraitGraduel):
 
-    NOM = u"Discrétion"
+class Mouvement(TraitGraduel):
+
+    NOM = u"Agileté, course"
 
     def __init__(self):
-        self.eTrait_ = Discretion.NOM
+        self.eTrait_ = Mouvement.NOM
 
     def GetDescription(self, situation):
         val = situation[self.eTrait_]
@@ -1242,12 +1320,12 @@ class Discretion(TraitGraduel):
 
         if val < Trait.CARAC_FAIBLE:
             if val <= Trait.CARAC_TRES_FAIBLE:
-                return u"Très facile à repérer"
-            return u"Facile à repérer"
+                return u"Lent et pataud"
+            return u"Pataud"
         elif val >= Trait.CARAC_ELEVE:
             if val >= Trait.CARAC_EXCEPTIONNEL:
-                return u"Quasi invisible"
-            return u"Discret"
+                return u"Très agile et rapide"
+            return u"Agile et rapide"
         else:
             return ""
 
@@ -1427,22 +1505,28 @@ class CollectionTraits:
     def __init__(self):
         self.lTraits_ = dict()
         # ---------------- compétences de bases brigandyne/warhammmer
-        mouvement = Mouvement()
-        self.SetTrait(Mouvement.NOM, mouvement)
+        animaux = Animaux()
+        self.SetTrait(Animaux.NOM, animaux)
+        armesCorpsACorps = ArmesCorpsACorps()
+        self.SetTrait(ArmesCorpsACorps.NOM, armesCorpsACorps)
         habilete = Habilete()
         self.SetTrait(Habilete.NOM, habilete)
         eloquence = Eloquence()
         self.SetTrait(Eloquence.NOM, eloquence)
+        endurance = Endurance()
+        self.SetTrait(Endurance.NOM, endurance)
         intelligence = Intelligence()
         self.SetTrait(Intelligence.NOM, intelligence)
+        mouvement = Mouvement()
+        self.SetTrait(Mouvement.NOM, mouvement)
         perception = Perception()
         self.SetTrait(Perception.NOM, perception)
         discretion = Discretion()
         self.SetTrait(Discretion.NOM, discretion)
-        armesCorpsACorps = ArmesCorpsACorps()
-        self.SetTrait(ArmesCorpsACorps.NOM, armesCorpsACorps)
         tir = Tir()
         self.SetTrait(Tir.NOM, tir)
+        volonte = Volonte()
+        self.SetTrait(Volonte.NOM, volonte)
 
         # A FAIRE : voir ce que je garde ci après
         ruse = Ruse()

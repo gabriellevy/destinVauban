@@ -11,6 +11,7 @@ class Date:
     DATE_ANNEES = u"Date en années" # date actuelle depuis le début du calendrier (en années)
     DATE_NAISSANCE = u"Date de naissance" # date de naissance du perso depuis le début du calendrier (en jours)
     MOIS_ACTUEL = u"Mois" # numéro de mois actuel (de 1 à 12)
+    SAISON = u"Saison"
     AGE_ANNEES = u"Age" # age du perso (en années)
 
     HIVER = "Hiver"
@@ -60,13 +61,13 @@ class Date:
 
     def GetSaison(self):
         numMois = self.GetNumMois()
-        if numMois == 0 or numMois == 1 or numMois == 11:
+        if numMois == 1 or numMois == 2 or numMois == 12:
             return Date.HIVER
-        if numMois == 5 or numMois == 6 or numMois == 7:
+        if numMois == 6 or numMois == 7 or numMois == 8:
             return Date.ETE
-        if numMois == 2 or numMois == 3 or numMois == 4:
+        if numMois == 3 or numMois == 4 or numMois == 5:
             return Date.PRINTEMPS
-        if numMois == 8 or numMois == 9 or numMois == 10:
+        if numMois == 9 or numMois == 10 or numMois == 11:
             return Date.AUTOMNE
 
     def GetNbJourAnnees(self):

@@ -14,15 +14,35 @@ init -5 python:
 
     equitation0 = condition.Condition(trait.Equitation.NOM, trait.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
     chapitre0 = condition.Condition(vauban.Vauban.CHAPITRE, 0, condition.Condition.INFERIEUR_EGAL)
+    en_hiver = condition.Condition(temps.Date.SAISON, temps.Date.HIVER, condition.Condition.EGAL)
 
     def AjouterEvtJeunesse():
         global selecteur_
         apprentissageEquitation = declencheur.Declencheur(proba.Proba(0.4), "apprentissageEquitation")
         apprentissageEquitation.AjouterCondition(equitation0)
         selecteur_.ajouterDeclencheur(apprentissageEquitation)
+
         apprentissageEnfance = declencheur.Declencheur(proba.Proba(0.05), "apprentissageEnfance")
         apprentissageEnfance.AjouterCondition(chapitre0)
         selecteur_.ajouterDeclencheur(apprentissageEnfance)
+        
+        endurcissementEnfance = declencheur.Declencheur(proba.Proba(1.0), "endurcissementEnfance")
+        endurcissementEnfance.AjouterCondition(en_hiver)
+        selecteur_.ajouterDeclencheur(endurcissementEnfance)
+
+label endurcissementEnfance:
+    scene bg morvan
+    "L'hiver dans le morvan est particulièrement dur. Cela renforce la patience et la volonté."
+    $ AjouterACarac(trait.Volonte.NOM, 1)
+    menu:
+        "Comment supportez vous l'isolement et le froid ?"
+        "Vous vous promenez dans les montagnes malgré le froid":
+            $ AjouterACarac(trait.Endurance.NOM, 1)
+        "Vous vous occupez des animaux":
+            $ AjouterACarac(trait.Animaux.NOM, 1)
+        "Vous étudiez":
+            $ AjouterACarac(trait.Intelligence.NOM, 1)
+    jump fin_cycle
 
 # lieu, époque, enfance au pays
 label intro:

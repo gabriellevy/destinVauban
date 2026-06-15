@@ -24,6 +24,9 @@ init -5 python:
         caracs de base de Vauban quand il est tout jeune
         """
         # ------------ compétences de base brigandyne/Wh
+        situation[trait.Animaux.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Volonte.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Endurance.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Mouvement.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Habilete.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Habilete.NOM] = trait.Trait.CARAC_FAIBLE
