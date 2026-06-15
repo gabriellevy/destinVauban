@@ -114,15 +114,7 @@ class TraitGraduel(Trait):
         return u"Description TraitGraduel" # ATTENTION ACCENTS : mettre 'u' devant les string à accents pour utiliser le mode unicode
 
     def GetValeurALaNaissance(self):
-        val = random.randint(0,100)
-        if val <= 5:
-            return Trait.SEUIL_A_PAS_EXTREME # douteux que ce soit une bonne idée comme valeur de départ
-        elif val <= 35:
-            return Trait.SEUIL_A_PAS
-        elif val <= 95:
-            return Trait.SEUIL_A
-        else:
-            return Trait.SEUIL_A_EXTREME # douteux que ce soit une bonne idée comme valeur de départ
+        return random.randint(0,10) + random.randint(0,10) + 20
 
 class Destin(Trait):
 

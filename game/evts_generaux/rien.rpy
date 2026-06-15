@@ -18,10 +18,10 @@ init -5 python:
         sceneParDefaut = ""
         # régénère les événements compatibles avec la situation
         evtsVides_ = [
-        "evtRien1", "evtRien2", "evtRien3", "evtRien4", "evtRien5", "evtRien6", "evtRien7",
+        "evtRien1", "evtRien2", "evtRien3", "evtRien4", "evtRien7",
         "evtRien8", "evtRien9", "evtRien10", "evtRien11", "evtRien12",
         "evtRien13", "evtRien14", "evtRien15", "evtRien16", "evtRien17",
-        "evtRien18", "evtRien19", "evtRien20"
+        "evtRien19", "evtRien20"
         ]
         scenesParDefaut = []
         musiquesAEnquiller = []
@@ -31,11 +31,18 @@ init -5 python:
         scenesParDefaut.append("bg crucifixion")
         musiquesAEnquiller.append("musique/journeytoabsolution.ogg")
 
+        # enfant
+        if chapitre0:
+            evtsVides_.append("evtRien_enfance1")
+
         # étudiant
         if estEtudiant:
             evtsVides_.append("evtRien_etudiant1")
             evtsVides_.append("evtRien_etudiant2")
             evtsVides_.append("evtRien_etudiant3")
+
+        if auMoinsAdolescent:
+            evtsVides_.append("evtRien5")
 
         # alboflède
         if situation_.GetValCaracInt(vauban.Vauban.C_ALBOFLEDE) == 1:
@@ -147,7 +154,7 @@ label evtRien2:
 
 label evtRien3:
     with Dissolve(.5)
-    "Aujourd'hui le cuisinier vous a préparé un plat exotique méditerrannéen à base de fruits et qu'on appelle dattes."
+    "Aujourd'hui le cuisinier vous a préparé un plat exotique méditerrannéen à base de fruits qu'on appelle dattes."
     jump fin_cycle
 
 label evtRien4:
@@ -157,14 +164,7 @@ label evtRien4:
 
 label evtRien5:
     with Dissolve(.5)
-    "Aujourd'hui vous avez dû rédiger une importante lettre de votre main. Vous scellez la lettre de votre sceau grâce à votre anneau sigillaire."
-    jump fin_cycle
-
-label evtRien6:
-    with Dissolve(.5)
-    "Les gaulois sont peu combatifs et donc souvent méprisés par votre peuple car soumis et faciles à dominer."
-    "Vous devez néanmoins reconnaître qu'en artisanat et architecture ils sont largement supérieurs."
-    "Ce sont des céramistes gaulois que vous chargez de la fabrication des bouteilles, cruches, bols et assiettes de votre palais car leur qualité est nettement supérieure."
+    "Aujourd'hui vous avez dû rédiger une importante lettre de votre main. Vous scellez la lettre de votre sceau."
     jump fin_cycle
 
 label evtRien7:
@@ -229,13 +229,13 @@ label evtRien17:
     "Les moulins à eau se multiplient dans vos campagnes. Cet édifice ingénieux utilise la force du courant pour actionner la meule."
     jump fin_cycle
 
-label evtRien18:
-    with Dissolve(.5)
-    $ femmeFranque = francs_.CreerPrenom(False)
-    "[femmeFranque] a été accusée de vol. Elle a accepté de subir l'ordalie."
-    "Elle a plongé sa main dans un chaudron d'eau bouillante. Supportant la souffrance elle a réussi à saisir l'anneau qui s'y trouvait. Les juges ont ensuite attendu 3 jours et constaté que sa cicatrice est belle et bien formée."
-    "[femmeFranque] est donc déclarée innocente du vol."
-    jump fin_cycle
+# label evtRien18:
+    # with Dissolve(.5)
+    # $ femmeFranque = francs_.CreerPrenom(False) # A FAIRE : ajouter une création de nom français
+    # "[femmeFranque] a été accusée de vol. Elle a accepté de subir l'ordalie."
+    # "Elle a plongé sa main dans un chaudron d'eau bouillante. Supportant la souffrance elle a réussi à saisir l'anneau qui s'y trouvait. Les juges ont ensuite attendu 3 jours et constaté que sa cicatrice est belle et bien formée."
+    # "[femmeFranque] est donc déclarée innocente du vol."
+    # jump fin_cycle
 
 label evtRien19:
     with Dissolve(.5)
@@ -258,4 +258,8 @@ label evtRien_etudiant2:
 
 label evtRien_etudiant3:
     "Le paysage ici est bien différent de chez vous. Plus de montagne, seulement des colines et de vastes plaines pleines de champs de céréales."
+    jump fin_cycle
+
+label evtRien_enfance1:
+    "Vous aidez votre père Urbain Le Prestre à greffer des arbres fruitiers."
     jump fin_cycle
