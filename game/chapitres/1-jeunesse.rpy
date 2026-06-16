@@ -13,7 +13,7 @@ init -5 python:
     from chapitres.classes import vauban
 
     equitation0 = condition.Condition(trait.Equitation.NOM, trait.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
-    chapitre1 = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.INFERIEUR_EGAL)
+    chapitre1 = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.EGAL)
     en_hiver = condition.Condition(temps.Date.SAISON, temps.Date.HIVER, condition.Condition.EGAL)
 
     def AjouterEvtJeunesse():

@@ -13,23 +13,23 @@ init -5 python:
     from chapitres.classes import syagrius
     from chapitres.classes import vauban
     
-    syagriusPasConsolide = condition.Condition("syagrius_consolide", 1, condition.Condition.DIFFERENT)
-    syagriusConsolide = condition.Condition("syagrius_consolide", 1, condition.Condition.EGAL) # ancien territoire de syagrius bien contrôlé
+    chapitre4 = condition.Condition(vauban.Vauban.CHAPITRE, 4, condition.Condition.EGAL)
 
     def AjouterEvtGuerreSyagrius():
         global selecteur_
-
-        consolidation_syagrius = dec_vauban.DecVauban(proba.Proba(0.3, True), "consolidation_syagrius", 99999999492)
-        consolidation_syagrius.AjouterCondition(syagriusPasConsolide)
-        selecteur_.ajouterDeclencheur(consolidation_syagrius)
-
-        invasion_armorique = dec_vauban.DecVaubanU(proba.Proba(0.4, True), "invasion_armorique", 99999999492)
-        invasion_armorique.AjouterCondition(syagriusConsolide)
-        selecteur_.ajouterDeclencheur(invasion_armorique)
+        
+        dateNbJours = 1660 * 365 + 1 # ------------------------------------------------- 1660
+        debut_chapitre4 = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_chapitre4", dateNbJours)
+        selecteur_.ajouterDeclencheur(debut_chapitre4)
 
         livraison_syagrius = dec_vauban.DecVaubanU(proba.Proba(0.4, True), "livraison_syagrius", 99999999487)
         # livraison_syagrius.AjouterCondition() # négociations diplomatiques / accords matrimoniaux ?
         selecteur_.ajouterDeclencheur(livraison_syagrius)
+
+label debut_chapitre4:
+    "A FAIRE : début chapitre4"
+    $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 4)
+    jump fin_cycle
 
 label livraison_syagrius:
     "Alaric vous livre Syagrius pieds et poings liés. Vous savez que ce romain a encore des partisans dans vos terres."
@@ -50,58 +50,6 @@ label livraison_syagrius:
             "Syagrius affronte la mort bravement face au bourreau qui le décapite devant la foule des parisiens."
             "Ses partisans sont indignés mais n'osent réagir devant votre puissance. Un problème résolu."
             jump fin_cycle
-    jump fin_cycle
-
-label invasion_armorique:
-    "Une fois la côte ouest atteinte et la Manche sécurisée vous vous heurtez aux romains armoricains."
-    "Ils semblent bien mieux organisés et surtout bien plus déterminés que les troupes de Syagrius."
-    "Maintenant que vous avez atteint vos objectifs de contrôler l'accès à la mer et à la Loire vous vous demandez si il est utile d'entamer une autre campagne."
-    $ testCombat = testDeCarac.TestDeCarac([vauban.Vauban.C_MILITAIRE, metier.Stratege.NOM], 6, situation_)
-    menu:
-        "Qu'allez vous faire aux armoricains ?"
-        "Attaquer [testCombat.affichage_]":
-            $ situation_.AvanceDeXMois(2)
-            $ reussi = testCombat.TesterDifficulte(situation_)
-            if reussi:
-                "Vous envahissez le territoire et écrasez les poches de résistance sur votre chemin."
-                $ AjouterACarac(trait.Richesse.NOM, 1)
-                $ AjouterACarac(trait.Gloire.NOM, 1)
-                "Mais vous ne pouvez pas occuper ce pays hostile indéfiniment et devez retourner à otre capitale."
-                "Autant les terres de Syagrius vous restent soumises, autant les armoricains se révoltent instantanément dès que votre armée a quitté leur pays."
-                "Vous réalisez alors que leur armée était loin d'être détruite et vous devez renoncer à l'occupation de ces terres pour l'instant."
-                jump fin_cycle
-            else:
-                "Cette guerre n'est qu'une quite d'escarmouches interminables et démoralisante ou après chaque bataille perdue ou gagnée les armoricains retournent à l'abrid de leurs impénétrables forêts."
-                "Vous êtes forcé d'abandonner la conquête pour cette année pour ménager vos hommes."
-                $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
-                $ RetirerACarac(trait.Gloire.NOM, 1)
-                jump fin_cycle
-        "Renoncer":
-            jump fin_cycle
-
-    jump fin_cycle
-
-label consolidation_syagrius:
-    "Votre royaume est pacifié. Il est temps de le consolider en soumettant les territoires de l'ouest livrés à eux-mêmes depuis la défaite de Syagrius."
-    $ testCombat = testDeCarac.TestDeCarac(vauban.Vauban.C_MILITAIRE, 2, situation_)
-    menu:
-        "L'opposition est faible ce devrait être facile. [testCombat.affichage_]":
-            $ reussi = testCombat.TesterDifficulte(situation_)
-            if reussi:
-                "Vous écrasez facilement les dernières poches de résistance. Votre royaume s'atend maintenant jusqu'à la Loire, jusqu'aux wisigoths."
-                $ situation_.SetValCarac("syagrius_consolide", 1)
-                $ situation_.SetValCarac(vauban.Vauban.CARTE_ACTUELLE, "bg carte493")
-                $ AfficherCarteActuelle()
-                $ AjouterACarac(trait.Richesse.NOM, 1)
-                $ AjouterACarac(trait.Gloire.NOM, 1)
-                jump invasion_armorique
-            else:
-                $ AfficherCarteActuelle()
-                "Cette expédition aurait du être une promenade de santé mais des romains déterminés parviennent, à force de harcèlement, à vous obliger à vous replier."
-                "Le pillage de quelques villes est une consolation mais cela reste un échec qui entame votre prestige."
-                $ AjouterACarac(trait.Richesse.NOM, 1)
-                $ RetirerACarac(trait.Gloire.NOM, 1)
-                jump fin_cycle
     jump fin_cycle
 
 label invasion_syagrius:
