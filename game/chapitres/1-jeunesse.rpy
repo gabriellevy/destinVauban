@@ -13,7 +13,7 @@ init -5 python:
     from chapitres.classes import vauban
 
     equitation0 = condition.Condition(trait.Equitation.NOM, trait.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
-    chapitre0 = condition.Condition(vauban.Vauban.CHAPITRE, 0, condition.Condition.INFERIEUR_EGAL)
+    chapitre1 = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.INFERIEUR_EGAL)
     en_hiver = condition.Condition(temps.Date.SAISON, temps.Date.HIVER, condition.Condition.EGAL)
 
     def AjouterEvtJeunesse():
@@ -23,7 +23,7 @@ init -5 python:
         selecteur_.ajouterDeclencheur(apprentissageEquitation)
 
         apprentissageEnfance = declencheur.Declencheur(proba.Proba(0.05), "apprentissageEnfance")
-        apprentissageEnfance.AjouterCondition(chapitre0)
+        apprentissageEnfance.AjouterCondition(chapitre1)
         selecteur_.ajouterDeclencheur(apprentissageEnfance)
         
         endurcissementEnfance = declencheur.Declencheur(proba.Proba(1.0), "endurcissementEnfance")

@@ -14,9 +14,8 @@ init -5 python:
     estPasPerceptionNivEleve = condition.Condition(trait.Perception.NOM, trait.Trait.CARAC_ELEVE, condition.Condition.INFERIEUR)
     estPasGrandPretre = condition.Condition(metier.Pretre.NOM, 5, condition.Condition.INFERIEUR)
 
-    auMoinsAdolescent = condition.Condition(vauban.Vauban.CHAPITRE,1, condition.Condition.SUPERIEUR_EGAL)
+    auMoinsAdolescent = condition.Condition(vauban.Vauban.CHAPITRE,2, condition.Condition.SUPERIEUR_EGAL)
     
-
     def AjouterEvtsProfessionnels():
         global selecteur_
         entrainementGuerrier = declencheur.Declencheur(proba.Proba(0.1, True), "entrainementGuerrier")

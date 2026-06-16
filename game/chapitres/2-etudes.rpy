@@ -12,8 +12,8 @@ init -5 python:
     from spe import dec_vauban
     from chapitres.classes import vauban
 
-    estPasEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.DIFFERENT)
-    estEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.EGAL)
+    estPasEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 2, condition.Condition.DIFFERENT)
+    estEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 2, condition.Condition.EGAL)
     mathematiques0 = condition.Condition(trait.Mathematiques.NOM, 0, condition.Condition.EGAL)
     fortification0 = condition.Condition(trait.Fortification.NOM, 0, condition.Condition.EGAL)
     hydraulique0 = condition.Condition(trait.Hydraulique.NOM, 0, condition.Condition.EGAL)
@@ -21,7 +21,7 @@ init -5 python:
 
     def AjouterEvtEtudes():
         global selecteur_
-        dateNbJours = 1646 * 365 + 1 # 13 ans
+        dateNbJours = 1646 * 365 + 1 # 13 ans ------------------------------------------------- 1646
         debut_des_etudes = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_des_etudes", dateNbJours)
         debut_des_etudes.AjouterCondition(estPasEtudiant)
         selecteur_.ajouterDeclencheur(debut_des_etudes)
@@ -99,5 +99,5 @@ label debut_des_etudes:
     with dissolve
     "En tant qu'enfant de la noblesse il est indispensable que vous fassiez des études secondaires."
     "Vous les commencez au collège de Semur parmi d'autres fils de nobles et officiers. Plus aussi quelques fils de marchands, laboureurs et artisans aisés. "
-    $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 1)
+    $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 2)
     jump fin_cycle

@@ -1659,7 +1659,7 @@ class CollectionTraits:
         espagnol = Espagnol()
         self.SetTrait(Espagnol.NOM, espagnol)
 
-        # Vices et vertus
+        # ------------- Vices et vertus
         humble = Humble()
         self.SetTrait(Humble.NOM, humble)        
 

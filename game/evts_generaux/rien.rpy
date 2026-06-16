@@ -32,7 +32,7 @@ init -5 python:
         musiquesAEnquiller.append("musique/journeytoabsolution.ogg")
 
         # enfant
-        if chapitre0:
+        if chapitre1:
             evtsVides_.append("evtRien_enfance1")
 
         # étudiant
