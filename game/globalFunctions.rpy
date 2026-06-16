@@ -25,7 +25,7 @@ init -2 python:
     metiers_ = metier.CollectionMetiers()
     situation_.collectionMetiers = metiers_
     interfaceMode_ = 0
-    nbInterfaceMode_ = 3
+    nbInterfaceMode_ = 4
     # cultures
     francs_ = francs.Francs()
     gaulois_ = gaulois.Gaulois()

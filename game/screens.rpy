@@ -1546,6 +1546,7 @@ screen valeurs_traits():
     tag interface_personnage
     $ descriptionTrait = situation_.DescriptionTraits(traits_)
     $ descriptionMaitrises = situation_.DescriptionMaitrises(traits_)
+    $ descriptionViceVertu = situation_.DescriptionViceVertus(traits_)
     $ descriptionBlessures = situation_.DescriptionBlessuresEtMaladies(blessures_, maladies_)
     $ affAge = situation_.AffichageAge()
     $ affDate = situation_.AffichageDate()
@@ -1581,6 +1582,8 @@ screen valeurs_traits():
                 text _(u" [descriptionMaitrises]")
             elif interfaceMode_ == 2: # caracs
                 text _(u"[descriptionTrait]")
+            elif interfaceMode_ == 3: # caracs
+                text _(u"[descriptionViceVertu]")
             #elif interfaceMode_ == 3: # économie et compétences professionnelles
             #    text _(u"[strRichesse]")
             #    text _(u"[strMetier]")

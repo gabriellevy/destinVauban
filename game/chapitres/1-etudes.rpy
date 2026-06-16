@@ -59,7 +59,7 @@ label apprentissageGeneral:
         "la logique et les raisonnements abstraits":
             $ AjouterACarac(trait.Intelligence.NOM, 1)
         "l'espagnol":
-            $ AjouterACarac(trait.Espagnol.NOM, 1)
+            $ SetValMaitrise(trait.Espagnol.NOM, trait.TraitMaitrise.MAITRISE_A)
         "la maîtrise des armes":
             $ AjouterACarac(trait.ArmesCorpsACorps.NOM, 1)
             $ AjouterACarac(trait.Tir.NOM, 1)

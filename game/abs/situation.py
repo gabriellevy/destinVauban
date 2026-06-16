@@ -229,6 +229,22 @@ class Situation:
                     # str = u"{}{} ({})".format(str, descr, traitObj.eTrait_) # activer pour plus de détails sur les traits
                     str = u"{}{}".format(str, descr)
         return str
+    
+    def DescriptionViceVertus(self, traits):
+        """
+        Description des vices et vertus
+        """
+        str = u""
+        for traitObj in traits.lTraits_.values():
+            # seulement les vices et vertus : 
+            if isinstance(traitObj, trait.ViceVertu):
+                descr = u"{}".format(traitObj.GetDescription(self))
+                if descr != "":
+                    if str != "":
+                        str = u"{}\n".format(str)
+                    # str = u"{}{} ({})".format(str, descr, traitObj.eTrait_) # activer pour plus de détails sur les traits
+                    str = u"{}{}".format(str, descr)
+        return str
 
     def AffichageMetier(self):
         strMetier = u""

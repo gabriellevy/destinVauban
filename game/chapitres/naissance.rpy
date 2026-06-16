@@ -49,6 +49,8 @@ init -5 python:
         situation[trait.Rancune.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Franchise.NOM] = trait.Trait.SEUIL_A_PAS
         situation[trait.Altruisme.NOM] = trait.Trait.SEUIL_A_PAS
+        # ----- vices et vertus -------------
+        situation[trait.Humble.NOM] = trait.ViceVertu.VICIEUX # orgueilleux
 
         # tmp : 
         # situation[trait.Equitation.NOM] = trait.TraitMaitrise.MAITRISE_EXPERT
