@@ -12,37 +12,22 @@ init -5 python:
     from abs.humanite import identite
     from chapitres.classes import syagrius
     from chapitres.classes import vauban
-
-    # conditions syagrius
-    syagriusEnGuerre = condition.Condition(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.GUERRE, condition.Condition.EGAL)
-    syagriusPasEnGuerre = condition.Condition(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.GUERRE, condition.Condition.DIFFERENT)
-    syagriusPasMort = condition.Condition(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.MORT, condition.Condition.DIFFERENT)
-    syagriusPasCapture = condition.Condition(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.CAPTURE, condition.Condition.DIFFERENT)
+    
     syagriusPasConsolide = condition.Condition("syagrius_consolide", 1, condition.Condition.DIFFERENT)
     syagriusConsolide = condition.Condition("syagrius_consolide", 1, condition.Condition.EGAL) # ancien territoire de syagrius bien contrôlé
-    def MiseEnPlaceGuerreSyagrius():
-        global situation_
-        situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.GUERRE)
 
     def AjouterEvtGuerreSyagrius():
         global selecteur_
-        combat_avant_garde = declencheur.Declencheur(proba.Proba(0.2, True), "combat_avant_garde")
-        combat_avant_garde.AjouterCondition(syagriusEnGuerre)
-        combat_avant_garde.AjouterCondition(syagriusPasVaincu)
-        selecteur_.ajouterDeclencheur(combat_avant_garde)
 
         consolidation_syagrius = dec_vauban.DecVauban(proba.Proba(0.3, True), "consolidation_syagrius", 99999999492)
-        consolidation_syagrius.AjouterCondition(syagriusVaincu)
         consolidation_syagrius.AjouterCondition(syagriusPasConsolide)
         selecteur_.ajouterDeclencheur(consolidation_syagrius)
 
         invasion_armorique = dec_vauban.DecVaubanU(proba.Proba(0.4, True), "invasion_armorique", 99999999492)
-        invasion_armorique.AjouterCondition(syagriusVaincu)
         invasion_armorique.AjouterCondition(syagriusConsolide)
         selecteur_.ajouterDeclencheur(invasion_armorique)
 
         livraison_syagrius = dec_vauban.DecVaubanU(proba.Proba(0.4, True), "livraison_syagrius", 99999999487)
-        livraison_syagrius.AjouterCondition(syagriusVaincu)
         # livraison_syagrius.AjouterCondition() # négociations diplomatiques / accords matrimoniaux ?
         selecteur_.ajouterDeclencheur(livraison_syagrius)
 
@@ -52,11 +37,9 @@ label livraison_syagrius:
     menu:
         "Le faire exécuter discrètement":
             "Pas de risques inutiles avec vous. Syagrius finit égorgé et balancé dans une fosse commune. Un problème de réglé."
-            $ situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.MORT)
             jump fin_cycle
         "Le faire enfermer [testRuse.affichage_]":
             $ reussi = testRuse.TesterDifficulte(situation_)
-            $ situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.CAPTURE)
             if reussi:
                 "Syagrius finit au secret dans les geôles de Tournai. Il ne tient qu'à vous qu'il ne revoit jamais le soleil."
                 jump fin_cycle
@@ -66,7 +49,6 @@ label livraison_syagrius:
         "Le faire exécuter publiquement":
             "Syagrius affronte la mort bravement face au bourreau qui le décapite devant la foule des parisiens."
             "Ses partisans sont indignés mais n'osent réagir devant votre puissance. Un problème résolu."
-            $ situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.MORT)
             jump fin_cycle
     jump fin_cycle
 
@@ -123,8 +105,6 @@ label consolidation_syagrius:
     jump fin_cycle
 
 label invasion_syagrius:
-    # play music guerre1 noloop
-    $ MiseEnPlaceGuerreSyagrius()
     "Votre armée est maintenant bien avancée en territoire ennemi et vous savez que Syagrius a fini de lever la sienne."
     menu:
         "Si vous suivez la coutume franque de le défier sur le champs de bataille de son choix.":
@@ -234,8 +214,6 @@ label bataille_soisson_2:
                 $ RetirerACarac(vauban.Vauban.C_MILITAIRE, 1)
     "Pas trace de Syagrius quand vous pénétrez en arme dans sa capitale Soissons sans que personne n'essaye de vous résister. Soit il est mort, soit il a fui. C'est de toute façon une victoire écrasante dont il ne se remettra pas."
     $ AjouterACarac(trait.Gloire.NOM, 1)
-    # fin de la guerre (en théorie)
-    $ situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.VAINCU)
     $ situation_.SetValCarac(vauban.Vauban.CARTE_ACTUELLE, "bg carte486")
     $ AfficherCarteActuelle()
     "Vous vous emparez d'une grande partie de son territoire et en particulier de Reims, Soissons et Paris."

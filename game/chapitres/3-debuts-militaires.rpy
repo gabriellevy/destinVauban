@@ -16,9 +16,6 @@ init -5 python:
 
     auMoinsAnnee485 = condition.Condition(temps.Date.DATE_ANNEES, 485, condition.Condition.SUPERIEUR_EGAL)
     auMoinsAnnee482 = condition.Condition(temps.Date.DATE_ANNEES, 482, condition.Condition.SUPERIEUR_EGAL)
-    # conditions syagrius
-    syagriusPasVaincu = condition.Condition(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.INDEMNE, condition.Condition.EGAL)
-    syagriusVaincu = condition.Condition(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.VAINCU, condition.Condition.DIFFERENT)
 
     stabiliteSyagriusFaible = condition.Condition(syagrius.Syagrius.C_STABILITE, 0, condition.Condition.INFERIEUR)
     armeeSyagriusFaible = condition.Condition(syagrius.Syagrius.C_MILITAIRE, 3, condition.Condition.INFERIEUR)
@@ -28,7 +25,6 @@ init -5 python:
     euricVivant = condition.Condition("euricMort", 1, condition.Condition.DIFFERENT)
     def MiseEnPlaceCaracsSyagrius():
         global situation_
-        situation_.SetValCarac(syagrius.Syagrius.C_ETAT, syagrius.Syagrius.INDEMNE)
         situation_.SetValCarac(syagrius.Syagrius.C_STABILITE, 2)
         situation_.SetValCarac(syagrius.Syagrius.C_MILITAIRE, 6)
         situation_.SetValCarac(syagrius.Syagrius.C_PILLAGE, 0)
@@ -38,14 +34,9 @@ init -5 python:
         probaminer_le_royaume = proba.Proba(0.2, True)
         probaminer_le_royaume.ajouterModifProbaViaVals(-0.1, stabiliteSyagriusFaible)
         probaminer_le_royaume.ajouterModifProbaViaVals(-0.1, armeeSyagriusFaible)
-        # miner_le_royaume = declencheur.Declencheur(probaminer_le_royaume, "miner_le_royaume")
-        # miner_le_royaume.AjouterCondition(syagriusPasEnGuerre)
-        # miner_le_royaume.AjouterCondition(syagriusPasVaincu)
-        # selecteur_.ajouterDeclencheur(miner_le_royaume)
 
         mort_euric = declencheur.Declencheur(proba.Proba(0.5, False), "mort_euric")
         mort_euric.AjouterCondition(auMoinsAnnee485)
-        mort_euric.AjouterCondition(syagriusPasVaincu)
         mort_euric.AjouterCondition(euricVivant)
         selecteur_.ajouterDeclencheur(mort_euric)
 
@@ -53,9 +44,7 @@ init -5 python:
         probaAttaqueRoyaume.ajouterModifProbaViaVals(0.25, stabiliteSyagriusFaible)
         probaAttaqueRoyaume.ajouterModifProbaViaVals(0.25, armeeSyagriusFaible)
         choixAttaqueDuRoyaume = declencheur.Declencheur(probaAttaqueRoyaume, "choixAttaqueDuRoyaume")
-        choixAttaqueDuRoyaume.AjouterCondition(syagriusPasEnGuerre)
         choixAttaqueDuRoyaume.AjouterCondition(auMoinsAnnee482)
-        choixAttaqueDuRoyaume.AjouterCondition(syagriusPasVaincu)
         selecteur_.ajouterDeclencheur(choixAttaqueDuRoyaume)
 
 label choixAttaqueDuRoyaume:
