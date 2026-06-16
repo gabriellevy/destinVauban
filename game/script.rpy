@@ -47,10 +47,10 @@ init -1 python:
     AjouterEvtsRoi()
     # usurpation désactivée pour l'instant. Je le remettrai si je vois une application liée à Vauban mais rien pour l'instant
     # AjouterEvtsUsurpation()
-    AjouterEvtEtudes()
     AjouterEvtsRien()
     # AjouterEvtRenforcement481_485()
-    AjouterEvtGuerreSyagrius()
+    AjouterEvtEtudes()
+    AjouterEvtsChapitre4()
     AjouterEvtBurgondes()
     AjouterEvtsClothilde()
     AjouterEvtThuringie()

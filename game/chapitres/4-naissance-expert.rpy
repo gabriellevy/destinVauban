@@ -15,41 +15,16 @@ init -5 python:
     
     chapitre4 = condition.Condition(vauban.Vauban.CHAPITRE, 4, condition.Condition.EGAL)
 
-    def AjouterEvtGuerreSyagrius():
+    def AjouterEvtsChapitre4():
         global selecteur_
         
         dateNbJours = 1660 * 365 + 1 # ------------------------------------------------- 1660
         debut_chapitre4 = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_chapitre4", dateNbJours)
         selecteur_.ajouterDeclencheur(debut_chapitre4)
 
-        livraison_syagrius = dec_vauban.DecVaubanU(proba.Proba(0.4, True), "livraison_syagrius", 99999999487)
-        # livraison_syagrius.AjouterCondition() # négociations diplomatiques / accords matrimoniaux ?
-        selecteur_.ajouterDeclencheur(livraison_syagrius)
-
 label debut_chapitre4:
     "A FAIRE : début chapitre4"
     $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 4)
-    jump fin_cycle
-
-label livraison_syagrius:
-    "Alaric vous livre Syagrius pieds et poings liés. Vous savez que ce romain a encore des partisans dans vos terres."
-    $ testRuse = testDeCarac.TestDeCarac(trait.Ruse.NOM, 3, situation_)
-    menu:
-        "Le faire exécuter discrètement":
-            "Pas de risques inutiles avec vous. Syagrius finit égorgé et balancé dans une fosse commune. Un problème de réglé."
-            jump fin_cycle
-        "Le faire enfermer [testRuse.affichage_]":
-            $ reussi = testRuse.TesterDifficulte(situation_)
-            if reussi:
-                "Syagrius finit au secret dans les geôles de Tournai. Il ne tient qu'à vous qu'il ne revoit jamais le soleil."
-                jump fin_cycle
-            else:
-                "Malheureusement le bruit que Syagrius est vivant et entre vos mains se répand. Ses partisans grondent."
-                jump fin_cycle
-        "Le faire exécuter publiquement":
-            "Syagrius affronte la mort bravement face au bourreau qui le décapite devant la foule des parisiens."
-            "Ses partisans sont indignés mais n'osent réagir devant votre puissance. Un problème résolu."
-            jump fin_cycle
     jump fin_cycle
 
 label invasion_syagrius:
