@@ -1,4 +1,3 @@
-
 init -5 python:
     import random
     from abs import declencheur
@@ -9,63 +8,11 @@ init -5 python:
     from abs.humanite import pnj
     from abs.humanite import metier
     from abs.univers import temps
-    # from geographie import quartier
     from abs.humanite import identite
-    from chapitres.classes import syagrius
     from chapitres.classes import vauban
-
-    auMoinsAnnee485 = condition.Condition(temps.Date.DATE_ANNEES, 485, condition.Condition.SUPERIEUR_EGAL)
-    auMoinsAnnee482 = condition.Condition(temps.Date.DATE_ANNEES, 482, condition.Condition.SUPERIEUR_EGAL)
-
-    stabiliteSyagriusFaible = condition.Condition(syagrius.Syagrius.C_STABILITE, 0, condition.Condition.INFERIEUR)
-    armeeSyagriusFaible = condition.Condition(syagrius.Syagrius.C_MILITAIRE, 3, condition.Condition.INFERIEUR)
-    stabiliteSyagriusPasFaible = condition.Condition(syagrius.Syagrius.C_STABILITE, 0, condition.Condition.SUPERIEUR)
-    armeeSyagriusPasFaible = condition.Condition(syagrius.Syagrius.C_MILITAIRE, 3, condition.Condition.SUPERIEUR)
-
-    euricVivant = condition.Condition("euricMort", 1, condition.Condition.DIFFERENT)
-    def MiseEnPlaceCaracsSyagrius():
-        global situation_
-        situation_.SetValCarac(syagrius.Syagrius.C_STABILITE, 2)
-        situation_.SetValCarac(syagrius.Syagrius.C_MILITAIRE, 6)
-        situation_.SetValCarac(syagrius.Syagrius.C_PILLAGE, 0)
 
     def AjouterEvtRenforcement481_485():
         global selecteur_
-        probaminer_le_royaume = proba.Proba(0.2, True)
-        probaminer_le_royaume.ajouterModifProbaViaVals(-0.1, stabiliteSyagriusFaible)
-        probaminer_le_royaume.ajouterModifProbaViaVals(-0.1, armeeSyagriusFaible)
-
-        mort_euric = declencheur.Declencheur(proba.Proba(0.5, False), "mort_euric")
-        mort_euric.AjouterCondition(auMoinsAnnee485)
-        mort_euric.AjouterCondition(euricVivant)
-        selecteur_.ajouterDeclencheur(mort_euric)
-
-        probaAttaqueRoyaume = proba.Proba(0.0, True)
-        probaAttaqueRoyaume.ajouterModifProbaViaVals(0.25, stabiliteSyagriusFaible)
-        probaAttaqueRoyaume.ajouterModifProbaViaVals(0.25, armeeSyagriusFaible)
-        choixAttaqueDuRoyaume = declencheur.Declencheur(probaAttaqueRoyaume, "choixAttaqueDuRoyaume")
-        choixAttaqueDuRoyaume.AjouterCondition(auMoinsAnnee482)
-        selecteur_.ajouterDeclencheur(choixAttaqueDuRoyaume)
-
-label choixAttaqueDuRoyaume:
-    $ AfficherCarteActuelle()
-    with dissolve
-    menu:
-        "Le royaume de Syagrius est très affaibli."
-        "L'attaquer.":
-            jump invasion_syagrius
-        "Attendre encore un peu que votre position soit meilleure.":
-            jump fin_cycle
-
-label mort_euric:
-    # Mort d'Eulric roi des wisigoths
-    $ AfficherCarteActuelle()
-    with dissolve
-    "Excellente nouvelle : Euric le grand des Wisigoths et meilleur allié de Syagrius est mort. Syagrius va être très affaibli et sans soutien étranger face à vous."
-    $ RetirerACarac(syagrius.Syagrius.C_STABILITE, 2)
-    $ RetirerACarac(syagrius.Syagrius.C_MILITAIRE, 2)
-    $ situation_.SetValCarac("euricMort", 1)
-    jump choixAttaqueDuRoyaume
 
 '''
 exemple d'événement répétitif complexe à garder comme exemple en attendant d'en avoir fait un dans ce projet

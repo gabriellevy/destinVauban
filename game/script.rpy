@@ -57,8 +57,6 @@ init -1 python:
     AjouterEvtsMarechalImportun()
     AjouterEvtsHistoire()
     AjouterEvtsFamille()
-    # mise en place des caracs de bases
-    MiseEnPlaceCaracsSyagrius()
 
 # Le jeu commence ici
 label start:
