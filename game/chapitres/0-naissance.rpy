@@ -52,10 +52,6 @@ init -5 python:
         # ----- vices et vertus -------------
         situation[trait.Humble.NOM] = trait.ViceVertu.VICIEUX # orgueilleux
 
-        # tmp : 
-        # situation[trait.Equitation.NOM] = trait.TraitMaitrise.MAITRISE_EXPERT
-        # situation[trait.Mathematiques.NOM] = 0
-
         situation[metier.Metier.C_METIER] = u"Prince de sang"
 
         # compétences professionnelles
@@ -85,4 +81,4 @@ label naissance:
     $ genererDateNaissance(situation_, 11)
     $ genererVauban(situation_, traits_)
     jump intro
-    # jump grade_lieutenance_aux_gardes # tmp
+    # jump grade_ordre_saint_louis # tmp

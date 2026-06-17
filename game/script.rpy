@@ -54,7 +54,7 @@ init -1 python:
     AjouterEvtBurgondes()
     AjouterEvtsClothilde()
     AjouterEvtThuringie()
-    AjouterEvtsSalique()
+    AjouterEvtsMarechalImportun()
     AjouterEvtsHistoire()
     AjouterEvtsFamille()
     # mise en place des caracs de bases

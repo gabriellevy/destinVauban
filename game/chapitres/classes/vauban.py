@@ -3,10 +3,10 @@ class Vauban:
 
     # caracs personnelles spécifiques de Vauban
     C_GRADE = u"Grade" 
-    GRADE_LIEUTENANT = u"Lieutenant aux gardes" 
-    # traits utilisés (dans abs.humanite.trait):
-    # Gloire
-    # Richesse
+    GRADE_LIEUTENANT = u"Lieutenant aux gardes"
+    GRADE_SAINT_LOUIS = u"Ordre de Saint Louis"
+    
+    C_FAVEUR_ROI = u"Faveur du roi"
     # métiers utilisés (dans abs.humanite.metier):
     # ????? A FAIRE : supprimer le concept de métier ? il a peu d'intérêt dans le nouveau système...
     # de son armée quand il est en campagne

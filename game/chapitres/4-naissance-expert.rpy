@@ -23,7 +23,7 @@ init -5 python:
         selecteur_.ajouterDeclencheur(debut_chapitre4)
         
         dateNbJours = 1667 * 365 + 1 # ------------------------------------------------- 1667
-        grade_lieutenance_aux_gardes = dec_vauban.DecVaubanU(proba.Proba(0.2, False), "grade_lieutenance_aux_gardes", dateNbJours)
+        grade_lieutenance_aux_gardes = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "grade_lieutenance_aux_gardes", dateNbJours)
         selecteur_.ajouterDeclencheur(grade_lieutenance_aux_gardes)
 
 label debut_chapitre4:

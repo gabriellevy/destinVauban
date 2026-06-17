@@ -1566,14 +1566,10 @@ screen valeurs_traits():
                 action Function(InterfaceSuivante)
             if interfaceMode_ == 0: # résumé, portrait, nom, age, blessures...
                 add "[adressePortrait]"
-                # text _(u"[patronyme]")
                 text _(u"[affAge]")
-                text _(u"[descriptionBlessures]")
-                text _(u"[strGloire]")
-                text _(u"[strRichesse]")
                 text _(u"[strGrade]")
-                text _(u"[affDate]")
                 text _(u"[affDestin]")
+                text _(u"[affDate]")
             elif interfaceMode_ == 1: # Affichage des maîtrises
                 text _(u" [descriptionMaitrises]")
             elif interfaceMode_ == 2: # caracs

@@ -57,7 +57,7 @@ label intro:
     "Vous avez 11 ans, vous avez appris à lire, écrire et compter."
     "Vous êtes aussi instruit en religion car vous avez lu des {i}Vies de Saint{/i} et des {i}Maximes chrétiennes{/i}."
     jump fin_cycle
-    # jump apprentissageFortification
+    # jump grade_ordre_saint_louis # tmp
 
 label apprentissageEnfance:
     scene bg morvan
