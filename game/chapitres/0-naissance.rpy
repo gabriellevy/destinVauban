@@ -85,3 +85,4 @@ label naissance:
     $ genererDateNaissance(situation_, 11)
     $ genererVauban(situation_, traits_)
     jump intro
+    # jump grade_lieutenance_aux_gardes # tmp

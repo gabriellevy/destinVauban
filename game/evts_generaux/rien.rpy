@@ -20,7 +20,7 @@ init -5 python:
         evtsVides_ = [
         "evtRien1", "evtRien2", "evtRien3", "evtRien4", "evtRien7",
         "evtRien8", "evtRien9", "evtRien10", "evtRien11", "evtRien12",
-        "evtRien13", "evtRien14", "evtRien15", "evtRien16", "evtRien17",
+        "evtRien13", "evtRien14", "evtRien16", "evtRien17",
         "evtRien19", "evtRien20"
         ]
         scenesParDefaut = []
@@ -208,13 +208,6 @@ label evtRien14:
     scene bg ludus
     with Dissolve(.5)
     "Après les avoir méprisés un temps les francs ont commencé à apprécier les multiples jeux des romains. Vous avez un faible pour le ludus duodecim scriptorum."
-    jump fin_cycle
-
-label evtRien15:
-    with Dissolve(.5)
-    $ nomEsclave = gaulois_.CreerPrenom(True)
-    "Un esclave des cuisines nommé [nomEsclave] s'est enfui et a été rattrapé pour la 3ème fois !"
-    "Le chef des cuisines a fini par perdre patience et lui a coupé l'oreille."
     jump fin_cycle
 
 label evtRien16:

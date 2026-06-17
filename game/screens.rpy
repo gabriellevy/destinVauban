@@ -1552,14 +1552,11 @@ screen valeurs_traits():
     $ affDate = situation_.AffichageDate()
     $ affDestin = situation_.AffichageTrait(trait.Destin.NOM)
     $ strMetier = situation_.AffichageMetier()
-    # $ strQuartier = situation_.AffichageQuartier()
+    $ strGrade = situation_.AffichageGrade()
     $ patronyme = situation_.AffichagePatronyme()
     $ strRichesse = situation_.AffichageRichesse()
-    $ strUsurp = situation_.AffichageUsurpation()
     $ strGloire = situation_.AffichageGloire()
-    $ strPossessions = situation_.AffichagePossessions()
     $ adressePortrait = situation_.DeterminerPortrait()
-    $ strArmee = situation_.AffichageArmee()
     $ tableauAffichageAmoureuses = situation_.AffichageAmoureuses()
 
     frame:
@@ -1574,8 +1571,7 @@ screen valeurs_traits():
                 text _(u"[descriptionBlessures]")
                 text _(u"[strGloire]")
                 text _(u"[strRichesse]")
-                text _(u"[strArmee]")
-                text _(u"[strUsurp]")
+                text _(u"[strGrade]")
                 text _(u"[affDate]")
                 text _(u"[affDestin]")
             elif interfaceMode_ == 1: # Affichage des maîtrises

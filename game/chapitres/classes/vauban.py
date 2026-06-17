@@ -2,6 +2,8 @@ class Vauban:
     CHAPITRE = u"Chapitre actuel"
 
     # caracs personnelles spécifiques de Vauban
+    C_GRADE = u"Grade" 
+    GRADE_LIEUTENANT = u"Lieutenant aux gardes" 
     # traits utilisés (dans abs.humanite.trait):
     # Gloire
     # Richesse

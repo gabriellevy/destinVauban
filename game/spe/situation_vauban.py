@@ -39,6 +39,7 @@ class SituationVauban(situation.Situation):
         return str
     
     def AffichageGloire(self):
+        val = self.GetValCarac(trait.Gloire.NOM)
         if self.debug_:
             return u"Gloire : {}".format(val)
         return self.collectionTraits[trait.Gloire.NOM].GetDescription(self)
@@ -48,6 +49,10 @@ class SituationVauban(situation.Situation):
         if self.debug_:
             return u"Risques d'usurpation : {}".format(val)
         return u""
+
+    def AffichageGrade(self):
+        val = self.GetValCarac(vauban.Vauban.C_GRADE)
+        return u"{}".format(val)
 
     def AffichageRichesse(self):
         strRichesse = self.collectionTraits[trait.Richesse.NOM].GetDescription(self)

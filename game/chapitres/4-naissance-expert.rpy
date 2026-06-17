@@ -21,10 +21,26 @@ init -5 python:
         dateNbJours = 1660 * 365 + 1 # ------------------------------------------------- 1660
         debut_chapitre4 = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_chapitre4", dateNbJours)
         selecteur_.ajouterDeclencheur(debut_chapitre4)
+        
+        dateNbJours = 1667 * 365 + 1 # ------------------------------------------------- 1667
+        grade_lieutenance_aux_gardes = dec_vauban.DecVaubanU(proba.Proba(0.2, False), "grade_lieutenance_aux_gardes", dateNbJours)
+        selecteur_.ajouterDeclencheur(grade_lieutenance_aux_gardes)
 
 label debut_chapitre4:
     "A FAIRE : début chapitre4"
     $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 4)
+    jump fin_cycle
+
+label grade_lieutenance_aux_gardes:
+    # A FAIRE : faire ça via un perso Louis XIV ou Louvois et avec plus de decorum : 
+    scene bg honneur
+    with dissolve
+    "Le roi compte vous faire l'honneur de vous nommer Lieutenant aux gardes."
+    "Cela n'est possible que pour un noble, ce que vous êtes bien sûr."
+    "Mais devant la tendance des roturiers aisés à revendiquer la noblesse pour bénéficier su prestige et des exemptions fiscales, le roi a décidé de lancer des Réformations, c'est à dire des contrôles."
+    "Vous êtes tenus de fournir de nombreux formulaires et documents prouvant votre ascendance."
+    "Enfin, la nomination tant attendue arrive."
+    $ situation_.SetValCarac(vauban.Vauban.C_GRADE, vauban.Vauban.GRADE_LIEUTENANT)
     jump fin_cycle
 
 label invasion_syagrius:

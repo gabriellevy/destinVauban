@@ -27,6 +27,7 @@ init -5 python:
         selecteur_.ajouterDeclencheur(apprentissageEnfance)
         
         endurcissementEnfance = declencheur.Declencheur(proba.Proba(1.0), "endurcissementEnfance")
+        apprentissageEnfance.AjouterCondition(chapitre1)
         endurcissementEnfance.AjouterCondition(en_hiver)
         selecteur_.ajouterDeclencheur(endurcissementEnfance)
 
