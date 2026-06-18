@@ -20,9 +20,24 @@ init -5 python:
         debut_chapitre6 = dec_vauban.DecVaubanU(proba.Proba(0.8, False), "debut_chapitre6", dateNbJours)
         selecteur_.ajouterDeclencheur(debut_chapitre6)
         
+        dateNbJours = 1679 * 365 + 1 # ------------------------------------------------- 1679
+        seigneur_bazoches = dec_vauban.DecVaubanU(proba.Proba(0.2, False), "seigneur_bazoches", dateNbJours)
+        selecteur_.ajouterDeclencheur(seigneur_bazoches)
+        
         dateNbJours = 1685 * 365 + 1 # ------------------------------------------------- 1685
         boileau_sur_grade = dec_vauban.DecVaubanU(proba.Proba(0.2, True), "boileau_sur_grade", dateNbJours)
         selecteur_.ajouterDeclencheur(boileau_sur_grade)
+
+label seigneur_bazoches:
+    # A FAIRE ? ajouter un choix ? Prix etc ?
+    scene bg bazoches
+    with dissolve
+    "Après de longues négociations vous décidez d'acheter enfin la seigneurie de Bazoches, entre votre village natal et votre manoir d'Épiry."
+    "Vous avez maintenant 130 hectares de terre et un très ancien château ayant appartenu à des familles prestigieuses."
+    "Voilà qui va accroître votre prestige à la cour."
+    $ AjouterACarac(vauban.Vauban.C_FAVEUR_ROI, 1)
+    $ SetValCaracInt(vauban.Vauban.C_SEIGNEUR_BAZOCHES, 1)
+    jump fin_cycle
 
 label boileau_sur_grade:
     scene bg honneur

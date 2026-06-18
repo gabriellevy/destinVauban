@@ -52,8 +52,12 @@ class SituationVauban(situation.Situation):
         return u""
 
     def AffichageGrade(self):
-        val = self.GetValCarac(vauban.Vauban.C_GRADE)
-        return u"{}".format(val)
+        grade = self.GetValCarac(vauban.Vauban.C_GRADE)
+        if grade != "":
+            grade = u"{}\n".format(grade)
+        if self.GetValCarac(vauban.Vauban.C_SEIGNEUR_BAZOCHES) == 1:
+            bazoches = vauban.Vauban.C_SEIGNEUR_BAZOCHES
+        return u"{}{}".format(grade, bazoches)
 
     def AffichageRichesse(self):
         strRichesse = self.collectionTraits[trait.Richesse.NOM].GetDescription(self)

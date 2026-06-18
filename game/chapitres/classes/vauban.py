@@ -5,6 +5,9 @@ class Vauban:
     C_GRADE = u"Grade" 
     GRADE_LIEUTENANT = u"Lieutenant aux gardes"
     GRADE_SAINT_LOUIS = u"Ordre de Saint Louis"
+
+    # titres
+    C_SEIGNEUR_BAZOCHES = u"Seigneur de Bazoches"
     
     C_FAVEUR_ROI = u"Faveur du roi"
     # métiers utilisés (dans abs.humanite.metier):
