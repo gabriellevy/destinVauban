@@ -23,12 +23,13 @@ class Selecteur:
                 probaCompleteRel = probaCompleteRel + proba
             else:
                 probaCompleteAbs = probaCompleteAbs + proba
+                print("labelGoTo_ du déclencheur absolu : '{}' !".format(declencheur.labelGoTo_))
 
         # proba absolues (où le total des proba absolues ne peut pas dépasser 1.0 car une proba de 0.5 est VRAIMENT une proba de 50%
         resProba = random.uniform(0, 1.0)
         if resProba <= probaCompleteAbs:
-            if probaCompleteAbs > 1.0:
-                return "probaAbsoluesSup100"
+            #if probaCompleteAbs > 1.0: # sécurité désactivée temporairement pour tester -> le mieux serait de gérer les dates proprement
+            #    return "probaAbsoluesSup100"
             for declencheur in self.declencheurs_:
                 if not declencheur.proba_.relative_:
                     proba = declencheur.calculerProba(situation)

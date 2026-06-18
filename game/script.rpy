@@ -6,6 +6,8 @@ define narrator = Character(color="#fafad8", what_italic=True)
 define std = Character('Perso standard...', color="#B22222") # personnage standard remplacé selon les situations. (son nom est mis à jour)
 define cl = Character('Vauban', color="#001ba4")
 
+define boileau = Character('Boileau', color="#39055e")
+
 # A FAIRE : maj les perso pour ajouter Louis XIV, Louvois etc
 image clotilde = "perso/clotilde.png"
 define clot = Character('Clotilde', color="#800000")
