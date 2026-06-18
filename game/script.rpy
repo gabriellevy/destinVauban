@@ -56,6 +56,7 @@ init -1 python:
     AjouterEvtBurgondes()
     AjouterEvtsClothilde()
     AjouterEvtVagabondDuRoi()
+    AjouterEvts8Summum()
     AjouterEvtsMarechalImportun()
     AjouterEvtsHistoire()
     AjouterEvtsFamille()

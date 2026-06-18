@@ -19,14 +19,9 @@ init -5 python:
         debut_chapitre9 = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_chapitre9", dateNbJours)
         selecteur_.ajouterDeclencheur(debut_chapitre9)
         
-        dateNbJours = 1705 * 365 + 1
+        dateNbJours = 1693 * 365 + 1
         grade_ordre_saint_louis = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "grade_ordre_saint_louis", dateNbJours)
         selecteur_.ajouterDeclencheur(grade_ordre_saint_louis)
-
-label debut_chapitre9:
-    "A FAIRE : début chapitre9"
-    $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 9)
-    jump fin_cycle
 
 label grade_ordre_saint_louis:
     # A FAIRE : faire ça via un perso Louis XIV ou Louvois et avec plus de decorum : 
@@ -56,4 +51,9 @@ label grade_ordre_saint_louis:
         "Cela aura été bien laborieux et humiliant, mais enfin vous voila membre de l'ordre de Saint Louis."
         $ situation_.SetValCarac(vauban.Vauban.C_GRADE, vauban.Vauban.GRADE_SAINT_LOUIS)
 
+    jump fin_cycle
+
+label debut_chapitre9:
+    "A FAIRE : début chapitre9"
+    $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 9)
     jump fin_cycle

@@ -13,11 +13,14 @@ init -5 python:
     from chapitres.classes import syagrius
     from chapitres.classes import vauban
 
-# événements liés aux wisigoths, surtout invasion de 507
-label reconnaissance_par_empereur:
-    # A FAIRE : caser ça après victoire et alliance formelle avec l'empereur ET si converti au christianisme
-    "L'empereur Anastase est heureux de votre victoire et vous envoie les prestigieux emblèmes du consul honoraire."
-    "Ayant revêtu dans la basilique du bienheureux Martin une tunique de pourpre et une chlamide vous vous coiffez d'un diadème."
-    "À partir de ce jour vous serez appelé consul ou Auguste."
-    # A FAIRE : marquer cela comme succès du destin
+    def AjouterEvts8Summum():
+        global selecteur_
+        
+        dateNbJours = 1691 * 365 + 1 # ------------------------------------------------- 1691
+        debut_chapitre8 = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_chapitre8", dateNbJours)
+        selecteur_.ajouterDeclencheur(debut_chapitre8)
+
+label debut_chapitre8:
+    "A FAIRE : début chapitre8"
+    $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 8)
     jump fin_cycle
