@@ -53,7 +53,7 @@ init -1 python:
     AjouterEvtsChapitre4()
     AjouterEvtBurgondes()
     AjouterEvtsClothilde()
-    AjouterEvtThuringie()
+    AjouterEvtVagabondDuRoi()
     AjouterEvtsMarechalImportun()
     AjouterEvtsHistoire()
     AjouterEvtsFamille()
