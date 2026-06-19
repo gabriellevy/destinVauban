@@ -1401,58 +1401,6 @@ class Charme(TraitGraduel):
         else:
             return ""
 
-class Artiste(TraitGraduel):
-
-    NOM = u"Artiste"
-
-    def __init__(self):
-        self.eTrait_ = Artiste.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            # if val <= Trait.SEUIL_A_PAS_EXTREME:
-            #    return u"Très Déplaisant"
-            return u"Vulgaire"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Grand Artiste"
-            return u"Artiste"
-        else:
-            return ""
-
-class Ruse(TraitGraduel):
-
-    NOM = u"Ruse"
-
-    def __init__(self):
-        self.eTrait_ = Ruse.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-               return u"Gros nigaud"
-            return u"Naïf"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Machiavélique"
-            return u"Rusé"
-        else:
-            return ""
-
 class Richesse(TraitGraduel):
 
     NOM = u"Richesse"
@@ -1513,38 +1461,7 @@ class Gloire(TraitGraduel):
         elif val <= Trait.CARAC_EXCEPTIONNEL:
             return u"Très célèbre" 
         else:
-            return u"Légende vivante" 
-
-class Liberte(TraitGraduel):
-
-    NOM = u"Soif de liberté"
-
-    def __init__(self):
-        self.eTrait_ = Liberte.NOM
-
-    def PeutEtrePrisALaNaissance(self):
-        return False
-
-    # tmp : numéro affiché pour raison de débug
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Mentalité d'esclave"
-            return u"Aime être soumis"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Ne supporte pas l'autorité"
-            return u"Épris de liberté"
-        else:
-            return u""
-            # return u"Classe moyenne {}".format(val)
+            return u"Légende vivante"
 
 class CollectionTraits:
 
@@ -1574,19 +1491,17 @@ class CollectionTraits:
         volonte = Volonte()
         self.SetTrait(Volonte.NOM, volonte)
 
-        # A FAIRE : voir ce que je garde ci après
-        ruse = Ruse()
-        self.SetTrait(Ruse.NOM, ruse)
-        liberte = Liberte()
-        self.SetTrait(Liberte.NOM, liberte)
+        # ----- spécifiques assez courantes pour que je les garde ici : 
+        destin = Destin()
+        self.SetTrait(Destin.NOM, destin)    
         gloire = Gloire()
         self.SetTrait(Gloire.NOM, gloire)
+
+        # A FAIRE : voir ce que je garde ci après
         assurance = Assurance()
         self.SetTrait(Assurance.NOM, assurance)
         richesse = Richesse()
         self.SetTrait(Richesse.NOM, richesse)
-        artiste = Artiste()
-        self.SetTrait(Artiste.NOM, artiste)
         spiritualite = Spiritualite()
         self.SetTrait(Spiritualite.NOM, spiritualite)
         charme = Charme()
@@ -1641,9 +1556,6 @@ class CollectionTraits:
         self.SetTrait(Rancune.NOM, rancune)
         serenite = Serenite()
         self.SetTrait(Serenite.NOM, serenite)
-
-        destin = Destin()
-        self.SetTrait(Destin.NOM, destin)
 
         # --------------- Maîtrise
         equitation = Equitation()

@@ -41,10 +41,8 @@ init -5 python:
         "Tortue": 0,
         "vautour": 0}
 
-        # Liberte
-        valsAnimalTotem["aigle"] = valsAnimalTotem["aigle"] + situation_.GetValCaracInt(trait.Liberte.NOM)
-        valsAnimalTotem["chat"] = valsAnimalTotem["chat"] + situation_.GetValCaracInt(trait.Liberte.NOM)
-        valsAnimalTotem["colibri"] = valsAnimalTotem["colibri"] + situation_.GetValCaracInt(trait.Liberte.NOM)
+        # Liberté
+        
         # Assurance
         valsAnimalTotem["aigle"] = valsAnimalTotem["aigle"] + situation_.GetValCaracInt(trait.Assurance.NOM)
         valsAnimalTotem["lion"] = valsAnimalTotem["lion"] + situation_.GetValCaracInt(trait.Assurance.NOM)
@@ -53,7 +51,7 @@ init -5 python:
         valsAnimalTotem["mouton"] = valsAnimalTotem["mouton"] - situation_.GetValCaracInt(trait.Assurance.NOM)
         # Richesse
         # Artiste
-        valsAnimalTotem["Araignée"] = valsAnimalTotem["Araignée"] + situation_.GetValCaracInt(trait.Artiste.NOM)
+
         # Spiritualite
         # Charme
         valsAnimalTotem["chat"] = valsAnimalTotem["chat"] + situation_.GetValCaracInt(trait.Charme.NOM)

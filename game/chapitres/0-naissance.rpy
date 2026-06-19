@@ -44,7 +44,6 @@ init -5 python:
         situation[trait.Observation.NOM] = trait.Trait.SEUIL_A
         situation[trait.Cupidite.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Courage.NOM] = trait.Trait.SEUIL_A
-        situation[trait.Ruse.NOM] = trait.Trait.SEUIL_A
         situation[trait.Ambition.NOM] = trait.Trait.SEUIL_A
         situation[trait.Rancune.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Franchise.NOM] = trait.Trait.SEUIL_A_PAS

@@ -73,11 +73,6 @@ def CalculerAmabiliteHommePremierContact(dicoTraitsPersoH):
                 niveauAmabilite = niveauAmabilite - 1
             elif val >= trait.Trait.SEUIL_A:
                 niveauAmabilite = niveauAmabilite + 1
-        elif traitJoueurStr == trait.Artiste.NOM:
-            # un peu artiste c'est mieux
-            val = dicoTraitsPersoH[traitJoueurStr]
-            if val >= trait.Trait.SEUIL_A:
-                niveauAmabilite = niveauAmabilite + 1
         elif traitJoueurStr == trait.Intelligence.NOM:
             val = dicoTraitsPersoH[traitJoueurStr]
             if val <= trait.Trait.SEUIL_A_PAS:
