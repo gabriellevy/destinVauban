@@ -94,8 +94,8 @@ label fin_cycle:
     $ _test_carac = None
     $ _test_difficulte = None
     $ _test_texte_menu = None
-    $ _test_texte_reussi = None
-    $ _test_texte_echoue = None
+    $ _test_texte_reussi = "Réussi !"
+    $ _test_texte_echoue = "Raté !"
     $ _test_action_reussi = None
     $ _test_action_echoue = None
     $ _test_label_reussi = None

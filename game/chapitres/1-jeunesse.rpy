@@ -14,6 +14,7 @@ init -5 python:
     from chapitres.classes import vauban
 
     equitation0 = condition.Condition(maitrise.Equitation.NOM, maitrise.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
+    hydraulique0Enfance = condition.Condition(maitrise.Hydraulique.NOM, maitrise.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
     chapitre1 = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.EGAL)
     en_hiver = condition.Condition(temps.Date.SAISON, temps.Date.HIVER, condition.Condition.EGAL)
 
@@ -23,14 +24,29 @@ init -5 python:
         apprentissageEquitation.AjouterCondition(equitation0)
         selecteur_.ajouterDeclencheur(apprentissageEquitation)
 
+        apprentissageHydrauliqueEnfance = declencheur.Declencheur(proba.Proba(5), "apprentissageHydrauliqueEnfance")
+        apprentissageHydrauliqueEnfance.AjouterCondition(hydraulique0Enfance)
+        selecteur_.ajouterDeclencheur(apprentissageHydrauliqueEnfance)
+
         apprentissageEnfance = declencheur.Declencheur(proba.Proba(0.05), "apprentissageEnfance")
         apprentissageEnfance.AjouterCondition(chapitre1)
         selecteur_.ajouterDeclencheur(apprentissageEnfance)
         
-        endurcissementEnfance = declencheur.Declencheur(proba.Proba(1.0), "endurcissementEnfance")
+        endurcissementEnfance = declencheur.Declencheur(proba.Proba(0.4), "endurcissementEnfance")
         apprentissageEnfance.AjouterCondition(chapitre1)
         endurcissementEnfance.AjouterCondition(en_hiver)
         selecteur_.ajouterDeclencheur(endurcissementEnfance)
+
+label apprentissageHydrauliqueEnfance:
+    scene bg morvan
+    "[situation_.AffichageDate()]"
+    $ _test_carac = trait.Intelligence.NOM
+    $ _test_difficulte = -10
+    $ _test_texte_menu = "Le bois du Morvan approvisionne Paris. Il est expédié par flottage sur les fleuves qui se jettent d'abord dans l'Yonne puis la Seine."
+    $ _test_texte_reussi = "Les étangs artificiels avec barrages qu'on crée pour stocker puis envoyer les troncs vous passionnent et vous en apprenez vite les subtilités."
+    $ _test_action_reussi = lambda: SetValMaitrise(maitrise.Hydraulique.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+    call _test_de_carac
+    jump fin_cycle
 
 label endurcissementEnfance:
     scene bg morvan
