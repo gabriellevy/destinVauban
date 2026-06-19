@@ -45,6 +45,9 @@ init -1 python:
     from chapitres.classes import syagrius
     import random
 
+    # valeurs de bases à initialiser : 
+    exploits = 5
+
     # chapitres
     AjouterEvtJeunesse()
     # autres

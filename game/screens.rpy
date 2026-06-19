@@ -1560,7 +1560,6 @@ screen valeurs_traits():
     $ tableauAffichageAmoureuses = situation_.AffichageAmoureuses()
 
     frame:
-        xpos 5 ypos 5
         vbox:
             textbutton _("Description suivante"):
                 action Function(InterfaceSuivante)
@@ -1570,6 +1569,11 @@ screen valeurs_traits():
                 text _(u"[strGrade]")
                 text _(u"[affDestin]")
                 text _(u"[affDate]")
+                xsize 210
+                spacing 5
+                text _("Exploits ([situation_[vauban.Vauban.C_EXPLOITS]]/100) : ")
+                bar:
+                    value AnimatedValue(situation_[vauban.Vauban.C_EXPLOITS], 100, 1.0)
             elif interfaceMode_ == 1: # Affichage des maîtrises
                 text _(u" [descriptionMaitrises]")
             elif interfaceMode_ == 2: # caracs

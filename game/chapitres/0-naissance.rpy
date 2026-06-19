@@ -61,6 +61,7 @@ init -5 python:
 
         # caracs spécifiques
         situation[vauban.Vauban.CHAPITRE] = 1
+        situation[vauban.Vauban.C_EXPLOITS] = 0
         situation[vauban.Vauban.C_USURPATION] = 0
         situation[vauban.Vauban.C_MILITAIRE] = 0 # pas d'armée par défaut
         situation.SetValCarac(religion.Religion.C_RELIGION, religion.Paien.NOM)

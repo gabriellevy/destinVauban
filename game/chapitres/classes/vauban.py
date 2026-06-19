@@ -5,6 +5,7 @@ class Vauban:
     C_GRADE = u"Grade" 
     GRADE_LIEUTENANT = u"Lieutenant aux gardes"
     GRADE_SAINT_LOUIS = u"Ordre de Saint Louis"
+    C_EXPLOITS = u"Exploits"
 
     # titres
     C_SEIGNEUR_BAZOCHES = u"Seigneur de Bazoches"
