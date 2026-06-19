@@ -79,7 +79,6 @@ init -5 python:
 
 label naissance:
     $ genererDateNaissance(situation_, 11)
-    # $ genererDateNaissance(situation_, 11)
     $ genererVauban(situation_, traits_)
     jump intro
     #jump grade_ordre_saint_louis # tmp

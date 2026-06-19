@@ -13,8 +13,8 @@ import random
 class SituationVauban(situation.Situation):
 
     def __init__(self):
-        dateNbJours = 4*30 + 1684 * 365 + 1 # 1er mai 1633 + 11 # test
-        #dateNbJours = 4*30 + 1644 * 365 + 1 # 1er mai 1633 + 11
+        #dateNbJours = 4*30 + 1684 * 365 + 1 # 1er mai 1633 + 11 # test
+        dateNbJours = 4*30 + 1644 * 365 + 1 # 1er mai 1633 + 11
         situation.Situation.__init__(self, dateNbJours)
 
     # ------------------------------------------------AFFICHAGE---------------------------------------
@@ -55,7 +55,8 @@ class SituationVauban(situation.Situation):
         grade = self.GetValCarac(vauban.Vauban.C_GRADE)
         if grade != "":
             grade = u"{}\n".format(grade)
-        if self.GetValCarac(vauban.Vauban.C_SEIGNEUR_BAZOCHES) == 1:
+        bazoches = ""
+        if self.GetValCaracInt(vauban.Vauban.C_SEIGNEUR_BAZOCHES) == 1:
             bazoches = vauban.Vauban.C_SEIGNEUR_BAZOCHES
         return u"{}{}".format(grade, bazoches)
 
