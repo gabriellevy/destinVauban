@@ -4,7 +4,7 @@ from abs.univers import temps
 # from univers.geographie import quartier
 from abs.humanite import portrait
 from abs.humanite import pnj
-from abs.humanite import trait
+from game.abs.humanite.trait import trait
 from abs.humanite import identite
 from abs.affichage import affichagePortrait
 from abs.humanite.amour import relationAmoureuse

@@ -1,7 +1,7 @@
 import random
 from abs.humanite import portrait
 from abs.univers import temps
-from abs.humanite import trait
+from game.abs.humanite.trait import trait
 
 class RelA:
     """

@@ -4,7 +4,7 @@ init -2 python:
     from spe.cultures import francs
     from spe.cultures import gaulois
     from spe.cultures import romains
-    from abs.humanite import trait
+    from abs.humanite.trait import trait
     # from geographie import quartier
     from abs.humanite import metier
     from abs.univers import temps

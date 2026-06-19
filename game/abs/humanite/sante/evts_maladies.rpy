@@ -5,7 +5,7 @@ init -5 python:
     from abs import proba
     from abs import condition
     from abs.reglages import filtres_action
-    from abs.humanite import trait
+    from abs.humanite.trait import trait
     from abs.univers import temps
     from abs.humanite.sante import pbsante
 

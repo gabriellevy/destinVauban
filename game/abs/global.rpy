@@ -1,7 +1,7 @@
 init -2 python:
     from abs import carac
     # from spe import situation_fondateur
-    from abs.humanite import trait
+    from abs.humanite.trait import trait
     # from geographie import quartier
     from abs.humanite import metier
     from abs.univers import temps

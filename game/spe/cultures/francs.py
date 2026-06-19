@@ -1,6 +1,6 @@
 from abs.univers import culture
 from abs.humanite import metier
-from abs.humanite import trait
+from game.abs.humanite.trait import trait
 # from extremis.geographie import quartier
 import random
 

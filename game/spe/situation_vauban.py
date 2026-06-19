@@ -7,7 +7,7 @@ from spe.humanite import pnj_roi_vauban
 from abs import situation
 from abs.humanite import metier
 from abs.humanite import pnj
-from abs.humanite import trait
+from game.abs.humanite.trait import trait
 import random
 
 class SituationVauban(situation.Situation):
