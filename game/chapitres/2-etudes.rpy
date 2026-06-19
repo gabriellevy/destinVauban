@@ -5,6 +5,7 @@ init -5 python:
     from abs import proba
     from abs import condition
     from abs.humanite.trait import trait
+    from abs.humanite.trait import maitrise
     from abs.humanite import pnj
     from abs.humanite import metier
     from abs.univers import temps
@@ -14,10 +15,10 @@ init -5 python:
 
     estPasEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 2, condition.Condition.DIFFERENT)
     estEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 2, condition.Condition.EGAL)
-    mathematiques0 = condition.Condition(trait.Mathematiques.NOM, 0, condition.Condition.EGAL)
-    fortification0 = condition.Condition(trait.Fortification.NOM, 0, condition.Condition.EGAL)
-    hydraulique0 = condition.Condition(trait.Hydraulique.NOM, 0, condition.Condition.EGAL)
-    poliorcetique0 = condition.Condition(trait.Poliorcetique.NOM, 0, condition.Condition.EGAL)
+    mathematiques0 = condition.Condition(maitrise.Mathematiques.NOM, 0, condition.Condition.EGAL)
+    fortification0 = condition.Condition(maitrise.Fortification.NOM, 0, condition.Condition.EGAL)
+    hydraulique0 = condition.Condition(maitrise.Hydraulique.NOM, 0, condition.Condition.EGAL)
+    poliorcetique0 = condition.Condition(maitrise.Poliorcetique.NOM, 0, condition.Condition.EGAL)
 
     def AjouterEvtEtudes():
         global selecteur_
@@ -59,7 +60,7 @@ label apprentissageGeneral:
         "la logique et les raisonnements abstraits":
             $ AjouterACarac(trait.Intelligence.NOM, 1)
         "l'espagnol":
-            $ SetValMaitrise(trait.Espagnol.NOM, trait.TraitMaitrise.MAITRISE_A)
+            $ SetValMaitrise(maitrise.Espagnol.NOM, maitrise.TraitMaitrise.MAITRISE_A)
         "la maîtrise des armes":
             $ AjouterACarac(trait.ArmesCorpsACorps.NOM, 1)
             $ AjouterACarac(trait.Tir.NOM, 1)
@@ -70,28 +71,28 @@ label apprentissagePoliorcetique:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
     with dissolve
     "Vos études vous donnent une assez bonne teinture de poliorcétique."
-    $ SetValMaitrise(trait.Poliorcetique.NOM, trait.TraitMaitrise.MAITRISE_A)
+    $ SetValMaitrise(maitrise.Poliorcetique.NOM, maitrise.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label apprentissageFortification:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
     with dissolve
     "Vos études vous donnent une assez bonne teinture de fortifications."
-    $ SetValMaitrise(trait.Fortification.NOM, trait.TraitMaitrise.MAITRISE_A)
+    $ SetValMaitrise(maitrise.Fortification.NOM, maitrise.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label apprentissageMathematiques:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
     with dissolve
     "Vos études vous donnent une assez bonne teinture de mathématiques."
-    $ SetValMaitrise(trait.Mathematiques.NOM, trait.TraitMaitrise.MAITRISE_A)
+    $ SetValMaitrise(maitrise.Mathematiques.NOM, maitrise.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label apprentissageHydraulique:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
     with dissolve
     "Vos études vous donnent une assez bonne teinture d'hydraulique."
-    $ SetValMaitrise(trait.Hydraulique.NOM, trait.TraitMaitrise.MAITRISE_A)
+    $ SetValMaitrise(maitrise.Hydraulique.NOM, maitrise.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label debut_des_etudes:

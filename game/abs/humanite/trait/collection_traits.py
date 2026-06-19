@@ -1,4 +1,5 @@
 from abs.humanite.trait import trait
+from abs.humanite.trait import maitrise
 import random
 
 class CollectionTraits:
@@ -96,18 +97,18 @@ class CollectionTraits:
         self.SetTrait(trait.Serenite.NOM, serenite)
 
         # --------------- Maîtrise
-        equitation = trait.Equitation()
-        self.SetTrait(trait.Equitation.NOM, equitation)
-        mathematiques = trait.Mathematiques()
-        self.SetTrait(trait.Mathematiques.NOM, mathematiques)
-        fortification = trait.Fortification()
-        self.SetTrait(trait.Fortification.NOM, fortification)
-        hydraulique = trait.Hydraulique()
-        self.SetTrait(trait.Hydraulique.NOM, hydraulique)
-        poliorcetique = trait.Poliorcetique()
-        self.SetTrait(trait.Poliorcetique.NOM, poliorcetique)
-        espagnol = trait.Espagnol()
-        self.SetTrait(trait.Espagnol.NOM, espagnol)
+        equitation = maitrise.Equitation()
+        self.SetTrait(maitrise.Equitation.NOM, equitation)
+        mathematiques = maitrise.Mathematiques()
+        self.SetTrait(maitrise.Mathematiques.NOM, mathematiques)
+        fortification = maitrise.Fortification()
+        self.SetTrait(maitrise.Fortification.NOM, fortification)
+        hydraulique = maitrise.Hydraulique()
+        self.SetTrait(maitrise.Hydraulique.NOM, hydraulique)
+        poliorcetique = maitrise.Poliorcetique()
+        self.SetTrait(maitrise.Poliorcetique.NOM, poliorcetique)
+        espagnol = maitrise.Espagnol()
+        self.SetTrait(maitrise.Espagnol.NOM, espagnol)
 
         # ------------- Vices et vertus
         humble = trait.Humble()

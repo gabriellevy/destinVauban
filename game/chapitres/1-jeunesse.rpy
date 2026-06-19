@@ -5,6 +5,7 @@ init -5 python:
     from abs import proba
     from abs import condition
     from abs.humanite.trait import trait
+    from abs.humanite.trait import maitrise
     from abs.humanite import pnj
     from abs.humanite import metier
     from abs.univers import temps
@@ -12,7 +13,7 @@ init -5 python:
     from spe import dec_vauban
     from chapitres.classes import vauban
 
-    equitation0 = condition.Condition(trait.Equitation.NOM, trait.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
+    equitation0 = condition.Condition(maitrise.Equitation.NOM, maitrise.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
     chapitre1 = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.EGAL)
     en_hiver = condition.Condition(temps.Date.SAISON, temps.Date.HIVER, condition.Condition.EGAL)
 
@@ -81,6 +82,6 @@ label apprentissageEquitation:
     $ _test_texte_menu = "Comme tout gentilhomme qui se respecte vous prenez très tôt beaucoup de leçons d'équitation."
     $ _test_texte_reussi = "Vous progressez vite."
     $ _test_texte_echoue = "Ce n'est pas votre fort."
-    $ _test_action_reussi = lambda: SetValMaitrise(trait.Equitation.NOM, trait.TraitMaitrise.MAITRISE_A)
+    $ _test_action_reussi = lambda: SetValMaitrise(maitrise.Equitation.NOM, maitrise.TraitMaitrise.MAITRISE_A)
     call _test_de_carac
     jump fin_cycle
