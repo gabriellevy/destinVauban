@@ -5,6 +5,7 @@ init -2 python:
     from spe.cultures import gaulois
     from spe.cultures import romains
     from abs.humanite.trait import trait
+    from abs.humanite.trait import collection_traits
     # from geographie import quartier
     from abs.humanite import metier
     from abs.univers import temps
@@ -14,7 +15,7 @@ init -2 python:
 
     situation_ = situation_vauban.SituationVauban() # dictionnaire contenant toutes les caracs courantes de la partie
     filtre_ = filtres_action.FiltreAction() # objet contenant les préférences du joueur pour les actions à afficher ou cacher en priorité
-    traits_ = trait.CollectionTraits()
+    traits_ = collection_traits.CollectionTraits()
     situation_.collectionTraits = traits_
     blessures_ = pbsante.CollectionBlessures()
     situation_.collectionBlessures = blessures_

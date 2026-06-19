@@ -1,0 +1,148 @@
+from abs.humanite.trait import trait
+import random
+
+class CollectionTraits:
+
+    def __init__(self):
+        self.lTraits_ = dict()
+        # ---------------- compétences de bases brigandyne/warhammmer
+        animaux = trait.Animaux()
+        self.SetTrait(trait.Animaux.NOM, animaux)
+        armesCorpsACorps = trait.ArmesCorpsACorps()
+        self.SetTrait(trait.ArmesCorpsACorps.NOM, armesCorpsACorps)
+        habilete = trait.Habilete()
+        self.SetTrait(trait.Habilete.NOM, habilete)
+        eloquence = trait.Eloquence()
+        self.SetTrait(trait.Eloquence.NOM, eloquence)
+        endurance = trait.Endurance()
+        self.SetTrait(trait.Endurance.NOM, endurance)
+        intelligence = trait.Intelligence()
+        self.SetTrait(trait.Intelligence.NOM, intelligence)
+        mouvement = trait.Mouvement()
+        self.SetTrait(trait.Mouvement.NOM, mouvement)
+        perception = trait.Perception()
+        self.SetTrait(trait.Perception.NOM, perception)
+        discretion = trait.Discretion()
+        self.SetTrait(trait.Discretion.NOM, discretion)
+        tir = trait.Tir()
+        self.SetTrait(trait.Tir.NOM, tir)
+        volonte = trait.Volonte()
+        self.SetTrait(trait.Volonte.NOM, volonte)
+
+        # ----- spécifiques assez courantes pour que je les garde ici : 
+        destin = trait.Destin()
+        self.SetTrait(trait.Destin.NOM, destin)    
+        gloire = trait.Gloire()
+        self.SetTrait(trait.Gloire.NOM, gloire)
+
+        # A FAIRE : voir ce que je garde ci après
+        assurance = trait.Assurance()
+        self.SetTrait(trait.Assurance.NOM, assurance)
+        richesse = trait.Richesse()
+        self.SetTrait(trait.Richesse.NOM, richesse)
+        spiritualite = trait.Spiritualite()
+        self.SetTrait(trait.Spiritualite.NOM, spiritualite)
+        charme = trait.Charme()
+        self.SetTrait(trait.Charme.NOM, charme)
+        observation = trait.Observation()
+        self.SetTrait(trait.Observation.NOM, observation)
+        beaute = trait.Beaute()
+        self.SetTrait(trait.Beaute.NOM, beaute)
+        taille = trait.Taille()
+        self.SetTrait(trait.Taille.NOM, taille)
+        poids = trait.Poids()
+        self.SetTrait(trait.Poids.NOM, poids)
+        resistance = trait.Constitution()
+        self.SetTrait(trait.Constitution.NOM, resistance)
+        force = trait.Force()
+        self.SetTrait(trait.Force.NOM, force)
+        patriarcat = trait.Patriarcat()
+        self.SetTrait(trait.Patriarcat.NOM, patriarcat)
+        sexualite = trait.Sexualite()
+        self.SetTrait(trait.Sexualite.NOM, sexualite)
+        cupidite = trait.Cupidite()
+        self.SetTrait(trait.Cupidite.NOM, cupidite)
+        sincerite = trait.Sincerite()
+        self.SetTrait(trait.Sincerite.NOM, sincerite)
+        honorabilite = trait.Honorabilite()
+        self.SetTrait(trait.Honorabilite.NOM, honorabilite)
+        opp = trait.Opportunisme()
+        self.SetTrait(trait.Opportunisme.NOM, opp)
+        ind = trait.Industrie()
+        self.SetTrait(trait.Industrie.NOM, ind)
+        franch = trait.Franchise()
+        self.SetTrait(trait.Franchise.NOM, franch)
+        violence = trait.Violence()
+        self.SetTrait(trait.Violence.NOM, violence)
+        prag = trait.Pragmatisme()
+        self.SetTrait(trait.Pragmatisme.NOM, prag)
+        intel = trait.Intellectualisme()
+        self.SetTrait(trait.Intellectualisme.NOM, intel)
+        sensi = trait.Sensibilite()
+        self.SetTrait(trait.Sensibilite.NOM, sensi)
+        ascetisme = trait.Ascetisme()
+        self.SetTrait(trait.Ascetisme.NOM, ascetisme)
+        courage = trait.Courage()
+        self.SetTrait(trait.Courage.NOM, courage)
+        ambition = trait.Ambition()
+        self.SetTrait(trait.Ambition.NOM, ambition)
+        prud = trait.Prudence()
+        self.SetTrait(trait.Prudence.NOM, prud)
+        altruisme = trait.Altruisme()
+        self.SetTrait(trait.Altruisme.NOM, altruisme)
+        rancune = trait.Rancune()
+        self.SetTrait(trait.Rancune.NOM, rancune)
+        serenite = trait.Serenite()
+        self.SetTrait(trait.Serenite.NOM, serenite)
+
+        # --------------- Maîtrise
+        equitation = trait.Equitation()
+        self.SetTrait(trait.Equitation.NOM, equitation)
+        mathematiques = trait.Mathematiques()
+        self.SetTrait(trait.Mathematiques.NOM, mathematiques)
+        fortification = trait.Fortification()
+        self.SetTrait(trait.Fortification.NOM, fortification)
+        hydraulique = trait.Hydraulique()
+        self.SetTrait(trait.Hydraulique.NOM, hydraulique)
+        poliorcetique = trait.Poliorcetique()
+        self.SetTrait(trait.Poliorcetique.NOM, poliorcetique)
+        espagnol = trait.Espagnol()
+        self.SetTrait(trait.Espagnol.NOM, espagnol)
+
+        # ------------- Vices et vertus
+        humble = trait.Humble()
+        self.SetTrait(trait.Humble.NOM, humble)        
+
+    def getTraitAleatoire(self):
+        return random.choice(list(self.lTraits_.values()))
+
+    def __getitem__(self, idTrait):
+        if not idTrait in self.lTraits_:
+            self.CreerTrait(idTrait)
+        return self.lTraits_[idTrait]
+
+    def __setitem__(self, idTrait, ptrait):
+        self.SetTrait(idTrait, ptrait)
+
+    def SetTrait(self, idTrait, ptrait):
+        # si la carac n'existe pas encore, la créer
+        if not idTrait in self.lTraits_:
+            self.CreerTrait(idTrait)
+
+        self.lTraits_[idTrait] = ptrait
+
+    def CreerTrait(self, idTrait):
+        ptrait = trait.Trait(idTrait)
+        self.lTraits_[idTrait] = ptrait
+
+    def __len__(self):
+        return len(self.lTraits_)
+
+    def __str__(self):
+        """Affichage quand on affiche l'objet (print)"""
+        if len(self.lTraits_) == 0:
+            return "Aucun trait."
+        str = u"Liste de tous les traits : "
+        for trait in self.lTraits_:
+            str = str + trait + ","
+        return str
