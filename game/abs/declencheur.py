@@ -42,7 +42,6 @@ class Declencheur:
         for condObj in conditions:
             self.conditions_.append(condObj)
 
-
 class DeclencheurU(Declencheur):
     """
     U signifie 'Unique' => l'événement auquel on applique ce déclencheur ne peut s'exécuter qu'une fois maximum
@@ -55,8 +54,21 @@ class DeclencheurU(Declencheur):
         Declencheur.__init__(self, aproba, labelGoTo)
 
     def executer(self):
-        # cette exécution ne doit plus jamais arriver : on lui met une proba à 0 :
-        # self.proba_ = proba.Proba(0)
+        if self.selecteur_ is not None:
+            self.selecteur_.declencheurs_.remove(self)
+        return self.labelGoTo_
+
+class DeclencheurDate(Declencheur):
+    """
+    événement qui se déclenche TOUJOURS à une date précise sans question de probabilité
+    ces événements sont implicitement Unique donc ne se répète jamais
+    """
+
+    def __init__(self, date, labelGoTo):
+        Declencheur.__init__(self, proba.Proba(0.0, False), labelGoTo)
+        self.date_ = date
+
+    def executer(self):
         if self.selecteur_ is not None:
             self.selecteur_.declencheurs_.remove(self)
         return self.labelGoTo_

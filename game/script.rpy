@@ -36,9 +36,6 @@ init -10 python:
     import random
 
     selecteur_ = selecteur.Selecteur()
-    def determinationEvtCourant(situation):
-        global selecteur_
-        return selecteur_.determinationEvtCourant(situation)
 
 init -1 python:
     from abs import selecteur
@@ -86,7 +83,9 @@ label start:
 
 label debut_cycle:
     show screen valeurs_traits
-    $ prochainEvt = determinationEvtCourant(situation_)
+
+    $ situation_.TourSuivant()
+    $ prochainEvt = selecteur_.determinationEvtCourant(situation_)
     $ renpy.jump(prochainEvt)
 
 label fin_cycle:
@@ -103,8 +102,6 @@ label fin_cycle:
     $ _test_action_echoue = None
     $ _test_label_reussi = None
     $ _test_label_echoue = None
-
-    $ situation_.TourSuivant()
 
     if situation_["Santé"] != "Mort":
         jump debut_cycle

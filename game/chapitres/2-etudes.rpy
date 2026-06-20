@@ -23,7 +23,7 @@ init -5 python:
     def AjouterEvtEtudes():
         global selecteur_
         dateNbJours = 1646 * 365 + 1 # 13 ans ------------------------------------------------- 1646
-        debut_des_etudes = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_des_etudes", dateNbJours)
+        debut_des_etudes = declencheur.DeclencheurDate(dateNbJours, "debut_des_etudes")
         debut_des_etudes.AjouterCondition(estPasEtudiant)
         selecteur_.ajouterDeclencheur(debut_des_etudes)
 

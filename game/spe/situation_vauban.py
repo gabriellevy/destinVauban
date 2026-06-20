@@ -105,5 +105,5 @@ class SituationVauban(situation.Situation):
         """
         Passage au "tour" suivant c'est à dire grosso modo à un mois et demi un peu randomisé
         """
-        nbJoursPasses = 38 + random.randint(0, 20)
+        nbJoursPasses = 30 + random.randint(0, 20)
         self.AvanceDeXJours(nbJoursPasses)
