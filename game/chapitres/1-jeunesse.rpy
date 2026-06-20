@@ -20,11 +20,11 @@ init -5 python:
 
     def AjouterEvtJeunesse():
         global selecteur_
-        apprentissageEquitation = declencheur.Declencheur(proba.Proba(0.4), "apprentissageEquitation")
+        apprentissageEquitation = declencheur.Declencheur(proba.Proba(0.2), "apprentissageEquitation")
         apprentissageEquitation.AjouterCondition(equitation0)
         selecteur_.ajouterDeclencheur(apprentissageEquitation)
 
-        apprentissageHydrauliqueEnfance = declencheur.Declencheur(proba.Proba(5), "apprentissageHydrauliqueEnfance")
+        apprentissageHydrauliqueEnfance = declencheur.Declencheur(proba.Proba(0.05), "apprentissageHydrauliqueEnfance")
         apprentissageHydrauliqueEnfance.AjouterCondition(hydraulique0Enfance)
         selecteur_.ajouterDeclencheur(apprentissageHydrauliqueEnfance)
 
@@ -32,7 +32,7 @@ init -5 python:
         apprentissageEnfance.AjouterCondition(chapitre1)
         selecteur_.ajouterDeclencheur(apprentissageEnfance)
         
-        endurcissementEnfance = declencheur.Declencheur(proba.Proba(0.4), "endurcissementEnfance")
+        endurcissementEnfance = declencheur.Declencheur(proba.Proba(0.05), "endurcissementEnfance")
         apprentissageEnfance.AjouterCondition(chapitre1)
         endurcissementEnfance.AjouterCondition(en_hiver)
         selecteur_.ajouterDeclencheur(endurcissementEnfance)

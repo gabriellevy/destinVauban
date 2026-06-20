@@ -20,7 +20,7 @@ init -5 python:
         evtsVides_ = [
         "evtRien1", "evtRien2", "evtRien3", "evtRien4", "evtRien7",
         "evtRien8", "evtRien9", "evtRien10", "evtRien11", "evtRien12",
-        "evtRien13", "evtRien14", "evtRien16", "evtRien17",
+        "evtRien13", "evtRien14", "evtRien16",
         "evtRien19", "evtRien20"
         ]
         scenesParDefaut = []
@@ -34,6 +34,12 @@ init -5 python:
         # enfant
         if chapitre1:
             evtsVides_.append("evtRien_enfance1")
+
+        # dans le morvan
+        if chapitre1:
+            evtsVides_.append("evtRien_morvan1")
+            evtsVides_.append("evtRien_morvan2")
+            evtsVides_.append("evtRien_morvan3")
 
         # étudiant
         if estEtudiant:
@@ -84,6 +90,22 @@ init -5 python:
             renpy.show(random.choice(scenesParDefaut))
         # en lance un au hasard
         renpy.jump(random.choice(evtsVides_))
+
+label evtRien_morvan1:
+    scene bg morvan
+    "Les paysans morvandiaux sont grands et assez bien faits, surement grâce au bon air de ce pays et au travail dans les forêts."
+    jump fin_cycle
+
+label evtRien_morvan2:
+    scene bg morvan
+    "Les paysans morvandiaux vivent de pain d'ordre et d'avoine mêlés, dont ils n'otent même aps le son."
+    "Plus de mauvais fruits, la plupart sauvages, et de quelque peu d'herbes potagères de leurs jardin, cuites à l'eau, avec un peu d'huile de noix ou de navette, le plus souvent sans, ou avec très peu de sel."
+    jump fin_cycle
+
+label evtRien_morvan3:
+    scene bg morvan
+    "Malgré le rude climat les paysans morvandiaux vaquent à leurs occupations vêtus hiver comme été de toile à demi pourrie et déchirée, et chaussés de sabots, dans lesquels ils ont le pied nu tout l'année."
+    jump fin_cycle
 
 label evtRien_ChristianismeMerovingien_1:
     "Les conciles désapprouvent que les fidèles chantent des chansons d'amour dans les églises. Ils imposent le chant des psaumes."
@@ -215,11 +237,6 @@ label evtRien16:
     $ nom = francs_.CreerPrenom(True)
     "Comme tous les mois la justice populaire franque est rendue sur le marlberg (tumulus)."
     "[nom], accusé et condamné pour vol, a refusé la sentence et s'est enfui. Il a été maudit par le conseil et tout le monde a maintenant le droit et le devoir de le poursuivre et de planter sa tête sur un pieu."
-    jump fin_cycle
-
-label evtRien17:
-    with Dissolve(.5)
-    "Les moulins à eau se multiplient dans vos campagnes. Cet édifice ingénieux utilise la force du courant pour actionner la meule."
     jump fin_cycle
 
 # label evtRien18:
