@@ -83,9 +83,7 @@ label start:
 
 label debut_cycle:
     show screen valeurs_traits
-
-    $ situation_.TourSuivant()
-    $ prochainEvt = selecteur_.determinationEvtCourant(situation_)
+    $ prochainEvt = situation_.TourSuivant(selecteur_)
     $ renpy.jump(prochainEvt)
 
 label fin_cycle:

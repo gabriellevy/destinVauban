@@ -29,9 +29,7 @@ class DecVaubanU(DecVauban):
         """
         DecVauban.__init__(self, aproba, labelGoTo, dateMin)
 
-    def executer(self):
-        # cette exécution ne doit plus jamais arriver : on lui met une proba à 0 :
-        # self.proba_ = proba.Proba(0)
-        if self.selecteur_ is not None:
-            self.selecteur_.declencheurs_.remove(self)
+    def executer(self, pselecteur):
+        if pselecteur is not None:
+            pselecteur.declencheurs_.remove(self)
         return self.labelGoTo_

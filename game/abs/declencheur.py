@@ -29,7 +29,7 @@ class Declencheur:
 
         return self.proba_.calculer(situation)
 
-    def executer(self):
+    def executer(self, pselecteur):
         return self.labelGoTo_
 
     def AjouterCondition(self, condition):
@@ -53,9 +53,9 @@ class DeclencheurU(Declencheur):
         """
         Declencheur.__init__(self, aproba, labelGoTo)
 
-    def executer(self):
-        if self.selecteur_ is not None:
-            self.selecteur_.declencheurs_.remove(self)
+    def executer(self, pselecteur):
+        if pselecteur is not None:
+           pselecteur.declencheurs_.remove(self)
         return self.labelGoTo_
 
 class DeclencheurDate(Declencheur):
@@ -68,7 +68,8 @@ class DeclencheurDate(Declencheur):
         Declencheur.__init__(self, proba.Proba(0.0, False), labelGoTo)
         self.date_ = date
 
-    def executer(self):
-        if self.selecteur_ is not None:
-            self.selecteur_.declencheurs_.remove(self)
+    def executer(self, pselecteur):
+        print("ooooooooooooooooooooo executer DeclencheurDate")
+        if pselecteur is not None:
+            pselecteur.declencheursDate_.remove(self)
         return self.labelGoTo_

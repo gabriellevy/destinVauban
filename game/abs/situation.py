@@ -417,12 +417,24 @@ class Situation:
                 nbJoursConvalescence = 0
             self.caracs_[pbsante.PbSante.C_JOURS_DHOPITAL] = nbJoursConvalescence
 
-    def TourSuivant(self):
+    def TourSuivant(self, pselecteur):
         """
         Passage au "tour" suivant dans un destin extermis c'est à dire grosso modo à un mois un peu randomisé
         """
-        nbJoursPasses = 20 + random.randint(0, 20)
+        nbJoursPassesMax = 20 + random.randint(0, 20)
+        nbJoursPasses = 0
+        prochainEvt = None
+        # 1 cherche des événements de date si il y en a :
+        for jour in range(nbJoursPassesMax + 1):
+            nbJoursPasses = jour
+            prochainEvt = pselecteur.determinationEvtDate(self.caracs_[temps.Date.DATE] + nbJoursPasses)
+            if prochainEvt != None:
+                self.AvanceDeXJours(nbJoursPasses)
+                return prochainEvt
+
+        # 2 sinon, avancée du nombre max de jours et détermination d'un evt selon probabilités
         self.AvanceDeXJours(nbJoursPasses)
+        return pselecteur.determinationEvtCourant(self)
 
     def AvanceDeXMois(self, nbMois):
         """

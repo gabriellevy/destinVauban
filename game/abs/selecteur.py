@@ -1,4 +1,6 @@
 import random
+from abs.univers import temps
+from abs import declencheur
 
 class Selecteur:
     """
@@ -7,10 +9,23 @@ class Selecteur:
 
     def __init__(self):
         self.declencheurs_ = []
+        self.declencheursDate_ = [] # uniquement pour les déclencheurs à date fixe
 
-    def ajouterDeclencheur(self, declencheur):
-        self.declencheurs_.append(declencheur)
+    def ajouterDeclencheur(self, pdeclencheur):
+        if isinstance(pdeclencheur, declencheur.DeclencheurDate):
+            self.declencheursDate_.append(pdeclencheur)
+        else:
+            self.declencheurs_.append(pdeclencheur)
         declencheur.selecteur_ = self
+
+    def determinationEvtDate(self, dateActuelle):
+        global erreur_
+        for ldeclencheur in self.declencheursDate_:
+            if ldeclencheur.date_ == dateActuelle:
+                return ldeclencheur.executer(self)
+            
+        return None
+
 
     def determinationEvtCourant(self, situation):
         global erreur_
@@ -23,7 +38,6 @@ class Selecteur:
                 probaCompleteRel = probaCompleteRel + proba
             else:
                 probaCompleteAbs = probaCompleteAbs + proba
-                print("labelGoTo_ du déclencheur absolu : '{}' !".format(declencheur.labelGoTo_))
 
         # proba absolues (où le total des proba absolues ne peut pas dépasser 1.0 car une proba de 0.5 est VRAIMENT une proba de 50%
         resProba = random.uniform(0, 1.0)
@@ -36,7 +50,7 @@ class Selecteur:
                     if proba > 0:
                         probaTmp = probaTmp + proba
                         if resProba <= probaTmp:
-                            return declencheur.executer()
+                            return declencheur.executer(self)
 
         # si pas de proba absolue validée, on passe aux relatives :
         # probas relatives
@@ -49,6 +63,6 @@ class Selecteur:
                 if proba > 0:
                     probaTmp = probaTmp + proba
                     if resProba <= probaTmp:
-                        return declencheur.executer()
+                        return declencheur.executer(self)
 
         return "pas_evt_trouve"

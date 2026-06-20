@@ -98,12 +98,3 @@ class SituationVauban(situation.Situation):
         portraitStr = portr.DeterminerPortraitPersoPrincipal(self, True)
         self.SetCarac(portrait.Portrait.C_PORTRAIT, portraitStr)
         return self.GetValCarac(portrait.Portrait.C_PORTRAIT)
-
-    # -------------------------------------------------- temps -------------------------------------------------
-
-    def TourSuivant(self):
-        """
-        Passage au "tour" suivant c'est à dire grosso modo à un mois et demi un peu randomisé
-        """
-        nbJoursPasses = 30 + random.randint(0, 20)
-        self.AvanceDeXJours(nbJoursPasses)
