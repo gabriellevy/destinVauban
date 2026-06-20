@@ -16,7 +16,7 @@ init -5 python:
         global selecteur_
         
         dateNbJours = 1697 * 365 + 1 # ------------------------------------------------- 1697
-        debut_chapitre9 = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_chapitre9", dateNbJours)
+        debut_chapitre9 = declencheur.DeclencheurDate(dateNbJours, "debut_chapitre9")
         selecteur_.ajouterDeclencheur(debut_chapitre9)
 
 label debut_chapitre9:

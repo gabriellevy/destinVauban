@@ -18,12 +18,12 @@ init -5 python:
     def AjouterEvtsChapitre4():
         global selecteur_
         
-        dateNbJours = 1660 * 365 + 1 # ------------------------------------------------- 1660
-        debut_chapitre4 = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_chapitre4", dateNbJours)
+        dateNbJours = 1660 * 365 + 1 # ------------------------------------------------- 1660 A FAIRE : préciser date
+        debut_chapitre4 = declencheur.DeclencheurDate(dateNbJours, "debut_chapitre4")
         selecteur_.ajouterDeclencheur(debut_chapitre4)
         
-        dateNbJours = 1667 * 365 + 1 # ------------------------------------------------- 1667
-        grade_lieutenance_aux_gardes = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "grade_lieutenance_aux_gardes", dateNbJours)
+        dateNbJours = 1667 * 365 + 1 # ------------------------------------------------- 1667 A FAIRE : préciser date
+        grade_lieutenance_aux_gardes = declencheur.DeclencheurDate(dateNbJours, "grade_lieutenance_aux_gardes")
         selecteur_.ajouterDeclencheur(grade_lieutenance_aux_gardes)
 
 label debut_chapitre4:

@@ -17,11 +17,11 @@ init -5 python:
         global selecteur_
         
         dateNbJours = 1691 * 365 + 1 # ------------------------------------------------- 1691
-        debut_chapitre8 = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "debut_chapitre8", dateNbJours)
+        debut_chapitre8 = declencheur.DeclencheurDate(dateNbJours, "debut_chapitre8")
         selecteur_.ajouterDeclencheur(debut_chapitre8)
         
         dateNbJours = 1693 * 365 + 1
-        grade_ordre_saint_louis = dec_vauban.DecVaubanU(proba.Proba(0.4, False), "grade_ordre_saint_louis", dateNbJours)
+        grade_ordre_saint_louis = declencheur.DeclencheurDate(dateNbJours, "grade_ordre_saint_louis")
         selecteur_.ajouterDeclencheur(grade_ordre_saint_louis)
 
 label grade_ordre_saint_louis:

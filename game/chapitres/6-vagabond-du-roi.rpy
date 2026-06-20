@@ -17,15 +17,15 @@ init -5 python:
         global selecteur_
         
         dateNbJours = 1678 * 365 + 1 # ------------------------------------------------- 1678
-        debut_chapitre6 = dec_vauban.DecVaubanU(proba.Proba(0.8, False), "debut_chapitre6", dateNbJours)
+        debut_chapitre6 = declencheur.DeclencheurDate(dateNbJours, "debut_chapitre6")
         selecteur_.ajouterDeclencheur(debut_chapitre6)
         
         dateNbJours = 1679 * 365 + 1 # ------------------------------------------------- 1679
-        seigneur_bazoches = dec_vauban.DecVaubanU(proba.Proba(0.2, False), "seigneur_bazoches", dateNbJours)
+        seigneur_bazoches =declencheur.DeclencheurDate(dateNbJours, "seigneur_bazoches")
         selecteur_.ajouterDeclencheur(seigneur_bazoches)
         
         dateNbJours = 1685 * 365 + 1 # ------------------------------------------------- 1685
-        boileau_sur_grade = dec_vauban.DecVaubanU(proba.Proba(0.2, True), "boileau_sur_grade", dateNbJours)
+        boileau_sur_grade = declencheur.DeclencheurDate(dateNbJours, "boileau_sur_grade")
         selecteur_.ajouterDeclencheur(boileau_sur_grade)
 
 label seigneur_bazoches:

@@ -13,16 +13,16 @@ init -5 python:
         global selecteur_
         # naissance de Charlotte
         dateNbJours = 5*30 + 1661 * 365 + 1 # juin 1661
-        naissanceCharlotte = dec_vauban.DecVaubanU(proba.Proba(10, True), "naissanceCharlotte", dateNbJours)
+        naissanceCharlotte = declencheur.DeclencheurDate(dateNbJours, "naissanceCharlotte")
         selecteur_.ajouterDeclencheur(naissanceCharlotte)
         # marriage de Charlotte
         dateNbJours = 2*30 + 1680 * 365 + 26 # 26 mars 1680
-        marriageCharlotte = dec_vauban.DecVaubanU(proba.Proba(10, True), "marriageCharlotte", dateNbJours)
+        marriageCharlotte = declencheur.DeclencheurDate(dateNbJours, "marriageCharlotte")
         selecteur_.ajouterDeclencheur(marriageCharlotte)
         
-        # marriage de Jeanne-Françoise
+        # mariage de Jeanne-Françoise
         dateNbJours = 1681 * 365 + 8 # 8 janvier 1681
-        marriageJeanneFrançoise = dec_vauban.DecVaubanU(proba.Proba(10, True), "marriageJeanneFrançoise", dateNbJours)
+        marriageJeanneFrançoise = declencheur.DeclencheurDate(dateNbJours, "marriageJeanneFrançoise")
         selecteur_.ajouterDeclencheur(marriageJeanneFrançoise)
 
 label naissanceCharlotte:

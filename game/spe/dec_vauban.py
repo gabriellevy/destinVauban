@@ -18,7 +18,7 @@ class DecVauban(declencheur.Declencheur):
         conditionDate = condition.Condition(temps.Date.DATE, dateMin, condition.Condition.SUPERIEUR_EGAL)
         self.AjouterCondition(conditionDate)
 
-class DecVaubanU(DecVauban):
+class DecVaubanU(DecVauban): # A FAIRE : virer ça
     """
     U signifie 'Unique' => l'événement auquel on applique ce déclencheur ne peut s'exécuter qu'une fois maximum
     """
