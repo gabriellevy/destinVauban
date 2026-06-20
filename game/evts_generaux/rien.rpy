@@ -69,11 +69,6 @@ init -5 python:
             evtsVides_.append("evtRien2_automne")
             evtsVides_.append("evtRien3_automne")
 
-        # alamans
-        if situation_.GetValCarac(germains.Alamans.C_VAINCU) != 1:
-            evtsVides_.append("evtRien_alamans")
-
-
         # -----------------------------------------------------------------------------
         if len(evtsVides_) == 0:
             evtsVides_ = ["evtRien1", "evtRien2" ]
@@ -113,27 +108,6 @@ label evtRien_morvan4:
     "La guerre de 30 ans bat son plein et des rumeurs de batailles et d'épidémies arrivent souvent à vos oreilles."
     "Dieu merci elle semble se cantonner à la plaine de Saône et ne pas atteindre le Morvan mais les paysans demeurent tendus : les guerres de religions ne sont pas si loin."
     "À l'époque le seul moyen d'échapper aux ravages des soldats était de fuir dans la forêt pour s'y cacher."
-    jump fin_cycle
-
-label evtRien_ChristianismeMerovingien_1:
-    "Les conciles désapprouvent que les fidèles chantent des chansons d'amour dans les églises. Ils imposent le chant des psaumes."
-    jump fin_cycle
-
-label evtRien_paien_Christianisme_1:
-    scene bg crucifixion
-    "Vous êtes de plus en plus intéressé par le christianisme mais la crucifixion du christ vous semble toujours aussi innaceptable."
-    "Si vous et vos francs aviez été là vous auriez vengé cette injure. Alors pourquoi son père, un Dieu soit disant tout puissant n'a-t-il rien fait ?"
-    jump fin_cycle
-
-label evtRien_paien_Christianisme_2:
-    scene bg crucifixion
-    "Le tombeau de Saint Martin de Tours est devenu un lieu de pélerinage très populaire chez les chrétiens. Les miracles y sont nombreux."
-    jump fin_cycle
-
-label evtRien_alamans:
-    $ AfficherCarteActuelle()
-    "Vous recevez régulièrement des rapports et des plaintes pour les exactions des alamans à l'est."
-    "Les burgondes et les francs de l'Est les contiennent pour l'instant mais tôt ou tard il faudra les calmer."
     jump fin_cycle
 
 label evtRien1_automne:
