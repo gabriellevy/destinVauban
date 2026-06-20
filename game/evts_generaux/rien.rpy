@@ -40,6 +40,7 @@ init -5 python:
             evtsVides_.append("evtRien_morvan1")
             evtsVides_.append("evtRien_morvan2")
             evtsVides_.append("evtRien_morvan3")
+            evtsVides_.append("evtRien_morvan4")
 
         # étudiant
         if estEtudiant:
@@ -105,6 +106,13 @@ label evtRien_morvan2:
 label evtRien_morvan3:
     scene bg morvan
     "Malgré le rude climat les paysans morvandiaux vaquent à leurs occupations vêtus hiver comme été de toile à demi pourrie et déchirée, et chaussés de sabots, dans lesquels ils ont le pied nu tout l'année."
+    jump fin_cycle
+
+label evtRien_morvan4:
+    scene bg morvan
+    "La guerre de 30 ans bat son plein et des rumeurs de batailles et d'épidémies arrivent souvent à vos oreilles."
+    "Dieu merci elle semble se cantonner à la plaine de Saône et ne pas atteindre le Morvan mais les paysans demeurent tendus : les guerres de religions ne sont pas si loin."
+    "À l'époque le seul moyen d'échapper aux ravages des soldats était de fuir dans la forêt pour s'y cacher."
     jump fin_cycle
 
 label evtRien_ChristianismeMerovingien_1:
