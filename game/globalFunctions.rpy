@@ -4,7 +4,7 @@ init -2 python:
     from spe.cultures import francs
     from spe.cultures import gaulois
     from spe.cultures import romains
-    from abs.humanite.trait import trait
+    from game.abs.humanite.trait import trait
     from abs.humanite.trait import collection_traits
     # from geographie import quartier
     from abs.humanite import metier
@@ -85,7 +85,6 @@ init -2 python:
         interfaceMode_ = interfaceMode_ + 1
         if interfaceMode_ >= nbInterfaceMode_:
             interfaceMode_ = 0
-        print(interfaceMode_)
 
     def AfficherCarteActuelle():
         global situation_

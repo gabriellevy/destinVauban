@@ -5,7 +5,7 @@ init -5 python:
     from abs import proba
     from abs import modifProba
     from abs import condition
-    from abs.humanite.trait import trait
+    from game.abs.humanite.trait import trait
     from abs.humanite import metier
     from chapitres.classes import vauban
 

@@ -219,7 +219,7 @@ class Situation:
         """
         Description des maîtrises
         """
-        str = u""
+        str = ""
         for traitObj in traits.lTraits_.values():
             # seulement les maîtrises : 
             if isinstance(traitObj, maitrise.TraitMaitrise):

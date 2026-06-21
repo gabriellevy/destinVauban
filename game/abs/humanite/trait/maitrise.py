@@ -1,4 +1,4 @@
-from abs.humanite.trait import trait
+from game.abs.humanite.trait import trait
 
 # -------------------------------------- Maîtrise -----------------------------------------------------
 # Trait représentant la maîtrise d'un domaine particulier 

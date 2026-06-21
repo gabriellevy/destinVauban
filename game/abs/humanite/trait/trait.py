@@ -3,7 +3,7 @@ import random
 """
 A FAIRE : convertir tout ça en caractéristiques brigandyne/warhammer
 """
-class Trait:
+class Trait(object):
     """
     ce qui a rapport aux traits descriptif d'un personnage. Ils peuvent aussi bien être psychologiques que physiques.
     Tous ces traits sont définis par des entiers mais ils sont de plusieurs types : 

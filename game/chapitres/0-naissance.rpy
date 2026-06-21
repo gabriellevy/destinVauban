@@ -7,7 +7,7 @@ init -5 python:
     from abs import proba
     from abs import testDeCarac
     from abs import condition
-    from abs.humanite.trait import trait
+    from game.abs.humanite.trait import trait
     from spe.humanite import pnj_roi_vauban
     from abs.univers import temps
     # from geographie import quartier

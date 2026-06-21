@@ -1,5 +1,5 @@
-from abs.humanite.trait import trait
-from abs.humanite.trait import maitrise
+from game.abs.humanite.trait import trait
+from game.abs.humanite.trait import maitrise
 import random
 
 class CollectionTraits:
@@ -97,6 +97,8 @@ class CollectionTraits:
         self.SetTrait(trait.Serenite.NOM, serenite)
 
         # --------------- Maîtrise
+        architecture = maitrise.Architecture()
+        self.SetTrait(maitrise.Architecture.NOM, architecture)
         equitation = maitrise.Equitation()
         self.SetTrait(maitrise.Equitation.NOM, equitation)
         mathematiques = maitrise.Mathematiques()
