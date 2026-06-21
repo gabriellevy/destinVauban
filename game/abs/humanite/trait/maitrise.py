@@ -20,6 +20,32 @@ class TraitMaitrise(trait.Trait):
     def GetValeurALaNaissance(self):
         return 0
 
+class Architecture(TraitMaitrise):
+
+    NOM = u"Architecture"
+
+    def __init__(self):
+        self.eTrait_ = Architecture.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Maîtrise : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == TraitMaitrise.MAITRISE_A_PAS:
+            return u""
+        elif val == TraitMaitrise.MAITRISE_A:
+            return u"Notions en Architecture"
+        elif val == TraitMaitrise.MAITRISE_EXPERT:
+            return u"Architecte"
+        elif val == TraitMaitrise.MAITRISE_LEGENDAIRE:
+            return u"Expert Architecte"
+        else:
+            return u""
+
 class Equitation(TraitMaitrise):
 
     NOM = u"Équitation"

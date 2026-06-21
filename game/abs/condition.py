@@ -7,8 +7,9 @@ class Condition:
     INFERIEUR = -2
     INFERIEUR_EGAL = -1
     EGAL = 0
-    SUPERIEUR_EGAL = 1
-    SUPERIEUR = 2
+    EGAL_NUMERIQUE = 1
+    SUPERIEUR_EGAL = 2
+    SUPERIEUR = 3
     DIFFERENT = -99
 
     def __init__(self, caracId, valeur, comparateur):
@@ -31,6 +32,8 @@ class Condition:
                 valCarac = situation.GetValCaracInt(self._m_CaracId)
             assert isinstance(valCarac, int) or isinstance(valCarac, float), "Test de valeur arithmétique sur une valeur de carac ({}) qui n'est pas arithmétique : '{}'".format(self._m_CaracId, valCarac)
             valCarac = situation.GetValCaracInt(self._m_CaracId)
+            if (self._m_Comparateur == Condition.EGAL_NUMERIQUE):
+                return valCarac == float(self._m_Valeur)
             if (self._m_Comparateur == Condition.INFERIEUR_EGAL):
                 return valCarac <= float(self._m_Valeur)
             elif (self._m_Comparateur == Condition.INFERIEUR):

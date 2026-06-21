@@ -11,8 +11,16 @@ init -5 python:
     from abs.humanite import identite
     from chapitres.classes import vauban
 
-    def AjouterEvtRenforcement481_485():
+    def AjouterEvts3DebutsMilitaires():
         global selecteur_
+        dateNbJours = 1651 * 365 # ------------------------------------------------- 1651
+        debut_chapitre3 = declencheur.DeclencheurDate(dateNbJours, "debut_chapitre3")
+        selecteur_.ajouterDeclencheur(debut_chapitre3)
+
+label debut_chapitre3:
+    "A FAIRE : début chapitre 3, débuts militaires"
+    $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 3)
+    jump fin_cycle
 
 '''
 exemple d'événement répétitif complexe à garder comme exemple en attendant d'en avoir fait un dans ce projet

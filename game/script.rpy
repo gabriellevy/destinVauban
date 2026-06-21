@@ -53,8 +53,8 @@ init -1 python:
     # usurpation désactivée pour l'instant. Je le remettrai si je vois une application liée à Vauban mais rien pour l'instant
     # AjouterEvtsUsurpation()
     AjouterEvtsRien()
-    # AjouterEvtRenforcement481_485()
     AjouterEvtEtudes()
+    AjouterEvts3DebutsMilitaires()
     AjouterEvtsChapitre4()
     AjouterEvtBurgondes()
     AjouterEvtsClothilde()

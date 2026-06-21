@@ -14,17 +14,17 @@ init -5 python:
     from chapitres.classes import vauban
 
     estPasEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 2, condition.Condition.DIFFERENT)
-    estEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 2, condition.Condition.EGAL)
-    mathematiques0 = condition.Condition(maitrise.Mathematiques.NOM, 0, condition.Condition.EGAL)
-    fortification0 = condition.Condition(maitrise.Fortification.NOM, 0, condition.Condition.EGAL)
-    hydraulique0 = condition.Condition(maitrise.Hydraulique.NOM, 0, condition.Condition.EGAL)
-    poliorcetique0 = condition.Condition(maitrise.Poliorcetique.NOM, 0, condition.Condition.EGAL)
+    estEtudiant = condition.Condition(vauban.Vauban.CHAPITRE, 2, condition.Condition.EGAL_NUMERIQUE)
+    mathematiques0 = condition.Condition(maitrise.Mathematiques.NOM, 0, condition.Condition.EGAL_NUMERIQUE)
+    fortification0 = condition.Condition(maitrise.Fortification.NOM, 0, condition.Condition.EGAL_NUMERIQUE)
+    hydraulique0 = condition.Condition(maitrise.Hydraulique.NOM, 0, condition.Condition.EGAL_NUMERIQUE)
+    poliorcetique0 = condition.Condition(maitrise.Poliorcetique.NOM, 0, condition.Condition.EGAL_NUMERIQUE)
+    espagnol0 = condition.Condition(maitrise.Espagnol.NOM, 0, condition.Condition.EGAL_NUMERIQUE)
 
     def AjouterEvtEtudes():
         global selecteur_
-        dateNbJours = 1646 * 365 + 1 # 13 ans ------------------------------------------------- 1646
+        dateNbJours = 1646 * 365 + 1 # ------------------------------------------------- 1646
         debut_des_etudes = declencheur.DeclencheurDate(dateNbJours, "debut_des_etudes")
-        debut_des_etudes.AjouterCondition(estPasEtudiant)
         selecteur_.ajouterDeclencheur(debut_des_etudes)
 
         # ------------- apprentissage des maîtrises
@@ -52,6 +52,22 @@ init -5 python:
         apprentissageGeneral.AjouterCondition(estEtudiant)
         selecteur_.ajouterDeclencheur(apprentissageGeneral)
 
+        # dernière année d'études : 
+        dateNbJours = 1650 * 365 # ------------------------------------------------- 1650
+        derniere_annee_etudes = declencheur.DeclencheurDate(dateNbJours, "derniere_annee_etudes")
+        derniere_annee_etudes.AjouterCondition(estEtudiant)
+        selecteur_.ajouterDeclencheur(derniere_annee_etudes)
+
+label derniere_annee_etudes:
+    "Comme vous commencez à avoir des facilités dans les matières de base les professeurs vous donnent plus de latitue pour vous concentrer sur ce qui vous intéresse le plus."
+    menu:
+        "Que préférez vous?"
+        "L'architecture ?":
+            $ SetValMaitrise(maitrise.Architecture.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+        "Les mathématiques ?" if situation_.GetValCaracInt(maitrise.Mathematiques.NOM) < 1:
+            $ SetValMaitrise(maitrise.Mathematiques.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+    jump fin_cycle
+
 label apprentissageGeneral:
     menu:
         "Vous étudiez..."
@@ -59,7 +75,7 @@ label apprentissageGeneral:
             $ AjouterACarac(trait.Eloquence.NOM, 1)
         "la logique et les raisonnements abstraits":
             $ AjouterACarac(trait.Intelligence.NOM, 1)
-        "l'espagnol":
+        "l'espagnol" if situation_.GetValCaracInt(maitrise.Espagnol.NOM) < 1:
             $ SetValMaitrise(maitrise.Espagnol.NOM, maitrise.TraitMaitrise.MAITRISE_A)
         "la maîtrise des armes":
             $ AjouterACarac(trait.ArmesCorpsACorps.NOM, 1)
