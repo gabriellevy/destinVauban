@@ -62,10 +62,20 @@ label derniere_annee_etudes:
     "Comme vous commencez à avoir des facilités dans les matières de base les professeurs vous donnent plus de latitue pour vous concentrer sur ce qui vous intéresse le plus."
     menu:
         "Que préférez vous?"
-        "L'architecture ?":
+        "L'architecture":
             $ SetValMaitrise(maitrise.Architecture.NOM, maitrise.TraitMaitrise.MAITRISE_A)
-        "Les mathématiques ?" if situation_.GetValCaracInt(maitrise.Mathematiques.NOM) < 1:
+        "Les mathématiques" if situation_.GetValCaracInt(maitrise.Mathematiques.NOM) < 1:
             $ SetValMaitrise(maitrise.Mathematiques.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+        "Les fortifications" if situation_.GetValCaracInt(maitrise.Fortification.NOM) < 1:
+            $ SetValMaitrise(maitrise.Fortification.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+        "L'hydraulique" if situation_.GetValCaracInt(maitrise.Hydraulique.NOM) < 1:
+            $ SetValMaitrise(maitrise.Hydraulique.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+        "La poliorcetique" if situation_.GetValCaracInt(maitrise.Poliorcetique.NOM) < 1:
+            $ SetValMaitrise(maitrise.Poliorcetique.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+        "La stratégie militaire" if situation_.GetValCaracInt(maitrise.Strategie.NOM) < 1:
+            $ SetValMaitrise(maitrise.Strategie.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+        "La Carthographie" if situation_.GetValCaracInt(maitrise.Carthographie.NOM) < 1:
+            $ SetValMaitrise(maitrise.Carthographie.NOM, maitrise.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label apprentissageGeneral:

@@ -176,6 +176,58 @@ class Poliorcetique(TraitMaitrise):
         else:
             return u""
 
+class Strategie(TraitMaitrise):
+
+    NOM = u"Stratégie militaire"
+
+    def __init__(self):
+        self.eTrait_ = Strategie.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Maîtrise : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == TraitMaitrise.MAITRISE_A_PAS:
+            return u""
+        elif val == TraitMaitrise.MAITRISE_A:
+            return u"Notions en Stratégie militaire"
+        elif val == TraitMaitrise.MAITRISE_EXPERT:
+            return u"Stratège"
+        elif val == TraitMaitrise.MAITRISE_LEGENDAIRE:
+            return u"Maître de Stratège"
+        else:
+            return u""
+
+class Carthographie(TraitMaitrise):
+
+    NOM = u"Carthographie"
+
+    def __init__(self):
+        self.eTrait_ = Carthographie.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Maîtrise : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == TraitMaitrise.MAITRISE_A_PAS:
+            return u""
+        elif val == TraitMaitrise.MAITRISE_A:
+            return u"Notions en Carthographie"
+        elif val == TraitMaitrise.MAITRISE_EXPERT:
+            return u"Carthographe"
+        elif val == TraitMaitrise.MAITRISE_LEGENDAIRE:
+            return u"Maître en Carthographie"
+        else:
+            return u""
+
 class Espagnol(TraitMaitrise):
 
     NOM = u"Espagnol"

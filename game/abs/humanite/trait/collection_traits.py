@@ -111,6 +111,10 @@ class CollectionTraits:
         self.SetTrait(maitrise.Poliorcetique.NOM, poliorcetique)
         espagnol = maitrise.Espagnol()
         self.SetTrait(maitrise.Espagnol.NOM, espagnol)
+        strategie = maitrise.Strategie()
+        self.SetTrait(maitrise.Strategie.NOM, strategie)
+        carthographie = maitrise.Carthographie()
+        self.SetTrait(maitrise.Carthographie.NOM, carthographie)
 
         # ------------- Vices et vertus
         humble = trait.Humble()
