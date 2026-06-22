@@ -59,6 +59,8 @@ label endurcissementEnfance:
             $ AjouterACarac(trait.Animaux.NOM, 1)
         "Vous étudiez":
             $ AjouterACarac(trait.Intelligence.NOM, 1)
+        "Vous dessinez":
+            $ AjouterACarac(trait.Habilete.NOM, 1)
     jump fin_cycle
 
 # lieu, époque, enfance au pays
@@ -77,13 +79,17 @@ label intro:
 label apprentissageEnfance:
     scene bg morvan
     menu choix_apprentissage:
+        "Vous gambadez par monts et par vaux avec vos petits camarades paysans."
         "Que préférez vous faire pour vous amuser ?"
-        "Dessiner":
+        "Vous apprenez à tendre de petits piges":
             $ AjouterACarac(trait.Habilete.NOM, 1)
-        "Escalader les arbres":
+        "Escalader les arbres pour dénicher des oeufs et des oisillons":
             $ AjouterACarac(trait.Mouvement.NOM, 1)
-        "Jouer à cache cache":
+        "Vous cherchez des fruits sauvages":
             $ AjouterACarac(trait.Perception.NOM, 1)
+        "Vous apprenez à nager dans les étangs":
+            $ AjouterACarac(trait.Force.NOM, 1)
+        "Jouer à cache cache":
             $ AjouterACarac(trait.Discretion.NOM, 1)
     jump fin_cycle
 

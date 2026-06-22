@@ -441,32 +441,6 @@ class ArmesCorpsACorps(TraitGraduel):
         else:
             return ""
         
-class Tir(TraitGraduel):
-
-    NOM = u"Tir"
-
-    def __init__(self):
-        self.eTrait_ = Tir.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val < Trait.CARAC_FAIBLE:
-            if val <= Trait.CARAC_TRES_FAIBLE:
-                return u"Très mauvais tireur"
-            return u"mauvais tireur"
-        elif val >= Trait.CARAC_ELEVE:
-            if val >= Trait.CARAC_EXCEPTIONNEL:
-                return u"Tireur d'élite"
-            return u"Excellent tireur"
-        else:
-            return ""
-        
 class Eloquence(TraitGraduel):
 
     NOM = u"Éloquence"
@@ -490,6 +464,32 @@ class Eloquence(TraitGraduel):
             if val >= Trait.CARAC_EXCEPTIONNEL:
                 return u"Très éloquent"
             return u"Éloquent"
+        else:
+            return ""
+        
+class Force(TraitGraduel):
+
+    NOM = u"Force"
+
+    def __init__(self):
+        self.eTrait_ = Tir.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Malingre"
+            return u"Faible"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Hercule"
+            return u"Fort"
         else:
             return ""
 
@@ -516,6 +516,32 @@ class Intelligence(TraitGraduel):
             if val >= Trait.CARAC_EXCEPTIONNEL:
                 return u"Surdoué"
             return u"Intelligent"
+        else:
+            return ""
+        
+class Tir(TraitGraduel):
+
+    NOM = u"Tir"
+
+    def __init__(self):
+        self.eTrait_ = Tir.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Très mauvais tireur"
+            return u"mauvais tireur"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Tireur d'élite"
+            return u"Excellent tireur"
         else:
             return ""
 
