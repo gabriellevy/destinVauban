@@ -21,7 +21,7 @@ init -5 python:
         "evtRien1", "evtRien2", "evtRien3", "evtRien4",
         "evtRien8", "evtRien9", "evtRien10", "evtRien11", "evtRien12",
         "evtRien13", "evtRien14", "evtRien16",
-        "evtRien19", "evtRien20"
+        "evtRien20"
         ]
         scenesParDefaut = []
         musiquesAEnquiller = []
@@ -34,6 +34,7 @@ init -5 python:
         # enfant
         if chapitre1:
             evtsVides_.append("evtRien_enfance1")
+            evtsVides_.append("evtRien_enfance2")
 
         # dans le morvan
         if chapitre1:
@@ -223,12 +224,6 @@ label evtRien16:
     # "[femmeFranque] est donc déclarée innocente du vol."
     # jump fin_cycle
 
-label evtRien19:
-    with Dissolve(.5)
-    "Depuis que les huns ont été repoussés de Gaule par vos ancêtres ils sont devenus bien moins agressifs et bien plus commerçants."
-    "Ils ont introduit dans votre cour des objets d'orphèvrerie que vos propres artisans sont incapables de réaliser. Vous les poussez à apprendre à reproduire ces techniques."
-    jump fin_cycle
-
 label evtRien20:
     with Dissolve(.5)
     "La consignation de vos actes royaux et les formulaires de toute sortes nécessitent de fortes importations de papyrus d'Orient."
@@ -248,4 +243,14 @@ label evtRien_etudiant3:
 
 label evtRien_enfance1:
     "Vous aidez votre père Urbain Le Prestre à greffer des arbres fruitiers."
+    jump fin_cycle
+
+label evtRien_enfance2:
+    "Votre père vous raconte la mort héroïque de vos oncles soldats."
+    "Son grand frère Paul a été tué quand vous aviez deux ans à la bataille de Rethel."
+    "Quand vous aviez quatre ans c'est son cadet Gabriel qui est mort glorieusement à la bataille d'Honnecourt."
+    "Votre père vous rappelle que c'est le devoir d'un noble de se battre et de mourir pour son roi et la patrie."
+    "N'importe quand le roi peut appeler le ban et l'arrière ban ; et l'ordre noble guerrier doit se présenter et servir."
+    "Vous ne pouvez tout de même pas vous empêcher de penser que c'est bien trise que vos 3 cousins n'aient pas de papa."
+    "Heureusement que votre papa à vou s'en est sorti."
     jump fin_cycle

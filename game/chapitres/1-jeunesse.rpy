@@ -99,7 +99,7 @@ label intro:
     scene bg morvan
     with dissolve
     show screen valeurs_traits
-    "Nous sommes en 1620. Vous êtes le jeune Sébastien Le Prestre."
+    "Nous sommes en 1633. Vous êtes le jeune Sébastien Le Prestre."
     "Vous êtes de la petite noblesse des confins bourguignons et nivernais."
     "La région froide et assez montagneuse où vous êtes né s'appelle le Morvan, et c'est un rude pays."
     "Vous avez 11 ans, vous avez appris à lire, écrire et compter."
