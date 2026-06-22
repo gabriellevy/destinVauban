@@ -18,7 +18,7 @@ init -5 python:
         sceneParDefaut = ""
         # régénère les événements compatibles avec la situation
         evtsVides_ = [
-        "evtRien1", "evtRien2", "evtRien3", "evtRien4", "evtRien7",
+        "evtRien1", "evtRien2", "evtRien3", "evtRien4",
         "evtRien8", "evtRien9", "evtRien10", "evtRien11", "evtRien12",
         "evtRien13", "evtRien14", "evtRien16",
         "evtRien19", "evtRien20"
@@ -48,8 +48,8 @@ init -5 python:
             evtsVides_.append("evtRien_etudiant2")
             evtsVides_.append("evtRien_etudiant3")
 
-        if auMoinsAdolescent:
-            evtsVides_.append("evtRien5")
+        if auMoinsJeuneAdulte:
+            evtsVides_.append("evtRien_auMoinsJeuneAdulte")
 
         # alboflède
         if situation_.GetValCaracInt(vauban.Vauban.C_ALBOFLEDE) == 1:
@@ -166,15 +166,9 @@ label evtRien4:
     "Votre cuisinier prépare le mouton à merveille. Mais le sommet du repas reste le fromage avec le vin."
     jump fin_cycle
 
-label evtRien5:
+label evtRien_auMoinsJeuneAdulte:
     with Dissolve(.5)
     "Aujourd'hui vous avez dû rédiger une importante lettre de votre main. Vous scellez la lettre de votre sceau."
-    jump fin_cycle
-
-label evtRien7:
-    scene bg chasse
-    with Dissolve(.5)
-    "Vous vous faites construire un palais secondaire en bordure de forêt. Ainsi vous pourrez facilement aller chasser dès que l'envie vous en prendra."
     jump fin_cycle
 
 label evtRien8:

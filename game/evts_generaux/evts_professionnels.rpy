@@ -15,6 +15,7 @@ init -5 python:
     estPasGrandPretre = condition.Condition(metier.Pretre.NOM, 5, condition.Condition.INFERIEUR)
 
     auMoinsAdolescent = condition.Condition(vauban.Vauban.CHAPITRE,2, condition.Condition.SUPERIEUR_EGAL)
+    auMoinsJeuneAdulte = condition.Condition(vauban.Vauban.CHAPITRE,3, condition.Condition.SUPERIEUR_EGAL)
     
     def AjouterEvtsProfessionnels():
         global selecteur_

@@ -14,6 +14,7 @@ init -5 python:
     from chapitres.classes import vauban
 
     equitation0 = condition.Condition(maitrise.Equitation.NOM, maitrise.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
+    equitationSup0 = condition.Condition(maitrise.Equitation.NOM, maitrise.TraitMaitrise.MAITRISE_A, condition.Condition.SUPERIEUR_EGAL)
     hydraulique0Enfance = condition.Condition(maitrise.Hydraulique.NOM, maitrise.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
     chapitre1 = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.EGAL)
     en_hiver = condition.Condition(temps.Date.SAISON, temps.Date.HIVER, condition.Condition.EGAL)
@@ -36,6 +37,36 @@ init -5 python:
         apprentissageEnfance.AjouterCondition(chapitre1)
         endurcissementEnfance.AjouterCondition(en_hiver)
         selecteur_.ajouterDeclencheur(endurcissementEnfance)
+        
+        baladeACheval1 = declencheur.DeclencheurU(proba.Proba(0.05), "baladeACheval1")
+        apprentissageEnfance.AjouterCondition(chapitre1)
+        endurcissementEnfance.AjouterCondition(equitationSup0)
+        selecteur_.ajouterDeclencheur(baladeACheval1)
+        
+        baladeACheval2 = declencheur.DeclencheurU(proba.Proba(0.05), "baladeACheval2")
+        apprentissageEnfance.AjouterCondition(chapitre1)
+        endurcissementEnfance.AjouterCondition(equitationSup0)
+        selecteur_.ajouterDeclencheur(baladeACheval2)
+
+label baladeACheval2:
+    scene bg morvan
+    "Vous accompagnez votre père Urbain dans une visite à sa soeur Madeleine."
+    "Vous commencez à bien connaître les dures pentes et vallées encaissées du Morvan, mais ses perspectives étranges et sa manière qu'on ses horizons fermés de s'ouvrir subitement continue à vous fasciner."
+    $ _test_carac = trait.Perception.NOM
+    $ _test_difficulte = 0
+    $ _test_texte_menu = "À la sortie de Saint-Léger le clocher de la paroisse voisine de Quarré les Tombes semble à portée de main. Pourtant à travers le terrain accidenté il faut plus d'une heure pour s'y rendre."
+    $ _test_texte_reussi = "Vous vous passionnez bientôt pour la topographie et essayer de comprendre quelle forme exactement a cet étrange paysage."
+    $ _test_action_reussi = lambda: SetValMaitrise(maitrise.Carthographie.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+    call _test_de_carac
+    jump fin_cycle
+
+label baladeACheval1:
+    scene bg morvan
+    "Vous accompagnez souvent votre père Urbain dans des visites à votre oncle Jacques et vos cousins au village de Bazoches."
+    "Vous êtes de plus en plus solide et tenez de mieux en mieux en selle."
+    $ AjouterACarac(trait.Habilete.NOM, 1)
+    $ AjouterACarac(trait.Endurance.NOM, 1)
+    jump fin_cycle
 
 label apprentissageHydrauliqueEnfance:
     scene bg morvan
