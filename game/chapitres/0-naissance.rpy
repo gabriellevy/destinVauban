@@ -40,7 +40,6 @@ init -5 python:
         # A FAIRE : changer tout ça, ce n'est ni sa personnalité ni ses caracs
         situation[trait.Violence.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Opportunisme.NOM] = trait.Trait.SEUIL_A_EXTREME
-        situation[trait.Assurance.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Observation.NOM] = trait.Trait.SEUIL_A
         situation[trait.Cupidite.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Courage.NOM] = trait.Trait.SEUIL_A

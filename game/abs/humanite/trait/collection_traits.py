@@ -37,12 +37,8 @@ class CollectionTraits:
         self.SetTrait(trait.Gloire.NOM, gloire)
 
         # A FAIRE : voir ce que je garde ci après
-        assurance = trait.Assurance()
-        self.SetTrait(trait.Assurance.NOM, assurance)
         richesse = trait.Richesse()
         self.SetTrait(trait.Richesse.NOM, richesse)
-        spiritualite = trait.Spiritualite()
-        self.SetTrait(trait.Spiritualite.NOM, spiritualite)
         charme = trait.Charme()
         self.SetTrait(trait.Charme.NOM, charme)
         observation = trait.Observation()
@@ -65,8 +61,6 @@ class CollectionTraits:
         self.SetTrait(trait.Cupidite.NOM, cupidite)
         sincerite = trait.Sincerite()
         self.SetTrait(trait.Sincerite.NOM, sincerite)
-        honorabilite = trait.Honorabilite()
-        self.SetTrait(trait.Honorabilite.NOM, honorabilite)
         opp = trait.Opportunisme()
         self.SetTrait(trait.Opportunisme.NOM, opp)
         ind = trait.Industrie()

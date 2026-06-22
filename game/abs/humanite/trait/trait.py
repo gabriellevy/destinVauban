@@ -389,83 +389,6 @@ class Observation(TraitTernaire):
         else:
             return u""
 
-class Spiritualite(TraitTernaire):
-
-    NOM = u"Spiritualité"
-
-    def __init__(self):
-        self.eTrait_ = Spiritualite.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            return u"Matérialiste"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Mystique"
-            return u"Spirituel" # ATTENTION ACCENTS : mettre 'u' devant les string à accents pour utiliser le mode unicode
-        else:
-            return u""
-
-class Nature(TraitTernaire):
-    """
-    Aime la nature, s'y sent bien, s'y débrouille bien
-    """
-
-    NOM = u"Nature"
-
-    def __init__(self):
-        self.eTrait_ = Nature.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            return u"Antinaturaliste "
-        elif val >= Trait.SEUIL_A:
-            return u"Naturophile " # ATTENTION ACCENTS : mettre 'u' devant les string à accents pour utiliser le mode unicode
-        else:
-            return u""
-
-# Suit un code de l'honneur, ou agit par instinct (différence entre Loyal et Chaotique)
-# respecte ses pairs et sa famille...
-class Honorabilite(TraitGraduel):
-
-    NOM = u"Honorabilité"
-
-    def __init__(self):
-        self.eTrait_ = Honorabilite.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Chaotique"
-            return u"Instinctif"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Très Honorable"
-            return u"Honorable"
-        else:
-            return ""
-
 # prends très au sérieux sa réputation, ne ment jamais
 # inclut aussi la sincérité vs l'hypocrisie etc
 class Sincerite(TraitGraduel):
@@ -619,37 +542,6 @@ class Volonte(TraitGraduel):
             if val >= Trait.CARAC_EXCEPTIONNEL:
                 return u"Courageux"
             return u"Imperurbable"
-        else:
-            return ""
-
-class Assurance(TraitGraduel):
-    """
-    plus ou moins confiance du personnage en lui-même
-    caractéristique très variable
-    a des effets sur le charme et la mise en avant du personnage par exemple
-    """
-
-    NOM = u"Assurance"
-
-    def __init__(self):
-        self.eTrait_ = Assurance.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Aucune confiance en lui"
-            return u"Doute de lui"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Sûr de lui"
-            return u"Confiant"
         else:
             return ""
 
