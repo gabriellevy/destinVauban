@@ -39,7 +39,6 @@ init -5 python:
 
 label apprentissageHydrauliqueEnfance:
     scene bg morvan
-    "[situation_.AffichageDate()]"
     $ _test_carac = trait.Intelligence.NOM
     $ _test_difficulte = -10
     $ _test_texte_menu = "Le bois du Morvan approvisionne Paris. Il est expédié par flottage sur les fleuves qui se jettent d'abord dans l'Yonne puis la Seine."
@@ -67,7 +66,6 @@ label intro:
     scene bg morvan
     with dissolve
     show screen valeurs_traits
-    "[situation_.AffichageDate()]"
     "Nous sommes en 1620. Vous êtes le jeune Sébastien Le Prestre."
     "Vous êtes de la petite noblesse des confins bourguignons et nivernais."
     "La région froide et assez montagneuse où vous êtes né s'appelle le Morvan, et c'est un rude pays."
@@ -91,7 +89,6 @@ label apprentissageEnfance:
 
 label apprentissageEquitation:
     scene bg morvan
-    "[situation_.AffichageDate()]"
     # test d'adresse pour réussir l'apprentissage
     $ _test_carac = trait.Mouvement.NOM
     $ _test_difficulte = 40

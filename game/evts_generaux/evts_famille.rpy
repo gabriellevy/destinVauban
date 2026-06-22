@@ -27,7 +27,7 @@ init -5 python:
 
 label naissanceCharlotte:
     scene bg naissance
-    "[situation_.AffichageDate()] : Votre fille Charlotte vient de naître."
+    "Votre fille Charlotte vient de naître."
     jump fin_cycle
 
 # A FAIRE ? ajouter des gains de richesse, faveur, des néociation, envie de laisser le choix à sa fille ????

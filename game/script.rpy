@@ -83,6 +83,7 @@ label start:
 
 label debut_cycle:
     show screen valeurs_traits
+    "[situation_.AffichageDate()]"
     $ prochainEvt = situation_.TourSuivant(selecteur_)
     $ renpy.jump(prochainEvt)
 

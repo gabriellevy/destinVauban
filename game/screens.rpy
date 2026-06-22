@@ -1549,7 +1549,6 @@ screen valeurs_traits():
     $ descriptionViceVertu = situation_.DescriptionViceVertus(traits_)
     $ descriptionBlessures = situation_.DescriptionBlessuresEtMaladies(blessures_, maladies_)
     $ affAge = situation_.AffichageAge()
-    $ affDate = situation_.AffichageDate()
     $ affDestin = situation_.AffichageTrait(trait.Destin.NOM)
     $ strMetier = situation_.AffichageMetier()
     $ strGrade = situation_.AffichageGrade()
@@ -1568,7 +1567,6 @@ screen valeurs_traits():
                 text _(u"[affAge]")
                 text _(u"[strGrade]")
                 text _(u"[affDestin]")
-                text _(u"[affDate]")
                 xsize 210
                 spacing 5
                 text _("Exploits ([situation_[vauban.Vauban.C_EXPLOITS]]/100) : ")
