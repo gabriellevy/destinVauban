@@ -18,9 +18,6 @@ define clot = Character('Clotilde', color="#800000")
 image alboflede = "perso/alboflede.png"
 define albo = Character('Alboflède', color="#33cc33")
 
-image gondebaud = "perso/gondebaud.png"
-define gond = Character('Gondebaud', color="#006600")
-
 # Musiques
 define audio.turexgloriae = "musique/turexgloriae.ogg" # baptème etc
 # Musiques de fnd qui tournent en boucle : 
