@@ -19,8 +19,8 @@ init -5 python:
         # régénère les événements compatibles avec la situation
         evtsVides_ = [
         "evtRien1", "evtRien2", "evtRien3", "evtRien4",
-        "evtRien8", "evtRien11", "evtRien12",
-        "evtRien13", "evtRien16",
+        "evtRien8", "evtRien11",
+        "evtRien13", 
         "evtRien20"
         ]
         scenesParDefaut = []
@@ -92,7 +92,7 @@ label evtRien_morvan1:
 
 label evtRien_morvan2:
     scene bg morvan
-    "Les paysans morvandiaux vivent de pain d'ordre et d'avoine mêlés, dont ils n'otent même aps le son."
+    "Les paysans morvandiaux vivent de pain d'ordre et d'avoine mêlés, dont ils n'otent même pas le son."
     "Plus de mauvais fruits, la plupart sauvages, et de quelque peu d'herbes potagères de leurs jardin, cuites à l'eau, avec un peu d'huile de noix ou de navette, le plus souvent sans, ou avec très peu de sel."
     jump fin_cycle
 
@@ -169,21 +169,9 @@ label evtRien11:
     "Sur le modèle de l'empire romain vos serviteurs tiennent des comptes écris détaillés des opérations financières du royaume."
     jump fin_cycle
 
-label evtRien12:
-    with Dissolve(.5)
-    "Les pirates esclavagistes ont du avoir de beaux succès en ratissant les côtes de la manche. Il y a une énorme quantité d'esclaves angles et saxons sur les marchés cette année."
-    jump fin_cycle
-
 label evtRien13:
     with Dissolve(.5)
     "Pour vous distraire et vous détendre vous vous prenez l'habitude de jouer aux osselets avec votre famille et vos amis."
-    jump fin_cycle
-
-label evtRien16:
-    with Dissolve(.5)
-    $ nom = francs_.CreerPrenom(True)
-    "Comme tous les mois la justice populaire franque est rendue sur le marlberg (tumulus)."
-    "[nom], accusé et condamné pour vol, a refusé la sentence et s'est enfui. Il a été maudit par le conseil et tout le monde a maintenant le droit et le devoir de le poursuivre et de planter sa tête sur un pieu."
     jump fin_cycle
 
 # label evtRien18:
