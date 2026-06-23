@@ -15,9 +15,6 @@ define louisXIV = Character('Louis XIV', color="#003ae7")
 image clotilde = "perso/clotilde.png"
 define clot = Character('Clotilde', color="#800000")
 
-image alboflede = "perso/alboflede.png"
-define albo = Character('Alboflède', color="#33cc33")
-
 # Musiques
 define audio.turexgloriae = "musique/turexgloriae.ogg" # baptème etc
 # Musiques de fnd qui tournent en boucle : 

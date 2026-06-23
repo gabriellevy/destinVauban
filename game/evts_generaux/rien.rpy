@@ -53,10 +53,6 @@ init -5 python:
         if auMoinsJeuneAdulte:
             evtsVides_.append("evtRien_auMoinsJeuneAdulte")
 
-        # alboflède
-        if situation_.GetValCaracInt(vauban.Vauban.C_ALBOFLEDE) == 1:
-            evtsVides_.append("evtRien_alboflede")
-
         # saison
         saison = situation.GetDateDuJour().GetSaison()
         if saison == temps.Date.PRINTEMPS:
@@ -130,17 +126,6 @@ label evtRien1_printemps:
 
 label selecteurDEvenementVide:
     $ LancerEvtVide(situation_)
-
-label evtRien_alboflede:
-    scene bg cours_merovingienne
-    with dissolve
-    show alboflede at right
-    with moveinright
-    albo "Pas trop de soucis aujourd'hui mon frère ?"
-    cl "Non, un jour calme et un temps trop mauvais pour la chasse. Mais par contre idéal pour passer la journée au coin du feu en famille."
-    albo "Nous ne sommes donc que votre troisième choix. C'est déjà plutôt honorable je peux m'en contenter."
-    "Sa finesse d'esprit et sa douceur font de votre grande soeur Alboflède le meilleur moyen d'illuminer une journée pluvieuse. Vous passez finalement une très bonne journée."
-    jump fin_cycle
 
 label evtRien1:
     with Dissolve(.5)

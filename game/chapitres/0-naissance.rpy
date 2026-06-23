@@ -67,7 +67,6 @@ init -5 python:
         situation.SetValCarac(trait.Gloire.NOM, 0)
 
         # famille
-        situation.SetValCarac(vauban.Vauban.C_ALBOFLEDE, 1)
 
         # quartierDeDepart = situation.collectionQuartiers.getQuartierAleatoire(True)
         # situation.SetCarac(quartier.Quartier.C_QUARTIER, quartierDeDepart.nom_)

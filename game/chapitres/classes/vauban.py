@@ -37,8 +37,7 @@ class Vauban:
     # Famille
     C_FIANCE_CLOTHILDE = u"Fiancé à CLothilde"
     C_MARIE_CLOTHILDE = u"Marié à CLothilde"
-    C_ALBOFLEDE = u"Alboflède" # 1 => vivante (ne pas confondre avec Aldoflède marié à Théodoric)
-    C_NB_ENFANTS = u"Nombre d'enfants" # nombre d'enfants faits avec Clothilde
+    C_NB_ENFANTS = u"Nombre d'enfants" # nombre d'enfants faits avec [???]
 
     # Chararic
     C_STATUT_CHARARIC = u"Statut Chararic"
