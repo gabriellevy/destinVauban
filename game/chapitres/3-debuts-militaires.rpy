@@ -13,12 +13,13 @@ init -5 python:
 
     def AjouterEvts3DebutsMilitaires():
         global selecteur_
-        dateNbJours = 1651 * 365 # ------------------------------------------------- 1651
+        dateNbJours = 1651 * 365 + 31 * 3 +17 # ------------------------------------------------- 1651
         debut_chapitre3 = declencheur.DeclencheurDate(dateNbJours, "debut_chapitre3")
         selecteur_.ajouterDeclencheur(debut_chapitre3)
 
 label debut_chapitre3:
-    "A FAIRE : début chapitre 3, débuts militaires"
+    "Les Condé sont gouverneurs de Bourgogne et les Le Prestre font partie de leur clientèle."
+    "Vous vous engagez donc comme cadet dans la compagnie du sieur d'Arcenay du régimetn de Condé."
     $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 3)
     jump fin_cycle
 

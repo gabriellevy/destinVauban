@@ -14,8 +14,6 @@ init -5 python:
 
     # conditions clotilde
     decision_mariage_clotildePasFaite = condition.Condition("decision_mariage_clotilde", 1, condition.Condition.DIFFERENT)
-    infos_sur_clotildePasFaite = condition.Condition("infos_sur_clotilde", 1, condition.Condition.DIFFERENT)
-    infos_sur_clotildeFaite = condition.Condition("infos_sur_clotilde", 1, condition.Condition.EGAL)
 
     fiance_a_clotilde = condition.Condition(vauban.Vauban.C_FIANCE_CLOTHILDE, 1, condition.Condition.EGAL)
     marie_a_clotilde = condition.Condition(vauban.Vauban.C_MARIE_CLOTHILDE, 1, condition.Condition.EGAL)
@@ -32,13 +30,9 @@ init -5 python:
 
     def AjouterEvtsClothilde():
         global selecteur_
-        # premiers echos sur Clothilde
-        infos_sur_clotilde = dec_vauban.DecVaubanU(proba.Proba(0.7, True), "infos_sur_clotilde", 99999999490)
-        selecteur_.ajouterDeclencheur(infos_sur_clotilde)
         # décision du mariage
         decision_mariage = dec_vauban.DecVaubanU(proba.Proba(0.7, True), "decision_mariage", 99999999492)
         decision_mariage.AjouterCondition(gloireAuMoins5)
-        decision_mariage.AjouterCondition(infos_sur_clotildeFaite)
         selecteur_.ajouterDeclencheur(decision_mariage)
         # soutien de Clotilde
         soutienDeClotilde = declencheur.Declencheur(proba.Proba(0.1, True), "soutienDeClotilde")
@@ -88,30 +82,12 @@ label enfant5:
     "Votre fille Clothilde est née."
     jump fin_cycle
 
-'''
-démo tmp : arrivée d'image
-label soutienDeClotilde:
-    show clotilde at right
-    with moveinright
-    "Par sa douceur, sa bonté et sa patience Clotilde adoucit vos dures journées de roi."
-    jump fin_cycle
-'''
-
 label mariage_paien:
     "PAS FAIT : mariage païen avec Clotilde"
     jump fin_cycle
 
 label mariage_catholique:
     "PAS FAIT : mariage_catholique avec Clotilde"
-    jump fin_cycle
-
-label infos_sur_clotilde:
-    # scene bg tolbiac
-    # play music guerre2 noloop
-    $ situation_.SetValCarac("infos_sur_clotilde", 1)
-    show clotilde at right
-    with dissolve
-    clot "A FAIRE Coucou Vauban !"
     jump fin_cycle
 
 label decision_mariage:
