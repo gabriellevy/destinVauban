@@ -112,7 +112,7 @@ label apprentissageEnfance:
     menu choix_apprentissage:
         "Vous gambadez par monts et par vaux avec vos petits camarades paysans."
         "Que préférez vous faire pour vous amuser ?"
-        "Vous apprenez à tendre de petits piges":
+        "Vous apprenez à tendre de petits pièges":
             $ AjouterACarac(trait.Habilete.NOM, 1)
         "Escalader les arbres pour dénicher des oeufs et des oisillons":
             $ AjouterACarac(trait.Mouvement.NOM, 1)

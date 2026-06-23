@@ -19,8 +19,8 @@ init -5 python:
         # régénère les événements compatibles avec la situation
         evtsVides_ = [
         "evtRien1", "evtRien2", "evtRien3", "evtRien4",
-        "evtRien8", "evtRien9", "evtRien10", "evtRien11", "evtRien12",
-        "evtRien13", "evtRien14", "evtRien16",
+        "evtRien8", "evtRien11", "evtRien12",
+        "evtRien13", "evtRien16",
         "evtRien20"
         ]
         scenesParDefaut = []
@@ -32,19 +32,20 @@ init -5 python:
         musiquesAEnquiller.append("musique/journeytoabsolution.ogg")
 
         # enfant
-        if chapitre1:
+        if situation_.GetValCaracInt(vauban.Vauban.CHAPITRE) == 1:
             evtsVides_.append("evtRien_enfance1")
             evtsVides_.append("evtRien_enfance2")
+            evtsVides_.append("evtRien_enfance3")
 
         # dans le morvan
-        if chapitre1:
+        if situation_.GetValCaracInt(vauban.Vauban.CHAPITRE) == 1:
             evtsVides_.append("evtRien_morvan1")
             evtsVides_.append("evtRien_morvan2")
             evtsVides_.append("evtRien_morvan3")
             evtsVides_.append("evtRien_morvan4")
 
         # étudiant
-        if estEtudiant:
+        if situation_.GetValCaracInt(vauban.Vauban.CHAPITRE) == 2:
             evtsVides_.append("evtRien_etudiant1")
             evtsVides_.append("evtRien_etudiant2")
             evtsVides_.append("evtRien_etudiant3")
@@ -178,16 +179,6 @@ label evtRien8:
     "Certes ceux qui se donnent en Gaule de nos jours sont loin d'être somptueux comme à Rome. Mais vous avez les moyens d'organiser des courses de char et même des combats de gladiateurs."
     jump fin_cycle
 
-label evtRien9:
-    with Dissolve(.5)
-    "Les marchands du sud amènent dans vos marchés des machandises exotiques prisées : huile d'olives, soieries, épices..."
-    jump fin_cycle
-
-label evtRien10:
-    with Dissolve(.5)
-    "Les marchands du nord, de plus en plus nombreux, amènent sur vos marchés du bois, des tissus, des esclaves..."
-    jump fin_cycle
-
 label evtRien11:
     with Dissolve(.5)
     "Sur le modèle de l'empire romain vos serviteurs tiennent des comptes écris détaillés des opérations financières du royaume."
@@ -201,12 +192,6 @@ label evtRien12:
 label evtRien13:
     with Dissolve(.5)
     "Pour vous distraire et vous détendre vous vous prenez l'habitude de jouer aux osselets avec votre famille et vos amis."
-    jump fin_cycle
-
-label evtRien14:
-    scene bg ludus
-    with Dissolve(.5)
-    "Après les avoir méprisés un temps les francs ont commencé à apprécier les multiples jeux des romains. Vous avez un faible pour le ludus duodecim scriptorum."
     jump fin_cycle
 
 label evtRien16:
@@ -225,7 +210,6 @@ label evtRien16:
     # jump fin_cycle
 
 label evtRien20:
-    with Dissolve(.5)
     "La consignation de vos actes royaux et les formulaires de toute sortes nécessitent de fortes importations de papyrus d'Orient."
     jump fin_cycle
 
@@ -246,11 +230,22 @@ label evtRien_enfance1:
     jump fin_cycle
 
 label evtRien_enfance2:
+    scene bg rocroi
+    with Dissolve(.5)
     "Votre père vous raconte la mort héroïque de vos oncles soldats."
     "Son grand frère Paul a été tué quand vous aviez deux ans à la bataille de Rethel."
     "Quand vous aviez quatre ans c'est son cadet Gabriel qui est mort glorieusement à la bataille d'Honnecourt."
     "Votre père vous rappelle que c'est le devoir d'un noble de se battre et de mourir pour son roi et la patrie."
     "N'importe quand le roi peut appeler le ban et l'arrière ban ; et l'ordre noble guerrier doit se présenter et servir."
     "Vous ne pouvez tout de même pas vous empêcher de penser que c'est bien trise que vos 3 cousins n'aient pas de papa."
-    "Heureusement que votre papa à vou s'en est sorti."
+    "Heureusement que votre papa à vous s'en est sorti."
+    jump fin_cycle
+
+label evtRien_enfance3:
+    scene bg rocroi
+    with Dissolve(.5)
+    "Votre père vous raconte la bataille de Rocroi où le Grand Condé vainquit les espagnols."
+    "C'était la première fois que la redoutable infanterie des tercios espagnols, une combinaison de piquiers et mousquetaires, était vaincue."
+    "Votre famille -les Le Prestre- appartient à la clientèle des Condé, qui sont gouverneurs de Bourgogne, vos oncles les ont servi à la guerre."
+    "La gloire du grand Condé, le plus illustre d'entre eux, rejaillit donc sur vous tous."
     jump fin_cycle
