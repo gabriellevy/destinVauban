@@ -42,12 +42,15 @@ init -5 python:
             evtsVides_.append("evtRien_morvan3")
             evtsVides_.append("evtRien_morvan4")
 
-        # étudiant
+        # étudiant # environ 1646 à 1651
         if situation_.GetValCaracInt(vauban.Vauban.CHAPITRE) == 2:
             evtsVides_.append("evtRien_etudiant1")
             evtsVides_.append("evtRien_etudiant2")
             evtsVides_.append("evtRien_etudiant3")
-            evtsVides_.append("evtRien_barricades")
+            if situation_.GetValCaracInt(temps.Date.DATE_ANNEES) < 1649:
+                evtsVides_.append("evtRien_fronde1_barricades")
+            if situation_.GetValCaracInt(temps.Date.DATE_ANNEES) == 1649:
+                evtsVides_.append("evtRien_fronde2_siege_paris")
 
         if auMoinsJeuneAdulte:
             evtsVides_.append("evtRien_auMoinsJeuneAdulte")
@@ -208,11 +211,19 @@ label evtRien_enfance3:
     "La gloire du grand Condé, le plus illustre d'entre eux, rejaillit donc sur vous tous."
     jump fin_cycle
 
-label evtRien_barricades:
+label evtRien_fronde1_barricades:
     scene bg barricades
     with Dissolve(.5)
     "Une grave journée d'émeute a eu lieu à Paris à ce qu'on dit."
     "Le cardinal Mazarin et la reine Anne d'Autriche ont enfermé des conseillers du parlement qui s'opposaient à leurs réformes."
     "Mais les paraisiens en ont été furieux et ont dressé des barricades dans toute la ville, et ils ont fait céder le cardinal et la reine."
     "Cette désobéissance des parisiens est grave, mais ont-ils vraiment tort de s'opposer à une arrestation arbitraire décidée par un cardinal italien ?"
+    jump fin_cycle
+
+label evtRien_fronde2_siege_paris:
+    scene bg barricades
+    with Dissolve(.5)
+    "Des troubels très graves ont lieu dans le royaume et en particulier autour de Paris."
+    "Votre suzerain le grand Condé a mis le siège devant Paris et paraît-il maté les révoltés donc tout devrait rentrer dans l'ordre."
+    "Mais depuis le Morvan il est difficile de comprendre tout ce qui se passe."
     jump fin_cycle
