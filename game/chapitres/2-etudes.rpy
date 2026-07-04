@@ -58,6 +58,17 @@ init -5 python:
         derniere_annee_etudes.AjouterCondition(estEtudiant)
         selecteur_.ajouterDeclencheur(derniere_annee_etudes)
 
+        # événements de la fronde : 
+        dateNbJours = 1650 * 365  + 12# ------------------------------------------------- 1650
+        conde_emprisonne = declencheur.DeclencheurDate(dateNbJours, "conde_emprisonne")
+        selecteur_.ajouterDeclencheur(conde_emprisonne)
+
+label conde_emprisonne:
+    "C'est incroyable : la reine Anne d'Autriche a fait emprisonner le Grand Condé au château de Vincennes !"
+    "Son frère Conti et son beau-frère le duc de Longueville sont aussi enfermés."
+    "Enfermer ainsi des ducs, dont le plus grand général du royaume ! Cela va rendre les grands princes furieux."
+    jump fin_cycle
+
 label derniere_annee_etudes:
     "Comme vous commencez à avoir des facilités dans les matières de base les professeurs vous donnent plus de latitue pour vous concentrer sur ce qui vous intéresse le plus."
     menu:
