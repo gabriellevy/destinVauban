@@ -8,6 +8,7 @@ init -5 python:
     from abs import testDeCarac
     from abs import condition
     from game.abs.humanite.trait import trait
+    from game.abs.humanite.trait import viceVertu
     from spe.humanite import pnj_roi_vauban
     from abs.univers import temps
     # from geographie import quartier
@@ -48,7 +49,7 @@ init -5 python:
         situation[trait.Franchise.NOM] = trait.Trait.SEUIL_A_PAS
         situation[trait.Altruisme.NOM] = trait.Trait.SEUIL_A_PAS
         # ----- vices et vertus -------------
-        situation[trait.Humble.NOM] = trait.ViceVertu.VICIEUX # orgueilleux
+        situation[viceVertu.Humble.NOM] = viceVertu.ViceVertu.VICIEUX # orgueilleux
 
         situation[metier.Metier.C_METIER] = u"Prince de sang"
 

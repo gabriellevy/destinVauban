@@ -32,7 +32,7 @@ label grade_ordre_saint_louis:
     louisXIV "Je viens de créer l'ordre de Saint Louis pour les soldats méritants qui ont glorieusement servi la France et ma personne."
     louisXIV "Je compte vous faire l'honneur de vous accepter dans cet ordre eut égard à vos remarquables états de service."
     louisXIV "C'est un très grand honneur mais qui se mérite aussi par l'ascendance noble et j'insiste pour que vous fournissez à mes enquêteurs toutes les preuves de vos titres."
-    $ valOrgueil = -situation_.GetValCaracInt(trait.Humble.NOM)
+    $ valOrgueil = -situation_.GetValCaracInt(viceVertu.Humble.NOM)
     menu:
         "Après tout ce que j'ai accompli ?Je refuse de me soumettre à ce contrôle humiliant(Destin +1)" if valOrgueil >= 1:
             $ AjouterACarac(trait.Destin.NOM, 1)

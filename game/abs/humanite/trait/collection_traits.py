@@ -1,5 +1,6 @@
 from game.abs.humanite.trait import trait
 from game.abs.humanite.trait import maitrise
+from game.abs.humanite.trait import viceVertu
 import random
 
 class CollectionTraits:
@@ -111,8 +112,8 @@ class CollectionTraits:
         self.SetTrait(maitrise.Carthographie.NOM, carthographie)
 
         # ------------- Vices et vertus
-        humble = trait.Humble()
-        self.SetTrait(trait.Humble.NOM, humble)        
+        humble = viceVertu.Humble()
+        self.SetTrait(viceVertu.Humble.NOM, humble)        
 
     def getTraitAleatoire(self):
         return random.choice(list(self.lTraits_.values()))
