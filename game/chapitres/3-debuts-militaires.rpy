@@ -13,9 +13,20 @@ init -5 python:
 
     def AjouterEvts3DebutsMilitaires():
         global selecteur_
-        dateNbJours = 1651 * 365 + 31 * 3 +17 # ------------------------------------------------- 17 mars 1651
+        dateNbJours = 1651 * 365 + 31 * 2 +17 # ------------------------------------------------- 17 mars 1651
         debut_chapitre3 = declencheur.DeclencheurDate(dateNbJours, "debut_chapitre3")
         selecteur_.ajouterDeclencheur(debut_chapitre3)
+        dateNbJours = 1651 * 365 + 31 * 3 +17 # ------------------------------------------------- 17 avril 1652
+        mort_pere = declencheur.DeclencheurDate(dateNbJours, "mort_pere")
+        selecteur_.ajouterDeclencheur(mort_pere)
+
+label mort_pere:
+    "Une lettre vous apprend une triste nouvelle : votre père vient de mourir."
+    "Vous pensez un moment à demander un congé mais vos supérieurs sont catégoriques : hors de question."
+    "Louis XIV est maintenant majeur, il a 13 ans, et la guerre contre lui pour s'aggraver à tout moment."
+    "De toute façon, vous êtes actuellement cantonné dans la Champagne.
+    "Il n'y aurait aucune chance pour que vous arriviez à temps pour les obsèques dans le Morvan."
+    jump fin_cycle
 
 label debut_chapitre3:
     "Les Condé sont gouverneurs de Bourgogne et les Le Prestre font partie de leur clientèle."
