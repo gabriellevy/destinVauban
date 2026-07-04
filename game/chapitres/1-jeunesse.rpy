@@ -16,7 +16,7 @@ init -5 python:
     equitation0 = condition.Condition(maitrise.Equitation.NOM, maitrise.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
     equitationSup0 = condition.Condition(maitrise.Equitation.NOM, maitrise.TraitMaitrise.MAITRISE_A, condition.Condition.SUPERIEUR_EGAL)
     hydraulique0Enfance = condition.Condition(maitrise.Hydraulique.NOM, maitrise.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)
-    chapitre1 = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.EGAL)
+    chapitre1 = condition.Condition(vauban.Vauban.CHAPITRE, 1, condition.Condition.EGAL) # à environ 1646
     en_hiver = condition.Condition(temps.Date.SAISON, temps.Date.HIVER, condition.Condition.EGAL)
 
     def AjouterEvtJeunesse():

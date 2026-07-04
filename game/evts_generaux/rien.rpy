@@ -19,9 +19,7 @@ init -5 python:
         # régénère les événements compatibles avec la situation
         evtsVides_ = [
         "evtRien1", "evtRien2", "evtRien3", "evtRien4",
-        "evtRien8", "evtRien11",
-        "evtRien13", 
-        "evtRien20"
+        "evtRien8", 
         ]
         scenesParDefaut = []
         musiquesAEnquiller = []
@@ -49,6 +47,7 @@ init -5 python:
             evtsVides_.append("evtRien_etudiant1")
             evtsVides_.append("evtRien_etudiant2")
             evtsVides_.append("evtRien_etudiant3")
+            evtsVides_.append("evtRien_barricades")
 
         if auMoinsJeuneAdulte:
             evtsVides_.append("evtRien_auMoinsJeuneAdulte")
@@ -164,16 +163,6 @@ label evtRien8:
     "Certes ceux qui se donnent en Gaule de nos jours sont loin d'être somptueux comme à Rome. Mais vous avez les moyens d'organiser des courses de char et même des combats de gladiateurs."
     jump fin_cycle
 
-label evtRien11:
-    with Dissolve(.5)
-    "Sur le modèle de l'empire romain vos serviteurs tiennent des comptes écris détaillés des opérations financières du royaume."
-    jump fin_cycle
-
-label evtRien13:
-    with Dissolve(.5)
-    "Pour vous distraire et vous détendre vous vous prenez l'habitude de jouer aux osselets avec votre famille et vos amis."
-    jump fin_cycle
-
 # label evtRien18:
     # with Dissolve(.5)
     # $ femmeFranque = francs_.CreerPrenom(False) # A FAIRE : ajouter une création de nom français
@@ -181,10 +170,6 @@ label evtRien13:
     # "Elle a plongé sa main dans un chaudron d'eau bouillante. Supportant la souffrance elle a réussi à saisir l'anneau qui s'y trouvait. Les juges ont ensuite attendu 3 jours et constaté que sa cicatrice est belle et bien formée."
     # "[femmeFranque] est donc déclarée innocente du vol."
     # jump fin_cycle
-
-label evtRien20:
-    "La consignation de vos actes royaux et les formulaires de toute sortes nécessitent de fortes importations de papyrus d'Orient."
-    jump fin_cycle
 
 label evtRien_etudiant1:
     "Pendant vos études vous logez chez le prieur Pierre de Fontaines."
@@ -221,4 +206,13 @@ label evtRien_enfance3:
     "C'était la première fois que la redoutable infanterie des tercios espagnols, une combinaison de piquiers et mousquetaires, était vaincue."
     "Votre famille -les Le Prestre- appartient à la clientèle des Condé, qui sont gouverneurs de Bourgogne, vos oncles les ont servi à la guerre."
     "La gloire du grand Condé, le plus illustre d'entre eux, rejaillit donc sur vous tous."
+    jump fin_cycle
+
+label evtRien_barricades:
+    scene bg barricades
+    with Dissolve(.5)
+    "Une grave journée d'émeute a eu lieu à Paris à ce qu'on dit."
+    "Le cardinal Mazarin et la reine Anne d'Autriche ont enfermé des conseillers du parlement qui s'opposaient à leurs réformes."
+    "Mais les paraisiens en ont été furieux et ont dressé des barricades dans toute la ville, et ils ont fait céder le cardinal et la reine."
+    "Cette désobéissance des parisiens est grave, mais ont-ils vraiment tort de s'opposer à une arrestation arbitraire décidée par un cardinal italien ?"
     jump fin_cycle

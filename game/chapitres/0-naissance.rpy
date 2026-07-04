@@ -1,5 +1,3 @@
-# fichier où sont générés les phrases d'ambiance à afficher quand il ne se passe rien durant un mois particulier
-
 init -5 python:
     import random
     from abs import declencheur
