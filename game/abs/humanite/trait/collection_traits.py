@@ -103,7 +103,17 @@ class CollectionTraits:
 
         # ------------- Vices et vertus
         humble = viceVertu.Humble()
-        self.SetTrait(viceVertu.Humble.NOM, humble)        
+        self.SetTrait(viceVertu.Humble.NOM, humble)
+        casanier = viceVertu.Casanier()
+        self.SetTrait(viceVertu.Casanier.NOM, casanier)
+        placide = viceVertu.Placide()
+        self.SetTrait(viceVertu.Placide.NOM, placide)
+        bienveillant = viceVertu.Bienveillant()
+        self.SetTrait(viceVertu.Bienveillant.NOM, bienveillant)
+        prodigue = viceVertu.Prodigue()
+        self.SetTrait(viceVertu.Prodigue.NOM, prodigue)
+        desinteresse = viceVertu.Desinteresse()
+        self.SetTrait(viceVertu.Desinteresse.NOM, desinteresse)
 
     def getTraitAleatoire(self):
         return random.choice(list(self.lTraits_.values()))

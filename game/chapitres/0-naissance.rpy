@@ -45,6 +45,7 @@ init -5 python:
         situation[trait.Franchise.NOM] = trait.Trait.SEUIL_A_PAS
         # ----- vices et vertus -------------
         situation[viceVertu.Humble.NOM] = viceVertu.ViceVertu.VICIEUX # orgueilleux
+        situation[viceVertu.Casanier.NOM] = viceVertu.ViceVertu.VICIEUX # aventureux
 
         situation[metier.Metier.C_METIER] = u"Prince de sang"
 
