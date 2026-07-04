@@ -442,4 +442,154 @@ class Travailleur(ViceVertu):
             return u"Extrêmement Travailleur"
         else:
             return u""
+
+class Discipline(ViceVertu):
+
+    NOM = u"Discipliné"
+
+    def __init__(self):
+        self.eTrait_ = Discipline.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce vice-vertu n'a pas comme valeur un int. ViceVertu : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == ViceVertu.VICIEUX_MALADE_MENTAL:
+            return u"Extrêmement Rebelle"
+        elif val == ViceVertu.VICIEUX_TRES:
+            return u"Très Rebelle"
+        elif val == ViceVertu.VICIEUX:
+            return u"Rebelle"
+        elif val == ViceVertu.VERTUEUX:
+            return u"Discipliné"
+        elif val == ViceVertu.VERTUEUX_TRES:
+            return u"Très Discipliné"
+        elif val == ViceVertu.VERTUEUX_MALADE_MENTAL:
+            return u"Extrêmement Discipliné"
+        else:
+            return u""
+
+class Empathique(ViceVertu):
+
+    NOM = u"Empathique"
+
+    def __init__(self):
+        self.eTrait_ = Empathique.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce vice-vertu n'a pas comme valeur un int. ViceVertu : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == ViceVertu.VICIEUX_MALADE_MENTAL:
+            return u"Extrêmement Sociopathique"
+        elif val == ViceVertu.VICIEUX_TRES:
+            return u"Très Sociopathique"
+        elif val == ViceVertu.VICIEUX:
+            return u"Sociopathique"
+        elif val == ViceVertu.VERTUEUX:
+            return u"Empathique"
+        elif val == ViceVertu.VERTUEUX_TRES:
+            return u"Très Empathique"
+        elif val == ViceVertu.VERTUEUX_MALADE_MENTAL:
+            return u"Extrêmement Empathique"
+        else:
+            return u""
+
+class Sociable(ViceVertu):
+
+    NOM = u"Sociable"
+
+    def __init__(self):
+        self.eTrait_ = Empathique.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce vice-vertu n'a pas comme valeur un int. ViceVertu : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == ViceVertu.VICIEUX_MALADE_MENTAL:
+            return u"Extrêmement Solitaire"
+        elif val == ViceVertu.VICIEUX_TRES:
+            return u"Très Solitaire"
+        elif val == ViceVertu.VICIEUX:
+            return u"Solitaire"
+        elif val == ViceVertu.VERTUEUX:
+            return u"Sociable"
+        elif val == ViceVertu.VERTUEUX_TRES:
+            return u"Très Sociable"
+        elif val == ViceVertu.VERTUEUX_MALADE_MENTAL:
+            return u"Extrêmement Sociable"
+        else:
+            return u""
+
+class Loyal(ViceVertu):
+
+    NOM = u"Loyal"
+
+    def __init__(self):
+        self.eTrait_ = Empathique.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce vice-vertu n'a pas comme valeur un int. ViceVertu : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == ViceVertu.VICIEUX_MALADE_MENTAL:
+            return u"Extrêmement Trompeur"
+        elif val == ViceVertu.VICIEUX_TRES:
+            return u"Très Trompeur"
+        elif val == ViceVertu.VICIEUX:
+            return u"Trompeur"
+        elif val == ViceVertu.VERTUEUX:
+            return u"Loyal"
+        elif val == ViceVertu.VERTUEUX_TRES:
+            return u"Très Loyal"
+        elif val == ViceVertu.VERTUEUX_MALADE_MENTAL:
+            return u"Extrêmement Loyal"
+        else:
+            return u""
+
+class Esthete(ViceVertu):
+
+    NOM = u"Esthète"
+
+    def __init__(self):
+        self.eTrait_ = Esthete.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce vice-vertu n'a pas comme valeur un int. ViceVertu : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val == ViceVertu.VICIEUX_MALADE_MENTAL:
+            return u"Extrêmement Grossier"
+        elif val == ViceVertu.VICIEUX_TRES:
+            return u"Très Grossier"
+        elif val == ViceVertu.VICIEUX:
+            return u"Grossier"
+        elif val == ViceVertu.VERTUEUX:
+            return u"Esthète"
+        elif val == ViceVertu.VERTUEUX_TRES:
+            return u"Très Esthète"
+        elif val == ViceVertu.VERTUEUX_MALADE_MENTAL:
+            return u"Extrêmement Esthète"
+        else:
+            return u""
         

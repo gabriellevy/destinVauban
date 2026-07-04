@@ -130,6 +130,16 @@ class CollectionTraits:
         self.SetTrait(viceVertu.Artificialiste.NOM, artificialiste)
         travailleur = viceVertu.Travailleur()
         self.SetTrait(viceVertu.Travailleur.NOM, travailleur)
+        discipline = viceVertu.Discipline()
+        self.SetTrait(viceVertu.Discipline.NOM, discipline)
+        empathique = viceVertu.Empathique()
+        self.SetTrait(viceVertu.Empathique.NOM, empathique)
+        sociable = viceVertu.Sociable()
+        self.SetTrait(viceVertu.Sociable.NOM, sociable)
+        loyal = viceVertu.Loyal()
+        self.SetTrait(viceVertu.Loyal.NOM, loyal)
+        esthete = viceVertu.Esthete()
+        self.SetTrait(viceVertu.Esthete.NOM, esthete)
 
     def getTraitAleatoire(self):
         return random.choice(list(self.lTraits_.values()))
