@@ -62,6 +62,13 @@ init -5 python:
         dateNbJours = 1650 * 365  + 12# ------------------------------------------------- 1650
         conde_emprisonne = declencheur.DeclencheurDate(dateNbJours, "conde_emprisonne")
         selecteur_.ajouterDeclencheur(conde_emprisonne)
+        dateNbJours = 1650 * 365  + 31 + 16# ------------------------------------------------- février 1650
+        conde_libere = declencheur.DeclencheurDate(dateNbJours, "conde_libere")
+        selecteur_.ajouterDeclencheur(conde_libere)
+
+label conde_libere:
+    "La pression des princes de France a fait céder Mazarin et la reine Anne d'Autriche. Le grand Condé a été libéré et rentre triomphalement dans ses domaines."
+    jump fin_cycle
 
 label conde_emprisonne:
     "C'est incroyable : la reine Anne d'Autriche a fait emprisonner le Grand Condé au château de Vincennes !"

@@ -18,7 +18,6 @@ init -5 python:
         sceneParDefaut = ""
         # régénère les événements compatibles avec la situation
         evtsVides_ = [
-        "evtRien1", "evtRien2", "evtRien3", "evtRien4",
         "evtRien8", 
         ]
         scenesParDefaut = []
@@ -128,32 +127,6 @@ label evtRien1_printemps:
 
 label selecteurDEvenementVide:
     $ LancerEvtVide(situation_)
-
-label evtRien1:
-    with Dissolve(.5)
-    $ romain = random.randint(0,1)
-    $ nomPerso = gaulois_.CreerPrenom(True)
-    $ nomFaction = "gaulois"
-    if romain == 0:
-        $ nomPerso = romains_.CreerPrenom(True)
-        $ nomFaction = "romain"
-    "[nomPerso], un riche [nomFaction] vient de mourir. Très pieux, il fait don de l'essentiel de sa fortune à l'église. Il a aussi affranchi une grande partie de ses esclaves."
-    jump fin_cycle
-
-label evtRien2:
-    with Dissolve(.5)
-    "La production de cervoise est en plein essor."
-    jump fin_cycle
-
-label evtRien3:
-    with Dissolve(.5)
-    "Aujourd'hui le cuisinier vous a préparé un plat exotique méditerrannéen à base de fruits qu'on appelle dattes."
-    jump fin_cycle
-
-label evtRien4:
-    with Dissolve(.5)
-    "Votre cuisinier prépare le mouton à merveille. Mais le sommet du repas reste le fromage avec le vin."
-    jump fin_cycle
 
 label evtRien_auMoinsJeuneAdulte:
     with Dissolve(.5)
