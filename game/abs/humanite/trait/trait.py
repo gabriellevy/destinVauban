@@ -519,58 +519,6 @@ class Volonte(TraitGraduel):
         else:
             return ""
 
-class Altruisme(TraitGraduel):
-
-    NOM = u"Altruisme"
-
-    def __init__(self):
-        self.eTrait_ = Altruisme.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Cruel"
-            return u"Égoïste"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Altruiste"
-            return u"Généreux"
-        else:
-            return ""
-
-# Est-ce que le personnage est indivisualiste ou est-ce qu'il aime agir en groupe
-# estt-ce qu'il est prêt à se sacrifier pour les autres ?..
-class Individualisme(TraitGraduel):
-
-    NOM = u"Altruisme"
-
-    def __init__(self):
-        self.eTrait_ = Altruisme.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Sens du sacrifice"
-            return u"Collectisme"
-        elif val >= Trait.SEUIL_A:
-            return u"Individualisme"
-        else:
-            return ""
-
 class Sexualite(TraitGraduel):
     """
     intérêt pour le sexe
@@ -656,32 +604,6 @@ class Sensibilite(TraitGraduel):
         else:
             return ""
 
-class Violence(TraitGraduel):
-
-    NOM = u"Violence"
-
-    def __init__(self):
-        self.eTrait_ = Violence.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Pacifique"
-            return u"Doux"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Ultraviolent"
-            return u"Violent"
-        else:
-            return ""
-
 class Ascetisme(TraitGraduel):
 
     NOM = u"Ascétisme"
@@ -705,80 +627,6 @@ class Ascetisme(TraitGraduel):
             if val >= Trait.SEUIL_A_EXTREME:
                 return u"Ascète"
             return u"Abstinent"
-        else:
-            return ""
-
-class Courage(TraitGraduel):
-
-    NOM = u"Courage"
-
-    def __init__(self):
-        self.eTrait_ = Courage.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Poltron"
-            return u"Lâche"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Héroïque"
-            return u"Courageux"
-        else:
-            return ""
-
-class Rancune(TraitGraduel):
-
-    NOM = u"Rancune"
-
-    def __init__(self):
-        self.eTrait_ = Rancune.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Magnanime"
-            return u"Oublieux"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Implacable"
-            return u"Rancunier"
-        else:
-            return ""
-
-class Ambition(TraitGraduel):
-
-    NOM = u"Ambition"
-
-    def __init__(self):
-        self.eTrait_ = Ambition.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            return u"Sans ambition"
-        elif val >= Trait.SEUIL_A:
-            return u"Ambitieux"
         else:
             return ""
 

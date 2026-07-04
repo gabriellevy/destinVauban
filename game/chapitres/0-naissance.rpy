@@ -39,15 +39,10 @@ init -5 python:
         situation[trait.Tir.NOM] = trait.Trait.CARAC_FAIBLE
 
         # A FAIRE : changer tout ça, ce n'est ni sa personnalité ni ses caracs
-        situation[trait.Violence.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Opportunisme.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Observation.NOM] = trait.Trait.SEUIL_A
         situation[trait.Cupidite.NOM] = trait.Trait.SEUIL_A_EXTREME
-        situation[trait.Courage.NOM] = trait.Trait.SEUIL_A
-        situation[trait.Ambition.NOM] = trait.Trait.SEUIL_A
-        situation[trait.Rancune.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Franchise.NOM] = trait.Trait.SEUIL_A_PAS
-        situation[trait.Altruisme.NOM] = trait.Trait.SEUIL_A_PAS
         # ----- vices et vertus -------------
         situation[viceVertu.Humble.NOM] = viceVertu.ViceVertu.VICIEUX # orgueilleux
 

@@ -80,7 +80,7 @@ label effetVieillir:
                 jump effetVieillir
             elif res100 < 23:
                 "Vous vous sentez plus calme, votre agressivité diminue."
-                $ RetirerACarac(trait.Violence.NOM, 1)
+                # $ RetirerACarac(trait.Violence.NOM, 1)
                 $ nbEffets = nbEffets - 1
                 jump effetVieillir
             elif res100 < 30:
