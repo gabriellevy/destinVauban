@@ -46,6 +46,7 @@ init -5 python:
         # ----- vices et vertus -------------
         situation[viceVertu.Humble.NOM] = viceVertu.ViceVertu.VICIEUX # orgueilleux
         situation[viceVertu.Casanier.NOM] = viceVertu.ViceVertu.VICIEUX # aventureux
+        situation[viceVertu.Valeureux.NOM] = viceVertu.ViceVertu.VERTUEUX # Valeureux
 
         situation[metier.Metier.C_METIER] = u"Prince de sang"
 
