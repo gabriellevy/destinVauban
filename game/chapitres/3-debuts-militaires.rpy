@@ -19,12 +19,29 @@ init -5 python:
         dateNbJours = 1651 * 365 + 31 * 3 +17 # ------------------------------------------------- 17 avril 1652
         mort_pere = declencheur.DeclencheurDate(dateNbJours, "mort_pere")
         selecteur_.ajouterDeclencheur(mort_pere)
+        dateNbJours = 1651 * 365 + 31 * 6 + 2 # ------------------------------------------------- 2 juillet 1652
+        defaites_conde = declencheur.DeclencheurDate(dateNbJours, "defaites_conde")
+        selecteur_.ajouterDeclencheur(defaites_conde)
+        dateNbJours = 1651 * 365 + 31 * 9 + 12 # ------------------------------------------------- octobre 1652
+        fuite_conde = declencheur.DeclencheurDate(dateNbJours, "fuite_conde")
+        selecteur_.ajouterDeclencheur(fuite_conde)
+
+label fuite_conde:
+    "Le grand Condé doit fuir Paris avec le général Turenne et le roi Louis à ses trousses."
+    "C'est maintenant un fugitif condamné à mort qui passe dans le camps de l'Espagne, ennemie jurée du Royaume de France."
+    jump fin_cycle
+
+label defaites_conde:
+    "Les nouvelles du prince de COndé sont très mauvaises."
+    "Le roi Louis a réussi à rallier Turenne, le seul général plus illustre que le prince de Condé, et celui l'a vaincu sévèrement."
+    "Il est maintenant pigé dans Paris."
+    jump fin_cycle
 
 label mort_pere:
     "Une lettre vous apprend une triste nouvelle : votre père vient de mourir."
     "Vous pensez un moment à demander un congé mais vos supérieurs sont catégoriques : hors de question."
     "Louis XIV est maintenant majeur, il a 13 ans, et la guerre contre lui pour s'aggraver à tout moment."
-    "De toute façon, vous êtes actuellement cantonné dans la Champagne.
+    "De toute façon, vous êtes actuellement cantonné dans la Champagne."
     "Il n'y aurait aucune chance pour que vous arriviez à temps pour les obsèques dans le Morvan."
     jump fin_cycle
 
