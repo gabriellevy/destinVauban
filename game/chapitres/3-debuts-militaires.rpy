@@ -33,6 +33,23 @@ init -5 python:
         apprentissageMathematiques2.AjouterCondition(chapitre3)
         apprentissageMathematiques2.AjouterCondition(mathematiques0)
         selecteur_.ajouterDeclencheur(apprentissageMathematiques2)
+        # sinon il a des missions de base pour apprendre les bases
+        apprentissageFortification2 = declencheur.Declencheur(proba.Proba(0.1), "apprentissageFortification2")
+        apprentissageFortification2.AjouterCondition(chapitre3)
+        apprentissageFortification2.AjouterCondition(fortification0)
+        selecteur_.ajouterDeclencheur(apprentissageFortification2)
+
+label apprentissageFortification2:
+    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour camps militaire
+    with dissolve
+    "Vu vos connaissances en mathématiques les ingénieurs décident de vous incorporer à leur équipe pour renforcer les fortifications du camps."
+    $ _test_carac = trait.Intelligence.NOM
+    $ _test_difficulte = 20
+    $ _test_texte_menu = "Enfin un peu de mise en pratique."
+    $ _test_texte_reussi = "Vous vous révélez très doué et apprenez très vite."
+    $ _test_action_reussi = lambda: SetValMaitrise(maitrise.Fortification.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+    call _test_de_carac
+    jump fin_cycle
 
 label apprentissageMathematiques2:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour camps militaire
