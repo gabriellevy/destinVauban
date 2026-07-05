@@ -12,12 +12,17 @@ init -5 python:
     from chapitres.classes import vauban
 
     chapitre3 = condition.Condition(vauban.Vauban.CHAPITRE, 3, condition.Condition.EGAL_NUMERIQUE)
+    fortification1plus = condition.Condition(maitrise.Fortification.NOM, 1, condition.Condition.SUPERIEUR_EGAL)
 
     def AjouterEvts3DebutsMilitaires():
         global selecteur_
         dateNbJours = 1651 * 365 + 31 * 2 +17 # ------------------------------------------------- 17 mars 1651
         debut_chapitre3 = declencheur.DeclencheurDate(dateNbJours, "debut_chapitre3")
         selecteur_.ajouterDeclencheur(debut_chapitre3)
+        dateNbJours = 1651 * 365 + 31 * 11 + 4 # ------------------------------------------------- hiver 1651
+        construction_clermont_en_argonne = declencheur.DeclencheurDate(dateNbJours, "construction_clermont_en_argonne")
+        construction_clermont_en_argonne.AjouterCondition(fortification1plus)
+        selecteur_.ajouterDeclencheur(construction_clermont_en_argonne)
         dateNbJours = 1651 * 365 + 31 * 3 +17 # ------------------------------------------------- 17 avril 1652
         mort_pere = declencheur.DeclencheurDate(dateNbJours, "mort_pere")
         selecteur_.ajouterDeclencheur(mort_pere)
@@ -38,6 +43,20 @@ init -5 python:
         apprentissageFortification2.AjouterCondition(chapitre3)
         apprentissageFortification2.AjouterCondition(fortification0)
         selecteur_.ajouterDeclencheur(apprentissageFortification2)
+
+label construction_clermont_en_argonne:
+    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour place militaire standard
+    with dissolve
+    "Étant donné vs compétences en mathématiques et fortifications vous êtes nommé aspirant ingénieur et chargé de réparer la petite place de Clermont-en-Argonne."
+    "Bin que modeste c'est une position clé sur la route de Sainte-Menehould et donc de la Champagne, c'est un honneur qu'il vous soit confié malgré votre faible expérience."
+    $ _test_carac = trait.Evaluation.NOM
+    $ _test_difficulte = 0 # A FAIRE : faire un calcul de difficulté dynamique selon les compétences en Fortification de Vauban (+20 par niveau au dela de 1 ?)
+    $ _test_texte_menu = "Enfin un peu de mise en pratique."
+    $ _test_texte_reussi = "Beau travail."
+    $ _test_action_reussi = lambda: AjouterACarac(vauban.Vauban.C_EXPLOITS, 1)
+    $ _test_texte_echoue = "Ce travail passable ne vous fait pas honneur."
+    call _test_de_carac
+    jump fin_cycle
 
 label apprentissageFortification2:
     scene bg priere # A FAIRE Marjolaine : trouver un tableau pour camps militaire
@@ -70,21 +89,21 @@ label fuite_conde:
 
 label defaites_conde:
     "Les nouvelles du prince de COndé sont très mauvaises."
-    "Le roi Louis a réussi à rallier Turenne, le seul général plus illustre que le prince de Condé, et celui l'a vaincu sévèrement."
-    "Il est maintenant pigé dans Paris."
+    "Le roi Louis a réussi à rallier Turenne, le seul général plus illustre que le prince de Condé, et celui ci l'a vaincu sévèrement."
+    "Il est maintenant piégé dans Paris."
     jump fin_cycle
 
 label mort_pere:
     "Une lettre vous apprend une triste nouvelle : votre père vient de mourir."
     "Vous pensez un moment à demander un congé mais vos supérieurs sont catégoriques : hors de question."
-    "Louis XIV est maintenant majeur, il a 13 ans, et la guerre contre lui pour s'aggraver à tout moment."
+    "Louis XIV est maintenant majeur, il a 13 ans, et la guerre contre lui peut s'aggraver à tout moment."
     "De toute façon, vous êtes actuellement cantonné dans la Champagne."
     "Il n'y aurait aucune chance pour que vous arriviez à temps pour les obsèques dans le Morvan."
     jump fin_cycle
 
 label debut_chapitre3:
     "Les Condé sont gouverneurs de Bourgogne et les Le Prestre font partie de leur clientèle."
-    "Vous vous engagez donc comme cadet dans la compagnie du sieur d'Arcenay du régimetn de Condé."
+    "Vous vous engagez donc comme cadet dans la compagnie du sieur d'Arcenay du régiment de Condé."
     "La situation est cependant très tendue : le Grand Condé est en rebellion quasi ouverte contre le Roi."
     $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 3)
     jump fin_cycle

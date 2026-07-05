@@ -88,8 +88,10 @@ label endurcissementEnfance:
             $ AjouterACarac(trait.Endurance.NOM, 1)
         "Vous vous occupez des animaux":
             $ AjouterACarac(trait.Animaux.NOM, 1)
-        "Vous étudiez":
+        "Vous lisez":
             $ AjouterACarac(trait.Intelligence.NOM, 1)
+        "Vous observez la nature et la maison et tentez de rendre l'hiver plus supportable":
+            $ AjouterACarac(trait.Evaluation.NOM, 1)
         "Vous dessinez":
             $ AjouterACarac(trait.Habilete.NOM, 1)
     jump fin_cycle

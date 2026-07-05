@@ -20,6 +20,8 @@ class CollectionTraits:
         self.SetTrait(trait.Endurance.NOM, endurance)
         intelligence = trait.Intelligence()
         self.SetTrait(trait.Intelligence.NOM, intelligence)
+        evaluation = trait.Evaluation()
+        self.SetTrait(trait.Evaluation.NOM, evaluation)
         mouvement = trait.Mouvement()
         self.SetTrait(trait.Mouvement.NOM, mouvement)
         perception = trait.Perception()

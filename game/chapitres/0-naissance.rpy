@@ -31,6 +31,7 @@ init -5 python:
         situation[trait.Habilete.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Eloquence.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Intelligence.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Evaluation.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Perception.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Discretion.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.ArmesCorpsACorps.NOM] = trait.Trait.CARAC_FAIBLE
@@ -49,6 +50,7 @@ init -5 python:
         situation[metier.Metier.C_METIER] = u"Prince de sang"
 
         # compétences professionnelles
+        # A FAIRE : changer tout ça, ce n'est ni sa personnalité ni ses caracs
         situation[metier.Politique.NOM] = trait.Trait.SEUIL_A
         situation[metier.Guerrier.NOM] = trait.Trait.SEUIL_A
         situation[metier.Chasseur.NOM] = trait.Trait.SEUIL_A

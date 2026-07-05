@@ -189,14 +189,14 @@ label evtRien_fronde1_barricades:
     with Dissolve(.5)
     "Une grave journée d'émeute a eu lieu à Paris à ce qu'on dit."
     "Le cardinal Mazarin et la reine Anne d'Autriche ont enfermé des conseillers du parlement qui s'opposaient à leurs réformes."
-    "Mais les paraisiens en ont été furieux et ont dressé des barricades dans toute la ville, et ils ont fait céder le cardinal et la reine."
+    "Mais les parisiens en ont été furieux et ont dressé des barricades dans toute la ville, et ils ont fait céder le cardinal et la reine."
     "Cette désobéissance des parisiens est grave, mais ont-ils vraiment tort de s'opposer à une arrestation arbitraire décidée par un cardinal italien ?"
     jump fin_cycle
 
 label evtRien_fronde2_siege_paris:
     scene bg barricades
     with Dissolve(.5)
-    "Des troubels très graves ont lieu dans le royaume et en particulier autour de Paris."
+    "Des troubles très graves ont lieu dans le royaume et en particulier autour de Paris."
     "Votre suzerain le grand Condé a mis le siège devant Paris et paraît-il maté les révoltés donc tout devrait rentrer dans l'ordre."
     "Mais depuis le Morvan il est difficile de comprendre tout ce qui se passe."
     jump fin_cycle

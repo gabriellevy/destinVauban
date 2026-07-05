@@ -466,6 +466,33 @@ class Intelligence(TraitGraduel):
             return u"Intelligent"
         else:
             return ""
+
+# capacité à juger une situation vite et bien, sagesse
+class Evaluation(TraitGraduel):
+
+    NOM = u"Évaluation"
+
+    def __init__(self):
+        self.eTrait_ = Intelligence.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Écervelé"
+            return u"Superficiel"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Clairvoyant "
+            return u"Avisé"
+        else:
+            return ""
         
 class Tir(TraitGraduel):
 
