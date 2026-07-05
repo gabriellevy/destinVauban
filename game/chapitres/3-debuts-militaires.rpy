@@ -11,6 +11,8 @@ init -5 python:
     from abs.humanite import identite
     from chapitres.classes import vauban
 
+    chapitre3 = condition.Condition(vauban.Vauban.CHAPITRE, 3, condition.Condition.EGAL_NUMERIQUE)
+
     def AjouterEvts3DebutsMilitaires():
         global selecteur_
         dateNbJours = 1651 * 365 + 31 * 2 +17 # ------------------------------------------------- 17 mars 1651
@@ -25,6 +27,24 @@ init -5 python:
         dateNbJours = 1651 * 365 + 31 * 9 + 12 # ------------------------------------------------- octobre 1652
         fuite_conde = declencheur.DeclencheurDate(dateNbJours, "fuite_conde")
         selecteur_.ajouterDeclencheur(fuite_conde)
+
+        # aura besoin des maths : chances de les apprendre si ce n'est pas encore le cas : 
+        apprentissageMathematiques2 = declencheur.Declencheur(proba.Proba(0.2), "apprentissageMathematiques2")
+        apprentissageMathematiques2.AjouterCondition(chapitre3)
+        apprentissageMathematiques2.AjouterCondition(mathematiques0)
+        selecteur_.ajouterDeclencheur(apprentissageMathematiques2)
+
+label apprentissageMathematiques2:
+    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour camps militaire
+    with dissolve
+    "Vos lacunes en mathématiques sont un vrai frein pour que les ingénieurs vous prennent au sérieux et vous donne des missions sur le terrain."
+    $ _test_carac = trait.Intelligence.NOM
+    $ _test_difficulte = 0
+    $ _test_texte_menu = "Vous essayez de compenser en étudiant chaque fois que vous en avez le temps."
+    $ _test_texte_reussi = "Vous vous passionnez bientôt pour la topographie et essayer de comprendre quelle forme exactement a cet étrange paysage."
+    $ _test_action_reussi = lambda: SetValMaitrise(maitrise.Mathematiques.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+    call _test_de_carac
+    jump fin_cycle
 
 label fuite_conde:
     "Le grand Condé doit fuir Paris avec le général Turenne et le roi Louis à ses trousses."
