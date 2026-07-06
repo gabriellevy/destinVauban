@@ -32,6 +32,8 @@ class CollectionTraits:
         self.SetTrait(trait.Tir.NOM, tir)
         volonte = trait.Volonte()
         self.SetTrait(trait.Volonte.NOM, volonte)
+        force = trait.Force()
+        self.SetTrait(trait.Force.NOM, force)
 
         # ----- spécifiques assez courantes pour que je les garde ici : 
         destin = trait.Destin()
@@ -54,8 +56,6 @@ class CollectionTraits:
         self.SetTrait(trait.Poids.NOM, poids)
         resistance = trait.Constitution()
         self.SetTrait(trait.Constitution.NOM, resistance)
-        force = trait.Force()
-        self.SetTrait(trait.Force.NOM, force)
         patriarcat = trait.Patriarcat()
         self.SetTrait(trait.Patriarcat.NOM, patriarcat)
         sexualite = trait.Sexualite()

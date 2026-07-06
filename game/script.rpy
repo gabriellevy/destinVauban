@@ -95,6 +95,8 @@ label fin_cycle:
     $ _test_action_echoue = None
     $ _test_label_reussi = None
     $ _test_label_echoue = None
+    $ _test_abandon_possible = False
+    $ _test_label_abandon = None
 
     if situation_["Santé"] != "Mort":
         jump debut_cycle

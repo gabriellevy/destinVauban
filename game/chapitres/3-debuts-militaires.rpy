@@ -32,6 +32,9 @@ init -5 python:
         dateNbJours = 1651 * 365 + 31 * 9 + 12 # ------------------------------------------------- octobre 1652
         fuite_conde = declencheur.DeclencheurDate(dateNbJours, "fuite_conde")
         selecteur_.ajouterDeclencheur(fuite_conde)
+        dateNbJours = 1651 * 365 + 31 * 10 + 12 # ------------------------------------------------- novembre 1652
+        siege_sainte_menehould = declencheur.DeclencheurDate(dateNbJours, "siege_sainte_menehould")
+        selecteur_.ajouterDeclencheur(siege_sainte_menehould)
 
         # aura besoin des maths : chances de les apprendre si ce n'est pas encore le cas : 
         apprentissageMathematiques2 = declencheur.Declencheur(proba.Proba(0.2), "apprentissageMathematiques2")
@@ -44,11 +47,56 @@ init -5 python:
         apprentissageFortification2.AjouterCondition(fortification0)
         selecteur_.ajouterDeclencheur(apprentissageFortification2)
 
+label siege_sainte_menehould:
+    scene bg siege
+    with dissolve
+    "Fidèle à son caractère agressif le grand Condé ne reste pas sur la défensive. Il ordonne le siège de Sainte Menehould et vous y êtes envoyé."
+    "Elle n'est défendue que par des bourgeois et 120 irlandais mais ceux-ci s'avèrent coriaces et déterminés. Ils brûlent vifs nos mineurs père et fils dans leurs trous avec des produits inflammables."
+    "De votre côté vous êtes chargé de construire des abris rapprochés pour permettre aux soldats de se rapprocher des murailles à l'abri."
+    "Mais le siège traîne et les pertes sont lourdes."
+    $ situation_.AvanceDeXJours(6)
+    $ _test_carac = trait.Evaluation.NOM
+    $ _test_difficulte = 40
+    $ _test_texte_menu = "Cette place doit bien avoir une faille."
+    $ _test_texte_reussi = "Alors que vous êtes au travail au bord de l'Aisne vous en avez la certitude : en traversant le fleuve à la nage vous serez dans la position idéale pour trouver une meilleur voie d'accès."
+    $ _test_label_reussi = "siege_sainte_menehould_nage"
+    $ _test_label_echoue = "siege_sainte_menehould_fin"
+    call _test_de_carac
+
+label siege_sainte_menehould_nage:
+    $ _test_carac = trait.Force.NOM
+    $ _test_difficulte = 40
+    $ _test_texte_menu = "Il faut juste nager jusqu'à l'autre côté, sous le feu ennemi certes."
+    $ _test_texte_reussi = "Quelques balles sifflent aux alentours mais vous êtes bon nageur et parvenez aisément là où vous le souhaitez. Et en effet l'accès par ce côté ci sera plus aisé pour les mineurs."
+    $ _test_label_reussi = "siege_sainte_menehould_nage_reussi"
+    $ _test_label_echoue = "siege_sainte_menehould_fin"
+    $ _test_abandon_possible = True
+    $ _test_label_abandon = "siege_sainte_menehould_fin"
+    call _test_de_carac
+
+label siege_sainte_menehould_nage_reussi:
+    "Votre courage et votre ingéniosité ne sont pas passés innaperçus. Vos officiers vous font passer sous-officier."
+    $ situation_.SetValCarac(vauban.Vauban.C_GRADE, vauban.Vauban.GRADE_SOUS_OFFICIER)
+    $ AjouterACarac(vauban.Vauban.C_EXPLOITS, 1)
+    "On vous propose même de devenir enseigne !"
+    "C'est un honneur mais cela n'est pas forcément un cadeau, car la solde est maigre et vous êtes sensé recruter et payer vos hommes vous-mêmes."
+    menu:
+        "Si vous acceptez":
+            $ situation_.SetValCarac(vauban.Vauban.C_GRADE, vauban.Vauban.GRADE_ENSEIGNE)
+            $ RetirerACarac(trait.Richesse.NOM, 1)
+        "Si vous refusez":
+            jump siege_sainte_menehould_fin
+    jump siege_sainte_menehould_fin
+
+label siege_sainte_menehould_fin:
+    "La place est finalement capturée après quelques efforts supplémentaires."
+    jump fin_cycle
+
 label construction_clermont_en_argonne:
-    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour place militaire standard
+    scene bg siege
     with dissolve
     "Étant donné vs compétences en mathématiques et fortifications vous êtes nommé aspirant ingénieur et chargé de réparer la petite place de Clermont-en-Argonne."
-    "Bin que modeste c'est une position clé sur la route de Sainte-Menehould et donc de la Champagne, c'est un honneur qu'il vous soit confié malgré votre faible expérience."
+    "Bien que modeste c'est une position clé sur la route de Sainte-Menehould et donc de la Champagne, c'est un honneur qu'il vous soit confié malgré votre faible expérience."
     $ _test_carac = trait.Evaluation.NOM
     $ _test_difficulte = 0 # A FAIRE : faire un calcul de difficulté dynamique selon les compétences en Fortification de Vauban (+20 par niveau au dela de 1 ?)
     $ _test_texte_menu = "Enfin un peu de mise en pratique."

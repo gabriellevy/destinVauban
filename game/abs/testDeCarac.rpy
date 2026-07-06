@@ -7,8 +7,10 @@
 # $ _test_texte_echoue = "Ce n'est pas votre fort."
 # $ _test_action_reussi = lambda: SetValCaracInt(trait.Equitation.NOM, maitrise.TraitMaitrise.MAITRISE_A)
 # $ _test_action_echoue = None
-# $ _test_label_reussi = None
-# $ _test_label_echoue = None
+# $ _test_label_reussi = "grade_ordre_saint_louis2"
+# $ _test_label_echoue = "grade_ordre_saint_louis2"
+# $ _test_abandon_possible = False
+# $ _test_label_abandon = None
 # A FAIRE : intégrer le test de point de destin ici !!!
 label _test_de_carac:
     $ testCombat = testDeCarac.TestDeCarac(_test_carac, _test_difficulte, situation_)
@@ -29,6 +31,11 @@ label _test_de_carac:
                             jump _test_de_carac_echec
                 else:
                     jump _test_de_carac_echec
+        "Renoncer" if _test_abandon_possible:
+            if _test_label_abandon:
+                $ renpy.jump(_test_label_abandon)
+            else:
+                jump fin_cycle
     return
 
 label _test_de_carac_echec:

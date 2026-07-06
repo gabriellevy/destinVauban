@@ -3,6 +3,8 @@ class Vauban:
 
     # caracs personnelles spécifiques de Vauban
     C_GRADE = u"Grade" 
+    GRADE_SOUS_OFFICIER = u"Sous-officier"
+    GRADE_ENSEIGNE = u"Enseigne"
     GRADE_LIEUTENANT = u"Lieutenant aux gardes"
     GRADE_SAINT_LOUIS = u"Ordre de Saint Louis"
     C_EXPLOITS = u"Exploits"

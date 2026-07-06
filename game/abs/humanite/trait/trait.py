@@ -467,6 +467,32 @@ class Intelligence(TraitGraduel):
         else:
             return ""
 
+class Force(TraitGraduel):
+
+    NOM = u"Force"
+
+    def __init__(self):
+        self.eTrait_ = Force.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Anémique"
+            return u"Faible"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Herculéen"
+            return u"Fort"
+        else:
+            return ""
+
 # capacité à juger une situation vite et bien, sagesse
 class Evaluation(TraitGraduel):
 
@@ -654,32 +680,6 @@ class Ascetisme(TraitGraduel):
             if val >= Trait.SEUIL_A_EXTREME:
                 return u"Ascète"
             return u"Abstinent"
-        else:
-            return ""
-
-class Force(TraitGraduel):
-
-    NOM = u"Force"
-
-    def __init__(self):
-        self.eTrait_ = Force.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Anémique"
-            return u"Faible"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Herculéen"
-            return u"Fort"
         else:
             return ""
 
