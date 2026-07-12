@@ -23,18 +23,21 @@ init -5 python:
         construction_clermont_en_argonne = declencheur.DeclencheurDate(dateNbJours, "construction_clermont_en_argonne")
         construction_clermont_en_argonne.AjouterCondition(fortification1plus)
         selecteur_.ajouterDeclencheur(construction_clermont_en_argonne)
-        dateNbJours = 1651 * 365 + 31 * 3 +17 # ------------------------------------------------- 17 avril 1652
+        dateNbJours = 1652 * 365 + 31 * 3 +17 # ------------------------------------------------- 17 avril 1652
         mort_pere = declencheur.DeclencheurDate(dateNbJours, "mort_pere")
         selecteur_.ajouterDeclencheur(mort_pere)
-        dateNbJours = 1651 * 365 + 31 * 6 + 2 # ------------------------------------------------- 2 juillet 1652
+        dateNbJours = 1652 * 365 + 31 * 6 + 2 # ------------------------------------------------- 2 juillet 1652
         defaites_conde = declencheur.DeclencheurDate(dateNbJours, "defaites_conde")
         selecteur_.ajouterDeclencheur(defaites_conde)
-        dateNbJours = 1651 * 365 + 31 * 9 + 12 # ------------------------------------------------- octobre 1652
+        dateNbJours = 1652 * 365 + 31 * 9 + 12 # ------------------------------------------------- octobre 1652
         fuite_conde = declencheur.DeclencheurDate(dateNbJours, "fuite_conde")
         selecteur_.ajouterDeclencheur(fuite_conde)
-        dateNbJours = 1651 * 365 + 31 * 10 + 12 # ------------------------------------------------- novembre 1652
+        dateNbJours = 1652 * 365 + 31 * 10 + 12 # ------------------------------------------------- novembre 1652
         siege_sainte_menehould = declencheur.DeclencheurDate(dateNbJours, "siege_sainte_menehould")
         selecteur_.ajouterDeclencheur(siege_sainte_menehould)
+        dateNbJours = 1653 * 365 + 31 * 3 + 12 # ------------------------------------------------- avril 1653
+        capture_en_reconnaissance = declencheur.DeclencheurDate(dateNbJours, "capture_en_reconnaissance")
+        selecteur_.ajouterDeclencheur(capture_en_reconnaissance)
 
         # aura besoin des maths : chances de les apprendre si ce n'est pas encore le cas : 
         apprentissageMathematiques2 = declencheur.Declencheur(proba.Proba(0.2), "apprentissageMathematiques2")
@@ -46,6 +49,11 @@ init -5 python:
         apprentissageFortification2.AjouterCondition(chapitre3)
         apprentissageFortification2.AjouterCondition(fortification0)
         selecteur_.ajouterDeclencheur(apprentissageFortification2)
+
+label capture_en_reconnaissance:*
+    "A FAIRE"
+    jump fin_cycle
+
 
 label siege_sainte_menehould:
     scene bg siege
