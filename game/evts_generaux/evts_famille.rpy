@@ -7,7 +7,6 @@ init -5 python:
     from abs import condition
     from game.abs.humanite.trait import trait
     from abs.humanite import metier
-    from spe import dec_vauban
 
     def AjouterEvtsFamille():
         global selecteur_

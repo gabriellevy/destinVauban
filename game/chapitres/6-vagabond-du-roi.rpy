@@ -11,7 +11,6 @@ init -5 python:
     from abs.humanite import identite
     from chapitres.classes import syagrius
     from chapitres.classes import vauban
-    from spe import dec_vauban
 
     def AjouterEvtVagabondDuRoi():
         global selecteur_

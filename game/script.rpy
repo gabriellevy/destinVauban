@@ -8,6 +8,8 @@ define cl = Character('Vauban', color="#001ba4")
 
 define boileau = Character('Boileau', color="#39055e")
 
+define vaub = Character('Vauban', color="#71d8a1")
+
 image louisXIV = "perso/louisXIV.png"
 define louisXIV = Character('Louis XIV', color="#003ae7")
 

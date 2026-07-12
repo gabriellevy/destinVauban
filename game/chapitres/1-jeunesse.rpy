@@ -10,7 +10,6 @@ init -5 python:
     from abs.humanite import metier
     from abs.univers import temps
     from abs.humanite import identite
-    from spe import dec_vauban
     from chapitres.classes import vauban
 
     equitation0 = condition.Condition(maitrise.Equitation.NOM, maitrise.TraitMaitrise.MAITRISE_A, condition.Condition.INFERIEUR)

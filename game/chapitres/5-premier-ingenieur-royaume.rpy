@@ -10,7 +10,6 @@ init -5 python:
     from abs.humanite import identite
     from chapitres.classes import syagrius
     from chapitres.classes import vauban
-    from spe import dec_vauban
 
     avant493 = condition.Condition(temps.Date.DATE_ANNEES, 493, condition.Condition.INFERIEUR)
 

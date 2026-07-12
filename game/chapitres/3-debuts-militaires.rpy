@@ -50,10 +50,78 @@ init -5 python:
         apprentissageFortification2.AjouterCondition(fortification0)
         selecteur_.ajouterDeclencheur(apprentissageFortification2)
 
-label capture_en_reconnaissance:*
-    "A FAIRE"
+label capture_en_reconnaissance:
+    $ capture_en_reconnaissance_diff_poursuite=0
+    $ capture_en_reconnaissance_diff_combat=-10
+    "Vous êtes en reconnaissance avec trois compagnon quand vous êtes apperçus par une troupe d'au moins 10 cavaliers royaux."
+    menu:
+        "Vous sortez vos pistolets et les attaquez de face":
+            jump capture_en_reconnaissance_combat
+        "Vous tournez bride et fuyez":
+            jump capture_en_reconnaissance_poursuite
+        "Vous attendez de voir ce qu'ils vont faire":
+            "Ils n'hésitent qu'un instant et foncent vers vous. Ils sont bien 15 contre vous 4."
+            $ capture_en_reconnaissance_diff_poursuite=-10
+            menu:
+                "Vous sortez vos pistolets et les attaquez de face":
+                    jump capture_en_reconnaissance_combat
+                "Vous tournez bride et fuyez":
+                    jump capture_en_reconnaissance_poursuite
+        "Vous vous rendez":
+            jump capture_en_reconnaissance_reddition
     jump fin_cycle
 
+label capture_en_reconnaissance_combat:
+    $ _test_carac = trait.Tir.NOM
+    $ _test_difficulte = capture_en_reconnaissance_diff_combat
+    $ _test_label_reussi = capture_en_reconnaissance_victoire
+    $ _test_texte_reussi = "Vous abattez net leur officier et blessez gravement un autre tandis que vos compagnons, armés de mousquets, abattent eux aussi deux cavaliers."
+    $ _test_texte_echoue = "Impossible de les prendre de vitesse ils sont maintenant juste derrière vous."
+    # A FAIRE : gestion de la mort et sauvegarde par point de destin
+    $ _test_label_echoue = "mort"
+    call _test_de_carac
+
+label capture_en_reconnaissance_poursuite:
+    $ _test_carac = trait.Habilete.NOM
+    $ _test_difficulte = capture_en_reconnaissance_diff_poursuite-10
+    $ _test_texte_menu = "Ces militaires sont entrainés et ont de bons chevaux."
+    $ _test_texte_reussi = "Vous les prenez de vitesse et réussissez à rentrer sain et sauf au camps."
+    $ _test_texte_echoue = "Impossible de les prendre de vitesse ils sont maintenant juste derrière vous."
+    $ _test_label_echoue = "capture_en_reconnaissance_rattrape"
+    call _test_de_carac
+
+label capture_en_reconnaissance_rattrape:
+    $ capture_en_reconnaissance_diff_combat-=10
+    menu:
+        "Vous sortez vos pistolets et les attaquez de face":
+            jump capture_en_reconnaissance_combat
+        "Vous vous rendez en demandant les honneurs de la guerre":
+            jump capture_en_reconnaissance_reddition
+    jump fin_cycle
+
+label capture_en_reconnaissance_reddition:
+    "En tant que noble vous devez vous rendre avec honneur et courage pour mériter votre titre."
+    "Vous dégainez votre pistolet et visez le chef ennemi."
+    vaub "Je n'accepterai de me rendre que si je peux garder mes armes et que vous ne me forcez pas à mettre pied à terre"
+    $ _test_carac = trait.Eloquence.NOM
+    $ _test_difficulte = 40
+    $ _test_texte_menu = "Il faut que vous respectiez parfaitement les usages."
+    $ _test_texte_reussi = "L'officier est impressionné par votre courage, et, étant lui-même gentilhomme, accepte vos termes."
+    $ _test_label_reussi = "capture_en_reconnaissance_reddition_reussi"
+    $ _test_texte_echoue = "Vous tremblez, perdez vos mots, et un de vos compagnons craque et ouvre le feu."
+    $ _test_label_echoue = "capture_en_reconnaissance_combat"
+    call _test_de_carac
+
+label capture_en_reconnaissance_reddition_reussi:
+    "A FAIRE : discussion avec Mazarin"
+    jump fin_cycle
+
+label capture_en_reconnaissance_victoire:
+    "Les ennemis ripostent mollement puis se débandent et préfèrent abandonner à votre grand soulagement."
+    "Vous rentrez sain et sauf au camps qui est rapidement au courant de votre exploit."
+    $ AjouterACarac(vauban.Vauban.C_EXPLOITS, 1)
+    # A FAIRE : comment VA6T4IL SE RETROUVER au serice du roi si il n'a pas été fait prisonnier
+    jump fin_cycle
 
 label siege_sainte_menehould:
     scene bg siege
@@ -77,6 +145,7 @@ label siege_sainte_menehould_nage:
     $ _test_texte_menu = "Il faut juste nager jusqu'à l'autre côté, sous le feu ennemi certes."
     $ _test_texte_reussi = "Quelques balles sifflent aux alentours mais vous êtes bon nageur et parvenez aisément là où vous le souhaitez. Et en effet l'accès par ce côté ci sera plus aisé pour les mineurs."
     $ _test_label_reussi = "siege_sainte_menehould_nage_reussi"
+    # A FAIRE : gestion  de l'échec et de la mort ??
     $ _test_label_echoue = "siege_sainte_menehould_fin"
     $ _test_abandon_possible = True
     $ _test_label_abandon = "siege_sainte_menehould_fin"
