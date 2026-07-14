@@ -11,7 +11,6 @@
 # $ _test_label_echoue = "grade_ordre_saint_louis2"
 # $ _test_abandon_possible = False
 # $ _test_label_abandon = None
-# A FAIRE : intégrer le test de point de destin ici !!!
 label _test_de_carac:
     $ testCombat = testDeCarac.TestDeCarac(_test_carac, _test_difficulte, situation_)
     menu:

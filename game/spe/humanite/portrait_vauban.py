@@ -3,7 +3,7 @@ from abs.humanite import metier
 from abs.humanite import portrait
 from chapitres.classes import vauban
 
-class PortraitRoiVauban(portrait.Portrait):
+class PortraitVauban(portrait.Portrait):
 
     def DeterminerPortraitPersoPrincipal(self, situation, masculin):
         """

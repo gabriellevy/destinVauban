@@ -36,6 +36,8 @@ class CollectionTraits:
         self.SetTrait(trait.Force.NOM, force)
         commandement = trait.Commandement()
         self.SetTrait(trait.Commandement.NOM, commandement)
+        charme = trait.Charme()
+        self.SetTrait(trait.Charme.NOM, charme)
 
         # ----- spécifiques assez courantes pour que je les garde ici : 
         destin = trait.Destin()
@@ -46,8 +48,6 @@ class CollectionTraits:
         # A FAIRE : voir ce que je garde ci après
         richesse = trait.Richesse()
         self.SetTrait(trait.Richesse.NOM, richesse)
-        charme = trait.Charme()
-        self.SetTrait(trait.Charme.NOM, charme)
         observation = trait.Observation()
         self.SetTrait(trait.Observation.NOM, observation)
         beaute = trait.Beaute()

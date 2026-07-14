@@ -3,7 +3,7 @@ from abs.univers import temps
 from abs.humanite.amour import relationAmoureuse
 from abs.humanite import identite
 from abs.humanite import pnj
-from spe.humanite import portrait_roi_vauban
+from game.spe.humanite import portrait_vauban
 
 class PnjRoiVauban(pnj.Pnj):
 
@@ -34,7 +34,7 @@ class PnjRoiVauban(pnj.Pnj):
         """
         à appeler de temps en temps (changement de boulot, passage de dizaines en âge etc, je sais pas trop
         """
-        portr = portrait_roi_vauban.PortraitRoiVauban()
+        portr = portrait_vauban.PortraitVauban()
         ageNbAnnees = self.nbJours_/365
         metObj = None
         if self.metier_ != "":

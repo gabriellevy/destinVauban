@@ -984,8 +984,8 @@ class Charme(TraitGraduel):
         if not isinstance(val, int):
             assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
 
-        if val < Trait.SEUIL_A_PAS:
-            if val < Trait.SEUIL_A_PAS_EXTREME:
+        if val < Trait.CARAC_FAIBLE:
+            if val < Trait.CARAC_TRES_FAIBLE:
                 return u"Très Déplaisant"
             return u"Déplaisant"
         elif val >= Trait.CARAC_ELEVE:

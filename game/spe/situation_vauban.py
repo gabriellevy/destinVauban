@@ -1,7 +1,7 @@
 from abs.religions import religion
 from chapitres.classes import syagrius
 from chapitres.classes import vauban
-from spe.humanite import portrait_roi_vauban
+from game.spe.humanite import portrait_vauban
 from abs.humanite import portrait
 from spe.humanite import pnj_roi_vauban
 from abs import situation
@@ -94,7 +94,7 @@ class SituationVauban(situation.Situation):
         récupérer une liste de portraits selon les caracs du perso et en choisir un aléatoirement
         celui est choisi est stocké dans une carac mais en cas de changement important (âge, métier, coterie...) on en recalcule un
         """
-        portr = portrait_roi_vauban.PortraitRoiVauban()
+        portr = portrait_vauban.PortraitVauban()
         portraitStr = portr.DeterminerPortraitPersoPrincipal(self, True)
         self.SetCarac(portrait.Portrait.C_PORTRAIT, portraitStr)
         return self.GetValCarac(portrait.Portrait.C_PORTRAIT)
