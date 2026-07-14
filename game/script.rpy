@@ -12,8 +12,8 @@ define vaub = Character('Vauban', color="#71d8a1")
 
 image louisXIV = "perso/louisXIV.png"
 define louisXIV = Character('Louis XIV', color="#003ae7")
-
-define clot = Character('Clotilde', color="#800000")
+image mazarin = "perso/Mazarin.png"
+define maz = Character('Cardinal Mazarin', color="#ff1601")
 
 # Musiques
 define audio.turexgloriae = "musique/turexgloriae.ogg" # baptème etc

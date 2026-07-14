@@ -115,9 +115,11 @@ label capture_en_reconnaissance_reddition:
 label capture_en_reconnaissance_reddition_reussi:
     "Vous êtes raccompagné sous bonne escorte mais en ayant la garantie de ne pas être dépouillé."
     "En retour, vous donnez votre parole de gentihomme que vous ne profiterez pas de la faveur qu'on fait à votre noblesse pour fuir traitreusement."
-    "Vous êtes tout de même enfermé dans de bonnes conditions et quelques jours plus tard vos avez l'insigne honneur d'être reçu par le cardinal Mazarin, premier conseiller du roi !"
-    "Votre courage pendant la capture et les connaissances que vous avez montré des fortifications lors de votre interrogatoire ont attiré mon attention."
-
+    "Vous êtes tout de même enfermé, mais  dans de bonnes conditions."
+    "Quelques jours plus tard vos avez l'insigne honneur d'être reçu par le cardinal Mazarin, premier conseiller du roi !"
+    show mazarin at right
+    with moveinright
+    maz "Votre courage pendant la capture et les connaissances que vous avez montré des fortifications lors de votre interrogatoire ont attiré mon attention."
     jump fin_cycle
 
 label capture_en_reconnaissance_victoire:
