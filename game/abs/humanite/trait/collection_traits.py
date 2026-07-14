@@ -34,6 +34,8 @@ class CollectionTraits:
         self.SetTrait(trait.Volonte.NOM, volonte)
         force = trait.Force()
         self.SetTrait(trait.Force.NOM, force)
+        commandement = trait.Commandement()
+        self.SetTrait(trait.Commandement.NOM, commandement)
 
         # ----- spécifiques assez courantes pour que je les garde ici : 
         destin = trait.Destin()

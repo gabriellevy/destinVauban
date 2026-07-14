@@ -493,6 +493,32 @@ class Force(TraitGraduel):
         else:
             return ""
 
+class Commandement(TraitGraduel):
+
+    NOM = u"Commandement"
+
+    def __init__(self):
+        self.eTrait_ = Commandement.NOM
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val <= Trait.CARAC_TRES_FAIBLE:
+                return u"Aucune autorité"
+            return u"Manque d'autorité"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                return u"Chef aguerri"
+            return u"Chef exceptionnel"
+        else:
+            return ""
+
 # capacité à juger une situation vite et bien, sagesse
 class Evaluation(TraitGraduel):
 

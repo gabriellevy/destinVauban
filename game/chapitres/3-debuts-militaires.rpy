@@ -50,6 +50,24 @@ init -5 python:
         apprentissageFortification2.AjouterCondition(fortification0)
         selecteur_.ajouterDeclencheur(apprentissageFortification2)
 
+        apprentissageSurLeTas = declencheur.Declencheur(proba.Proba(0.05), "apprentissageSurLeTas")
+        apprentissageSurLeTas.AjouterCondition(chapitre3)
+        selecteur_.ajouterDeclencheur(apprentissageSurLeTas)
+
+label apprentissageSurLeTas:
+    scene bg siege
+    menu choix_apprentissage_militaire:
+        "La vie au camps est rude mais vous donne beaucoup d'occasions de faire vos preuves et vous améliorer."
+        "Vous entrainez durement vos hommes":
+            $ AjouterACarac(trait.Commandement.NOM, 1)
+        "Vous vous entrainez plutôt au tir":
+            $ AjouterACarac(trait.Tir.NOM, 1)
+        "Vous observez les fortifications et en dessinez les plans":
+            $ AjouterACarac(trait.Habilete.NOM, 1)
+        "Vous tentez de comprendre le fonctionnement d'un camps militaire, sa position, sa logistique...":
+            $ AjouterACarac(trait.Evaluation.NOM, 1)
+    jump fin_cycle
+
 label capture_en_reconnaissance:
     $ capture_en_reconnaissance_diff_poursuite=0
     $ capture_en_reconnaissance_diff_combat=-10
@@ -120,6 +138,17 @@ label capture_en_reconnaissance_reddition_reussi:
     show mazarin at right
     with moveinright
     maz "Votre courage pendant la capture et les connaissances que vous avez montré des fortifications lors de votre interrogatoire ont attiré mon attention."
+    maz "Vous n'êtes pas sans savoir que le roi a accordé pardon et amnistie à ceux qui ont fait l'erreur de se rebeller contre lui à condition qu'ils renoncent à servir le rebelle Condé."
+    maz "Vous êtes encore jeune, votre erreur de jugement est tout à fait pardonnable, et vous auriez tort de refuser la générosité du roi le plus grand et le plus généreux qui soit."
+    maz "S'il vous plaît rejoignez l'arméée royale, aidez nous à mettre fin à cette guerre civile, et vous serez apprécié à votre juste valeur."
+    menu:
+        "Qu'en dites vous ?"
+        "J'accepte de servir le roi":
+            # A FAIRE : explication de sa réaffectation ??
+            jump fin_cycle
+        "Jamais je ne trahirai le Grand Condé !":
+            "A FAIRE : que va t'il lui arriver en attendant la fin de Condé ?? en prison jusqu'à sa fuite à Bruxelles ?"
+            jump fin_cycle
     jump fin_cycle
 
 label capture_en_reconnaissance_victoire:
