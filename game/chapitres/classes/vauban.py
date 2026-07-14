@@ -37,8 +37,6 @@ class Vauban:
 
     # personnages
     C_NOM_VAUBAN = u"Vauban"
-    C_NOM_BASINE = u"Basine de Thuringe"
-    C_NOM_CHILDERIC = u"Childéric"
 
     # Famille
     C_FIANCE_CLOTHILDE = u"Fiancé à CLothilde"

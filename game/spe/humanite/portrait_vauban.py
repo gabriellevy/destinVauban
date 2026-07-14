@@ -31,10 +31,6 @@ class PortraitVauban(portrait.Portrait):
                 portraits.append("images/portraits/vauban60+.png")
             else:
                 portraits.append("images/portraits/vauban_15.jpg")
-        if nom == vauban.Vauban.C_NOM_BASINE:
-            portraits.append("images/portraits/basine.jpg")
-        if nom == vauban.Vauban.C_NOM_CHILDERIC:
-            portraits.append("images/portraits/childeric.jpg")
 
         if len(portraits) == 0:
             portraits = ["images/portraits/inconnu.jpg"]
