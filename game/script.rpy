@@ -13,8 +13,6 @@ define vaub = Character('Vauban', color="#71d8a1")
 image louisXIV = "perso/louisXIV.png"
 define louisXIV = Character('Louis XIV', color="#003ae7")
 
-# A FAIRE : maj les perso pour ajouter Louis XIV, Louvois etc
-image clotilde = "perso/clotilde.png"
 define clot = Character('Clotilde', color="#800000")
 
 # Musiques
