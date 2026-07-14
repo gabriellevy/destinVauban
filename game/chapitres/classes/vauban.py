@@ -1,18 +1,22 @@
 class Vauban:
     CHAPITRE = u"Chapitre actuel"
 
-    # caracs personnelles spécifiques de Vauban
+    # ------------- caracs personnelles spécifiques de Vauban
+    # ------ grades et titres
     C_GRADE = u"Grade" 
     GRADE_SOUS_OFFICIER = u"Sous-officier"
     GRADE_ENSEIGNE = u"Enseigne"
     GRADE_LIEUTENANT = u"Lieutenant aux gardes"
+    GRADE_LIEUTENANT_BOURGOGNE = u"Lieutenant au régiment de Bourgogne infanterie"
     GRADE_SAINT_LOUIS = u"Ordre de Saint Louis"
-    C_EXPLOITS = u"Exploits"
-
     # titres
     C_SEIGNEUR_BAZOCHES = u"Seigneur de Bazoches"
+
+    C_EXPLOITS = u"Exploits"
     
+    # --------------------- relation au roi
     C_FAVEUR_ROI = u"Faveur du roi"
+
     # métiers utilisés (dans abs.humanite.metier):
     # ????? A FAIRE : supprimer le concept de métier ? il a peu d'intérêt dans le nouveau système...
     # de son armée quand il est en campagne

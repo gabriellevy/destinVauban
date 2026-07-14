@@ -38,6 +38,9 @@ init -5 python:
         dateNbJours = 1653 * 365 + 31 * 3 + 12 # ------------------------------------------------- avril 1653
         capture_en_reconnaissance = declencheur.DeclencheurDate(dateNbJours, "capture_en_reconnaissance")
         selecteur_.ajouterDeclencheur(capture_en_reconnaissance)
+        dateNbJours = 1653 * 365 + 31 * 9 + 20 # ------------------------------------------------- 20 octobre 1653
+        siege_sainte_menehould_2 = declencheur.DeclencheurDate(dateNbJours, "siege_sainte_menehould_2")
+        selecteur_.ajouterDeclencheur(siege_sainte_menehould_2)
 
         # aura besoin des maths : chances de les apprendre si ce n'est pas encore le cas : 
         apprentissageMathematiques2 = declencheur.Declencheur(proba.Proba(0.2), "apprentissageMathematiques2")
@@ -54,8 +57,49 @@ init -5 python:
         apprentissageSurLeTas.AjouterCondition(chapitre3)
         selecteur_.ajouterDeclencheur(apprentissageSurLeTas)
 
+label siege_sainte_menehould_2:
+    scene bg siege
+    with dissolve
+    "Ironie du sort : vous qui avez pris la ville de Saint Menehould sous les ordres de Condé, vous êtes chargé de la reprendre à ce dernier sous les ordres du chevalier de Clerville !"
+    "Monsieur de Clerville est un ingénieur expérimenté et éminent qui mène les opérations de siège."
+    $ _test_texte_menu = "Comme vous avez déjà séjourné récemment dans la ville fortifiée, Monsieur de Clerville compte sur votre mémoire et sens de l'observation pour faciliter le siège."
+    $ _test_carac = trait.Intelligence.NOM
+    $ _test_difficulte = 20
+    $ _test_label_reussi = "siege_sainte_menehould_2_memoire"
+    $ _test_texte_reussi = "Vous vous rappelez exceptionnellement bien de toutes les fortifications et proposez un plan détaillé à Monsieur de Clerville, ce qui facilite énormément la capture."
+    $ _test_texte_echoue = "Vous aidez du mieux que vous pouvez mais vos indications sont bien imprécises."
+    $ _test_label_echoue = "siege_sainte_menehould_2_prise"
+    $ _test_action_reussi = lambda: AjouterACarac(vauban.Vauban.C_EXPLOITS, 1)
+    call _test_de_carac
+
+label siege_sainte_menehould_2_prise:
+    "Sous les ordres de Monsieur de Clerville vous conduisez les lignes, tranchées, et sapes aussi efficacement que possible."
+    $ situation_.AvanceDeXJours(34)
+    "Le siège dure tout de même 34 jours et finit par la reddition de Montal, gouverneur depuis l’année précédente."
+    "Il rend les armes en présence du jeune Louis, roi de France."
+    "Celui ci est très satisfait et distribue les récompenses et titres. Vous êtes fait Lieutenant au régiment de Bourgogne infanterie."
+    $ situation_.SetValCarac(vauban.Vauban.C_GRADE, vauban.Vauban.GRADE_LIEUTENANT_BOURGOGNE)
+    jump siege_sainte_menehould_2_reparation
+
+label siege_sainte_menehould_2_reparation:
+    "Vous êtes chargé de réparer les fortifications de la ville durant l'hiver."
+    if situation_.GetValCaracInt(maitrise.Fortification.NOM) < 1:
+        "Malheureusement vos compétences sont insuffisantes et un ingénieur plus expérimenté est chargé de diriger l'essentiel du travail. Vous apprenez néanmoins beaucoup à son contact."
+        $ SetValMaitrise(maitrise.Fortification.NOM, maitrise.TraitMaitrise.MAITRISE_A)
+        $ situation_.AvanceDeXJours(34)
+        jump fin_cycle
+    else:
+        $ _test_texte_menu = "Vous passez des mois à recontrsuire des fortifications épuisées par 2 sièges successifs."
+        $ _test_carac = trait.Intelligence.NOM
+        $ _test_difficulte = -10 + situation_.GetValCaracInt(maitrise.Fortification.NOM) * 20
+        $ _test_texte_reussi = "Vous améliorez grandement les fortifications et à peu de frais."
+        $ _test_texte_echoue = "Vos réparations sont techniquement bonnes, sans plus."
+        $ _test_action_reussi = lambda: AjouterACarac(vauban.Vauban.C_EXPLOITS, 1)
+        call _test_de_carac
+
 label apprentissageSurLeTas:
     scene bg siege
+    with dissolve
     menu choix_apprentissage_militaire:
         "La vie au camps est rude mais vous donne beaucoup d'occasions de faire vos preuves et vous améliorer."
         "Vous entrainez durement vos hommes":

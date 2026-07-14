@@ -34,6 +34,7 @@ init -5 python:
         situation[trait.Evaluation.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Force.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Commandement.NOM] = trait.Trait.CARAC_FAIBLE
+        situation[trait.Charme.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Perception.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.Discretion.NOM] = trait.Trait.CARAC_FAIBLE
         situation[trait.ArmesCorpsACorps.NOM] = trait.Trait.CARAC_FAIBLE

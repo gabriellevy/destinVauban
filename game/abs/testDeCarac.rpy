@@ -1,7 +1,7 @@
 # label pour inifier les tests de carac
 # Utilisation : il faut setter toutes les variables suivantes avec d'appeelr le label : 
 # $ _test_carac = trait.Mouvement.NOM
-# $ _test_difficulte = 3
+# $ _test_difficulte = 20 # 20 est une difficulté standard, simple pour un professionnel
 # $ _test_texte_menu = "Comme tout gentilhomme qui se respecte vous prenez très tôt beaucoup de leçons d'équitation."
 # $ _test_texte_reussi = "Vous progressez vite."
 # $ _test_texte_echoue = "Ce n'est pas votre fort."
