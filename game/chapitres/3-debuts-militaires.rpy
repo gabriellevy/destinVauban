@@ -79,6 +79,8 @@ label siege_stenay_fin:
     "Vous êtes touché par des débris et légèrement enflammé mais parvenez à vous mettre à l'abri."
     "Le feu que les assiégés parviennent finalement à allumer repousse les sapeurs et fait s'éterniser le siège qui dure plus d'un mois pendant lequel vous vous remettez de votre blessure."
     "Ils finissent tout de même par capituler, à court de vivres et de munitions."
+    "Vous êtes nommé capitaine en récompense de vos services."
+    $ situation_.SetValCarac(vauban.Vauban.C_GRADE, vauban.Vauban.GRADE_CAPITAINE)
     "Les techniques employées par les assiégés ainsi que la créativité du Maréchal Favert qui relie astucieusement les tranchées d'approche pour faciliter l'attaque sont très instructives."
     if situation_.GetValCaracInt(maitrise.Fortification.NOM) < 3:
         $ _test_texte_menu = "Vous tachez d'en tirer des leçons."

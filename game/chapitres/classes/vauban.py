@@ -8,6 +8,7 @@ class Vauban:
     GRADE_ENSEIGNE = u"Enseigne"
     GRADE_LIEUTENANT = u"Lieutenant aux gardes"
     GRADE_LIEUTENANT_BOURGOGNE = u"Lieutenant au régiment de Bourgogne infanterie"
+    GRADE_CAPITAINE = u"Capitaine"
     GRADE_SAINT_LOUIS = u"Ordre de Saint Louis"
     # titres
     C_SEIGNEUR_BAZOCHES = u"Seigneur de Bazoches"
