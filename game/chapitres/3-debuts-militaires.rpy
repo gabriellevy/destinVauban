@@ -41,6 +41,9 @@ init -5 python:
         dateNbJours = 1653 * 365 + 31 * 9 + 20 # ------------------------------------------------- 20 octobre 1653
         siege_sainte_menehould_2 = declencheur.DeclencheurDate(dateNbJours, "siege_sainte_menehould_2")
         selecteur_.ajouterDeclencheur(siege_sainte_menehould_2)
+        dateNbJours = 1654 * 365 + 31 * 6 + 1 # ------------------------------------------------- 1er juillet 1654
+        siege_stenay = declencheur.DeclencheurDate(dateNbJours, "siege_stenay")
+        selecteur_.ajouterDeclencheur(siege_stenay)
 
         # aura besoin des maths : chances de les apprendre si ce n'est pas encore le cas : 
         apprentissageMathematiques2 = declencheur.Declencheur(proba.Proba(0.2), "apprentissageMathematiques2")
@@ -56,6 +59,37 @@ init -5 python:
         apprentissageSurLeTas = declencheur.Declencheur(proba.Proba(0.05), "apprentissageSurLeTas")
         apprentissageSurLeTas.AjouterCondition(chapitre3)
         selecteur_.ajouterDeclencheur(apprentissageSurLeTas)
+
+label siege_stenay:
+    scene bg siege
+    with dissolve
+    "Vous êtes bientôt impliqué dans un nouveau siège à la ville de Stenay."
+    "Vous êtes chargé de diriger les poseurs de mines qui doivent s'approcher de la muraille en creusant une tranchée puis la faire sauter."
+    "C'est certes un honneur qui récompense votre bonne réputation mais c'est aussi un travail très dangereux où vous êtes la cible numéro un des assiégés."
+    $ _test_texte_menu = "Alors que vous êtes proche du bastion de gauche et tentez d'y poser une mine les assiégés vous bombardent de bois et de matière inflammable."
+    $ _test_carac = trait.Endurance.NOM
+    $ _test_difficulte = 20
+    $ _test_label_reussi = "siege_stenay_fin"
+    $ _test_texte_echoue = "Vous êtes à moitié assomé par un morceau de bois que vous recevez sur la tête et êtes pris dans les flammes. Vous mourez dans d'atroces souffrances."
+    $ _test_label_echoue = "mort"
+    $ _label_ressurection = "siege_stenay_fin"
+    call _test_de_carac
+
+label siege_stenay_fin:
+    "Vous êtes touché par des débris et légèrement enflammé mais parvenez à vous mettre à l'abri."
+    "Le feu que les assiégés parviennent finalement à allumer repousse les sapeurs et fait s'éterniser le siège qui dure plus d'un mois pendant lequel vous vous remettez de votre blessure."
+    "Ils finissent tout de même par capituler, à court de vivres et de munitions."
+    "Les techniques employées par les assiégés ainsi que la créativité du Maréchal Favert qui relie astucieusement les tranchées d'approche pour faciliter l'attaque sont très instructives."
+    if situation_.GetValCaracInt(maitrise.Fortification.NOM) < 3:
+        $ _test_texte_menu = "Vous tachez d'en tirer des leçons."
+        $ _test_carac = trait.Intelligence.NOM
+        $ _test_difficulte = 0
+        $ _test_texte_reussi = "Vous apprenez à une vitesse étonnante."
+        $ _test_action_reussi = lambda: AjouterACarac(maitrise.Fortification.NOM, 1)
+        $ _test_label_reussi = "fin_cycle"
+        $ _test_label_echoue = "fin_cycle"
+        call _test_de_carac
+    jump fin_cycle
 
 label siege_sainte_menehould_2:
     scene bg siege

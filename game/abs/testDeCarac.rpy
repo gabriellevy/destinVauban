@@ -11,6 +11,8 @@
 # $ _test_label_echoue = "grade_ordre_saint_louis2"
 # $ _test_abandon_possible = False
 # $ _test_label_abandon = None
+# $ _label_ressurection = "fin_cycle" # label appelé si le perso meurt mais est sauvé par un point de destin
+
 label _test_de_carac:
     $ testCombat = testDeCarac.TestDeCarac(_test_carac, _test_difficulte, situation_)
     menu:

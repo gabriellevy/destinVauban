@@ -65,14 +65,15 @@ label start:
     $ _test_carac = None
     $ _test_difficulte = None
     $ _test_texte_menu = None
-    $ _test_texte_reussi = None
-    $ _test_texte_echoue = None
+    $ _test_texte_reussi = "Réussi !"
+    $ _test_texte_echoue = "Raté !"
     $ _test_action_reussi = None
     $ _test_action_echoue = None
     $ _test_label_reussi = None
     $ _test_label_echoue = None
     $ _test_abandon_possible = False
     $ _test_label_abandon = None
+    $ _label_ressurection = None # label appelé si le perso meurt mais est sauvé par un point de destin
     # play music musique_menu
     queue music [ printemps, hiver, ete ] # pseudo liste de lecture temporaire
     jump naissance
@@ -99,14 +100,22 @@ label fin_cycle:
     $ _test_label_echoue = None
     $ _test_abandon_possible = False
     $ _test_label_abandon = None
+    $ _label_ressurection = None # label appelé si le perso meurt mais est sauvé par un point de destin
 
     if situation_["Santé"] != "Mort":
         jump debut_cycle
 
 label mort:
+    $ nbDestin = situation_.GetValCaracInt(trait.Destin.NOM)
     menu:
         "Vous êtes mort."
-        "ok":
+        "Mais le destin vous rappelle parmi les vivants" if nbDestin > 0:
+            $ RetirerACarac(trait.Destin.NOM, 1)
+            if _test_label_echoue:
+                $ renpy.jump(_label_ressurection)
+            else:
+                jump fin_cycle
+        "Ainsi soit-il.":
             pass
         # A FAIRE : comment quitter le jeu ??
     return
