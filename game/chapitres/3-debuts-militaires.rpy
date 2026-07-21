@@ -16,6 +16,7 @@ init -5 python:
 
     def AjouterEvts3DebutsMilitaires():
         global selecteur_
+        # ---------------- évéements à date fixe
         dateNbJours = 1651 * 365 + 31 * 2 +17 # ------------------------------------------------- 17 mars 1651
         debut_chapitre3 = declencheur.DeclencheurDate(dateNbJours, "debut_chapitre3")
         selecteur_.ajouterDeclencheur(debut_chapitre3)
@@ -44,7 +45,11 @@ init -5 python:
         dateNbJours = 1654 * 365 + 31 * 6 + 1 # ------------------------------------------------- 1er juillet 1654
         siege_stenay = declencheur.DeclencheurDate(dateNbJours, "siege_stenay")
         selecteur_.ajouterDeclencheur(siege_stenay)
+        dateNbJours = 1654 * 365 + 31 * 10 + 7 # ------------------------------------------------- novembre 1654
+        siege_Clermont_en_Argonne = declencheur.DeclencheurDate(dateNbJours, "siege_Clermont_en_Argonne")
+        selecteur_.ajouterDeclencheur(siege_Clermont_en_Argonne)
 
+        # ------------------ événements génériques
         # aura besoin des maths : chances de les apprendre si ce n'est pas encore le cas : 
         apprentissageMathematiques2 = declencheur.Declencheur(proba.Proba(0.2), "apprentissageMathematiques2")
         apprentissageMathematiques2.AjouterCondition(chapitre3)
@@ -59,6 +64,26 @@ init -5 python:
         apprentissageSurLeTas = declencheur.Declencheur(proba.Proba(0.05), "apprentissageSurLeTas")
         apprentissageSurLeTas.AjouterCondition(chapitre3)
         selecteur_.ajouterDeclencheur(apprentissageSurLeTas)
+
+label siege_Clermont_en_Argonne:
+    "Toujours sous les ordres de Monsieur de Clervilles, vous assiégez Clermont-en-Argonne."
+    "Encore une ville où vous avez séjourné précédemment et où vos souvenirs seront précieux."
+    $ _test_texte_menu = "Indisposé, Clerville vous charge de travaux d'approche important et de la pose de mines destinées à faire sauter trois points vulérables."
+    $ _test_carac = trait.Intelligence.NOM
+    $ _test_difficulte = situation_.GetValCaracInt(maitrise.Poliorcetique.NOM) * 20
+    $ _test_texte_reussi= "Vous vous rappelez des meilleurs trajets pour s'approcher des murailles en limitant les tirs ennemis."
+    $ _test_label_reussi = "siege_Clermont_en_Argonne_fin"
+    $ _test_texte_echoue = "L'approche est laborieuse et dangereuse et coûte la vie à de nombreux mineurs."
+    $ _test_label_echoue = "siege_Clermont_en_Argonne_fin"
+    $ _test_action_reussi = lambda: AjouterACarac(vauban.Vauban.C_EXPLOITS, 1)
+    call _test_de_carac
+
+label siege_Clermont_en_Argonne_fin:
+    "Vous décidez de laisser les assiégés voir que vous allez mettr eles mines  à feu pour les laisser paniquer et ils finissent par se rendre."
+    "Heureusement, car la forteresse est solide, et les mines avaient peu de chances de permettre de la prendre facilement."
+    "D'ailleurs, plutôt que de l'occuper, on vous charge juste après al reddition de détruire une forteresse qui a peu d'intérêt pour le roi et risquerait d'encore servir à abriter des rebelles."
+    "Après ces multiples fortifications, sièges et destruction, on vous accorde finalement le titre d'ingénieur ordinaire du roi de sa majesté."
+    jump fin_cycle
 
 label siege_stenay:
     scene bg siege

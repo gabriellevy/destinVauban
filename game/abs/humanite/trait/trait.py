@@ -124,14 +124,11 @@ class Destin(Trait):
         self.eTrait_ = Destin.NOM
 
     def GetDescription(self, situation):
-        """
-        Mot décrivant le personnage dans ce trait particulier
-        """
         val = situation[self.eTrait_]
         if val == "":
             val = self.GetValeurALaNaissance()
             situation[self.eTrait_] = val
-        return u"Destin : {}".format(val)
+        return u"Destin : {}".format(int(val))
 
     def GetValeurALaNaissance(self):
         return 5
