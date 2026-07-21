@@ -1,9 +1,7 @@
 init -2 python:
     from abs import carac
     from spe import situation_vauban
-    from spe.cultures import francs
-    from spe.cultures import gaulois
-    from spe.cultures import romains
+    from spe.cultures import francais
     from game.abs.humanite.trait import trait
     from abs.humanite.trait import collection_traits
     # from geographie import quartier
@@ -28,9 +26,7 @@ init -2 python:
     interfaceMode_ = 0
     nbInterfaceMode_ = 4
     # cultures
-    francs_ = francs.Francs()
-    gaulois_ = gaulois.Gaulois()
-    romains_ = romains.Romains()
+    francais_ = francais.Francais()
 
     debug_ = False
     situation_.debug_ = debug_

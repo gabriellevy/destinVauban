@@ -45,7 +45,6 @@ init -1 python:
     AjouterEvtsProfessionnels()
     AjouterEvtsRoi()
     # usurpation désactivée pour l'instant. Je le remettrai si je vois une application liée à Vauban mais rien pour l'instant
-    # AjouterEvtsUsurpation()
     AjouterEvtsRien()
     AjouterEvtEtudes()
     AjouterEvts3DebutsMilitaires()
