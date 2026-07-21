@@ -18,7 +18,7 @@ init -5 python:
         sceneParDefaut = ""
         # régénère les événements compatibles avec la situation
         evtsVides_ = [
-        "evtRien8", 
+        "evtRien1", 
         ]
         scenesParDefaut = []
         musiquesAEnquiller = []
@@ -133,10 +133,9 @@ label evtRien_auMoinsJeuneAdulte:
     "Aujourd'hui vous avez dû rédiger une importante lettre de votre main. Vous scellez la lettre de votre sceau."
     jump fin_cycle
 
-label evtRien8:
-    with Dissolve(.5)
-    "Parmi les coutumes romaines les jeux de cirque sont toujours aussi populaires, même chez les francs."
-    "Certes ceux qui se donnent en Gaule de nos jours sont loin d'être somptueux comme à Rome. Mais vous avez les moyens d'organiser des courses de char et même des combats de gladiateurs."
+label evtRien1:
+    "Sous Louis XIII le nombre d'ingénieur a beaucoup augmenté mais ils n'atteignaient pas encore la centaine, cela reste un poste rare mais de plus en plus précieux."
+    "Ler rôle est maintenant très reconnu lors des sièges, que ce soit dans l'attaque ou dans la défense. En plus, bien sûr, de bâtir les places fortes."
     jump fin_cycle
 
 # label evtRien18:
