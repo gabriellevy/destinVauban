@@ -107,12 +107,12 @@ label siege_stenay_fin:
     "Vous êtes nommé capitaine en récompense de vos services."
     $ situation_.SetValCarac(vauban.Vauban.C_GRADE, vauban.Vauban.GRADE_CAPITAINE)
     "Les techniques employées par les assiégés ainsi que la créativité du Maréchal Favert qui relie astucieusement les tranchées d'approche pour faciliter l'attaque sont très instructives."
-    if situation_.GetValCaracInt(maitrise.Fortification.NOM) < 3:
+    if situation_.GetValCaracInt(maitrise.Poliorcetique.NOM) < 3:
         $ _test_texte_menu = "Vous tachez d'en tirer des leçons."
         $ _test_carac = trait.Intelligence.NOM
         $ _test_difficulte = 0
         $ _test_texte_reussi = "Vous apprenez à une vitesse étonnante."
-        $ _test_action_reussi = lambda: AjouterACarac(maitrise.Fortification.NOM, 1)
+        $ _test_action_reussi = lambda: AjouterACarac(maitrise.Poliorcetique.NOM, 1)
         $ _test_label_reussi = "fin_cycle"
         $ _test_label_echoue = "fin_cycle"
         call _test_de_carac
@@ -314,7 +314,7 @@ label construction_clermont_en_argonne:
     "Étant donné vs compétences en mathématiques et fortifications vous êtes nommé aspirant ingénieur et chargé de réparer la petite place de Clermont-en-Argonne."
     "Bien que modeste c'est une position clé sur la route de Sainte-Menehould et donc de la Champagne, c'est un honneur qu'il vous soit confié malgré votre faible expérience."
     $ _test_carac = trait.Evaluation.NOM
-    $ _test_difficulte = 0 # A FAIRE : faire un calcul de difficulté dynamique selon les compétences en Fortification de Vauban (+20 par niveau au dela de 1 ?)
+    $ _test_difficulte = situation_.GetValCaracInt(maitrise.Fortification.NOM) * 20
     $ _test_texte_menu = "Enfin un peu de mise en pratique."
     $ _test_texte_reussi = "Beau travail."
     $ _test_action_reussi = lambda: AjouterACarac(vauban.Vauban.C_EXPLOITS, 1)
