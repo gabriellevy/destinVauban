@@ -41,8 +41,6 @@ init -5 python:
         situation[trait.Tir.NOM] = trait.Trait.CARAC_FAIBLE
 
         # A FAIRE : changer tout ça, ce n'est ni sa personnalité ni ses caracs
-        situation[trait.Opportunisme.NOM] = trait.Trait.SEUIL_A_EXTREME
-        situation[trait.Observation.NOM] = trait.Trait.SEUIL_A
         situation[trait.Cupidite.NOM] = trait.Trait.SEUIL_A_EXTREME
         situation[trait.Franchise.NOM] = trait.Trait.SEUIL_A_PAS
         # ----- vices et vertus -------------

@@ -292,48 +292,6 @@ class Serenite(TraitTernaire):
         else:
             return u""
 
-class Opportunisme(TraitBinaire):
-
-    NOM = u"Opportunisme"
-
-    def __init__(self):
-        self.eTrait_ = Opportunisme.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val >= Trait.SEUIL_A:
-            return u"Opportuniste"
-        else:
-            return ""
-
-class Observation(TraitTernaire):
-
-    NOM = u"Sens de l'observation"
-
-    def __init__(self):
-        self.eTrait_ = Observation.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            return u"Distrait"
-        elif val >= Trait.SEUIL_A:
-            return u"Observateur" # ATTENTION ACCENTS : mettre 'u' devant les string à accents pour utiliser le mode unicode
-        else:
-            return u""
-
 # prends très au sérieux sa réputation, ne ment jamais
 # inclut aussi la sincérité vs l'hypocrisie etc
 class Sincerite(TraitGraduel):

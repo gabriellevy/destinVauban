@@ -48,8 +48,6 @@ class CollectionTraits:
         # A FAIRE : voir ce que je garde ci après
         richesse = trait.Richesse()
         self.SetTrait(trait.Richesse.NOM, richesse)
-        observation = trait.Observation()
-        self.SetTrait(trait.Observation.NOM, observation)
         beaute = trait.Beaute()
         self.SetTrait(trait.Beaute.NOM, beaute)
         taille = trait.Taille()
@@ -66,8 +64,6 @@ class CollectionTraits:
         self.SetTrait(trait.Cupidite.NOM, cupidite)
         sincerite = trait.Sincerite()
         self.SetTrait(trait.Sincerite.NOM, sincerite)
-        opp = trait.Opportunisme()
-        self.SetTrait(trait.Opportunisme.NOM, opp)
         ind = trait.Industrie()
         self.SetTrait(trait.Industrie.NOM, ind)
         franch = trait.Franchise()

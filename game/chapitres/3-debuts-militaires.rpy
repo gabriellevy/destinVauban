@@ -200,7 +200,6 @@ label capture_en_reconnaissance_combat:
     $ _test_label_reussi = capture_en_reconnaissance_victoire
     $ _test_texte_reussi = "Vous abattez net leur officier et blessez gravement un autre tandis que vos compagnons, armés de mousquets, abattent eux aussi deux cavaliers."
     $ _test_texte_echoue = "Impossible de les prendre de vitesse ils sont maintenant juste derrière vous."
-    # A FAIRE : gestion de la mort et sauvegarde par point de destin
     $ _test_label_echoue = "mort"
     call _test_de_carac
 
