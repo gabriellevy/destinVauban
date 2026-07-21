@@ -715,58 +715,6 @@ class Poids(TraitGraduel):
             return u"Gros"
         else:
             return ""
-
-class Taille(TraitGraduel):
-
-    NOM = u"Taille"
-
-    def __init__(self):
-        self.eTrait_ = Taille.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Nain" # gretchin, gnome...
-            return u"Petit"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Géant"
-            return u"Grand"
-        else:
-            return ""
-
-class Beaute(TraitGraduel):
-
-    NOM = u"Beauté"
-
-    def __init__(self):
-        self.eTrait_ = Beaute.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Hideux"
-            return u"Laid"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Apollon"
-            return u"Beau"
-        else:
-            return ""
         
 class Animaux(TraitGraduel):
 

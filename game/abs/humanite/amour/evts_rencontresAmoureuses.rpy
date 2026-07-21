@@ -25,10 +25,10 @@ init -5 python:
     estCelebre = condition.Condition(trait.Gloire.NOM, trait.Trait.SEUIL_A, condition.Condition.SUPERIEUR_EGAL)
     estGlorieux = condition.Condition(trait.Gloire.NOM, trait.Trait.SEUIL_A_EXTREME, condition.Condition.SUPERIEUR_EGAL)
 
-    estBeau = condition.Condition(trait.Beaute.NOM, trait.Trait.SEUIL_A, condition.Condition.SUPERIEUR_EGAL)
-    estApollon = condition.Condition(trait.Beaute.NOM, trait.Trait.SEUIL_A_EXTREME, condition.Condition.SUPERIEUR_EGAL)
-    estLaid = condition.Condition(trait.Beaute.NOM, trait.Trait.SEUIL_A_PAS, condition.Condition.INFERIEUR_EGAL)
-    estHideux = condition.Condition(trait.Beaute.NOM, trait.Trait.SEUIL_A_PAS_EXTREME, condition.Condition.INFERIEUR_EGAL)
+    estBeau = condition.Condition(trait.Charme.NOM, trait.Trait.SEUIL_A, condition.Condition.SUPERIEUR_EGAL)
+    estApollon = condition.Condition(trait.Charme.NOM, trait.Trait.SEUIL_A_EXTREME, condition.Condition.SUPERIEUR_EGAL)
+    estLaid = condition.Condition(trait.Charme.NOM, trait.Trait.SEUIL_A_PAS, condition.Condition.INFERIEUR_EGAL)
+    estHideux = condition.Condition(trait.Charme.NOM, trait.Trait.SEUIL_A_PAS_EXTREME, condition.Condition.INFERIEUR_EGAL)
 
     estCharmant = condition.Condition(trait.Charme.NOM, trait.Trait.SEUIL_A, condition.Condition.SUPERIEUR_EGAL)
     estTresCharmant = condition.Condition(trait.Charme.NOM, trait.Trait.SEUIL_A_EXTREME, condition.Condition.SUPERIEUR_EGAL)

@@ -91,7 +91,7 @@ label effetVieillir:
 
         elif effetVieillesse< 45:
             "Votre peau est de moins en moins belle."
-            $ RetirerACarac(trait.Beaute.NOM, 1)
+            $ RetirerACarac(trait.Charme.NOM, 1)
             $ nbEffets = nbEffets - 1
             jump effetVieillir
         elif effetVieillesse< 55:

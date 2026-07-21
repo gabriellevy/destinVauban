@@ -48,10 +48,6 @@ class CollectionTraits:
         # A FAIRE : voir ce que je garde ci après
         richesse = trait.Richesse()
         self.SetTrait(trait.Richesse.NOM, richesse)
-        beaute = trait.Beaute()
-        self.SetTrait(trait.Beaute.NOM, beaute)
-        taille = trait.Taille()
-        self.SetTrait(trait.Taille.NOM, taille)
         poids = trait.Poids()
         self.SetTrait(trait.Poids.NOM, poids)
         resistance = trait.Constitution()
