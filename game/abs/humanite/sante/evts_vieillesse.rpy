@@ -111,7 +111,7 @@ label effetVieillir:
             jump effetVieillir
         elif effetVieillesse< 86:
             "Vous vous sentez très fatigué."
-            $ RetirerACarac(trait.Constitution.NOM, 1)
+            $ RetirerACarac(trait.Endurance.NOM, 1)
             $ nbEffets = nbEffets - 1
             jump effetVieillir
         elif effetVieillesse< 98:

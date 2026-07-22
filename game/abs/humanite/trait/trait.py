@@ -278,31 +278,6 @@ class Prudence(TraitTernaire):
         else:
             return u""
 
-class Patriarcat(TraitTernaire):
-
-    NOM = u"Rapport entre les sexes"
-
-    def __init__(self):
-        self.eTrait_ = Patriarcat.NOM
-
-    def PeutEtrePrisALaNaissance(self):
-        return False
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            return u"Matriarcal"
-        elif val >= Trait.SEUIL_A:
-            return u"Patriarcal" # ATTENTION ACCENTS : mettre 'u' devant les string à accents pour utiliser le mode unicode
-        else:
-            return u""
-
 class Serenite(TraitTernaire):
 
     NOM = u"Sérénité"
@@ -694,58 +669,6 @@ class Ascetisme(TraitGraduel):
             if val >= Trait.SEUIL_A_EXTREME:
                 return u"Ascète"
             return u"Abstinent"
-        else:
-            return ""
-
-class Constitution(TraitGraduel):
-
-    NOM = u"Constitution"
-
-    def __init__(self):
-        self.eTrait_ = Constitution.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Chétif"
-            return u"Fragile"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Indestructible"
-            return u"Résistant"
-        else:
-            return ""
-
-class Poids(TraitGraduel):
-
-    NOM = u"Poids"
-
-    def __init__(self):
-        self.eTrait_ = Poids.NOM
-
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Famélique"
-            return u"Maigre"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Obèse"
-            return u"Gros"
         else:
             return ""
         

@@ -48,12 +48,6 @@ class CollectionTraits:
         self.SetTrait(trait.Richesse.NOM, richesse)
 
         # A FAIRE : voir ce que je garde ci après
-        poids = trait.Poids()
-        self.SetTrait(trait.Poids.NOM, poids)
-        resistance = trait.Constitution()
-        self.SetTrait(trait.Constitution.NOM, resistance)
-        patriarcat = trait.Patriarcat()
-        self.SetTrait(trait.Patriarcat.NOM, patriarcat)
         sexualite = trait.Sexualite()
         self.SetTrait(trait.Sexualite.NOM, sexualite)
         cupidite = trait.Cupidite()
