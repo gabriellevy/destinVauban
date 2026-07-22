@@ -73,7 +73,7 @@ init -5 python:
             evtsVides_ = ["evtRien1", "evtRien2" ]
 
         if len(scenesParDefaut) == 0:
-            sceneParDefaut = "bg cours_merovingienne"
+            sceneParDefaut = "bg morvan"
 
         # ajoute une musique à la file au hasard :
         if len(musiquesAEnquiller) != 0:

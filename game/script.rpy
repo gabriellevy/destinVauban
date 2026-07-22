@@ -43,7 +43,6 @@ init -1 python:
     AjouterEvtJeunesse()
     # autres
     AjouterEvtsProfessionnels()
-    AjouterEvtsRoi()
     # usurpation désactivée pour l'instant. Je le remettrai si je vois une application liée à Vauban mais rien pour l'instant
     AjouterEvtsRien()
     AjouterEvtEtudes()
