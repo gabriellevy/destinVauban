@@ -1569,7 +1569,7 @@ screen valeurs_traits():
                 text _(u"[affDestin]")
                 xsize 210
                 spacing 5
-                text _("Exploits ([situation_[vauban.Vauban.C_EXPLOITS]]/100) : ")
+                text _(u"Exploits ({}/100)".format(int(situation_[vauban.Vauban.C_EXPLOITS])))
                 bar:
                     value AnimatedValue(situation_[vauban.Vauban.C_EXPLOITS], 100, 1.0)
             elif interfaceMode_ == 1: # Affichage des maîtrises

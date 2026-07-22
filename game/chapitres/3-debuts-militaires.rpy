@@ -48,6 +48,9 @@ init -5 python:
         dateNbJours = 1654 * 365 + 31 * 10 + 7 # ------------------------------------------------- novembre 1654
         siege_Clermont_en_Argonne = declencheur.DeclencheurDate(dateNbJours, "siege_Clermont_en_Argonne")
         selecteur_.ajouterDeclencheur(siege_Clermont_en_Argonne)
+        dateNbJours = 1654 * 365 + 31 * 5 + 19 # ------------------------------------------------- 19 juin 1655
+        siege_Landrecies = declencheur.DeclencheurDate(dateNbJours, "siege_Landrecies")
+        selecteur_.ajouterDeclencheur(siege_Landrecies)
 
         # ------------------ événements génériques
         # aura besoin des maths : chances de les apprendre si ce n'est pas encore le cas : 
@@ -64,6 +67,21 @@ init -5 python:
         apprentissageSurLeTas = declencheur.Declencheur(proba.Proba(0.05), "apprentissageSurLeTas")
         apprentissageSurLeTas.AjouterCondition(chapitre3)
         selecteur_.ajouterDeclencheur(apprentissageSurLeTas)
+
+label siege_Landrecies:
+    scene bg landrecies
+    with dissolve
+    "Toujours sous les ordres de Clervilles vous êtes affecté au siège de Landrecies, ville solidement défendue par les espagnols."
+    $ situation_.AvanceDeXJours(24)
+    "Le siège dure plus de 3 semaines durant lesquelles vous êtes très actif mais se passe sans grande surprise."
+    "Vous avez surtout la bonne surprise de constater que grâce à vos états de service et votre titre officiel d'ingénieur, vous êtes chargé de la réfection des fortifications."
+    $ _test_texte_menu = "À seulement 22 ans c'est un grand honneur."
+    $ _test_carac = trait.Evaluation.NOM
+    $ _test_difficulte = situation_.GetValCaracInt(maitrise.Fortification.NOM) * 20
+    $ _test_texte_reussi= "Ce travail est long et laborieux mais vous vous en tirez à merveille."
+    $ _test_action_reussi = lambda: AjouterACarac(vauban.Vauban.C_EXPLOITS, 1)
+    $ _test_texte_echoue = "Ce travail est long et laborieux. Vous faites un travail honorable et apprécié par Monsieur de Clervilles"
+    call _test_de_carac
 
 label siege_Clermont_en_Argonne:
     "Toujours sous les ordres de Monsieur de Clervilles, vous assiégez Clermont-en-Argonne."
