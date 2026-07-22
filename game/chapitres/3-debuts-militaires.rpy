@@ -51,6 +51,9 @@ init -5 python:
         dateNbJours = 1654 * 365 + 31 * 5 + 19 # ------------------------------------------------- 19 juin 1655
         siege_Landrecies = declencheur.DeclencheurDate(dateNbJours, "siege_Landrecies")
         selecteur_.ajouterDeclencheur(siege_Landrecies)
+        dateNbJours = 1654 * 365 + 31 * 5 + 20 # ------------------------------------------------- 20 juin 1656
+        siege_Valenciennes = declencheur.DeclencheurDate(dateNbJours, "siege_Valenciennes")
+        selecteur_.ajouterDeclencheur(siege_Valenciennes)
 
         # ------------------ événements génériques
         # aura besoin des maths : chances de les apprendre si ce n'est pas encore le cas : 
@@ -67,6 +70,10 @@ init -5 python:
         apprentissageSurLeTas = declencheur.Declencheur(proba.Proba(0.05), "apprentissageSurLeTas")
         apprentissageSurLeTas.AjouterCondition(chapitre3)
         selecteur_.ajouterDeclencheur(apprentissageSurLeTas)
+
+label siege_Valenciennes:
+    "A FAIRE : siege_Valenciennes"
+    jump fin_cycle
 
 label siege_Landrecies:
     scene bg landrecies

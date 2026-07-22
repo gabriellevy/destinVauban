@@ -116,6 +116,39 @@ class TraitGraduel(Trait):
     def GetValeurALaNaissance(self):
         return random.randint(0,10) + random.randint(0,10) + 20
 
+class Richesse(TraitGraduel):
+
+    NOM = u"Richesse"
+
+    def __init__(self):
+        self.eTrait_ = Richesse.NOM
+
+    def PeutEtrePrisALaNaissance(self):
+        return True
+
+    def GetDescription(self, situation):
+        val = situation[self.eTrait_]
+        if val == "":
+            val = 0
+            situation[self.eTrait_] = val
+        if not isinstance(val, int):
+            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
+
+        if val < Trait.CARAC_FAIBLE:
+            if val < Trait.CARAC_TRES_FAIBLE:
+                if val <= 5:
+                    return u"Mendiant"
+                return u"Misérable"
+            return u"Pauvre"
+        elif val >= Trait.CARAC_ELEVE:
+            if val >= Trait.CARAC_EXCEPTIONNEL:
+                if val >= Trait.CARAC_EXCEPTIONNEL:
+                    return u"Riche comme un roi"
+                return u"Très riche"
+            return u"Assez riche"
+        else:
+            return ""
+
 class Destin(Trait):
 
     NOM = u"Destin"
@@ -897,37 +930,6 @@ class Charme(TraitGraduel):
             return u"Charmant"
         else:
             return ""
-
-class Richesse(TraitGraduel):
-
-    NOM = u"Richesse"
-
-    def __init__(self):
-        self.eTrait_ = Richesse.NOM
-
-    def PeutEtrePrisALaNaissance(self):
-        return True
-
-    # tmp : numéro affiché pour raison de débug
-    def GetDescription(self, situation):
-        val = situation[self.eTrait_]
-        if val == "":
-            val = 0
-            situation[self.eTrait_] = val
-        if not isinstance(val, int):
-            assert "Ce trait n'a pas comme valeur un int. Trait : {}. Valeur : {}".format(self.eTrait_, val)
-
-        if val <= Trait.SEUIL_A_PAS:
-            if val <= Trait.SEUIL_A_PAS_EXTREME:
-                return u"Misérable"
-            return u"Pauvre"
-        elif val >= Trait.SEUIL_A:
-            if val >= Trait.SEUIL_A_EXTREME:
-                return u"Incroyablement riche"
-            return u"Très riche"
-        else:
-            return u""
-            # return u"Classe moyenne {}".format(val)
 
 class Gloire(TraitGraduel):
 

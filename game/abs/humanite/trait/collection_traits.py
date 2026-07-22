@@ -44,10 +44,10 @@ class CollectionTraits:
         self.SetTrait(trait.Destin.NOM, destin)    
         gloire = trait.Gloire()
         self.SetTrait(trait.Gloire.NOM, gloire)
-
-        # A FAIRE : voir ce que je garde ci après
         richesse = trait.Richesse()
         self.SetTrait(trait.Richesse.NOM, richesse)
+
+        # A FAIRE : voir ce que je garde ci après
         poids = trait.Poids()
         self.SetTrait(trait.Poids.NOM, poids)
         resistance = trait.Constitution()
