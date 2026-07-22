@@ -323,7 +323,7 @@ label construction_clermont_en_argonne:
     jump fin_cycle
 
 label apprentissageFortification2:
-    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour camps militaire
+    scene bg siege
     with dissolve
     "Vu vos connaissances en mathématiques les ingénieurs décident de vous incorporer à leur équipe pour renforcer les fortifications du camps."
     $ _test_carac = trait.Intelligence.NOM
@@ -335,7 +335,7 @@ label apprentissageFortification2:
     jump fin_cycle
 
 label apprentissageMathematiques2:
-    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour camps militaire
+    scene bg siege
     with dissolve
     "Vos lacunes en mathématiques sont un vrai frein pour que les ingénieurs vous prennent au sérieux et vous donne des missions sur le terrain."
     $ _test_carac = trait.Intelligence.NOM

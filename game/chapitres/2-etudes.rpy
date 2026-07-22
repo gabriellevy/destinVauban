@@ -111,36 +111,36 @@ label apprentissageGeneral:
     jump fin_cycle
 
 label apprentissagePoliorcetique:
-    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
-    with dissolve
+    # scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
+    # with dissolve
     "Vos études vous donnent une assez bonne teinture de poliorcétique."
     $ SetValMaitrise(maitrise.Poliorcetique.NOM, maitrise.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label apprentissageFortification:
-    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
-    with dissolve
+    # scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
+    # with dissolve
     "Vos études vous donnent une assez bonne teinture de fortifications."
     $ SetValMaitrise(maitrise.Fortification.NOM, maitrise.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label apprentissageMathematiques:
-    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
-    with dissolve
+    # scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
+    # with dissolve
     "Vos études vous donnent une assez bonne teinture de mathématiques."
     $ SetValMaitrise(maitrise.Mathematiques.NOM, maitrise.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label apprentissageHydraulique:
-    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
-    with dissolve
+    # scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
+    # with dissolve
     "Vos études vous donnent une assez bonne teinture d'hydraulique."
     $ SetValMaitrise(maitrise.Hydraulique.NOM, maitrise.TraitMaitrise.MAITRISE_A)
     jump fin_cycle
 
 label debut_des_etudes:
-    scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
-    with dissolve
+    # scene bg priere # A FAIRE Marjolaine : trouver un tableau pour les études XVIIème
+    # with dissolve
     "En tant qu'enfant de la noblesse il est indispensable que vous fassiez des études secondaires."
     "Vous les commencez au collège de Semur parmi d'autres fils de nobles et officiers. Plus aussi quelques fils de marchands, laboureurs et artisans aisés. "
     $ situation_.SetValCarac(vauban.Vauban.CHAPITRE, 2)

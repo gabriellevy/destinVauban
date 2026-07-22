@@ -59,7 +59,6 @@ init -1 python:
 
 # Le jeu commence ici
 label start:
-    scene bg priere
     # remise à None de toutes les variables globals de tests
     $ _test_carac = None
     $ _test_difficulte = None

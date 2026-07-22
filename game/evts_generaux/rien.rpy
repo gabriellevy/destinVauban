@@ -140,7 +140,7 @@ label evtRien1:
 
 # label evtRien18:
     # with Dissolve(.5)
-    # $ femmeFranque = francais_.CreerPrenom(False) # A FAIRE : ajouter une création de nom français
+    # $ femmeFranque = francais_.CreerPrenom(False)
     # "[femmeFranque] a été accusée de vol. Elle a accepté de subir l'ordalie."
     # "Elle a plongé sa main dans un chaudron d'eau bouillante. Supportant la souffrance elle a réussi à saisir l'anneau qui s'y trouvait. Les juges ont ensuite attendu 3 jours et constaté que sa cicatrice est belle et bien formée."
     # "[femmeFranque] est donc déclarée innocente du vol."

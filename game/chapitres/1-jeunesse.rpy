@@ -97,7 +97,7 @@ label endurcissementEnfance:
 
 # lieu, époque, enfance au pays
 label intro:
-    scene bg morvan
+    scene bg naissance
     with dissolve
     show screen valeurs_traits
     "Nous sommes en 1633. Vous êtes le jeune Sébastien Le Prestre."
