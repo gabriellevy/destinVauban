@@ -4,12 +4,13 @@ init -5 python:
     from abs import selecteur
     from abs import proba
     from abs import condition
-    from game.abs.humanite.trait import trait
+    from abs.humanite.trait import trait
     from abs.humanite import pnj
     from abs.humanite import metier
     from abs.univers import temps
     from abs.humanite import identite
     from chapitres.classes import vauban
+    from abs.humanite.trait import maitrise
 
     chapitre3 = condition.Condition(vauban.Vauban.CHAPITRE, 3, condition.Condition.EGAL_NUMERIQUE)
     fortification1plus = condition.Condition(maitrise.Fortification.NOM, 1, condition.Condition.SUPERIEUR_EGAL)

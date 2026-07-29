@@ -5,7 +5,7 @@ init -5 python:
     from abs import selecteur
     from abs import proba
     from abs import condition
-    from game.abs.humanite.trait import trait
+    from abs.humanite.trait import trait
     from abs.humanite import metier
 
     def AjouterEvtsFamille():

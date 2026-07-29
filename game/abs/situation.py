@@ -6,7 +6,7 @@ from abs.humanite import portrait
 from abs.humanite import pnj
 from game.abs.humanite.trait import trait
 from game.abs.humanite.trait import maitrise
-from game.abs.humanite.trait import viceVertu
+from abs.humanite.trait import viceVertu
 from abs.humanite import identite
 from abs.affichage import affichagePortrait
 from abs.humanite.amour import relationAmoureuse

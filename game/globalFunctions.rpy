@@ -2,7 +2,7 @@ init -2 python:
     from abs import carac
     from spe import situation_vauban
     from spe.cultures import francais
-    from game.abs.humanite.trait import trait
+    from abs.humanite.trait import trait
     from abs.humanite.trait import collection_traits
     # from geographie import quartier
     from abs.humanite import metier

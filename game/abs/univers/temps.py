@@ -119,7 +119,7 @@ class Date:
     def GetStrMoisGregorien(self):
         return Date.NOMS_MOIS_GREG[self.numMoisGregorien - 1]
 
-    def formatConstitution(self):
+    def formatEndurance(self):
         return u"{} {} {} {}".format(self.GetStrJourSemaine(), self.GetNbJourDuMois(), self.GetStrMois(), self.GetNbAnnees())
 
     def formatGregorien(self):

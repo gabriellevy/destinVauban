@@ -5,14 +5,14 @@ init -5 python:
     from abs import proba
     from abs import condition
     from abs.reglages import filtres_action
-    from game.abs.humanite.trait import trait
+    from abs.humanite.trait import trait
     from abs.univers import temps
     from abs.humanite.sante import pbsante
 
-    estChetif = condition.Condition(trait.Constitution.NOM, trait.Trait.SEUIL_A_PAS_EXTREME, condition.Condition.INFERIEUR_EGAL)
-    estFragile = condition.Condition(trait.Constitution.NOM, trait.Trait.SEUIL_A_PAS, condition.Condition.INFERIEUR_EGAL)
-    estResistant = condition.Condition(trait.Constitution.NOM, trait.Trait.SEUIL_A, condition.Condition.SUPERIEUR_EGAL)
-    estIndestructible = condition.Condition(trait.Constitution.NOM, trait.Trait.SEUIL_A_EXTREME, condition.Condition.SUPERIEUR_EGAL)
+    estChetif = condition.Condition(trait.Endurance.NOM, trait.Trait.SEUIL_A_PAS_EXTREME, condition.Condition.INFERIEUR_EGAL)
+    estFragile = condition.Condition(trait.Endurance.NOM, trait.Trait.SEUIL_A_PAS, condition.Condition.INFERIEUR_EGAL)
+    estResistant = condition.Condition(trait.Endurance.NOM, trait.Trait.SEUIL_A, condition.Condition.SUPERIEUR_EGAL)
+    estIndestructible = condition.Condition(trait.Endurance.NOM, trait.Trait.SEUIL_A_EXTREME, condition.Condition.SUPERIEUR_EGAL)
     def AjouterEvtsMaladies():
         global selecteur_
         probaMaladie = proba.Proba(0.01)
