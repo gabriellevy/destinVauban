@@ -48,10 +48,10 @@ init -5 python:
         dateNbJours = 1654 * 365 + 31 * 10 + 7 # ------------------------------------------------- novembre 1654
         siege_Clermont_en_Argonne = declencheur.DeclencheurDate(dateNbJours, "siege_Clermont_en_Argonne")
         selecteur_.ajouterDeclencheur(siege_Clermont_en_Argonne)
-        dateNbJours = 1654 * 365 + 31 * 5 + 19 # ------------------------------------------------- 19 juin 1655
+        dateNbJours = 1655 * 365 + 31 * 5 + 19 # ------------------------------------------------- 19 juin 1655
         siege_Landrecies = declencheur.DeclencheurDate(dateNbJours, "siege_Landrecies")
         selecteur_.ajouterDeclencheur(siege_Landrecies)
-        dateNbJours = 1654 * 365 + 31 * 5 + 20 # ------------------------------------------------- 20 juin 1656
+        dateNbJours = 1656 * 365 + 31 * 5 + 20 # ------------------------------------------------- 20 juin 1656
         siege_Valenciennes = declencheur.DeclencheurDate(dateNbJours, "siege_Valenciennes")
         selecteur_.ajouterDeclencheur(siege_Valenciennes)
 
